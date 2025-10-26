@@ -1,0 +1,59 @@
+@use "./variable";
+
+.footer {
+padding: 3rem 0rem;
+  position: relative;
+  overflow: hidden;
+
+
+  i {
+    color: $color-orange;
+  }
+
+  .main-title {
+    max-width: 100%;
+  }
+  .main-desc{
+    font-size: 20px;
+    color: $color-orange;
+  }
+
+  .sub-desc2 {
+
+
+    a {
+        font-size: 15px !important;
+      color: $color-white;
+      position: relative;
+      font-weight: normal;
+      display: inline-block;
+      transition: color 0.3s ease; // smooth color animation
+
+      // underline animation
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        width: 0;
+        height: 1px;
+        background-color: $color-white;
+        transition: width 0.3s ease;
+      }
+
+      &:hover {
+        color: $color-white; // hover color change
+      }
+
+      &:hover::after {
+        width: 100%; // animate underline
+      }
+    }
+  }
+
+  .sub-title {
+    color: $color-orange;
+    border-bottom: 2px solid $color-white;
+    width: fit-content;
+  }
+}

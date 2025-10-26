@@ -1,0 +1,159 @@
+@import "../variable";
+
+.skills-section {
+  padding: 3rem 0rem;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+  /* base layer */
+
+   .main-title{
+    max-width: 100% !important;
+    text-align: center;
+  }
+
+
+  .main-desc {
+    padding: 1rem 0;
+    width: 100%;
+  }
+
+  /* Left side image */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../img/home/bg-3.png");
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size: 250px auto;
+    opacity: 0.3;
+    /* 10% visible */
+    pointer-events: none;
+    z-index: -1;
+    /* 👉 goes behind content */
+  }
+
+  /* Right side image */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../img/home/bg-5.png");
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: 250px auto;
+    opacity: 0.3;
+    /* 10% visible */
+    pointer-events: none;
+    z-index: -1;
+    /* 👉 goes behind content */
+  }
+
+
+
+  .circle-wrap {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background: #d9d7da;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+
+  .circle-wrap .circle .mask,
+  .circle-wrap .circle .fill-1,
+  .circle-wrap .circle .fill-2,
+  .circle-wrap .circle .fill-3 {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  .circle-wrap .circle .mask {
+    clip: rect(0px, 150px, 150px, 75px);
+  }
+
+  .circle-wrap .inside-circle {
+    width: 124px;
+    height: 124px;
+    border-radius: 50%;
+    background: #212020;
+    line-height: 120px;
+    text-align: center;
+    margin-top: 13px;
+    margin-left: 13px;
+    color: white;
+    position: absolute;
+    z-index: 100;
+    font-weight: 700;
+    font-size: 2em;
+  }
+
+  /* First bar */
+  .mask .fill-1 {
+    clip: rect(0px, 75px, 150px, 0px);
+    background-color: #ec0c0c;
+  }
+
+  .mask.full-1,
+  .circle .fill-1 {
+    animation: fill-1 ease-in-out 3s;
+    transform: rotate(153deg);
+  }
+
+  @keyframes fill-1 {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(153deg);
+    }
+  }
+
+  /* Second bar */
+  .mask .fill-2 {
+    clip: rect(0px, 75px, 150px, 0px);
+    background-color: yellow;
+  }
+
+  .mask.full-2,
+  .circle .fill-2 {
+    animation: fill-2 ease-in-out 3s;
+    transform: rotate(117deg);
+  }
+
+  @keyframes fill-2 {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(117deg);
+    }
+  }
+
+  /* Third bar */
+  .mask .fill-3 {
+    clip: rect(0px, 75px, 150px, 0px);
+    background-color: #23b9ea;
+  }
+
+  .mask.full-3,
+  .circle .fill-3 {
+    animation: fill-3 ease-in-out 3s;
+    transform: rotate(135deg);
+  }
+
+  @keyframes fill-3 {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(135deg);
+    }
+  }
+}

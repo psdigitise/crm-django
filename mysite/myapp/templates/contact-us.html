@@ -1,0 +1,208 @@
+
+{% load static %}
+
+{% include 'includes/header.html' %}
+
+
+<section class="banner-area">
+    <div id="particles-js"></div> <!-- particles background only -->
+    <div class="content-overlay">
+        <div class="all-banner-slide owl-carousel">
+            <div class="single-banner-slide text-center">
+                <h6 class="sub-desc color-white">CONTACT US</h6>
+                <h2 class="banner-title">How Can We Help?</h2>
+
+                <!-- Breadcrumbs -->
+                <!-- <nav class="breadcrumbs">
+                    <ul class="d-flex justify-content-center">
+                        <li class="sub-desc"><a href="index.php">Home</a></li>
+                        <li class="sub-desc px-2">/</li>
+                        <li class="sub-desc">Contact Us</li>
+                    </ul>
+                </nav> -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact-team-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="theme-twilight">
+                    <img width="50" height="50" src="https://www.mendix.com/wp-content/uploads/Icon-4.svg"
+                        class=" image icon-6 attachment-206914" alt="">
+                    <div class="wysiwyg">
+                        <h2 class="sub-title">Talk to our sales team</h2>
+                        <a href="" class="try-for-free">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="theme-twilight">
+                    <img width="50" height="50" src="https://www.mendix.com/wp-content/uploads/Icon-6.svg"
+                        class=" image icon-7 attachment-206920" alt="" loading="lazy" decoding="async">
+                    <div class="wysiwyg">
+                        <h2 class="sub-title">Find technical support</h2>
+                        <a href="" class="try-for-free">Visit ERPNextAI Support</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="contact-home-section2 pt-3 pb-3">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <h2 class="main-title">Send us a message</h2>
+                <p class="main-desc">Let us know how we can help you. Just complete this form and we’ll be in touch
+                    soon.</p>
+                <!-- ✅ Registration Form -->
+                <form class="registration-form contact-form row g-3" action="#" method="post">
+                    <!-- Name -->
+                    <div class="col-12 col-md-12 mb-0 input-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="name" name="name" class="form-control custom-input" placeholder="Name"
+                            autocomplete="name" required>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="col-12 col-md-12 mb-0 input-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email" class="form-control custom-input"
+                            placeholder="Email" autocomplete="email" required>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="col-12 col-md-12 mb-0 input-icon">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="phone" name="phone" class="form-control custom-input"
+                            placeholder="Phone Number" autocomplete="tel" required>
+                    </div>
+
+                    <!-- Service Dropdown -->
+                    <div class="col-12 col-md-12 mb-0 input-icon">
+                        <i class="fas fa-briefcase"></i>
+                        <select id="service" name="service" class="form-control custom-input" required>
+                            <option value="">Select Service</option>
+                            <option value="web-design">Web Design</option>
+                            <option value="web-development">Web Development</option>
+                            <option value="digital-marketing">Digital Marketing</option>
+                            <option value="seo">SEO Optimization</option>
+                            <option value="app-development">App Development</option>
+                        </select>
+                    </div>
+
+                    <!-- Comment -->
+                    <div class="col-12 mb-0">
+                        <textarea id="comment" name="comment" class="form-control custom-input" rows="4"
+                            placeholder="Company" autocomplete="off" required></textarea>
+                    </div>
+
+                    <!-- Google reCAPTCHA -->
+                    <!-- <div class="col-12 text-center mt-2">
+                        <div class="g-recaptcha d-inline-block" data-sitekey="6LeiVuIrAAAAALejF1S-hUuLkry6u9B67nFmbHUQ">
+                        </div>
+                    </div> -->
+
+                    <!-- Submit -->
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn-gradient mt-3 contact-submit">
+                            SUMBIT
+                        </button>
+                        <p class="emailresult"></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="office-location">
+    <div class="container">
+        <h2 class="main-title">Office Locations</h2>
+        <div class="row">
+            <div class="col-md-4">
+                      <div class="office">
+                    <div class="grid">
+                        <div class="cell">
+                            <!-- <figure class="office__flag">
+                                <img width="62" height="38" src="https://www.mendix.com/wp-content/uploads/uae.svg"
+                                    class=" flag uae attachment-206926" alt="" loading="lazy" decoding="async">
+                            </figure> -->
+                            <h4 class="sub-title color-blue">INDIA</h4>
+                        </div>
+                        <div class="cell">
+                            <p class="address"><a href="tel:+91 95669 81217" class="sub-desc">+91 95669 81217</a></p>
+                            <div class="">
+                                <p class="sub-desc2 color-black">Expo City Dubai
+                                    Level 6, Building Parcel
+                                    4 Al Wasl Avenue
+                                    Mobility District
+                                    Dubai</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                      <div class="office">
+                    <div class="grid">
+                        <div class="cell">
+                            <!-- <figure class="office__flag">
+                                <img width="62" height="38" src="https://www.mendix.com/wp-content/uploads/uae.svg"
+                                    class=" flag uae attachment-206926" alt="" loading="lazy" decoding="async">
+                            </figure> -->
+                            <h4 class="sub-title color-blue">INDIA</h4>
+                        </div>
+                        <div class="cell">
+                            <p class="address"><a href="tel:+91 95669 81217" class="sub-desc">+91 95669 81217</a></p>
+                            <div class="">
+                                <p class="sub-desc2 color-black">Expo City Dubai
+                                    Level 6, Building Parcel
+                                    4 Al Wasl Avenue
+                                    Mobility District
+                                    Dubai</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="office">
+                    <div class="grid">
+                        <div class="cell">
+                            <!-- <figure class="office__flag">
+                                <img width="62" height="38" src="https://www.mendix.com/wp-content/uploads/uae.svg"
+                                    class=" flag uae attachment-206926" alt="" loading="lazy" decoding="async">
+                            </figure> -->
+                            <h4 class="sub-title color-blue">INDIA</h4>
+                        </div>
+                        <div class="cell">
+                            <p class="address"><a href="tel:+91 95669 81217" class="sub-desc">+91 95669 81217</a></p>
+                            <div class="">
+                                <p class="sub-desc2 color-black">Expo City Dubai
+                                    Level 6, Building Parcel
+                                    4 Al Wasl Avenue
+                                    Mobility District
+                                    Dubai</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+{% include 'includes/footer.html' %}

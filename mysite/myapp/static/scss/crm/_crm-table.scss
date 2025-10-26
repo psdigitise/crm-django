@@ -1,0 +1,50 @@
+.table-container {
+
+//   background-color: #1e0833;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+    overflow-x:auto;
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    // border-radius: 8px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #2c1a45 0%, #4e3c70 100%);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    overflow-x:auto;
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      font-size: 1rem;
+    //   border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    tr td:nth-child(1){
+      border-right: 1px solid #fff;
+    }
+
+    tr th:nth-child(1){
+      border-right: 1px solid #fff;
+    }
+
+
+    thead {
+      background-color: #6200ee;
+
+      th {
+        color: #fff;
+    font-weight: 800;
+    font-size: 1.6rem;
+    text-align: center;
+      }
+    }
+
+    tbody {
+      td {
+        color: #f1f1f1;
+      }
+    }
+  }
+}

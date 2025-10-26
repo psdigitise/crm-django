@@ -1,0 +1,76 @@
+.tf-marquee {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  padding-bottom: 4rem;
+}
+
+.tf-marquee .marquee-wrapper {
+  display: flex;
+  align-items: center;
+  animation: infiniteScroll 180s linear infinite;
+}
+
+.tf-marquee .marquee-wrapper .initial-child-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 30px;
+}
+
+.big-text {
+  font-weight: 600;
+  font-size: 12rem;
+  /* responsive alternative */
+  line-height: 1;
+  white-space: nowrap;
+  color: #fff;
+}
+
+.big-text .text-stroke {
+  color: #FFFFFF26;
+}
+
+/* Infinite scroll animation */
+@keyframes infiniteScroll {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .big-text {
+    font-size: 7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .big-text {
+    font-size: 5rem;
+  }
+}
+
+
+.banner-area {
+  .breadcrumbs {
+    ul li {
+      list-style: none;
+      color: $color-white;
+
+      a {
+        color: $color-orange;
+      }
+    }
+  }
+}
+
+option {
+  color: #000 !important;
+}
+
+

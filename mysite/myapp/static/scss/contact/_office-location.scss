@@ -1,0 +1,16 @@
+@import "../variable";
+
+.office-location{
+    padding: 3rem 0rem;
+    .main-title{
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .office{
+        background-color: $bgcolor-white;
+        text-align: center;
+        padding: 2rem;
+    }
+
+}

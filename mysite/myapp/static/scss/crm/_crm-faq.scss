@@ -1,0 +1,264 @@
+.crm-faq {
+  border-radius: 0;
+    position: relative;
+    padding: 3rem 0;
+    z-index: 1;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: url('../img/line.png') center center / 100% no-repeat;
+        opacity: 0.2;
+        z-index: -1;
+    }
+
+  .accordion .accordion-body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .accordion-button {
+    background: #0b266f !important;
+  }
+
+  .cab-booking-frequently-asked-questions .accordion .accordion-button:not(.collapsed) {
+    background-color: #f6f6f6 !important;
+  }
+
+  .accordion {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 0 auto;
+
+
+    ul li {
+      text-align: left;
+      padding-left: 0.5rem;
+    }
+
+    .accordion-item {
+      width: 48%;
+      margin-bottom: 2rem;
+    }
+
+    .accordion-body {
+      margin: 0rem 2rem;
+      font-weight: 400;
+      text-align: left;
+      font-size: 1.1rem;
+      width: 100%;
+      margin: 0;
+    }
+
+    .accordion-item {
+      border-radius: 1rem;
+      border-top: 0;
+      background-color: transparent;
+      border: 0;
+    }
+
+    .accordion-header .accordion-button {
+      font-size: 1.3rem;
+      font-weight: 500;
+    }
+
+    .accordion-button:not(.collapsed) {
+      background-color: #fff;
+      border-radius: 1rem !important;
+      border-bottom-left-radius: 0px !important;
+      border-bottom-right-radius: 0 !important;
+    }
+
+    .accordion-button:focus {
+      box-shadow: none;
+    }
+
+    .accordion-button {
+      border-radius: 1rem !important;
+      color: #ffff !important;
+
+      &::after {
+        filter: invert(1);
+      }
+    }
+
+    .accordion-body {
+      background: #a050f7;
+      border: 2px solid #ffffff;
+      border-top: 0px !important;
+      border-radius: 0px 0px 1rem 1rem;
+      color: $color-white;
+    }
+
+    button.accordion-button.collapsed {
+      border-radius: 1rem !important;
+    }
+
+    .accordion-item:last-of-type>.accordion-header .accordion-button.collapsed {
+      border-radius: 1rem;
+    }
+
+  }
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 991px) {
+  .crm-faq {
+    .accordion {
+      width: 100%;
+
+      .accordion-item {
+        width: 100%;
+      }
+    }
+  }
+}
+
+
+.crm-testimonial-section {
+  padding: 3rem 0;
+  position: relative;
+  overflow: hidden;
+
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    background-image: url("../img/home/bg-6.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 1;
+    pointer-events: none;
+  }
+
+  &::before {
+    top: -200px;
+    left: -200px;
+    animation: floatCircle 8s infinite linear;
+  }
+
+  &::after {
+    bottom: -200px;
+    right: -200px;
+    animation: floatCircleReverse 8s infinite linear;
+  }
+
+
+  .crm-testimonial-section-row {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .slick-dots {
+    bottom: -50px !important;
+  }
+
+  .slick-dots li button:before {
+    opacity: 1;
+    color: #fff !important;
+    content: none !important;
+  }
+
+  .slick-dots li {
+    opacity: 0.6;
+    background-color: #fff;
+    border-radius: 10px;
+    width: 12px !important;
+    height: 12px !important;
+  }
+
+  .slick-dots .slick-active {
+    opacity: 1;
+  }
+
+
+  .crm-testimonial-left {
+    .subtitle {
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.6;
+      color: #ffff;
+    }
+  }
+
+  .crm-testimonial-right {
+    .slick-track {
+      display: flex;
+      align-items: normal;
+    }
+
+    .crm-testimonial-card {
+      color: #fff;
+      border-radius: 15px;
+      padding: 3rem;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      position: relative;
+      border: 1px solid #fff;
+      height: auto;
+      margin: 0 0.5rem;
+
+
+      .crm-testimonial-header {
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+        gap: 15px;
+
+        img {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          border: 2px solid $color-orange;
+        }
+
+        h3 {
+          margin: 0;
+          font-size: 18px;
+          font-weight: 500;
+        }
+
+        .date {
+          font-size: 13px;
+          font-style: italic;
+          color: #ffffff;
+        }
+
+        .stars {
+          margin-left: auto;
+          color: #f16b6b;
+
+          i {
+            margin-left: 2px;
+          }
+        }
+      }
+
+      .crm-testimonial-text {
+        margin-top: 10px;
+        font-size: 16px;
+        line-height: 32px;
+        font-weight: normal;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) and (min-width: 320px) {
+  .crm-testimonial-section .crm-testimonial-right .crm-testimonial-card .crm-testimonial-header .stars {
+    margin-left: 0;
+  }
+
+  .crm-testimonial-section .crm-testimonial-right .crm-testimonial-card .crm-testimonial-header {
+    display: flex;
+    flex-flow: column;
+    align-items: baseline;
+  }
+}

@@ -1,0 +1,91 @@
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer-master/src/PHPMailer.php';
+require 'PHPMailer-master/src/SMTP.php';
+require 'PHPMailer-master/src/Exception.php';
+
+// Collect POST data (supports both forms)
+$data = [
+    'name'    => $_POST['name']    ?? '',
+    'email'   => $_POST['email']   ?? '',
+    'phone'   => $_POST['phone']   ?? '',
+    'comment' => $_POST['comment'] ?? '',
+    'service' => $_POST['service'] ?? ''  // optional
+];
+
+// Trim and sanitize
+foreach ($data as $key => $value) {
+    $data[$key] = trim(strip_tags($value));
+}
+
+// Basic validation
+if (
+    empty($data['name']) ||
+    empty($data['email']) ||
+    !filter_var($data['email'], FILTER_VALIDATE_EMAIL) ||
+    empty($data['phone']) ||
+    !preg_match('/^[0-9]{10,15}$/', $data['phone']) ||
+    empty($data['comment'])
+) {
+    http_response_code(400);
+    echo "Invalid form submission. Please check your details.";
+    exit;
+}
+
+$mail = new PHPMailer(true);
+
+try {
+    // SMTP settings
+    $mail->isSMTP();
+    $mail->Host       = 'bv-b29.yuvanetworks.in';
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'sales@psdigitise.com';
+    $mail->Password   = 'O0TLL0u3iQ';
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port       = 587;
+
+    // Sender & recipients
+    $mail->setFrom('info@psdigitise.com', 'ERPNext AI');
+    $mail->addAddress('internalbackup@psdigitise.com', 'Internal Backup'); // main receiver
+    $mail->addAddress('mahadharshini@psdigitise.com', 'Team Notification'); // optional second recipient
+
+    if (!empty($data['email'])) {
+        $mail->addReplyTo($data['email'], $data['name']);
+    }
+
+    // Message content
+    $mail->isHTML(true);
+    $mail->Subject = 'ERPNext AI - New Contact Submission';
+
+    // Optional service row
+    $serviceRow = '';
+    if (!empty($data['service'])) {
+        $serviceRow = '<p><strong>Service:</strong> ' . htmlspecialchars($data['service']) . '</p>';
+    }
+
+    $mail->Body = '
+        <table width="600" cellpadding="0" cellspacing="0" style="font-family:Arial,sans-serif;">
+            <tr><td style="padding:15px;">
+                <h3 style="color:#333;">New Contact Form Submission</h3>
+                <hr>
+                <p><strong>Name:</strong> ' . htmlspecialchars($data['name']) . '</p>
+                <p><strong>Email:</strong> ' . htmlspecialchars($data['email']) . '</p>
+                <p><strong>Phone:</strong> ' . htmlspecialchars($data['phone']) . '</p>'
+                . $serviceRow .
+                '<p><strong>Message:</strong><br>' . nl2br(htmlspecialchars($data['comment'])) . '</p>
+                <hr>
+                <p style="font-size:12px; color:#888;">This is an internal backup copy of the form submission.</p>
+            </td></tr>
+        </table>';
+
+    $mail->send();
+
+    http_response_code(200);
+    echo "✅ Message sent successfully.";
+} catch (Exception $e) {
+    error_log("Mailer Error: " . $mail->ErrorInfo);
+    http_response_code(500);
+    echo "❌ Unable to send email. Please try again later.";
+}

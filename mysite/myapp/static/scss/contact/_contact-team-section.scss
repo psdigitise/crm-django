@@ -1,0 +1,28 @@
+@import "../variable";
+
+
+.contact-team-section {
+    padding: 3rem 0rem;
+    width: 60%;
+    margin: 0 auto;
+    text-align: center;
+    
+    .main-title{
+        width: 100% !important;
+    }
+
+    .theme-twilight {
+        padding: 3rem;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        text-align: center;
+    }
+
+    .try-for-free{
+        width: fit-content;
+        margin: 0 auto;
+    }
+
+
+}

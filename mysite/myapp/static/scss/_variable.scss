@@ -1,0 +1,289 @@
+// @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+
+
+@font-face {
+  font-family: 'Patron-bold';
+  src: url('../../assets/fonts/patron/PatronWEB-Bold.woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'Patron-light';
+  src: url('../../assets/fonts/patron/PatronWEB-Light.woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+body {
+  background: #030A19 !important;
+}
+
+
+
+
+body,
+button,
+input,
+select,
+textarea {
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  margin-left: 0px;
+  padding-left: 0px;
+}
+
+
+a {
+  text-decoration: none !important;
+}
+
+// colors
+$color-white: #fff;
+$color-lite-white: #ffffffc4;
+$color-black: #000;
+$color-orange: #F1B209;
+$color-blue: #030A19;
+$color-gray: #797b7a;
+$color-green: #1a74fa;
+$color-light-green: #F4F7FB;
+
+
+// bg colors
+$bgcolor-black: #000;
+$bgcolor-white: #ffff;
+$bgcolor-blue: #030A19;
+$bgcolor-gray: #797b7a;
+$bgcolor-green: #1a74fa;
+$bgcolor-light-green: #F4F7FB;
+$bgcolor-light-blue: #01216021;
+
+
+//textcolors
+
+.color-white {
+  color: $color-white !important;
+}
+
+.color-orange {
+  color: $color-orange !important;
+}
+
+.color-black {
+  color: $color-black !important;
+}
+
+.color-blue {
+  color: $color-blue !important;
+}
+
+.color-gray {
+  color: $color-gray !important;
+}
+
+.color-green {
+  color: $color-green !important;
+}
+
+.color-light-green {
+  color: $color-light-green !important;
+}
+
+
+
+.primary-button {
+  float: none;
+  color: $color-white;
+  background-color: $bgcolor-green;
+  border-color: $bgcolor-black;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.primary-button:hover {
+  color: $color-green;
+  background-color: $bgcolor-blue;
+}
+
+.btn-gradient {
+  background: $color-green;
+  border: none;
+  color: #fff;
+  padding: 1rem 1.2rem;
+  border-radius: 0px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.try-for-free {
+  display: block;
+  padding: 0.4rem 1.5rem;
+  font-weight: 400;
+  border-radius: 0.3rem;
+  background-color: $bgcolor-white;
+  color: $color-blue;
+  text-decoration: none;
+  transition: .3s;
+  white-space: nowrap;
+  font-size: 1rem;
+}
+
+.contact-sales{
+  display: block;
+  padding: 0.4rem 1.5rem;
+  font-weight: 400;
+  border-radius: 0.3rem;
+  color: $color-white;
+  text-decoration: none;
+  transition: .3s;
+  white-space: nowrap;
+  font-size: 1rem;
+  border: 1px solid #ffffff26;
+}
+
+
+
+
+
+
+.banner-title {
+  font-size: 4rem;
+  font-weight: 600;
+  padding-bottom: 1rem !important;
+  color: $color-orange;
+  font-family: 'Patron-bold', sans-serif;
+}
+
+.banner-description {
+  font-size: 1.2rem;
+  font-weight: 200;
+  line-height: 2rem;
+  padding-bottom: 1rem !important;
+  color: $color-white;
+  font-family: 'Patron-light', sans-serif;
+}
+
+
+
+.main-title {
+  font-size: 2.6rem;
+  font-weight: 400;
+  margin-bottom: 2rem !important;
+  color: $color-orange;
+  max-width: 70%;
+  font-family: 'Patron-bold', sans-serif;
+  // margin: 0 auto;
+
+  span {
+    color: $color-white;
+  }
+}
+
+.main-desc {
+  font-size: 1.4rem;
+  font-weight: 400;
+  padding-bottom: 2rem;
+  color: $color-lite-white;
+  width: 75%;
+  font-family: 'Patron-light', sans-serif;
+  // margin: 0 auto;
+}
+
+
+.sub-title {
+  font-size: 2.2rem;
+  font-weight: 400;
+  margin-bottom: 1rem !important;
+  color: $color-white;
+  font-family: 'Patron-bold', sans-serif;
+  line-height: 60px;
+}
+
+
+.sub-desc {
+  font-size: 1.2rem;
+  font-weight: 400;
+  padding-bottom: 1rem;
+  color: $color-gray;
+  line-height: 36px;
+  font-family: 'Patron-light', sans-serif;
+}
+
+.sub-desc2 {
+  font-size: 1rem;
+  font-weight: 400;
+  padding-bottom: 1rem;
+  color: $color-white;
+  line-height: 36px;
+  font-family: 'Patron-light', sans-serif;
+}
+
+
+@media screen and (max-width:767.96px) and (min-width:320px) {
+  .banner-title {
+    font-size: 2.5rem;
+  }
+
+  .banner-description {
+    font-size: 1.1rem;
+  }
+
+  .main-title {
+    font-size: 1.9rem;
+  }
+
+  .main-desc {
+    font-size: 1rem;
+  }
+
+}
+
+
+@media screen and (max-width:991.96px) and (min-width:320px) {
+  .main-title {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .main-desc {
+    width: 100%;
+  }
+}

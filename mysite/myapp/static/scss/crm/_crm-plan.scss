@@ -1,0 +1,124 @@
+.crm-pricing-section {
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+
+    &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    background-image: url("../img/home/bg-6.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 1;
+    pointer-events: none;
+  }
+
+  &::before {
+    top: -200px;
+    left: -200px;
+    animation: floatCircle 8s infinite linear;
+  }
+
+  &::after {
+    bottom: -200px;
+    right: -200px;
+    animation: floatCircleReverse 8s infinite linear;
+  }
+
+
+  .main-title {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .main-desc {
+    width: 100%;
+    text-align: center;
+    color: #ddd;
+  }
+
+  .plan {
+    background: linear-gradient(-45deg, #579bf9, #e2f253, #ff976c);
+    padding: 0.3rem !important;
+    border-radius: 0.2rem;
+  }
+.feature-list ,
+.features {
+  li {
+    list-style: none;
+    text-align: start;
+    padding-bottom: 1.5rem;
+
+    i {
+      padding-right: 1rem;
+      color: $color-orange;
+    }
+
+    // remove padding for last li
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+}
+
+
+  .pricing-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    transition: all 0.4s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    justify-content: center;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .banner-title {
+      color: #fff;
+    }
+
+    .banner-description {
+      color: #fff;
+    }
+  }
+
+  .btn-gradient {
+    background: linear-gradient(90deg, #00E0FF, #00B8C9);
+    color: #000;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 35px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 100%;
+
+    &:hover {
+      background: linear-gradient(90deg, #00B8C9, #00E0FF);
+      transform: scale(1.05);
+    }
+  }
+
+  @media (max-width: 992px) {
+    .pricing-card {
+      text-align: center;
+
+      .feature-list,
+      .features {
+        text-align: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,118 @@
+{% load static %}
+{% include 'includes/header.html' %}
+
+<section class="banner-area pt-5 pb-5">
+    <div class="all-banner-slide owl-carousel">
+        <div class="single-banner-slide text-center">
+            <h2 class="banner-title">ABOUT US</h2>
+
+            <!-- Breadcrumbs -->
+            <nav class="breadcrumbs">
+                <ul class="d-flex justify-content-center">
+                   <li class="sub-desc"><a href="{% url 'index' %}">Home</a></li>
+
+                    <li class="sub-desc px-2">/</li>
+                    <li class="sub-desc">About Us</li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+
+
+<section class="about-section">
+    <div class="container">
+        <div class="row">
+            <div class="content-column col-lg-6 col-md-12 col-sm-12 order-2">
+                <div class="inner-column">
+                    <div class="sec-title">
+                        <span class="main-desc">Get to Know Us</span>
+                        <h2 class="sub-title pb-0">Leading ERPNext Solution <span class="color-orange">Provider in the
+                                Market</span>
+                    </div>
+                    <div class="sub-desc color-white">PS Digitise is an IT and business consulting firm based in India.
+                        As a certified Frappe Partner for ERPNext, we bring over a decade of experience, delivering
+                        solutions to 500+ clients worldwide. Our focus is on enhancing business operations through
+                        technical excellence and dedicated service.
+                    </div>
+                    <p class="sub-desc color-orange"><b>We enhance ERPNext with our customised market solutions</b></p>
+                    <ul class="list-style-one">
+                        <li class="sub-desc2"><i class="fas fa-check-circle me-2"></i>ERPNext Implementation
+                        </li>
+                        <li class="sub-desc2"><i class="fas fa-check-circle me-2"></i>ERPNext Customization</li>
+                        <li class="sub-desc2"><i class="fas fa-check-circle me-2"></i>ERPNext Integration
+                        </li>
+                    </ul>
+                    <div class="btn-box">
+                     <a href="{% url 'contact_us' %}">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Column -->
+            <div class="col-lg-6 col-md-12 col-sm-12">
+             <div class="image">
+               <img src="{% static 'img/abt/abt.jpg' %}" alt="" width="100%" height="auto">
+ 
+             
+            </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="our-integration">
+    <div class="container">
+        <div class="" data-aos="flip-down" data-aos-duration="2000">
+            <h2 class="main-title">Integrations</h2>
+            <p class="main-desc">
+                Connect ERPNext.AI to the tools you already use. Our pre-built connectors and custom APIs
+                keep orders, payments, communications and reporting in sync across your stack.
+            </p>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="owl-carousel owl-theme our-integration-carousel">
+                    <div class="item box">
+                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/1.png' %}">
+                    </div>
+                    <div class="item box">
+                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/3.png' %}">
+                    </div>
+                    <div class="item box">
+                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/4.png' %}">
+                    </div>
+                    <div class="item box">
+                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/7.png' %}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+<section class="schedule-section">
+    <div class="container">
+        <div class="schedule-section__details" data-aos="flip-down" data-aos-duration="1000">
+            <!-- Section Header -->
+            <div class="text-center">
+                <h2 class="main-title color-orange">Talk to an Expert</h2>
+                <p class="main-desc color-white">See ERPNext.AI with your data. Book a 30-minute personalised demo to
+                    evaluate use cases, ROI and implementation timelines.</p>
+                <div class="">
+                    <a href="./contact-us.php" class="btn-gradient">Book a Demo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% include 'includes/footer.html' %}

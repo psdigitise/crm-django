@@ -1,0 +1,53 @@
+@import "../variable";
+
+.schedule-section {
+  position: relative;
+  padding: 3rem 0rem;
+  z-index: 0;
+  border-top: 2px solid #ffffff26;
+   border-bottom: 2px solid #ffffff26;
+
+  /* Left side image */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../img/home/bg-3.png");
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size: 250px auto;
+    opacity: 0.3;
+    /* 10% visible */
+    pointer-events: none;
+    z-index: -1;
+    /* 👉 goes behind content */
+  }
+
+  /* Right side image */
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("../img/home/bg-5.png");
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-size: 250px auto;
+    opacity: 0.3;
+    /* 10% visible */
+    pointer-events: none;
+    z-index: -1;
+    /* 👉 goes behind content */
+  }
+
+  &__details {
+    .main-title {
+      max-width: 100% !important;
+      margin: 0 auto;
+    }
+
+    .main-desc {
+      max-width: 100% !important;
+      margin: 0 auto;
+    }
+  }
+}

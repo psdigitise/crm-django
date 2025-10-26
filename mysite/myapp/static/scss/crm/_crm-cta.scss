@@ -1,0 +1,20 @@
+
+.crm-cta {
+    padding: 3rem 0rem;
+    border-radius: 0;
+    border-top: 2px solid rgba(255, 255, 255, 0.1490196078);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1490196078);
+ 
+  &__details {
+    .main-title {
+      max-width: 100% !important;
+      margin: 0 auto;
+    }
+
+    .main-desc {
+      max-width: 100% !important;
+      margin: 0 auto;
+    }
+  }
+
+}
