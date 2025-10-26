@@ -29,6 +29,11 @@ DEBUG = True
 ALLOWED_HOSTS = ['crm.erpnext.ai', '147.79.67.128', 'localhost', '127.0.0.1']
 
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://crm.erpnext.ai',
+    'https://www.crm.erpnext.ai',
+]
+
 
 # Application definition
 
