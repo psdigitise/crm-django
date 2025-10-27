@@ -1,35 +1,27 @@
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from django.shortcuts import render
 from django.http import JsonResponse
-from django.core.mail import EmailMessage
-
-
-from django.core.mail import EmailMessage
 from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.core.mail import EmailMessage
+from django.views.decorators.csrf import csrf_protect
+from django.contrib import messages
 import traceback
+
 @csrf_protect
 def index(request):
- 
- 
     if request.method == 'POST':
-        # Get form values
         name = request.POST.get('name', '').strip()
         email = request.POST.get('email', '').strip()
         phone = request.POST.get('phone', '').strip()
         comment = request.POST.get('comment', '').strip()
 
-        # Simple validation
         if not all([name, email, phone, comment]):
-            return render(request, 'index.html', {
-                'error': 'Please fill all fields.',
-                'name': name,
-                'email': email,
-                'phone': phone,
-                'comment': comment
-            })
+            messages.error(request, '⚠️ Please fill all fields.')
+            return redirect('index')
 
         try:
-            # 1️⃣ Email to your team
+            # Email to team
             subject_team = 'ERPNext AI - New Contact Form Submission'
             body_team = f"""
             <h2>New Contact Form Submission</h2>
@@ -42,12 +34,12 @@ def index(request):
                 subject_team,
                 body_team,
                 'info@psdigitise.com',
-                ['sales@psdigitise.com']  # team email
+                ['sales@psdigitise.com']
             )
             email_team.content_subtype = "html"
             email_team.send()
 
-            # 2️⃣ Confirmation to user
+            # Confirmation email to user
             subject_user = 'ERPNext AI - Thank You for Contacting Us'
             body_user = f"""
             <h2>Thank you {name}!</h2>
@@ -65,26 +57,16 @@ def index(request):
             email_user.content_subtype = "html"
             email_user.send()
 
-            return render(request, 'index.html', {
-                # 'success': '✅ Your message has been sent successfully!'
-            })
+            # ✅ Success message (shown only once)
+            messages.success(request, '✅ Your message has been sent successfully!')
+            return redirect('index')
 
         except Exception as e:
-            # Log the full traceback
-            error_details = traceback.format_exc()
-            print(f"Email sending failed: {str(e)}")
-            return render(request, 'index.html', {
-                'error': f'Email sending failed: {str(e)}',
-                'traceback': error_details,
-                'name': name,
-                'email': email,
-                'phone': phone,
-                'comment': comment
-            })
+            messages.error(request, f'❌ Email sending failed: {str(e)}')
+            print(traceback.format_exc())
+            return redirect('index')
 
-    # For GET request
     return render(request, 'index.html')
-
 
 
 

@@ -44,13 +44,8 @@
   <div class="sub-desc color-white text-center">
       15-Day Free Trial. No credit card
   </div>
-  {% if error %}
-      <p class="text-danger">{{ error }}</p>
-  {% endif %}
-  {% if success %}
-      <p class="text-success">{{ success }}</p>
-  {% endif %}
-
+ 
+ 
   <!-- Name -->
   <div class="col-12 mb-0 input-icon">
       <i class="fas fa-user"></i>
@@ -58,7 +53,7 @@
              placeholder="Name" autocomplete="name" required
              value="{{ name|default:'' }}">
   </div>
-
+ 
   <!-- Email -->
   <div class="col-12 mb-0 input-icon">
       <i class="fas fa-envelope"></i>
@@ -66,7 +61,7 @@
              placeholder="Email" autocomplete="email" required
              value="{{ email|default:'' }}">
   </div>
-
+ 
   <!-- Phone -->
   <div class="col-12 mb-0 input-icon">
       <i class="fas fa-phone"></i>
@@ -74,63 +69,28 @@
              placeholder="Phone Number" autocomplete="tel" required
              value="{{ phone|default:'' }}">
   </div>
-
+ 
   <!-- Comment -->
   <div class="col-12 mb-0">
       <textarea name="comment" class="form-control custom-input"
                 rows="4" placeholder="Company" required>{{ comment|default:'' }}</textarea>
   </div>
-
-<!-- CAPTCHA Section -->
-<!-- <div class="col-12 mb-0 input-icon text-center">
-  <i class="fas fa-robot"></i> -->
-
-  <!-- CAPTCHA Image -->
-  <!-- <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 10px;">
-    <canvas id="captchaCanvas" width="150" height="50"
-            style="border-radius: 50px;
-                   background: rgba(255, 255, 255, 0.1);
-                   border: 1px solid rgba(255, 255, 255, 0.2);
-                   color: #fff;
-                   box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
-                   user-select: none;"></canvas>
-
-    <button type="button" id="refreshCaptcha"
-            style="border: none;
-                   background: none;
-                   color: #fff;
-                   font-size: 20px;
-                   cursor: pointer;
-                   transition: transform 0.2s ease;">
-      ↻
-    </button>
-  </div> -->
-
-  <!-- CAPTCHA Input -->
-  <!-- <input type="text" id="captchaInput" name="captcha_input"
-         class="form-control custom-input"
-         placeholder="Enter the code shown above" required
-         style="background-color: rgba(255, 255, 255, 0.1);
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                border-radius: 50px;
-                color: #fff;
-                text-align: center;
-                height: 48px;">
-
-  <small id="captchaError" class="text-danger" style="display:none;">Invalid CAPTCHA. Please try again.</small>
-</div> -->
-
-
+ 
   <!-- Submit -->
   <div class="col-12 text-center">
       <button type="submit" id="submitBtn" class="btn-gradient mt-3 contact-submit">
           Sign Up For Free
       </button>
   </div>
-
-  <div id="successMessage" class="text-success mt-3" style="display:none;">
-      ✅ Your message has been sent successfully!
-  </div>
+ 
+  <!-- ✅ Success/Error message shown below button -->
+  {% if messages %}
+    {% for message in messages %}
+      <div class="text-center mt-3 {% if message.tags == 'error' %}text-danger{% else %}text-success{% endif %}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
 </form>
 
 </div>
