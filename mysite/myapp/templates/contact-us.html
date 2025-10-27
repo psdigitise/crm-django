@@ -62,62 +62,76 @@
                 <p class="main-desc">Let us know how we can help you. Just complete this form and we’ll be in touch
                     soon.</p>
                 <!-- ✅ Registration Form -->
-                <form class="registration-form contact-form row g-3" action="#" method="post">
-                    <!-- Name -->
-                    <div class="col-12 col-md-12 mb-0 input-icon">
-                        <i class="fas fa-user"></i>
-                        <input type="text" id="name" name="name" class="form-control custom-input" placeholder="Name"
-                            autocomplete="name" required>
-                    </div>
+              <form class="registration-form contact-form row g-3" 
+      action="{% url 'contact_us' %}" 
+      method="post">
+    {% csrf_token %}
+    <!-- Name -->
+    <div class="col-12 col-md-12 mb-0 input-icon">
+        <i class="fas fa-user"></i>
+        <input type="text" id="name" name="name" class="form-control custom-input" placeholder="Name"
+               autocomplete="name" required>
+    </div>
 
-                    <!-- Email -->
-                    <div class="col-12 col-md-12 mb-0 input-icon">
-                        <i class="fas fa-envelope"></i>
-                        <input type="email" id="email" name="email" class="form-control custom-input"
-                            placeholder="Email" autocomplete="email" required>
-                    </div>
+    <!-- Email -->
+    <div class="col-12 col-md-12 mb-0 input-icon">
+        <i class="fas fa-envelope"></i>
+        <input type="email" id="email" name="email" class="form-control custom-input"
+               placeholder="Email" autocomplete="email" required>
+    </div>
 
-                    <!-- Phone -->
-                    <div class="col-12 col-md-12 mb-0 input-icon">
-                        <i class="fas fa-phone"></i>
-                        <input type="tel" id="phone" name="phone" class="form-control custom-input"
-                            placeholder="Phone Number" autocomplete="tel" required>
-                    </div>
+    <!-- Phone -->
+    <div class="col-12 col-md-12 mb-0 input-icon">
+        <i class="fas fa-phone"></i>
+        <input type="tel" id="phone" name="phone" class="form-control custom-input"
+               placeholder="Phone Number" autocomplete="tel" required>
+    </div>
 
-                    <!-- Service Dropdown -->
-                    <div class="col-12 col-md-12 mb-0 input-icon">
-                        <i class="fas fa-briefcase"></i>
-                        <select id="service" name="service" class="form-control custom-input" required>
-                            <option value="">Select Service</option>
-                            <option value="web-design">Web Design</option>
-                            <option value="web-development">Web Development</option>
-                            <option value="digital-marketing">Digital Marketing</option>
-                            <option value="seo">SEO Optimization</option>
-                            <option value="app-development">App Development</option>
-                        </select>
-                    </div>
+    <!-- Service Dropdown -->
+    <div class="col-12 col-md-12 mb-0 input-icon">
+        <i class="fas fa-briefcase"></i>
+        <select id="service" name="service" class="form-control custom-input" required>
+            <option value="">Select Service</option>
+            <option value="Web Design">Web Design</option>
+            <option value="Web Development">Web Development</option>
+            <option value="Digital Marketing">Digital Marketing</option>
+            <option value="SEO Optimization">SEO Optimization</option>
+            <option value="App Development">App Development</option>
+        </select>
+    </div>
 
-                    <!-- Comment -->
-                    <div class="col-12 mb-0">
-                        <textarea id="comment" name="comment" class="form-control custom-input" rows="4"
-                            placeholder="Company" autocomplete="off" required></textarea>
-                    </div>
+    <!-- Comment -->
+    <div class="col-12 mb-0">
+        <textarea id="comment" name="comment" class="form-control custom-input" rows="4"
+                  placeholder="Company" autocomplete="off" required></textarea>
+    </div>
 
-                    <!-- Google reCAPTCHA -->
-                    <!-- <div class="col-12 text-center mt-2">
-                        <div class="g-recaptcha d-inline-block" data-sitekey="6LeiVuIrAAAAALejF1S-hUuLkry6u9B67nFmbHUQ">
-                        </div>
-                    </div> -->
-
-                    <!-- Submit -->
-                    <div class="col-12 text-center">
+    <!-- Submit -->
+    {% comment %} <div class="col-12 text-center">
+        <button type="submit" class="btn-gradient mt-3 contact-submit">
+            SUBMIT
+        </button>
+    </div> {% endcomment %}
+     <div class="col-12 text-center">
                           {% csrf_token %}
                         <button type="submit" class="btn-gradient mt-3 contact-submit">
                             SUMBIT
                         </button>
                         <p class="emailresult"></p>
                     </div>
-                </form>
+    <!-- ✅ Display success/error messages at bottom -->
+    {% if messages %}
+    <div class="col-12 text-center mt-2">
+        {% for message in messages %}
+            <p class="emailresult" 
+               style="color: {% if message.tags == 'success' %}green{% else %}red{% endif %};">
+               {{ message }}
+            </p>
+        {% endfor %}
+    </div>
+    {% endif %}
+</form>
+
             </div>
         </div>
     </div>

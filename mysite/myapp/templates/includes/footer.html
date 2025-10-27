@@ -701,3 +701,24 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.querySelector(".contact-form");
+    const submitBtn = form.querySelector(".contact-submit");
+
+    form.addEventListener("submit", function() {
+        // Change button text & disable
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = "Sending...";
+        submitBtn.style.opacity = "0.7";  // Optional visual effect
+    });
+
+    // Optional: After page reload, reset button state
+    window.addEventListener("pageshow", function() {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = "SUBMIT";
+        submitBtn.style.opacity = "1";
+    });
+});
+</script>
+    
