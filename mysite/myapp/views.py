@@ -55,7 +55,8 @@ def index(request):
                 subject_team,
                 body_team,
                 'info@psdigitise.com',
-                ['sales@psdigitise.com']
+                ['sales@psdigitise.com'],
+                  cc=['vinoth@psdigitise.com'] 
             )
             email_team.content_subtype = "html"
             email_team.send()
@@ -167,7 +168,8 @@ def contact_us(request):
                 subject_team,
                 body_team,
                 'info@psdigitise.com',
-                ['sales@psdigitise.com']
+                ['sales@psdigitise.com'],
+                  cc=['vinoth@psdigitise.com'] 
             )
             email_team.content_subtype = "html"
             email_team.send()

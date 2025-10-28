@@ -132,10 +132,20 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'bv-b29.yuvanetworks.in'       # SMTP server
+# EMAIL_PORT = 587                             # SMTP port
+# EMAIL_USE_TLS = False   # STARTTLS
+# EMAIL_HOST_USER = 'sales@psdigitise.com'  # Your SMTP username
+# EMAIL_HOST_PASSWORD = 'O0TLL0u3iQ'           # Your SMTP password
+# DEFAULT_FROM_EMAIL = 'sales@psdigitise.com'
+
+
+# Email Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'bv-b29.yuvanetworks.in'       # SMTP server
-EMAIL_PORT = 587                             # SMTP port
-EMAIL_USE_TLS = False   # STARTTLS
-EMAIL_HOST_USER = 'sales@psdigitise.com'  # Your SMTP username
-EMAIL_HOST_PASSWORD = 'O0TLL0u3iQ'           # Your SMTP password
-DEFAULT_FROM_EMAIL = 'sales@psdigitise.com'
+EMAIL_PORT = 587                            # SMTP port
+EMAIL_USE_TLS = False                        # STARTTLS (enabled)
+EMAIL_HOST_USER = 'info@erpnext.ai'         # Your SMTP username
+EMAIL_HOST_PASSWORD = 'IEWMrFKFWl'          # Your SMTP password
+DEFAULT_FROM_EMAIL = 'info@erpnext.ai'
