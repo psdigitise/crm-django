@@ -1,175 +1,261 @@
-
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Buy Now - Razorpay Demo</title>
+  <title>Buy Subscription</title>
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
-  <style>
-    :root {
-      --primary-bg: #001b48;
-      --secondary-bg: #012e6a;
-      --accent: #00b8ff;
-      --btn-gradient: linear-gradient(90deg, #007bff, #00b8ff);
-      --text-light: #e0e8f9;
-      --white: #fff;
-    }
+  <script>
+  // CSRF helper
+  function getCookie(name) {
+      let cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+          const cookies = document.cookie.split(';');
+          for (let i = 0; i < cookies.length; i++) {
+              const cookie = cookies[i].trim();
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+              }
+          }
+      }
+      return cookieValue;
+  }
+  const csrftoken = getCookie('csrftoken');
+  </script>
 
-    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
-    body { background: linear-gradient(135deg, var(--primary-bg), var(--secondary-bg)); color: var(--white); min-height: 100vh; display:flex; align-items:center; justify-content:center; padding:20px; }
-    .container { background: rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:20px; padding:40px 30px; width:100%; max-width:400px; box-shadow:0 10px 25px rgba(0,0,0,0.2); text-align:center; backdrop-filter:blur(8px); }
-    .container h2 { font-size:1.6rem; font-weight:600; margin-bottom:10px; color: var(--accent); }
-    .container p { font-size:0.9rem; color: var(--text-light); margin-bottom:30px; }
-    .form-group { margin-bottom:18px; text-align:left; }
-    label { font-size:0.9rem; color: var(--text-light); display:block; margin-bottom:6px; }
-    input { width:100%; padding:10px 14px; border-radius:10px; border:none; outline:none; background: rgba(255,255,255,0.15); color:var(--white); font-size:0.95rem; transition: background 0.3s; }
-    input:focus { background: rgba(255,255,255,0.25); }
-    input[readonly] { background: rgba(255,255,255,0.1); cursor:not-allowed; color:#ccc; }
-    .btn { width:100%; background: var(--btn-gradient); border:none; border-radius:12px; color:var(--white); font-size:1rem; font-weight:600; padding:12px 0; cursor:pointer; margin-top:10px; transition: transform 0.2s ease, opacity 0.2s ease; }
-    .btn:hover { transform:translateY(-2px); opacity:0.9; }
-    @media (max-width:480px) { .container { padding:30px 20px; } .container h2 { font-size:1.3rem; } }
+  <style>
+    /* /* ---------- Background & Layout ---------- */
+body {
+  background: radial-gradient(circle at top left, #0d102f 0%, #040717 80%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  overflow: hidden;
+}
+
+/* ---------- Card ---------- */
+.card {
+  background: rgba(15, 20, 50, 0.9);
+  padding: 40px;
+  border-radius: 18px;
+  width: 400px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0, 136, 255, 0.3);
+  border: 1px solid rgba(0, 136, 255, 0.2);
+  backdrop-filter: blur(8px);
+  transition: 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 0 40px rgba(0, 136, 255, 0.6);
+  transform: translateY(-5px);
+}
+
+/* ---------- Text ---------- */
+h2 {
+  color: #00b8ff;
+  margin-bottom: 10px;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+p {
+  color: #b0c7e6;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+}
+
+/* ---------- Inputs ---------- */
+input {
+  width: 95%;
+  padding: 12px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  outline: none;
+  transition: all 0.3s;
+}
+
+input:focus {
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 8px rgba(0, 184, 255, 0.5);
+}
+
+/* ---------- Button ---------- */
+button {
+  width: 94%;
+  padding: 14px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #0066ff, #00c6ff);
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 102, 255, 0.4);
+}
+
+button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(0, 198, 255, 0.6);
+}
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  background: linear-gradient(90deg, #00b8ff, #007bff);
+  color: #fff;
+  padding: 14px 22px;
+  border-radius: 8px;
+  font-weight: 500;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.4s ease;
+  z-index: 1000;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.toast.error {
+  background: linear-gradient(90deg, #ff4b2b, #ff416c);
+}
+
+.toast.success {
+  background: linear-gradient(90deg, #00ff88, #00c6ff);
+}
+ 
   </style>
 </head>
 
 <body>
-  <div class="container">
-    <h2>Buy Product</h2>
-    <p>Enter your details to proceed with the payment securely.</p>
+  <div class="card">
+    <h2 id="planTitle">Buy Subscription</h2>
+    <p>Complete your payment securely</p>
+
     <form id="paymentForm">
-      <div class="form-group">
-        <label for="name">Full Name</label>
-        <input type="text" id="name" name="name" placeholder="Enter Name" required>
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email ID</label>
-        <input type="email" id="email" name="email" placeholder="Enter Email" required>
-      </div>
-
-      <div class="form-group">
-        <label for="phone">Phone Number</label>
-        <input type="text" id="phone" name="phone" placeholder="Enter Phone" required>
-      </div>
-
-      <div class="form-group">
-        <label for="amount">Amount (INR)</label>
-        <input type="number" id="amount" name="amount" value="1500" readonly>
-      </div>
-
-      <button type="button" id="payBtn" class="btn">Buy Now</button>
+      <input type="text" id="name" placeholder="Full Name" required>
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="text" id="phone" placeholder="Phone (10 digits)" required>
+      <input type="number" id="amount" placeholder="Amount (₹)" required readonly>
+      <button type="button" id="payBtn">Pay Now</button>
     </form>
   </div>
 
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
   <script>
-    document.getElementById('payBtn').onclick = async function(e) {
-      e.preventDefault();
+  // Toast function
+  function showToast(message, type = "info") {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.className = "toast show " + type;
+    setTimeout(() => { toast.className = "toast"; }, 3000);
+  }
 
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const amount = parseInt(document.getElementById('amount').value);
+  // Get URL Params
+  const params = new URLSearchParams(window.location.search);
+  const plan = params.get('plan') || "Subscription";
+  const amount = params.get('amount') || "0";
 
-      if (!name || !email || !phone) {
-        alert("⚠️ Please fill all fields before proceeding.");
-        return;
-      }
+  document.getElementById('planTitle').innerText = plan;
+  document.getElementById('amount').value = amount;
+  document.getElementById('payBtn').innerText = `Pay ₹${amount}`;
 
-      // 1️⃣ Create Razorpay order
-      let order;
-      try {
-        const res = await fetch('create_order.php', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: `amount=${amount}`
+  // Payment Button
+  document.getElementById('payBtn').onclick = async function() {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+
+    if (!name || !email || !phone) {
+      showToast("⚠️ Please fill all fields.", "error");
+      return;
+    }
+
+    showToast("⏳ Creating order...", "info");
+
+    const res = await fetch("{% url 'create_order' %}", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "X-CSRFToken": csrftoken
+      },
+      body: new URLSearchParams({ name, email, phone, amount, plan })
+
+    });
+
+    const order = await res.json();
+    if (!order.order_id) {
+      showToast("❌ Failed to create order.", "error");
+      return;
+    }
+
+    const options = {
+      key: "{{ razorpay_key }}",
+      amount: order.amount,
+      currency: "INR",
+      name: "ERPNext AI",
+      description: `${plan} Payment`,
+      order_id: order.order_id,
+      prefill: { name, email, contact: phone },
+      handler: async function (response) {
+        await fetch("{% url 'save_payment' %}", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-CSRFToken": csrftoken
+          },
+          body: new URLSearchParams({
+            order_id: order.order_id,
+            payment_id: response.razorpay_payment_id,
+            status: "success"
+          })
         });
-        order = await res.json();
-        if(order.error){
-          alert("Error creating order: " + order.error);
-          return;
-        }
-      } catch(err){
-        alert("Network or server error creating order.");
-        console.error(err);
-        return;
-      }
-
-      const options = {
-        key: "rzp_test_RQ8oEOotOQ7P2E",
-        amount: order.amount,
-        currency: "INR",
-        name: "ERPNEXT AI",
-        description: "Demo Transaction",
-        order_id: order.id,
-        prefill: { name, email, contact: phone },
-        theme: { color: "#00b8ff" },
-
-        // 2️⃣ Success handler
-        handler: async function(response) {
-          const formData = new URLSearchParams();
-          formData.append('payment_id', response.razorpay_payment_id);
-          formData.append('order_id', order.id);
-          formData.append('name', name);
-          formData.append('email', email);
-          formData.append('phone', phone);
-          formData.append('amount', amount);
-
-          const res = await fetch('payment_success.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: formData.toString()
+        showToast("✅ Payment Successful!", "success");
+        setTimeout(() => { 
+          window.location.href = "https://crm.erpnext.ai/login/"; 
+        }, 1500);
+      },
+      modal: {
+        ondismiss: async function () {
+          await fetch("{% url 'save_payment' %}", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/x-www-form-urlencoded",
+              "X-CSRFToken": csrftoken
+            },
+            body: new URLSearchParams({
+              order_id: order.order_id,
+              status: "failed"
+            })
           });
-
-          const data = await res.json();
-          console.log("Payment success:", data);
-          alert("✅ Payment Successful");
-        },
-
-        // 3️⃣ Failure / cancel handler
-        modal: {
-          ondismiss: async function() {
-            const formData = new URLSearchParams();
-            formData.append('order_id', order.id || 'NA');
-            formData.append('name', name);
-            formData.append('email', email);
-            formData.append('phone', phone);
-            formData.append('amount', amount);
-
-            const res = await fetch('payment_failed.php', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-              body: formData.toString()
-            });
-            const data = await res.json();
-            console.log("Payment failed:", data);
-            alert("❌ Payment Cancelled or Failed");
-          }
+          showToast("❌ Payment Cancelled.", "error");
         }
-      };
-
-      const rzp = new Razorpay(options);
-
-      // 4️⃣ Razorpay payment.failed listener
-      rzp.on('payment.failed', async function(response) {
-        const orderId = response.error?.metadata?.order_id || order.id || 'NA';
-        const formData = new URLSearchParams();
-        formData.append('order_id', orderId);
-        formData.append('name', name);
-        formData.append('email', email);
-        formData.append('phone', phone);
-        formData.append('amount', amount);
-
-        const res = await fetch('payment_failed.php', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: formData.toString()
-        });
-        const data = await res.json();
-        console.log("Payment failed:", data);
-        alert("❌ Payment Failed");
-      });
-
-      rzp.open();
+      },
+      theme: { color: "#00b8ff" }
     };
+
+    const rzp = new Razorpay(options);
+    rzp.open();
+  };
   </script>
 </body>
 </html>

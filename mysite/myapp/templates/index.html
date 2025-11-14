@@ -3,6 +3,122 @@
 
 {% include 'includes/header.html' %}
  
+<style>
+    .crm-pricing-section {
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+
+    
+  .pricing-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  padding: 35px 25px;
+  position: relative;
+  transition: 0.3s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.pricing-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+.plan-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+.plan-sub {
+  color: #555;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  text-align: center !important;
+}
+.ideal-for {
+  color: #5b3be6;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ul li {
+  margin-bottom: 8px;
+  display: flex;
+  gap: 8px;
+  color: #001214;
+}
+ul li i {
+  font-size: 10px;
+  margin-top: 6px;
+}
+.key-title {
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+.price {
+  font-size: 28px;
+  font-weight: 700;
+   margin-top: 10px;
+           color: black
+}
+.price span {
+  font-size: 14px;
+  color: #555;
+}
+.price-old {
+  text-decoration: line-through;
+  font-size: 14px;
+  color: red;
+  margin-left: 8px;
+}
+.support {
+  font-size: 14px;
+  color: #333;
+  margin-top: 8px;
+
+  p{
+    padding-bottom: 0.5rem;
+  }
+}
+.select-btn {
+  background: #111;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  font-weight: 600;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+.select-btn:hover {
+  background: #5b3be6;
+}
+.badge-reco {
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  background: #5b3be6;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.starter .plan-title { color: #007bff; }
+.pro .plan-title { color: purple; }
+.enterprise .plan-title { color: #f18d2b; }
+
+    }
+</style>
+
 <section class="banner-area">
     <div id="particles-js"></div> <!-- particles background only -->
     <div class="content-overlay">
@@ -157,26 +273,148 @@
 </section>
 
 
-<section class="crm-pricing-section" id="our-pricing">
-    <div class="container">
-        <h2 class="main-title pb-3 text-center"><span>AI-Powered CRM </span> Pricing Plan</h2>
 
-        <div class="row g-4">
+
+<!---plans-->
+<section class="crm-pricing-section" id="our-pricing">
+  <div class="container">
+    <h2 class="main-title"><span>AI-Powered CRM</span> Pricing Plan</h2>
+
+    <div class="row g-4">
+      <!-- Starter Plan -->
+      <div class="col-md-4">
+        <div class="pricing-card starter">
+          <div>
+            <h3 class="plan-title">Starter Plan – CRM Basic</h3>
+            <p class="plan-sub">For Small Teams & Startups</p>
+
+            <p class="ideal-for">Ideal for :</p>
+            <ul>
+              <li><i class="bi bi-diamond-fill text-primary"></i> New businesses managing limited leads</li>
+              <li><i class="bi bi-diamond-fill text-primary"></i> Teams looking for essential automation tools</li>
+            </ul>
+
+            <p class="key-title">Key Features</p>
+            <ul>
+              <li><i class="bi bi-check-circle"></i> Lead & Contact Management</li>
+              <li><i class="bi bi-check-circle"></i> Email Integration</li>
+              <li><i class="bi bi-check-circle"></i> Task & Activity Automation</li>
+              <li><i class="bi bi-check-circle"></i> Real-time Analytics</li>
+            </ul>
+          </div>
+          <div>
+            <div class="price">₹999 <span>/month</span></div>
+            <div class="support">
+              <p><i class="bi bi-check-circle-fill text-success"></i> 24/7 Support &nbsp;</p>
+              <p><i class="bi bi-check-circle-fill text-success"></i> Free Updates (1 Month)</p>
+            </div>
+            <!-- <button class="select-btn" data-plan="Starter Plan – CRM Basic" data-amount="999">Select Plan</button> -->
+             <button class="select-btn" data-plan="Starter Plan – CRM Basic" data-amount="999">Select Plan</button>
+  
+          </div>
+        </div>
+      </div>
+
+      <!-- Professional Plan -->
+      <div class="col-md-4">
+        <div class="pricing-card pro">
+          <div class="badge-reco">Recommended Plan</div>
+          <div>
+            <h3 class="plan-title">Professional Plan – CRM Pro</h3>
+            <p class="plan-sub">For Growing Businesses</p>
+
+            <p class="ideal-for">Ideal for :</p>
+            <ul>
+              <li><i class="bi bi-diamond-fill text-purple"></i> Small to mid-sized businesses wanting predictive insights</li>
+              <li><i class="bi bi-diamond-fill text-purple"></i> Teams tracking performance across multiple channels</li>
+            </ul>
+
+            <p class="key-title">Key Features</p>
+            <ul>
+              <li><i class="bi bi-check-circle"></i> Everything in Starter</li>
+              <li><i class="bi bi-check-circle"></i> AI Predictive Lead Scoring</li>
+              <li><i class="bi bi-check-circle"></i> Smart Follow-up Suggestions</li>
+              <li><i class="bi bi-check-circle"></i> AI Forecasting Dashboard</li>
+            </ul>
+          </div>
+          <div>
+            <div class="d-flex align-items-center">
+              <div class="price">₹1,500 <span>/month</span></div>
+              <div class="price-old">Actual ₹1,600</div>
+            </div>
+            <div class="support">
+              <p><i class="bi bi-check-circle-fill text-success"></i> 24/7 Support &nbsp;</p>
+              <p><i class="bi bi-check-circle-fill text-success"></i> Free Updates (1 Month)</p>
+            </div>
+            <!-- <button class="select-btn" data-plan="Professional Plan – CRM Pro" data-amount="1500">Select Plan</button> -->
+             <button class="select-btn" data-plan="Starter Plan – CRM pro" data-amount="1500">Select Plan</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Enterprise Plan -->
+      <div class="col-md-4">
+        <div class="pricing-card enterprise">
+          <div>
+            <h3 class="plan-title">Enterprise Plan – CRM Max</h3>
+            <p class="plan-sub">For Large Teams & Enterprises</p>
+
+            <p class="ideal-for">Ideal for :</p>
+            <ul>
+              <li><i class="bi bi-diamond-fill text-warning"></i> Companies managing large lead volumes</li>
+              <li><i class="bi bi-diamond-fill text-warning"></i> Businesses needing custom workflows & advanced automation</li>
+            </ul>
+
+            <p class="key-title">Key Features</p>
+            <ul>
+              <li><i class="bi bi-check-circle"></i> Everything in Pro</li>
+              <li><i class="bi bi-check-circle"></i> Custom Workflow Builder</li>
+              <li><i class="bi bi-check-circle"></i> Multi-User Role Management</li>
+              <li><i class="bi bi-check-circle"></i> API & Third-party Integrations</li>
+            </ul>
+          </div>
+          <div>
+            <div class="d-flex align-items-center">
+              <div class="price">₹2,999 <span>/month</span></div>
+              <div class="price-old">Actual ₹8,560</div>
+            </div>
+            <div class="support">
+              <p><i class="bi bi-check-circle-fill text-warning"></i> Dedicated Account Manager &nbsp;</p>
+              <p><i class="bi bi-check-circle-fill text-warning"></i> Premium Cloud Storage</p>
+            </div>
+            <!-- <button class="select-btn" data-plan="Enterprise Plan – CRM Max" data-amount="2999">Select Plan</button> -->
+             <button class="select-btn" data-plan="Starter Plan – CRM max" data-amount="2999">Select Plan</button>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- <section class="crm-pricing-section" id="our-pricing">
+    <div class="container">
+        <h2 class="main-title pb-3 text-center"><span>AI-Powered CRM </span> Pricing Plan</h2> -->
+<!-- 
+        <div class="row g-4"> -->
             <!-- Column 1 -->
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                 <div class="pricing-card p-5">
                     <h4 class="main-title text-center color-orange">Smart, Reliable, and Easy</h4>
-                    <p class="main-desc text-center">Best Suitable</p>
+                    <p class="main-desc text-center">Best Suitable</p> -->
                        <!-- <p class="sub-desc2 text-center">Best Suitable</p> -->
-                    <p class="sub-desc2 text-center">
+                    <!-- <p class="sub-desc2 text-center">
                        For businesses of all sizes looking to automate workflows, track leads, and close deals faster — powered by AI-driven insights.
                     </p>
                 </div>
-            </div>
+            </div> -->
 
 
                         <!-- Column 3 -->
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                 <div class="pricing-card p-5">
                      <h4 class="main-title text-center color-orange">Smart CRM Features</h4>
                     <ul class="features text-start">
@@ -190,10 +428,10 @@
                         <li><i class="fa-solid fa-headset"></i> Dedicated Support</li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
 
             <!-- Column 2 -->
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                 <div class="pricing-card p-5 text-center">
                     <p class="banner-description color-blue plan mb-3">Monthly Plan</p>
                     <h2 class="banner-title color-white">₹1,500</h2>
@@ -203,20 +441,20 @@
                         <li><i class="fa fa-check" style="color:#2196F3;"></i> 24/7 Customer Support</li>
                         <li><i class="fa fa-check" style="color:#FF9800;"></i> Free Updates for 1 Month</li>
                         <li><i class="fa fa-check" style="color:#E91E63;"></i> Secure Cloud Backup</li>
-                    </ul>
+                    </ul> -->
                     <!-- <button class="btn-gradient" onclick="window.location.href='{% url 'buy' %}'">Get Started</button> -->
 
-                 <a href="https://crm.erpnext.ai/login/" class="btn-gradient">Get Started</a>
+                 <!-- <a href="https://crm.erpnext.ai/login/" class="btn-gradient">Get Started</a> -->
 
 <!-- CRM Admin Dashboard -->
  
 
-                </div>
+                <!-- </div>
             </div>
 
         </div>
     </div>
-</section>
+</section> -->
 
 
 
@@ -983,4 +1221,17 @@ $(document).ready(function() {
 const card = document.querySelector('.pricing-card');
 card.addEventListener('mouseenter', () => card.style.transform = 'scale(1.02)');
 card.addEventListener('mouseleave', () => card.style.transform = 'scale(1)');
+</script>
+
+
+<!-- ✅ Updated JS — only sends amount -->
+<script>
+document.querySelectorAll('.select-btn').forEach(btn => {
+  btn.addEventListener('click', function () {
+    const amount = this.dataset.amount;
+    const plan = this.dataset.plan;
+    // Pass both plan and amount in URL for display only
+    window.location.href = `/buy/?amount=${amount}&plan=${encodeURIComponent(plan)}`;
+  });
+});
 </script>

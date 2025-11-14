@@ -1,12 +1,129 @@
-from django.views.decorators.csrf import csrf_protect
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from django.shortcuts import render, redirect
 from django.core.mail import EmailMessage
 from django.contrib import messages
 import traceback
+import razorpay
+from django.http import JsonResponse
+from django.conf import settings
+from .models import Payment
 
+
+# -------------------- BUY PAGE -------------------- #
+@csrf_exempt
+def buy(request):
+    """
+    Render payment page with only amount (no plan name).
+    """
+    amount = request.GET.get('amount', 0)
+    try:
+        amount = float(amount)
+    except ValueError:
+        amount = 0
+
+    if amount <= 0:
+        return render(request, 'error.html', {'message': 'Invalid or missing amount.'})
+
+    context = {
+        'amount': int(amount),
+        'razorpay_key': settings.RAZORPAY_KEY_ID
+    }
+    return render(request, 'buy.html', context)
+
+
+# -------------------- CREATE ORDER -------------------- #
+@csrf_exempt
+def create_order(request):
+    """
+    Creates a Razorpay order and saves it in the database (status=created).
+    """
+    if request.method != 'POST':
+        return JsonResponse({'error': 'Invalid request'}, status=400)
+
+    try:
+        amount = float(request.POST.get('amount', 0))
+        name = request.POST.get('name', '').strip()
+        email = request.POST.get('email', '').strip()
+        phone = request.POST.get('phone', '').strip()
+        plan = request.POST.get('plan', '').strip()
+
+
+        if amount <= 0 or not name or not email or not phone:
+            return JsonResponse({'error': 'Missing or invalid fields'}, status=400)
+
+        client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+
+        # Create order
+        order_data = {
+            'amount': int(amount * 100),  # Razorpay needs paise
+            'currency': 'INR',
+            'receipt': f'order_rcpt_{phone}',
+            'payment_capture': 1,
+        }
+        order = client.order.create(order_data)
+
+        # Save in DB as "created" initially
+        Payment.objects.create(
+            name=name,
+            email=email,
+            phone=phone,
+            plan=plan,  # optional
+            amount=amount,
+            order_id=order['id'],
+            status='created'
+        )
+
+        return JsonResponse({
+            'order_id': order['id'],
+            'amount': order['amount'],
+            'currency': order['currency']
+        })
+
+    except Exception as e:
+        print("❌ Razorpay Error:", str(e))
+        return JsonResponse({
+            'error': 'Failed to create order. Please check Razorpay credentials or internet connection.'
+        }, status=500)
+
+
+# -------------------- SAVE PAYMENT -------------------- #
+@csrf_exempt
+def save_payment(request):
+    """
+    Updates payment record after Razorpay payment completion.
+    Saves both success and failed payment data.
+    """
+    if request.method != 'POST':
+        return JsonResponse({'error': 'Invalid request'}, status=400)
+
+    order_id = request.POST.get('order_id')
+    payment_id = request.POST.get('payment_id', '')
+    status = request.POST.get('status', 'failed')
+
+    if not order_id:
+        return JsonResponse({'error': 'Missing order_id'}, status=400)
+
+    try:
+        payment = Payment.objects.filter(order_id=order_id).first()
+        if payment:
+            payment.payment_id = payment_id
+            payment.status = status
+            payment.save()
+        else:
+            # In case entry not found (edge case)
+            Payment.objects.create(
+                order_id=order_id,
+                payment_id=payment_id,
+                status=status
+            )
+        return JsonResponse({'status': 'success'})
+    except Exception as e:
+        print("❌ Error saving payment:", str(e))
+        return JsonResponse({'error': str(e)}, status=500)
 
 # -------------------- INDEX PAGE FORM -------------------- #
 @csrf_protect
+
 
 def index(request):
     if request.method == 'POST':
@@ -56,7 +173,8 @@ def index(request):
                 body_team,
                 'info@psdigitise.com',
                 ['sales@psdigitise.com'],
-                  cc=['vinoth@psdigitise.com'] 
+                   cc=['vinoth@psdigitise.com'] 
+                
             )
             email_team.content_subtype = "html"
             email_team.send()
@@ -169,7 +287,7 @@ def contact_us(request):
                 body_team,
                 'info@psdigitise.com',
                 ['sales@psdigitise.com'],
-                  cc=['vinoth@psdigitise.com'] 
+                    cc=['vinoth@psdigitise.com'] 
             )
             email_team.content_subtype = "html"
             email_team.send()
@@ -228,12 +346,6 @@ def contact_us(request):
 
     return render(request, 'contact-us.html')
 
-
-
 # -------------------- OTHER STATIC PAGES -------------------- #
 def about_us(request):
     return render(request, 'about-us.html')
-
-
-def buy(request):
-    return render(request, 'buy.html')

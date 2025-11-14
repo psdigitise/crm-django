@@ -722,3 +722,15 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
     
+
+<!-- ✅ Script to handle button clicks
+<script>
+document.querySelectorAll('.select-btn').forEach(btn => {
+  btn.addEventListener('click', function () {
+    const amount = this.dataset.amount;
+    const plan = this.dataset.plan;
+    // Pass both plan and amount in URL for display only
+    window.location.href = `/buy/?amount=${amount}&plan=${encodeURIComponent(plan)}`;
+  });
+});
+</script> -->
