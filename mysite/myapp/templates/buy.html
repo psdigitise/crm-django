@@ -4,10 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Buy Subscription</title>
+
+  {% if not free %}
   <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  {% endif %}
 
   <script>
-  // CSRF helper
   function getCookie(name) {
       let cookieValue = null;
       if (document.cookie && document.cookie !== '') {
@@ -26,7 +28,6 @@
   </script>
 
   <style>
-    /* /* ---------- Background & Layout ---------- */
 body {
   background: radial-gradient(circle at top left, #0d102f 0%, #040717 80%);
   color: #fff;
@@ -39,7 +40,6 @@ body {
   overflow: hidden;
 }
 
-/* ---------- Card ---------- */
 .card {
   background: rgba(15, 20, 50, 0.9);
   padding: 40px;
@@ -57,7 +57,6 @@ body {
   transform: translateY(-5px);
 }
 
-/* ---------- Text ---------- */
 h2 {
   color: #00b8ff;
   margin-bottom: 10px;
@@ -71,7 +70,6 @@ p {
   font-size: 0.95rem;
 }
 
-/* ---------- Inputs ---------- */
 input {
   width: 95%;
   padding: 12px;
@@ -90,7 +88,6 @@ input:focus {
   box-shadow: 0 0 8px rgba(0, 184, 255, 0.5);
 }
 
-/* ---------- Button ---------- */
 button {
   width: 94%;
   padding: 14px;
@@ -111,7 +108,6 @@ button:hover {
   box-shadow: 0 0 25px rgba(0, 198, 255, 0.6);
 }
 
-/* ---------- Toast ---------- */
 .toast {
   position: fixed;
   top: 25px;
@@ -121,7 +117,6 @@ button:hover {
   padding: 14px 22px;
   border-radius: 8px;
   font-weight: 500;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   opacity: 0;
   transform: translateY(-20px);
   transition: all 0.4s ease;
@@ -133,36 +128,35 @@ button:hover {
   transform: translateY(0);
 }
 
-.toast.error {
-  background: linear-gradient(90deg, #ff4b2b, #ff416c);
-}
-
-.toast.success {
-  background: linear-gradient(90deg, #00ff88, #00c6ff);
-}
- 
+.toast.error { background: linear-gradient(90deg, #ff4b2b, #ff416c); }
+.toast.success { background: linear-gradient(90deg, #00ff88, #00c6ff); }
   </style>
 </head>
 
 <body>
   <div class="card">
-    <h2 id="planTitle">Buy Subscription</h2>
-    <p>Complete your payment securely</p>
+    <h2 id="planTitle">{{ plan }}</h2>
+    <p>Complete your subscription</p>
 
     <form id="paymentForm">
       <input type="text" id="name" placeholder="Full Name" required>
       <input type="email" id="email" placeholder="Email" required>
       <input type="text" id="phone" placeholder="Phone (10 digits)" required>
-      <input type="number" id="amount" placeholder="Amount (₹)" required readonly>
-      <button type="button" id="payBtn">Pay Now</button>
+
+      {% if free %}
+          <!-- FREE PLAN → No Amount Field -->
+          <button type="button" id="freeBtn">Submit</button>
+
+      {% else %}
+          <input type="number" id="amount" value="{{ amount }}" readonly>
+          <button type="button" id="payBtn">Pay ₹{{ amount }}</button>
+      {% endif %}
     </form>
   </div>
 
-  <!-- Toast -->
   <div id="toast" class="toast"></div>
 
   <script>
-  // Toast function
   function showToast(message, type = "info") {
     const toast = document.getElementById("toast");
     toast.textContent = message;
@@ -170,92 +164,130 @@ button:hover {
     setTimeout(() => { toast.className = "toast"; }, 3000);
   }
 
-  // Get URL Params
-  const params = new URLSearchParams(window.location.search);
-  const plan = params.get('plan') || "Subscription";
-  const amount = params.get('amount') || "0";
+  const freePlan = "{{ free }}" === "True";
+  const plan = "{{ plan }}";
 
-  document.getElementById('planTitle').innerText = plan;
-  document.getElementById('amount').value = amount;
-  document.getElementById('payBtn').innerText = `Pay ₹${amount}`;
+  /* ---------------------- FREE PLAN UPDATED ---------------------- */
+  if (freePlan) {
+      document.getElementById('freeBtn').onclick = async function () {
 
-  // Payment Button
-  document.getElementById('payBtn').onclick = async function() {
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const phone = document.getElementById('phone').value.trim();
+          const name = document.getElementById('name').value.trim();
+          const email = document.getElementById('email').value.trim();
+          const phone = document.getElementById('phone').value.trim();
 
-    if (!name || !email || !phone) {
-      showToast("⚠️ Please fill all fields.", "error");
-      return;
-    }
+          if (!name || !email || !phone) {
+              showToast("⚠️ Please fill all fields.", "error");
+              return;
+          }
 
-    showToast("⏳ Creating order...", "info");
+          showToast("⏳ Submitting...", "info");
 
-    const res = await fetch("{% url 'create_order' %}", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "X-CSRFToken": csrftoken
-      },
-      body: new URLSearchParams({ name, email, phone, amount, plan })
-
-    });
-
-    const order = await res.json();
-    if (!order.order_id) {
-      showToast("❌ Failed to create order.", "error");
-      return;
-    }
-
-    const options = {
-      key: "{{ razorpay_key }}",
-      amount: order.amount,
-      currency: "INR",
-      name: "ERPNext AI",
-      description: `${plan} Payment`,
-      order_id: order.order_id,
-      prefill: { name, email, contact: phone },
-      handler: async function (response) {
-        await fetch("{% url 'save_payment' %}", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-CSRFToken": csrftoken
-          },
-          body: new URLSearchParams({
-            order_id: order.order_id,
-            payment_id: response.razorpay_payment_id,
-            status: "success"
-          })
-        });
-        showToast("✅ Payment Successful!", "success");
-        setTimeout(() => { 
-          window.location.href = "https://crm.erpnext.ai/login/"; 
-        }, 1500);
-      },
-      modal: {
-        ondismiss: async function () {
           await fetch("{% url 'save_payment' %}", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-              "X-CSRFToken": csrftoken
-            },
-            body: new URLSearchParams({
-              order_id: order.order_id,
-              status: "failed"
-            })
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                  "X-CSRFToken": csrftoken
+              },
+              body: new URLSearchParams({
+                  name,
+                  email,
+                  phone,
+                  plan,
+                  amount: 0,
+                  status: "free"
+              })
           });
-          showToast("❌ Payment Cancelled.", "error");
-        }
-      },
-      theme: { color: "#00b8ff" }
-    };
 
-    const rzp = new Razorpay(options);
-    rzp.open();
-  };
+          showToast("🎉 Free Plan Activated!", "success");
+
+          setTimeout(() => {
+              window.location.href = "https://crm.erpnext.ai/login/";
+          }, 1200);
+      };
+  }
+
+  /* ---------------- PAID PLAN - DO NOT MODIFY (1500 & 2999 working) ---------------- */
+  else {
+      document.getElementById('payBtn').onclick = async function() {
+
+          const name = document.getElementById('name').value.trim();
+          const email = document.getElementById('email').value.trim();
+          const phone = document.getElementById('phone').value.trim();
+          const amount = document.getElementById('amount').value;
+
+          if (!name || !email || !phone) {
+              showToast("⚠️ Please fill all fields.", "error");
+              return;
+          }
+
+          showToast("⏳ Creating order...", "info");
+
+          const res = await fetch("{% url 'create_order' %}", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                  "X-CSRFToken": csrftoken
+              },
+              body: new URLSearchParams({ name, email, phone, amount, plan })
+          });
+
+          const order = await res.json();
+          if (!order.order_id) {
+              showToast("❌ Failed to create order.", "error");
+              return;
+          }
+
+          const options = {
+              key: "{{ razorpay_key }}",
+              amount: order.amount,
+              currency: "INR",
+              name: "ERPNext AI",
+              description: `${plan} Payment`,
+              order_id: order.order_id,
+              prefill: { name, email, contact: phone },
+              handler: async function (response) {
+                  await fetch("{% url 'save_payment' %}", {
+                      method: "POST",
+                      headers: {
+                          "Content-Type": "application/x-www-form-urlencoded",
+                          "X-CSRFToken": csrftoken
+                      },
+                      body: new URLSearchParams({
+                          order_id: order.order_id,
+                          payment_id: response.razorpay_payment_id,
+                          status: "success"
+                      })
+                  });
+
+                  showToast("✅ Payment Successful!", "success");
+
+                  setTimeout(() => {
+                      window.location.href = "https://crm.erpnext.ai/login/";
+                  }, 1500);
+              },
+              modal: {
+                  ondismiss: async function () {
+                      await fetch("{% url 'save_payment' %}", {
+                          method: "POST",
+                          headers: {
+                              "Content-Type": "application/x-www-form-urlencoded",
+                              "X-CSRFToken": csrftoken
+                          },
+                          body: new URLSearchParams({
+                              order_id: order.order_id,
+                              status: "failed"
+                          })
+                      });
+                      showToast("❌ Payment Cancelled.", "error");
+                  }
+              },
+              theme: { color: "#00b8ff" }
+          };
+
+          const rzp = new Razorpay(options);
+          rzp.open();
+      };
+  }
   </script>
 </body>
 </html>

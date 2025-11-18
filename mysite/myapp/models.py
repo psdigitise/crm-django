@@ -6,7 +6,16 @@ class Payment(models.Model):
     phone = models.CharField(max_length=15)
     plan = models.CharField(max_length=100)
     amount = models.FloatField()
-    order_id = models.CharField(max_length=200, unique=True,)
+    
+    order_id = models.CharField(
+        max_length=200,
+        # null=True,
+        blank=True,
+        unique=False    # <-- remove unique
+    )
+
+
+
     payment_id = models.CharField(max_length=200, blank=True, null=True)
     status = models.CharField(max_length=20, default='created')
     created_at = models.DateTimeField(auto_now_add=True)

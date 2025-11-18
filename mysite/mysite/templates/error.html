@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error</title>
+    <style>
+        body {
+            background: #0d102f;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 120px;
+        }
+        .msg-box {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            display: inline-block;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,136,255,0.4);
+        }
+        a {
+            color: #00b8ff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="msg-box">
+        <h2>Error</h2>
+        <p>{{ message }}</p>
+        <br>
+        <a href="/">Go Back Home</a>
+    </div>
+</body>
+</html>

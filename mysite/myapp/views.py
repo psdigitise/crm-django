@@ -13,29 +13,48 @@ from .models import Payment
 @csrf_exempt
 def buy(request):
     """
-    Render payment page with only amount (no plan name).
+    Render the buy page with plan, amount, and free/paid handling.
     """
-    amount = request.GET.get('amount', 0)
+
+    plan = request.GET.get("plan")
+    amount = request.GET.get("amount", "0")
+
+    # Validate plan
+    if not plan:
+        return render(request, "error.html", {"message": "Missing plan name."})
+
+    # Convert amount safely
     try:
         amount = float(amount)
-    except ValueError:
+    except:
         amount = 0
 
-    if amount <= 0:
-        return render(request, 'error.html', {'message': 'Invalid or missing amount.'})
+    free = (amount == 0)
 
-    context = {
-        'amount': int(amount),
-        'razorpay_key': settings.RAZORPAY_KEY_ID
-    }
-    return render(request, 'buy.html', context)
+    # If FREE plan → do NOT show error.html
+    if free:
+        return render(request, "buy.html", {
+            "plan": plan,
+            "amount": 0,
+            "free": True,
+            "razorpay_key": ""   # No Razorpay needed
+        })
+
+    # ---------- PAID PLAN ----------
+    return render(request, "buy.html", {
+        "plan": plan,
+        "amount": int(amount),
+        "free": False,
+        "razorpay_key": settings.RAZORPAY_KEY_ID
+    })
 
 
 # -------------------- CREATE ORDER -------------------- #
 @csrf_exempt
 def create_order(request):
     """
-    Creates a Razorpay order and saves it in the database (status=created).
+    Creates a Razorpay order for paid plans.
+    For free plan: saves data directly without Razorpay.
     """
     if request.method != 'POST':
         return JsonResponse({'error': 'Invalid request'}, status=400)
@@ -47,27 +66,51 @@ def create_order(request):
         phone = request.POST.get('phone', '').strip()
         plan = request.POST.get('plan', '').strip()
 
+        # Validate mandatory fields
+        if not name or not email or not phone:
+            return JsonResponse({'error': 'Missing required fields'}, status=400)
 
-        if amount <= 0 or not name or not email or not phone:
-            return JsonResponse({'error': 'Missing or invalid fields'}, status=400)
+        # -------------------------------
+        # ✅ FREE PLAN (NO RAZORPAY)
+        # -------------------------------
+        if amount == 0:
+            Payment.objects.create(
+                name=name,
+                email=email,
+                phone=phone,
+                plan=plan,
+                amount=0,
+                order_id="FREE_PLAN",
+                status="success"   # direct success
+            )
+
+            return JsonResponse({
+                'status': 'success',
+                'redirect': 'https://crm.erpnext.ai/login/'
+            })
+
+        # -------------------------------
+        # ✅ PAID PLAN (RAZORPAY)
+        # -------------------------------
+        if amount <= 0:
+            return JsonResponse({'error': 'Invalid amount'}, status=400)
 
         client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 
-        # Create order
         order_data = {
-            'amount': int(amount * 100),  # Razorpay needs paise
+            'amount': int(amount * 100),
             'currency': 'INR',
             'receipt': f'order_rcpt_{phone}',
             'payment_capture': 1,
         }
+
         order = client.order.create(order_data)
 
-        # Save in DB as "created" initially
         Payment.objects.create(
             name=name,
             email=email,
             phone=phone,
-            plan=plan,  # optional
+            plan=plan,
             amount=amount,
             order_id=order['id'],
             status='created'
@@ -80,28 +123,50 @@ def create_order(request):
         })
 
     except Exception as e:
-        print("❌ Razorpay Error:", str(e))
-        return JsonResponse({
-            'error': 'Failed to create order. Please check Razorpay credentials or internet connection.'
-        }, status=500)
+        print("❌ Error:", str(e))
+        return JsonResponse({'error': 'Internal server error'}, status=500)
 
 
 # -------------------- SAVE PAYMENT -------------------- #
 @csrf_exempt
 def save_payment(request):
     """
-    Updates payment record after Razorpay payment completion.
-    Saves both success and failed payment data.
+    Handles both FREE plan and PAID plan payment records.
+    
+    FREE PLAN:
+        - Saves name, email, phone, plan only.
+        - Does NOT require order_id or payment_id.
+    
+    PAID PLAN:
+        - Updates existing Payment entry using Razorpay order_id.
     """
     if request.method != 'POST':
         return JsonResponse({'error': 'Invalid request'}, status=400)
 
+    plan = request.POST.get('plan')
+    name = request.POST.get('name')
+    email = request.POST.get('email')
+    phone = request.POST.get('phone')
+    print( name,email,phone,plan)
+    # ---------- FREE PLAN LOGIC ----------
+    if plan == "CRM Lite":
+        Payment.objects.create(
+            name=name,
+            email=email,
+            phone=phone,
+            plan=plan,
+            amount=0,
+            status="success"
+        )
+        return JsonResponse({'status': 'free_saved'})
+
+    # ---------- PAID PLAN LOGIC ----------
     order_id = request.POST.get('order_id')
     payment_id = request.POST.get('payment_id', '')
     status = request.POST.get('status', 'failed')
 
-    if not order_id:
-        return JsonResponse({'error': 'Missing order_id'}, status=400)
+    if not order_id and plan !="Free":
+        return JsonResponse({'error': 'Missing order_id for paid plan'}, status=400)
 
     try:
         payment = Payment.objects.filter(order_id=order_id).first()
@@ -110,7 +175,7 @@ def save_payment(request):
             payment.status = status
             payment.save()
         else:
-            # In case entry not found (edge case)
+            # Fallback case if entry doesn’t exist
             Payment.objects.create(
                 order_id=order_id,
                 payment_id=payment_id,
@@ -120,6 +185,7 @@ def save_payment(request):
     except Exception as e:
         print("❌ Error saving payment:", str(e))
         return JsonResponse({'error': str(e)}, status=500)
+
 
 # -------------------- INDEX PAGE FORM -------------------- #
 @csrf_protect
@@ -349,3 +415,13 @@ def contact_us(request):
 # -------------------- OTHER STATIC PAGES -------------------- #
 def about_us(request):
     return render(request, 'about-us.html')
+
+
+def privacy_policy(request):
+    return render(request, "privacy_policy.html")
+
+
+
+def data_deletion(request):
+    return render(request, "Data_Deletion.html")
+
