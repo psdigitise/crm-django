@@ -3,121 +3,162 @@
 
 {% include 'includes/header.html' %}
  
-<style>
-    .crm-pricing-section {
-  padding: 4rem 0;
-  position: relative;
-  overflow: hidden;
+    <style>
+        .crm-pricing-section {
+  padding: 3rem 0rem;
+}
 
-    
-  .pricing-card {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-  padding: 35px 25px;
-  position: relative;
-  transition: 0.3s;
+.crm-pricing-section li {
+  list-style: none;
+}
+
+.crm-pricing-section ul {
+  margin-bottom: 0.5rem;
+}
+
+.crm-pricing-section .pricing-card {
   height: 100%;
+  border-radius: 16px;
+  border: 1px solid #d6d6d6;
+  padding: 35px 28px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  min-height: 620px;
+  background: #fff;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  transition: .25s ease-in-out;
 }
-.pricing-card:hover {
+
+.crm-pricing-section .pricing-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.18);
 }
-.plan-title {
+
+.crm-pricing-section .pricing-card .plan-title {
   font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
+  font-weight: 800;
   text-align: center;
-}
-.plan-sub {
-  color: #555;
-  font-weight: 500;
-  margin-bottom: 1rem;
-  text-align: center !important;
-}
-.ideal-for {
-  color: #5b3be6;
-  font-weight: 600;
   margin-bottom: 8px;
+  color: #0a0a0a;
 }
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-ul li {
-  margin-bottom: 8px;
-  display: flex;
-  gap: 8px;
-  color: #001214;
-}
-ul li i {
-  font-size: 10px;
-  margin-top: 6px;
-}
-.key-title {
+
+.crm-pricing-section .pricing-card .plan-sub {
+  font-size: 1.1rem;
+  text-align: center;
   font-weight: 600;
-  margin-top: 10px;
+  color: #0a0a0a;
+  margin-bottom: 0.7rem;
+}
+
+.crm-pricing-section .pricing-card .section-label {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0a0a0a;
+  margin-top: 15px;
   margin-bottom: 6px;
 }
-.price {
-  font-size: 28px;
-  font-weight: 700;
-   margin-top: 10px;
-           color: black
+
+.crm-pricing-section .pricing-card .features-list li {
+  font-size: 1.1rem;
+  margin-bottom: 7px;
+  color: #0a0a0a;
 }
-.price span {
+
+.crm-pricing-section .pricing-card .price-text {
+  font-size: 30px;
+  font-weight: 900;
+  color: #0a0a0a;
+  margin-bottom: 3px;
+}
+
+.crm-pricing-section .pricing-card .price-text span {
+  font-size: 17px;
+}
+
+.crm-pricing-section .pricing-card .old-price {
   font-size: 14px;
-  color: #555;
-}
-.price-old {
   text-decoration: line-through;
-  font-size: 14px;
   color: red;
-  margin-left: 8px;
+  font-weight: 700;
 }
-.support {
-  font-size: 14px;
-  color: #333;
-  margin-top: 8px;
 
-  p{
-    padding-bottom: 0.5rem;
-  }
+.crm-pricing-section .pricing-card .note {
+  font-size: 1rem;
+  color: #0a0a0a;
+  font-weight: 500;
+  padding-bottom: 0.7rem;
 }
-.select-btn {
-  background: #111;
-  color: #fff;
-  border: none;
-  padding: 10px;
+
+.crm-pricing-section .pricing-card .plan-btn {
   width: 100%;
-  font-weight: 600;
-  border-radius: 8px;
-  margin-top: 15px;
-}
-.select-btn:hover {
-  background: #5b3be6;
-}
-.badge-reco {
-  position: absolute;
-  top: -10px;
-  right: 20px;
-  background: #5b3be6;
-  color: #fff;
-  font-size: 12px;
-  padding: 5px 10px;
+  padding: 13px;
+  font-size: 15px;
+  font-weight: 700;
   border-radius: 10px;
+  border: none;
+  transition: .3s;
+  background: #000;
+  color: #fff;
+  margin-top: 12px;
+}
+
+.crm-pricing-section .pricing-card .plan-btn:hover {
+  opacity: .9;
+  transform: scale(1.02);
+}
+
+/* FREE PLAN */
+.crm-pricing-section .pricing-card.free {
+  background: #e7f5e6;
+}
+
+.crm-pricing-section .pricing-card.free .top-badge-free {
+  background: #d7f2dc;
+  color: #0a0a0a;
+  font-size: 16px;
+  padding: 5px 14px;
+  border-radius: 7px;
+  display: inline-block;
+  margin-bottom: 14px;
   font-weight: 600;
 }
-.starter .plan-title { color: #007bff; }
-.pro .plan-title { color: purple; }
-.enterprise .plan-title { color: #f18d2b; }
 
-    }
-</style>
+.crm-pricing-section .pricing-card.free .plan-btn {
+  background: #0a8a4b;
+}
+
+/* PRO PLAN */
+.crm-pricing-section .pricing-card.pro {
+  background: #f5ecff;
+}
+
+.crm-pricing-section .pricing-card.pro .recommended-badge {
+  background: #5b2cec;
+  color: #fff;
+  padding: 6px 13px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  position: absolute;
+  top: -13px;
+  right: 18px;
+}
+
+.crm-pricing-section .pricing-card.pro .plan-title {
+  color: #5b2cec !important;
+}
+
+/* ENTERPRISE PLAN */
+.crm-pricing-section .pricing-card.enterprise {
+  background: #fff4e3;
+}
+
+.crm-pricing-section .pricing-card.enterprise .plan-title {
+  color: #f39200 !important;
+}
+
+    </style>
 
 <section class="banner-area">
     <div id="particles-js"></div> <!-- particles background only -->
@@ -274,125 +315,101 @@ ul li i {
 
 
 
-
 <!---plans-->
 <section class="crm-pricing-section" id="our-pricing">
-  <div class="container">
-    <h2 class="main-title"><span>AI-Powered CRM</span> Pricing Plan</h2>
+    <div class="container">
+        <h2 class="main-title"><span>AI-Powered CRM</span> Pricing Plan</h2>
 
-    <div class="row g-4">
-      <!-- Starter Plan -->
-      <div class="col-md-4">
-        <div class="pricing-card starter">
-          <div>
-            <h3 class="plan-title">Starter Plan – CRM Basic</h3>
-            <p class="plan-sub">For Small Teams & Startups</p>
+        <div class="row g-4 justify-content-center align-items-stretch">
 
-            <p class="ideal-for">Ideal for :</p>
-            <ul>
-              <li><i class="bi bi-diamond-fill text-primary"></i> New businesses managing limited leads</li>
-              <li><i class="bi bi-diamond-fill text-primary"></i> Teams looking for essential automation tools</li>
-            </ul>
+            <!-- FREE PLAN -->
+            <div class="col-md-4">
+                <div class="pricing-card free h-100">
+                    <p class="top-badge-free text-center">Free 15-Days</p>
+                    <h3 class="plan-title">Free Plan – CRM Lite</h3>
+                    <p class="plan-sub">For Individuals & Small Teams Starting Out</p>
 
-            <p class="key-title">Key Features</p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i> Lead & Contact Management</li>
-              <li><i class="bi bi-check-circle"></i> Email Integration</li>
-              <li><i class="bi bi-check-circle"></i> Task & Activity Automation</li>
-              <li><i class="bi bi-check-circle"></i> Real-time Analytics</li>
-            </ul>
-          </div>
-          <div>
-            <div class="price">₹999 <span>/month</span></div>
-            <div class="support">
-              <p><i class="bi bi-check-circle-fill text-success"></i> 24/7 Support &nbsp;</p>
-              <p><i class="bi bi-check-circle-fill text-success"></i> Free Updates (1 Month)</p>
+                    <p class="section-label">Ideal for :</p>
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-circle-check text-success"></i>   Freelancers & startups exploring CRM solutions</li>
+                        <li><i class="fa-solid fa-circle-check text-success"></i>  Teams managing a few leads or testing automation features</li>
+                    </ul>
+
+                    <p class="section-label">Includes</p>
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-circle-check text-success"></i>  Lead & Contact Management</li>
+                        <li><i class="fa-solid fa-circle-check text-success"></i>  Email Integration</li>
+                        <li><i class="fa-solid fa-circle-check text-success"></i>  Basic Task Management</li>
+                    </ul>
+
+                    <p class="price-text">Free  <span class="note">(No Credit Card Required)</span></p>
+                    <button class="plan-btn">Start for Free</button>
+                </div>
             </div>
-            <!-- <button class="select-btn" data-plan="Starter Plan – CRM Basic" data-amount="999">Select Plan</button> -->
-             <button class="select-btn" data-plan="Starter Plan – CRM Basic" data-amount="999">Select Plan</button>
-  
-          </div>
+
+            <!-- PROFESSIONAL PLAN -->
+            <div class="col-md-4">
+                <div class="pricing-card pro position-relative h-100">
+                    <span class="recommended-badge">Recommended Plan</span>
+
+                    <h3 class="plan-title">Professional Plan – CRM</h3>
+                    <p class="plan-sub">For Growing Businesses</p>
+
+                    <p class="section-label">Ideal for :</p>
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-circle-check text-primary"></i> Small to mid-sized businesses wanting predictive insights</li>
+                        <li><i class="fa-solid fa-circle-check text-primary"></i> Teams tracking performance across multiple channels</li>
+                    </ul>
+
+                    <p class="section-label">Includes</p>
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-circle-check text-primary"></i> Everything in Starter</li>
+                        <li><i class="fa-solid fa-circle-check text-primary"></i> AI Predictive Lead Scoring</li>
+                        <li><i class="fa-solid fa-circle-check text-primary"></i> Smart Follow-up Suggestions</li>
+                    </ul>
+
+                    <div class="price-box">
+                        <p class="price-text">₹1,500 <span>/month</span><span class="old-price"> Actual ₹1000</span></p>
+                        <p class="note">24/7 Support</p>
+                        <p class="note">Free Updates (1 Month)</p>
+                    </div>
+
+                    <button class="plan-btn">Select Plan</button>
+                </div>
+            </div>
+
+            <!-- ENTERPRISE PLAN -->
+            <div class="col-md-4">
+                <div class="pricing-card enterprise h-100">
+
+                    <h3 class="plan-title">Enterprise Plan – CRM Max</h3>
+                    <p class="plan-sub">For Large Teams & Enterprises</p>
+
+                    <p class="section-label">Ideal for :</p>
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-circle-check text-warning"></i> Companies managing large lead volumes</li>
+                        <li><i class="fa-solid fa-circle-check text-warning"></i>  Businesses needing advanced automation & workflow</li>
+                    </ul>
+
+                    <p class="section-label">Includes</p>
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-circle-check text-warning"></i>  Everything in Pro</li>
+                        <li><i class="fa-solid fa-circle-check text-warning"></i>  Custom Workflow Builder</li>
+                        <li><i class="fa-solid fa-circle-check text-warning"></i>  Multi-User Role Management</li>
+                        <li><i class="fa-solid fa-circle-check text-warning"></i>  API & Third-party Integrations</li>
+                    </ul>
+
+                    <p class="price-text">On Request</p>
+                    <p class="note">Dedicated Account Manager</p>
+                     <p class="note">Premium Cloud Storage</p>
+
+                    <button class="plan-btn">Select Plan</button>
+                </div>
+            </div>
+
         </div>
-      </div>
-
-      <!-- Professional Plan -->
-      <div class="col-md-4">
-        <div class="pricing-card pro">
-          <div class="badge-reco">Recommended Plan</div>
-          <div>
-            <h3 class="plan-title">Professional Plan – CRM Pro</h3>
-            <p class="plan-sub">For Growing Businesses</p>
-
-            <p class="ideal-for">Ideal for :</p>
-            <ul>
-              <li><i class="bi bi-diamond-fill text-purple"></i> Small to mid-sized businesses wanting predictive insights</li>
-              <li><i class="bi bi-diamond-fill text-purple"></i> Teams tracking performance across multiple channels</li>
-            </ul>
-
-            <p class="key-title">Key Features</p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i> Everything in Starter</li>
-              <li><i class="bi bi-check-circle"></i> AI Predictive Lead Scoring</li>
-              <li><i class="bi bi-check-circle"></i> Smart Follow-up Suggestions</li>
-              <li><i class="bi bi-check-circle"></i> AI Forecasting Dashboard</li>
-            </ul>
-          </div>
-          <div>
-            <div class="d-flex align-items-center">
-              <div class="price">₹1,500 <span>/month</span></div>
-              <div class="price-old">Actual ₹1,600</div>
-            </div>
-            <div class="support">
-              <p><i class="bi bi-check-circle-fill text-success"></i> 24/7 Support &nbsp;</p>
-              <p><i class="bi bi-check-circle-fill text-success"></i> Free Updates (1 Month)</p>
-            </div>
-            <!-- <button class="select-btn" data-plan="Professional Plan – CRM Pro" data-amount="1500">Select Plan</button> -->
-             <button class="select-btn" data-plan="Starter Plan – CRM pro" data-amount="1500">Select Plan</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Enterprise Plan -->
-      <div class="col-md-4">
-        <div class="pricing-card enterprise">
-          <div>
-            <h3 class="plan-title">Enterprise Plan – CRM Max</h3>
-            <p class="plan-sub">For Large Teams & Enterprises</p>
-
-            <p class="ideal-for">Ideal for :</p>
-            <ul>
-              <li><i class="bi bi-diamond-fill text-warning"></i> Companies managing large lead volumes</li>
-              <li><i class="bi bi-diamond-fill text-warning"></i> Businesses needing custom workflows & advanced automation</li>
-            </ul>
-
-            <p class="key-title">Key Features</p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i> Everything in Pro</li>
-              <li><i class="bi bi-check-circle"></i> Custom Workflow Builder</li>
-              <li><i class="bi bi-check-circle"></i> Multi-User Role Management</li>
-              <li><i class="bi bi-check-circle"></i> API & Third-party Integrations</li>
-            </ul>
-          </div>
-          <div>
-            <div class="d-flex align-items-center">
-              <div class="price">₹2,999 <span>/month</span></div>
-              <div class="price-old">Actual ₹8,560</div>
-            </div>
-            <div class="support">
-              <p><i class="bi bi-check-circle-fill text-warning"></i> Dedicated Account Manager &nbsp;</p>
-              <p><i class="bi bi-check-circle-fill text-warning"></i> Premium Cloud Storage</p>
-            </div>
-            <!-- <button class="select-btn" data-plan="Enterprise Plan – CRM Max" data-amount="2999">Select Plan</button> -->
-             <button class="select-btn" data-plan="Starter Plan – CRM max" data-amount="2999">Select Plan</button>
-  
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
 </section>
-
-
 
 
 <!-- <section class="crm-pricing-section" id="our-pricing">
