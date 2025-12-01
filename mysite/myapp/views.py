@@ -7,6 +7,8 @@ import razorpay
 from django.http import JsonResponse
 from django.conf import settings
 from .models import Payment
+import requests
+import traceback
 
 
 # -------------------- BUY PAGE -------------------- #
@@ -188,15 +190,20 @@ def save_payment(request):
 
 
 # -------------------- INDEX PAGE FORM -------------------- #
+import requests
+import traceback
+from django.shortcuts import render, redirect
+from django.core.mail import EmailMessage
+from django.contrib import messages
+from django.views.decorators.csrf import csrf_protect
+
 @csrf_protect
-
-
 def index(request):
     if request.method == 'POST':
         name = request.POST.get('name', '').strip()
         email = request.POST.get('email', '').strip()
         phone = request.POST.get('phone', '').strip()
-        comment = request.POST.get('comment', '').strip()
+        comment = request.POST.get('comment', '').strip()  # Used as Company Name
 
         if not all([name, email, phone, comment]):
             messages.error(request, '⚠️ Please fill all fields.')
@@ -209,38 +216,25 @@ def index(request):
             subject_team = 'ERPNext AI - New Contact Form Submission'
             body_team = f"""
             <html>
-              <body style="font-family: Arial, sans-serif; background-color: #f8f9fa; margin: 0; padding: 0;">
-                <table role="presentation" style="max-width: 600px; margin: 40px auto; background: #ffffff; border-radius: 8px; overflow: hidden; border: 1px solid #ddd;">
-                  <tr>
-                    <td style="padding: 30px;">
-                      <h2 style="color: #333;">📩 New Contact Form Submission</h2>
-                      <p style="color: #555; font-size: 15px;">You have received a new inquiry through the website form:</p>
-                      <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-                      <p style="color: #555; font-size: 15px; line-height: 1.6;">
-                        <strong>Name:</strong> {name}<br>
-                        <strong>Email:</strong> <a href="mailto:{email}" style="color: #1a73e8;">{email}</a><br>
-                        <strong>Phone:</strong> {phone}<br>
-                        <strong>Message:</strong> {comment}
-                      </p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="background: #f1f1f1; text-align: center; padding: 12px; font-size: 13px; color: #777;">
-                      © PS Digitise 2025 | Internal Notification
-                    </td>
-                  </tr>
-                </table>
-              </body>
-            </html>
+            <body style="font-family: Arial, sans-serif; background-color: #f8f9fa;">
+                <table style="max-width: 600px; margin: 40px auto; background: #ffffff;
+                border-radius: 8px; border: 1px solid #ddd;">
+                <tr><td style="padding: 30px;">
+                    <h2>📩 New Contact Form Submission</h2>
+                    <p>You have received a new inquiry through the website form:</p>
+                    <hr>
+                    <p><strong>Name:</strong> {name}<br>
+                       <strong>Email:</strong> {email}<br>
+                       <strong>Phone:</strong> {phone}<br>
+                       <strong>Message:</strong> {comment}</p>
+                </td></tr></table>
+            </body></html>
             """
 
             email_team = EmailMessage(
-                subject_team,
-                body_team,
-                'info@psdigitise.com',
-                ['sales@psdigitise.com'],
-                   cc=['vinoth@psdigitise.com'] 
-                
+                subject_team, body_team,
+                'info@psdigitise.com', ['sales@psdigitise.com'],
+                cc=['vinoth@psdigitise.com']
             )
             email_team.content_subtype = "html"
             email_team.send()
@@ -250,53 +244,106 @@ def index(request):
             # -----------------------------
             subject_user = 'ERPNext AI - Thank You for Contacting Us'
             body_user = f"""
-            <html>
-              <body style="font-family: Arial, sans-serif; background-color: #f6f6f6; margin: 0; padding: 0;">
-                <table role="presentation" style="max-width: 600px; margin: 40px auto; background: #ffffff; border-radius: 8px; overflow: hidden; border: 1px solid #ddd;">
-                  <tr>
-                    <td style="padding: 30px;">
-                      <h2 style="color: #333333; margin-bottom: 10px;">Thank you for contacting us, {name}.</h2>
-                      <p style="color: #555555; font-size: 15px;">
-                        We have received your message and will get in touch with you shortly.
-                      </p>
-                      <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-                      <h3 style="color: #333333; margin-bottom: 10px;">Your Submitted Details:</h3>
-                      <p style="color: #555555; line-height: 1.6; font-size: 15px;">
-                        <strong>Name:</strong> {name}<br>
-                        <strong>Email:</strong> <a href="mailto:{email}" style="color: #1a73e8; text-decoration: none;">{email}</a><br>
-                        <strong>Phone:</strong> {phone}<br>
-                        <strong>Message:</strong> {comment}
-                      </p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="background: #f9f4e8; text-align: center; padding: 12px; font-size: 13px; color: #777;">
-                      © ERPNext AI 2025
-                    </td>
-                  </tr>
-                </table>
-              </body>
-            </html>
+            <html><body style="font-family: Arial, sans-serif; background-color: #f6f6f6;">
+                <table style="max-width: 600px; margin: 40px auto; background: #ffffff;
+                border-radius: 8px; border: 1px solid #ddd;">
+                <tr><td style="padding: 30px;">
+                    <h2>Thank you for contacting us, {name}.</h2>
+                    <p>We have received your message and will get in touch with you shortly.</p>
+                    <hr>
+                    <p><strong>Name:</strong> {name}<br>
+                       <strong>Email:</strong> {email}<br>
+                       <strong>Phone:</strong> {phone}<br>
+                       <strong>Message:</strong> {comment}</p>
+                </td></tr></table>
+            </body></html>
             """
 
             email_user = EmailMessage(
-                subject_user,
-                body_user,
-                'info@psdigitise.com',
-                [email]
+                subject_user, body_user,
+                'info@psdigitise.com', [email]
             )
             email_user.content_subtype = "html"
             email_user.send()
 
-            messages.success(request, '✅ Your message has been sent successfully!')
+            # -----------------------------
+            # API Headers
+            # -----------------------------
+            headers = {
+                "Content-Type": "application/json",
+                "Authorization": "token 33c44b17631ceb3:2d01782c6c01a7f"
+            }
+
+            # -----------------------------
+            # 3️⃣ Check if Company exists
+            # -----------------------------
+            check_company_url = f"https://api.erpnext.ai/api/v2/document/Company/{comment}"
+            check_company_res = requests.get(check_company_url, headers=headers)
+
+            if check_company_res.status_code == 200:
+                messages.error(request, "⚠️ This Company already exists!")
+                return redirect('index')
+
+            # -----------------------------
+            # 4️⃣ Check if Email already exists
+            # -----------------------------
+            check_user_url = f"https://api.erpnext.ai/api/v2/document/User/{email}"
+            check_user_res = requests.get(check_user_url, headers=headers)
+
+            if check_user_res.status_code == 200:
+                messages.error(request, "⚠️ This Email is already registered!")
+                return redirect('index')
+
+            # -----------------------------
+            # 5️⃣ Create Company
+            # -----------------------------
+            company_payload = {
+                "email_id": email,
+                "company_name": comment,
+                "plan_id": "0"
+            }
+
+            company_url = "https://api.erpnext.ai/api/v2/document/Company/"
+            company_res = requests.post(company_url, json=company_payload, headers=headers)
+
+            if company_res.status_code not in [200, 201]:
+                print("Company API Error:", company_res.text)
+                messages.error(request, "❌ Failed creating Company!")
+                return redirect('index')
+
+            # -----------------------------
+            # 6️⃣ Create User
+            # -----------------------------
+            user_payload = {
+                "email": email,
+                "first_name": name,
+                "company": comment,
+                "role_profile_name": "Only If Create",
+                "phone": phone,
+                "plan_id": "0"
+            }
+            print("tyry",user_payload)
+            user_url = "https://api.erpnext.ai/api/v2/document/User/"
+            user_res = requests.post(user_url, json=user_payload, headers=headers)
+            print("tyry",user_res)
+            if user_res.status_code not in [200, 201]:
+                print("User API Error:", user_res.text)
+                messages.error(request, "❌ Failed creating User!")
+                return redirect('index')
+
+            # -----------------------------
+            # SUCCESS RESPONSE
+            # -----------------------------
+            messages.success(request, '🎉 Your message has been submitted successfully!')
             return redirect('index')
 
         except Exception as e:
-            messages.error(request, f'❌ Email sending failed: {str(e)}')
             print(traceback.format_exc())
+            messages.error(request, f'❌ Failed: {str(e)}')
             return redirect('index')
 
     return render(request, 'index.html')
+
 
 
 # -------------------- CONTACT US PAGE FORM -------------------- #
@@ -353,7 +400,7 @@ def contact_us(request):
                 body_team,
                 'info@psdigitise.com',
                 ['sales@psdigitise.com'],
-                    cc=['vinoth@psdigitise.com'] 
+                    cc=[''] 
             )
             email_team.content_subtype = "html"
             email_team.send()

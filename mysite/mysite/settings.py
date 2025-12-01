@@ -88,33 +88,34 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # }
 
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'test',   # e.g. 'crm_db'
-        'USER': 'root',                 # your MySQL username
-        'PASSWORD': '1234',    # your MySQL password
-        'HOST': 'localhost',            # or '127.0.0.1'
-        'PORT': '3306',                 # default MySQL port
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
-    }
-}
-
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'psdadmin_crm',
-#         'USER': 'psdadmin_crm',
-#         'PASSWORD': 'RPTuOVnxJd',
-#         'HOST': 'bv-b29.yuvanetworks.in',  # Host from phpMyAdmin URL
-#         'PORT': '3306',
+#         'NAME': 'test',   # e.g. 'crm_db'
+#         'USER': 'root',                 # your MySQL username
+#         'PASSWORD': '1234',    # your MySQL password
+#         'HOST': 'localhost',            # or '127.0.0.1'
+#         'PORT': '3306',                 # default MySQL port
 #         'OPTIONS': {
 #             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
 #         },
 #     }
 # }
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'crmdjango',           # Default Schema / Database Name
+        'USER': 'crmdjango',           # MySQL Username
+        'PASSWORD': 'admin',           # MySQL Password
+        'HOST': '103.214.132.20',      # Remote Host
+        'PORT': '3306',                # MySQL Port
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
+    }
+}
 
 
 
