@@ -1,164 +1,200 @@
-
 {% load static %}
 
 {% include 'includes/header.html' %}
- 
-    <style>
-        .crm-pricing-section {
-  padding: 3rem 0rem;
-}
 
-.crm-pricing-section li {
-  list-style: none;
-}
+<style>
+    .crm-pricing-section {
+        padding: 3rem 0rem;
+    }
 
-.crm-pricing-section ul {
-  margin-bottom: 0.5rem;
-}
+    .crm-pricing-section li {
+        list-style: none;
+    }
 
-.crm-pricing-section .pricing-card {
-  height: 100%;
-  border-radius: 16px;
-  border: 1px solid #d6d6d6;
-  padding: 35px 28px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 620px;
-  background: #fff;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-  transition: .25s ease-in-out;
-}
+    .crm-pricing-section ul {
+        margin-bottom: 0.5rem;
+    }
 
-.crm-pricing-section .pricing-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 26px rgba(0,0,0,0.18);
-}
+    .crm-pricing-section .pricing-card {
+        height: 100%;
+        border-radius: 16px;
+        border: 1px solid #d6d6d6;
+        padding: 35px 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 620px;
+        background: #fff;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        transition: .25s ease-in-out;
+    }
 
-.crm-pricing-section .pricing-card .plan-title {
-  font-size: 2rem;
-  font-weight: 800;
-  text-align: center;
-  margin-bottom: 8px;
-  color: #0a0a0a;
-}
+    .crm-pricing-section .pricing-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+    }
 
-.crm-pricing-section .pricing-card .plan-sub {
-  font-size: 1.1rem;
-  text-align: center;
-  font-weight: 600;
-  color: #0a0a0a;
-  margin-bottom: 0.7rem;
-}
+    .crm-pricing-section .pricing-card .plan-title {
+        font-size: 2rem;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 8px;
+        color: #0a0a0a;
+    }
 
-.crm-pricing-section .pricing-card .section-label {
-  font-size: 15px;
-  font-weight: 700;
-  color: #0a0a0a;
-  margin-top: 15px;
-  margin-bottom: 6px;
-}
+    .crm-pricing-section .pricing-card .plan-sub {
+        font-size: 1.1rem;
+        text-align: center;
+        font-weight: 600;
+        color: #0a0a0a;
+        margin-bottom: 0.7rem;
+    }
 
-.crm-pricing-section .pricing-card .features-list li {
-  font-size: 1.1rem;
-  margin-bottom: 7px;
-  color: #0a0a0a;
-}
+    .crm-pricing-section .pricing-card .section-label {
+        font-size: 15px;
+        font-weight: 700;
+        color: #0a0a0a;
+        margin-top: 15px;
+        margin-bottom: 6px;
+    }
 
-.crm-pricing-section .pricing-card .price-text {
-  font-size: 30px;
-  font-weight: 900;
-  color: #0a0a0a;
-  margin-bottom: 3px;
-}
+    .crm-pricing-section .pricing-card .features-list li {
+        font-size: 1.1rem;
+        margin-bottom: 7px;
+        color: #0a0a0a;
+    }
 
-.crm-pricing-section .pricing-card .price-text span {
-  font-size: 17px;
-}
+    .crm-pricing-section .pricing-card .price-text {
+        font-size: 30px;
+        font-weight: 900;
+        color: #0a0a0a;
+        margin-bottom: 3px;
+    }
 
-.crm-pricing-section .pricing-card .old-price {
-  font-size: 14px;
-  text-decoration: line-through;
-  color: red;
-  font-weight: 700;
-}
+    .crm-pricing-section .pricing-card .price-text span {
+        font-size: 17px;
+    }
 
-.crm-pricing-section .pricing-card .note {
-  font-size: 1rem;
-  color: #0a0a0a;
-  font-weight: 500;
-  padding-bottom: 0.7rem;
-}
+    .crm-pricing-section .pricing-card .old-price {
+        font-size: 14px;
+        text-decoration: line-through;
+        color: red;
+        font-weight: 700;
+    }
 
-.crm-pricing-section .pricing-card .plan-btn {
-  width: 100%;
-  padding: 13px;
-  font-size: 15px;
-  font-weight: 700;
-  border-radius: 10px;
-  border: none;
-  transition: .3s;
-  background: #000;
-  color: #fff;
-  margin-top: 12px;
-}
+    .crm-pricing-section .pricing-card .note {
+        font-size: 1rem;
+        color: #0a0a0a;
+        font-weight: 500;
+        padding-bottom: 0.7rem;
+    }
 
-.crm-pricing-section .pricing-card .plan-btn:hover {
-  opacity: .9;
-  transform: scale(1.02);
-}
+    .crm-pricing-section .pricing-card .plan-btn {
+        width: 100%;
+        padding: 13px;
+        font-size: 15px;
+        font-weight: 700;
+        border-radius: 10px;
+        border: none;
+        transition: .3s;
+        background: #000;
+        color: #fff;
+        margin-top: 12px;
+    }
 
-/* FREE PLAN */
-.crm-pricing-section .pricing-card.free {
-  background: #e7f5e6;
-}
+    .crm-pricing-section .pricing-card .plan-btn:hover {
+        opacity: .9;
+        transform: scale(1.02);
+    }
 
-.crm-pricing-section .pricing-card.free .top-badge-free {
-  background: #d7f2dc;
-  color: #0a0a0a;
-  font-size: 16px;
-  padding: 5px 14px;
-  border-radius: 7px;
-  display: inline-block;
-  margin-bottom: 14px;
-  font-weight: 600;
-}
+    /* FREE PLAN */
+    .crm-pricing-section .pricing-card.free {
+        background: #e7f5e6;
+    }
 
-.crm-pricing-section .pricing-card.free .plan-btn {
-  background: #0a8a4b;
-}
+    .crm-pricing-section .pricing-card.free .top-badge-free {
+        background: #d7f2dc;
+        color: #0a0a0a;
+        font-size: 16px;
+        padding: 5px 14px;
+        border-radius: 7px;
+        display: inline-block;
+        margin-bottom: 14px;
+        font-weight: 600;
+    }
 
-/* PRO PLAN */
-.crm-pricing-section .pricing-card.pro {
-  background: #f5ecff;
-}
+    .crm-pricing-section .pricing-card.free .plan-btn {
+        background: #0a8a4b;
+    }
 
-.crm-pricing-section .pricing-card.pro .recommended-badge {
-  background: #5b2cec;
-  color: #fff;
-  padding: 6px 13px;
-  border-radius: 10px;
-  font-size: 12px;
-  font-weight: 700;
-  position: absolute;
-  top: -13px;
-  right: 18px;
-}
+    /* PRO PLAN */
+    .crm-pricing-section .pricing-card.pro {
+        background: #f5ecff;
+    }
 
-.crm-pricing-section .pricing-card.pro .plan-title {
-  color: #5b2cec !important;
-}
+    .crm-pricing-section .pricing-card.pro .recommended-badge {
+        background: #5b2cec;
+        color: #fff;
+        padding: 6px 13px;
+        border-radius: 10px;
+        font-size: 12px;
+        font-weight: 700;
+        position: absolute;
+        top: -13px;
+        right: 18px;
+    }
 
-/* ENTERPRISE PLAN */
-.crm-pricing-section .pricing-card.enterprise {
-  background: #fff4e3;
-}
+    .crm-pricing-section .pricing-card.pro .plan-title {
+        color: #5b2cec !important;
+    }
 
-.crm-pricing-section .pricing-card.enterprise .plan-title {
-  color: #f39200 !important;
-}
+    /* ENTERPRISE PLAN */
+    .crm-pricing-section .pricing-card.enterprise {
+        background: #fff4e3;
+    }
 
-    </style>
+    .crm-pricing-section .pricing-card.enterprise .plan-title {
+        color: #f39200 !important;
+    }
+
+    .phone-group select,
+    .phone-group input {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: #fff;
+        height: 52px;
+        border-radius: 30px;
+    }
+
+    .country-select select {
+        width: 110px;
+        text-align: center;
+    }
+
+    .phone-input input {
+        padding-left: 40px;
+    }
+
+    .phone-icon {
+        position: absolute;
+        top: 50%;
+        left: 12px;
+        transform: translateY(-50%);
+        color: #bbb;
+        font-size: 15px;
+    }
+
+    .phone-group select:focus,
+    .phone-group input:focus {
+        outline: none;
+        border-color: #4285f4;
+        box-shadow: 0 0 6px rgba(66, 133, 244, 0.4);
+    }
+
+    .phone-group ::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+</style>
 
 <section class="banner-area">
     <div id="particles-js"></div> <!-- particles background only -->
@@ -170,11 +206,11 @@
                         <div class="row align-items-center g-4">
                             <!-- ✅ Left Content -->
                             <div class="col-lg-8 col-md-12 col-sm-12">
-                            
+
                                 <h2 class="banner-title" data-aos="fade-up" data-aos-duration="1400">
-                                   Your Business. Your Customers. <span class="color-white"> One CRM</span>
+                                    Your Business. Your Customers. <span class="color-white"> One CRM</span>
                                 </h2>
-                                  <!-- <h4 class="sub-title color-white" data-aos="fade-up" data-aos-duration="700">
+                                <!-- <h4 class="sub-title color-white" data-aos="fade-up" data-aos-duration="700">
                                     Powered by AI -->
                                 </h4>
                                 <div class="banner-list" data-aos="fade-up" data-aos-duration="2100">
@@ -188,69 +224,104 @@
                                         <i class="fa-solid fa-circle-check px-2"></i> Close deals faster
                                     </p>
                                 </div>
-                                <a href="./contact-us/" class="btn-gradient" data-aos="fade-up"
+                                <a href="./contact-us.php" class="btn-gradient" data-aos="fade-up"
                                     data-aos-duration="2700">
                                     Watch Overview <i class="fa-solid fa-angles-right" style="font-size:15px;"></i>
                                 </a>
                             </div>
 
                             <!-- ✅ Right Form -->
-                          <div class="col-lg-4 col-md-12 col-sm-12">
-  <form class="registration-form contact-form row g-3" method="post" id="signupForm">
-  {% csrf_token %}
-  <div class="sub-desc color-white text-center">
-      15-Day Free Trial. No credit card
-  </div>
- 
- 
-  <!-- Name -->
-  <div class="col-12 mb-0 input-icon">
-      <i class="fas fa-user"></i>
-      <input type="text" name="name" class="form-control custom-input"
-             placeholder="Name" autocomplete="name" required
-             value="{{ name|default:'' }}">
-  </div>
- 
-  <!-- Email -->
-  <div class="col-12 mb-0 input-icon">
-      <i class="fas fa-envelope"></i>
-      <input type="email" name="email" class="form-control custom-input"
-             placeholder="Email" autocomplete="email" required
-             value="{{ email|default:'' }}">
-  </div>
- 
-  <!-- Phone -->
-  <div class="col-12 mb-0 input-icon">
-      <i class="fas fa-phone"></i>
-      <input type="tel" name="phone" class="form-control custom-input"
-             placeholder="Phone Number" autocomplete="tel" required
-             value="{{ phone|default:'' }}">
-  </div>
- 
-  <!-- Comment -->
-  <div class="col-12 mb-0">
-      <textarea name="comment" class="form-control custom-input"
-                rows="4" placeholder="Company" required>{{ comment|default:'' }}</textarea>
-  </div>
- 
-  <!-- Submit -->
-  <div class="col-12 text-center">
-      <button type="submit" id="submitBtn" class="btn-gradient mt-3 contact-submit">
-          Sign Up For Free
-      </button>
-  </div>
- 
-  <!-- ✅ Success/Error message shown below button -->
-  {% if messages %}
-    {% for message in messages %}
-      <div class="text-center mt-3 {% if message.tags == 'error' %}text-danger{% else %}text-success{% endif %}">
-        {{ message }}
-      </div>
-    {% endfor %}
-  {% endif %}
-</form>
+                            <div class="col-lg-4 col-md-12 col-sm-12">
 
-</div>
+
+                                <form class="registration-form contact-form row g-3" method="post" id="signupForm"
+                                    novalidate>
+                                    {% csrf_token %}
+
+                                    <div class="sub-desc color-white text-center">
+                                        15-Day Free Trial. No credit card
+                                    </div>
+
+                                    <!-- Name -->
+                                    <div class="col-12 mb-0 input-icon">
+                                        <i class="fas fa-user"></i>
+                                        <input type="text" name="name" id="name" class="form-control custom-input"
+                                            placeholder="Name" autocomplete="name" value="{{ name|default:'' }}">
+                                        <small id="nameError" class="text-danger"></small>
+                                    </div>
+
+                                    <!-- Email -->
+                                    <div class="col-12 mb-0 input-icon">
+                                        <i class="fas fa-envelope"></i>
+                                        <input type="text" name="email" id="email" class="form-control custom-input"
+                                            placeholder="Email" autocomplete="email" value="{{ email|default:'' }}">
+                                        <small id="emailError" class="text-danger"></small>
+                                    </div>
+
+                                    <!-- Phone -->
+                                    <div class="col-12 mb-3 d-grid align-items-center phone-group">
+                                        <div class="d-flex">
+                                        <div class="country-select">
+                                            <select id="countryCode" class="form-select me-1"
+                                                style="width: 70px; text-align: center; padding: 10px !important;">
+                                                <option value="+91" selected>🇮🇳 +91</option>
+                                                <option value="+1">🇺🇸 +1</option>
+                                                <option value="+44">🇬🇧 +44</option>
+                                                <option value="+971">🇦🇪 +971</option>
+                                                <option value="+968">🇴🇲 +968</option> <!-- Oman Added -->
+                                            </select>   
+                                        </div>
+
+                                        <div class="phone-input flex-grow-1 position-relative">
+                                            <input type="tel" name="phone" id="phone" class="ps-3 form-control"
+                                                placeholder="Phone Number" autocomplete="tel" />
+                                            
+                                        </div>
+                                        </div>
+                                        <small id="phoneError" class="text-danger"></small>
+
+                                    </div>
+
+                                    <!-- Comment -->
+                                    <div class="col-12 mb-0">
+                                        <textarea name="comment" id="comment" class="form-control custom-input" rows="4"
+                                            placeholder="Company">{{ comment|default:'' }}</textarea>
+                                        <small id="commentError" class="text-danger"></small>
+                                    </div>
+
+                                    <!-- CAPTCHA -->
+                                    <div class="col-12 mb-3 d-flex align-items-center">
+                                        <div>
+                                            <canvas id="captchaCanvas" width="100" height="40"
+                                                style="border:1px solid #ccc; margin-right:10px;"></canvas>
+                                        </div>
+                                        <input type="text" id="captchaInput" class="form-control custom-input"
+                                            placeholder="Enter CAPTCHA">
+                                    </div>
+                                    <small id="captchaError" class="text-danger"></small>
+                                    <button type="button" id="refreshCaptcha" class="btn btn-sm btn-secondary mt-1">🔄
+                                        Refresh</button>
+
+                                    <!-- Submit Button -->
+                                    <div class="col-12 text-center">
+                                        <button type="button" id="submitBtn" class="btn-gradient mt-3 contact-submit">
+                                            Sign Up For Free
+                                        </button>
+                                    </div>
+
+                                    <!-- Django backend messages -->
+                                    {% if messages %}
+                                    {% for message in messages %}
+                                    <div
+                                        class="text-center mt-3 {% if message.tags == 'error' %}text-danger{% else %}text-success{% endif %}">
+                                        {{ message }}
+                                    </div>
+                                    {% endfor %}
+                                    {% endif %}
+                                </form>
+
+
+                            </div>
 
                         </div> <!-- end row -->
                     </div> <!-- end container -->
@@ -271,9 +342,9 @@
             <!-- <div class="logo">
                 <img src="{% static 'img/Erpnextlogo.png '%}" alt="ERP Logo" width="170"> 
             </div> -->
-         <div class="logo">
-              <img src="{% static 'img/Erpnextlogo.png' %}" alt="ERP Logo" width="170">
-         </div>
+            <div class="logo">
+                <img src="{% static 'img/Erpnextlogo.png' %}" alt="ERP Logo" width="170">
+            </div>
 
 
             <ul>
@@ -294,21 +365,21 @@
         </div>
 
         <!-- Right Image -->
-      <div class="image-section">
-<img src="{% static 'img/crm/crm/crm/gif-gif.gif' %}" id="img1" class="active">
+        <div class="image-section">
+            <img src="{% static 'img/crm/crm/crm/gif-gif.gif' %}" id="img1" class="active">
 
-   
-  <img src="{% static 'img/crm/crm/leads.png' %}" id="img2">
-    <img src="{% static 'img/crm/crm/Deals.png' %}" id="img3">
-    <img src="{% static 'img/crm/crm/Activity.png' %}" id="img4">
-    <img src="{% static 'img/crm/crm/Notifications.png' %}" id="img5">
-    <img src="{% static 'img/crm/crm/export.png' %}" id="img6">
-    <img src="{% static 'img/crm/crm/email.png' %}" id="img7">
-    <img src="{% static 'img/crm/crm/task.png' %}" id="img8">
-    <img src="{% static 'img/crm/crm/contact.png' %}" id="img9">
-    <img src="{% static 'img/crm/crm/notes.png' %}" id="img10">
-    <img src="{% static 'img/crm/crm/attachiments.png' %}" id="img11">
-</div>
+
+            <img src="{% static 'img/crm/crm/leads.png' %}" id="img2">
+            <img src="{% static 'img/crm/crm/Deals.png' %}" id="img3">
+            <img src="{% static 'img/crm/crm/Activity.png' %}" id="img4">
+            <img src="{% static 'img/crm/crm/Notifications.png' %}" id="img5">
+            <img src="{% static 'img/crm/crm/export.png' %}" id="img6">
+            <img src="{% static 'img/crm/crm/email.png' %}" id="img7">
+            <img src="{% static 'img/crm/crm/task.png' %}" id="img8">
+            <img src="{% static 'img/crm/crm/contact.png' %}" id="img9">
+            <img src="{% static 'img/crm/crm/notes.png' %}" id="img10">
+            <img src="{% static 'img/crm/crm/attachiments.png' %}" id="img11">
+        </div>
     </div>
     <!-- </div> -->
 </section>
@@ -331,22 +402,23 @@
 
                     <p class="section-label">Ideal for :</p>
                     <ul class="features-list">
-                        <li><i class="fa-solid fa-circle-check text-success"></i>   Freelancers & startups exploring CRM solutions</li>
-                        <li><i class="fa-solid fa-circle-check text-success"></i>  Teams managing a few leads or testing automation features</li>
+                        <li><i class="fa-solid fa-circle-check text-success"></i> Freelancers & startups exploring CRM
+                            solutions</li>
+                        <li><i class="fa-solid fa-circle-check text-success"></i> Teams managing a few leads or testing
+                            automation features</li>
                     </ul>
 
                     <p class="section-label">Includes</p>
                     <ul class="features-list">
-                        <li><i class="fa-solid fa-circle-check text-success"></i>  Lead & Contact Management</li>
-                        <li><i class="fa-solid fa-circle-check text-success"></i>  Email Integration</li>
-                        <li><i class="fa-solid fa-circle-check text-success"></i>  Basic Task Management</li>
+                        <li><i class="fa-solid fa-circle-check text-success"></i> Lead & Contact Management</li>
+                        <li><i class="fa-solid fa-circle-check text-success"></i> Email Integration</li>
+                        <li><i class="fa-solid fa-circle-check text-success"></i> Basic Task Management</li>
                     </ul>
 
-                    <p class="price-text">Free  <span class="note">(No Credit Card Required)</span></p>
-               <button class="plan-btn"
-        onclick="window.location.href='/buy/?plan=CRM Lite&amount=0'">
-        Start for Free
-     </button>
+                    <p class="price-text">Free <span class="note">(No Credit Card Required)</span></p>
+                    <button class="plan-btn" onclick="window.location.href='/buy/?plan=CRM Lite&amount=0'">
+                        Start for Free
+                    </button>
                 </div>
             </div>
 
@@ -360,8 +432,10 @@
 
                     <p class="section-label">Ideal for :</p>
                     <ul class="features-list">
-                        <li><i class="fa-solid fa-circle-check text-primary"></i> Small to mid-sized businesses wanting predictive insights</li>
-                        <li><i class="fa-solid fa-circle-check text-primary"></i> Teams tracking performance across multiple channels</li>
+                        <li><i class="fa-solid fa-circle-check text-primary"></i> Small to mid-sized businesses wanting
+                            predictive insights</li>
+                        <li><i class="fa-solid fa-circle-check text-primary"></i> Teams tracking performance across
+                            multiple channels</li>
                     </ul>
 
                     <p class="section-label">Includes</p>
@@ -377,11 +451,10 @@
                         <p class="note">Free Updates (1 Month)</p>
                     </div>
 
-                       <!-- CHANGE APPLIED -->
-      <button class="plan-btn" 
-              onclick="window.location.href='/buy/?plan=Professional CRM&amount=1500'">
-        Select Plan
-      </button>
+                    <!-- CHANGE APPLIED -->
+                    <button class="plan-btn" onclick="window.location.href='/buy/?plan=Professional CRM&amount=1500'">
+                        Select Plan
+                    </button>
                 </div>
             </div>
 
@@ -394,26 +467,27 @@
 
                     <p class="section-label">Ideal for :</p>
                     <ul class="features-list">
-                        <li><i class="fa-solid fa-circle-check text-warning"></i> Companies managing large lead volumes</li>
-                        <li><i class="fa-solid fa-circle-check text-warning"></i>  Businesses needing advanced automation & workflow</li>
+                        <li><i class="fa-solid fa-circle-check text-warning"></i> Companies managing large lead volumes
+                        </li>
+                        <li><i class="fa-solid fa-circle-check text-warning"></i> Businesses needing advanced automation
+                            & workflow</li>
                     </ul>
 
                     <p class="section-label">Includes</p>
                     <ul class="features-list">
-                        <li><i class="fa-solid fa-circle-check text-warning"></i>  Everything in Pro</li>
-                        <li><i class="fa-solid fa-circle-check text-warning"></i>  Custom Workflow Builder</li>
-                        <li><i class="fa-solid fa-circle-check text-warning"></i>  Multi-User Role Management</li>
-                        <li><i class="fa-solid fa-circle-check text-warning"></i>  API & Third-party Integrations</li>
+                        <li><i class="fa-solid fa-circle-check text-warning"></i> Everything in Pro</li>
+                        <li><i class="fa-solid fa-circle-check text-warning"></i> Custom Workflow Builder</li>
+                        <li><i class="fa-solid fa-circle-check text-warning"></i> Multi-User Role Management</li>
+                        <li><i class="fa-solid fa-circle-check text-warning"></i> API & Third-party Integrations</li>
                     </ul>
 
                     <p class="price-text">On Request</p>
                     <p class="note">Dedicated Account Manager</p>
-                     <p class="note">Premium Cloud Storage</p>
+                    <p class="note">Premium Cloud Storage</p>
 
-                  <button class="plan-btn" 
-              onclick="window.location.href='/buy/?plan=CRM Max&amount=2999'">
-        Select Plan
-      </button>
+                    <button class="plan-btn" onclick="window.location.href='/buy/?plan=CRM Max&amount=2999'">
+                        Select Plan
+                    </button>
                 </div>
             </div>
 
@@ -427,21 +501,21 @@
         <h2 class="main-title pb-3 text-center"><span>AI-Powered CRM </span> Pricing Plan</h2> -->
 <!-- 
         <div class="row g-4"> -->
-            <!-- Column 1 -->
-            <!-- <div class="col-md-4">
+<!-- Column 1 -->
+<!-- <div class="col-md-4">
                 <div class="pricing-card p-5">
                     <h4 class="main-title text-center color-orange">Smart, Reliable, and Easy</h4>
                     <p class="main-desc text-center">Best Suitable</p> -->
-                       <!-- <p class="sub-desc2 text-center">Best Suitable</p> -->
-                    <!-- <p class="sub-desc2 text-center">
+<!-- <p class="sub-desc2 text-center">Best Suitable</p> -->
+<!-- <p class="sub-desc2 text-center">
                        For businesses of all sizes looking to automate workflows, track leads, and close deals faster — powered by AI-driven insights.
                     </p>
                 </div>
             </div> -->
 
 
-                        <!-- Column 3 -->
-            <!-- <div class="col-md-4">
+<!-- Column 3 -->
+<!-- <div class="col-md-4">
                 <div class="pricing-card p-5">
                      <h4 class="main-title text-center color-orange">Smart CRM Features</h4>
                     <ul class="features text-start">
@@ -457,8 +531,8 @@
                 </div>
             </div> -->
 
-            <!-- Column 2 -->
-            <!-- <div class="col-md-4">
+<!-- Column 2 -->
+<!-- <div class="col-md-4">
                 <div class="pricing-card p-5 text-center">
                     <p class="banner-description color-blue plan mb-3">Monthly Plan</p>
                     <h2 class="banner-title color-white">₹1,500</h2>
@@ -469,14 +543,14 @@
                         <li><i class="fa fa-check" style="color:#FF9800;"></i> Free Updates for 1 Month</li>
                         <li><i class="fa fa-check" style="color:#E91E63;"></i> Secure Cloud Backup</li>
                     </ul> -->
-                    <!-- <button class="btn-gradient" onclick="window.location.href='{% url 'buy' %}'">Get Started</button> -->
+<!-- <button class="btn-gradient" onclick="window.location.href='{% url 'buy' %}'">Get Started</button> -->
 
-                 <!-- <a href="https://crm.erpnext.ai/login/" class="btn-gradient">Get Started</a> -->
+<!-- <a href="https://crm.erpnext.ai/login/" class="btn-gradient">Get Started</a> -->
 
 <!-- CRM Admin Dashboard -->
- 
 
-                <!-- </div>
+
+<!-- </div>
             </div>
 
         </div>
@@ -528,18 +602,18 @@
                                 <stop offset="100%" stop-color="#00ffc3" stop-opacity="0.6" />
                             </linearGradient>
                             <style>
-                            .bg {
-                                fill: url(#g1);
-                                opacity: 0.10;
-                            }
+                                .bg {
+                                    fill: url(#g1);
+                                    opacity: 0.10;
+                                }
 
-                            .glyph {
-                                fill: #00ffc3;
-                            }
+                                .glyph {
+                                    fill: #00ffc3;
+                                }
 
-                            .bolt {
-                                fill: #001214;
-                            }
+                                .bolt {
+                                    fill: #001214;
+                                }
                             </style>
                         </defs>
 
@@ -581,24 +655,24 @@
                                 </feMerge>
                             </filter>
                             <style>
-                            .bg {
-                                fill: url(#g1);
-                                opacity: 0.10;
-                            }
+                                .bg {
+                                    fill: url(#g1);
+                                    opacity: 0.10;
+                                }
 
-                            .bars {
-                                fill: #00ffc3;
-                                opacity: 0.85;
-                            }
+                                .bars {
+                                    fill: #00ffc3;
+                                    opacity: 0.85;
+                                }
 
-                            .arrow {
-                                fill: none;
-                                stroke: #00ffc3;
-                                stroke-width: 6;
-                                stroke-linecap: round;
-                                stroke-linejoin: round;
-                                filter: url(#glow);
-                            }
+                                .arrow {
+                                    fill: none;
+                                    stroke: #00ffc3;
+                                    stroke-width: 6;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                    filter: url(#glow);
+                                }
                             </style>
                         </defs>
 
@@ -651,24 +725,24 @@
                                 </feMerge>
                             </filter>
                             <style>
-                            .bg {
-                                fill: url(#g1);
-                                opacity: 0.10;
-                            }
+                                .bg {
+                                    fill: url(#g1);
+                                    opacity: 0.10;
+                                }
 
-                            .node {
-                                fill: #00ffc3;
-                                opacity: 0.85;
-                            }
+                                .node {
+                                    fill: #00ffc3;
+                                    opacity: 0.85;
+                                }
 
-                            .line {
-                                fill: none;
-                                stroke: #00ffc3;
-                                stroke-width: 5;
-                                stroke-linecap: round;
-                                stroke-linejoin: round;
-                                filter: url(#glow);
-                            }
+                                .line {
+                                    fill: none;
+                                    stroke: #00ffc3;
+                                    stroke-width: 5;
+                                    stroke-linecap: round;
+                                    stroke-linejoin: round;
+                                    filter: url(#glow);
+                                }
                             </style>
                         </defs>
 
@@ -1092,7 +1166,7 @@
                 <h2 class="main-title">One Tool,<span>Endless Solutions</span> Adapts to Your Needs.
                 </h2>
                 <div class="">
-                    <a href="./contact-us/" class="btn-gradient">Book a Demo</a>
+                    <a href="./contact-us.php" class="btn-gradient">Book a Demo</a>
                 </div>
             </div>
         </div>
@@ -1110,31 +1184,31 @@
 
 
 <script>
-$(document).ready(function() {
-    $('.tab-slick-slider').slick({
-        dots: true,
-        arrows: false,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1
+    $(document).ready(function () {
+        $('.tab-slick-slider').slick({
+            dots: true,
+            arrows: false,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1
+        });
     });
-});
 </script>
 <script>
-$(document).ready(function() {
-    $('.crm-testimonial-right').slick({
-        dots: true,
-        arrows: false,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        responsive: [{
+    $(document).ready(function () {
+        $('.crm-testimonial-right').slick({
+            dots: true,
+            arrows: false,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            responsive: [{
                 breakpoint: 1024, // tablets & small laptops
                 settings: {
                     slidesToShow: 2,
@@ -1157,36 +1231,36 @@ $(document).ready(function() {
                     slidesToScroll: 1
                 }
             }
-        ]
+            ]
+        });
     });
-});
 </script>
 
 
 
 <script>
-const thumbnail = document.getElementById('thumbnail');
-const videoContainer = document.getElementById('videoContainer');
-const overlay = document.getElementById('overlay');
-const closeBtn = document.getElementById('closeBtn');
-const videoPlayer = document.getElementById('videoPlayer');
+    const thumbnail = document.getElementById('thumbnail');
+    const videoContainer = document.getElementById('videoContainer');
+    const overlay = document.getElementById('overlay');
+    const closeBtn = document.getElementById('closeBtn');
+    const videoPlayer = document.getElementById('videoPlayer');
 
-thumbnail.addEventListener('click', () => {
-    videoContainer.style.display = 'block';
-    overlay.style.display = 'block';
-});
+    thumbnail.addEventListener('click', () => {
+        videoContainer.style.display = 'block';
+        overlay.style.display = 'block';
+    });
 
-closeBtn.addEventListener('click', () => {
-    videoContainer.style.display = 'none';
-    overlay.style.display = 'none';
-    videoPlayer.pause();
-});
+    closeBtn.addEventListener('click', () => {
+        videoContainer.style.display = 'none';
+        overlay.style.display = 'none';
+        videoPlayer.pause();
+    });
 
-overlay.addEventListener('click', () => {
-    videoContainer.style.display = 'none';
-    overlay.style.display = 'none';
-    videoPlayer.pause();
-});
+    overlay.addEventListener('click', () => {
+        videoContainer.style.display = 'none';
+        overlay.style.display = 'none';
+        videoPlayer.pause();
+    });
 </script>
 
 
@@ -1195,70 +1269,245 @@ overlay.addEventListener('click', () => {
 
 
 <script>
-const autoScrollContainers = document.querySelectorAll('.taxi-booking-customer__detail');
+    const autoScrollContainers = document.querySelectorAll('.taxi-booking-customer__detail');
 
-autoScrollContainers.forEach((container) => {
-    const clonedContent = container.innerHTML;
-    container.innerHTML += clonedContent; // Clone content for seamless scrolling
+    autoScrollContainers.forEach((container) => {
+        const clonedContent = container.innerHTML;
+        container.innerHTML += clonedContent; // Clone content for seamless scrolling
 
-    let autoScrollInterval;
-    // Start auto-scrolling
-    const startAutoScroll = () => {
-        autoScrollInterval = setInterval(() => {
-            container.scrollLeft += 5; // Increase this value for faster scrolling
+        let autoScrollInterval;
+        // Start auto-scrolling
+        const startAutoScroll = () => {
+            autoScrollInterval = setInterval(() => {
+                container.scrollLeft += 5; // Increase this value for faster scrolling
 
-            // Reset scroll when reaching the end of the original content
-            if (container.scrollLeft >= container.scrollWidth / 2) {
-                container.style.scrollBehavior = 'auto';
-                container.scrollLeft = 0;
-                container.style.scrollBehavior = 'smooth';
-            }
-        }, 20); // Adjust the interval if needed
-    };
+                // Reset scroll when reaching the end of the original content
+                if (container.scrollLeft >= container.scrollWidth / 2) {
+                    container.style.scrollBehavior = 'auto';
+                    container.scrollLeft = 0;
+                    container.style.scrollBehavior = 'smooth';
+                }
+            }, 20); // Adjust the interval if needed
+        };
 
-    // Stop auto-scrolling
-    const stopAutoScroll = () => clearInterval(autoScrollInterval);
+        // Stop auto-scrolling
+        const stopAutoScroll = () => clearInterval(autoScrollInterval);
 
-    container.addEventListener('mouseenter', startAutoScroll);
-    container.addEventListener('mouseleave', stopAutoScroll);
-});
+        container.addEventListener('mouseenter', startAutoScroll);
+        container.addEventListener('mouseleave', stopAutoScroll);
+    });
 </script>
 <script>
-$(document).ready(function() {
+    $(document).ready(function () {
 
 
-    // Helpers
-    function isEmail(email) {
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return regex.test(email);
-    }
+        // Helpers
+        function isEmail(email) {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email);
+        }
 
-    function isNumber(input) {
-        const regex = /^[0-9]+$/;
-        return regex.test(input);
-    }
-});
+        function isNumber(input) {
+            const regex = /^[0-9]+$/;
+            return regex.test(input);
+        }
+    });
 </script>
 
 
 
 
 <script>
-// Subtle hover scale effect
-const card = document.querySelector('.pricing-card');
-card.addEventListener('mouseenter', () => card.style.transform = 'scale(1.02)');
-card.addEventListener('mouseleave', () => card.style.transform = 'scale(1)');
+    // Subtle hover scale effect
+    const card = document.querySelector('.pricing-card');
+    card.addEventListener('mouseenter', () => card.style.transform = 'scale(1.02)');
+    card.addEventListener('mouseleave', () => card.style.transform = 'scale(1)');
 </script>
 
 
 <!-- ✅ Updated JS — only sends amount -->
 <script>
-document.querySelectorAll('.select-btn').forEach(btn => {
-  btn.addEventListener('click', function () {
-    const amount = this.dataset.amount;
-    const plan = this.dataset.plan;
-    // Pass both plan and amount in URL for display only
-    window.location.href = `/buy/?amount=${amount}&plan=${encodeURIComponent(plan)}`;
-  });
+    document.querySelectorAll('.select-btn').forEach(btn => {
+        btn.addEventListener('click', function () {
+            const amount = this.dataset.amount;
+            const plan = this.dataset.plan;
+            // Pass both plan and amount in URL for display only
+            window.location.href = `/buy/?amount=${amount}&plan=${encodeURIComponent(plan)}`;
+        });
+    });
+
+
+</script>
+
+
+
+<script>
+const form = document.getElementById("signupForm");
+const submitBtn = document.getElementById("submitBtn");
+
+// Fields
+const name = document.getElementById("name");
+const email = document.getElementById("email");
+const phone = document.getElementById("phone");
+const comment = document.getElementById("comment");
+const countryCode = document.getElementById("countryCode");
+
+// Error fields
+const nameError = document.getElementById("nameError");
+const emailError = document.getElementById("emailError");
+const phoneError = document.getElementById("phoneError");
+const commentError = document.getElementById("commentError");
+
+// ------------------- CAPTCHA LOGIC -------------------
+const captchaCanvas = document.getElementById("captchaCanvas");
+const captchaInput = document.getElementById("captchaInput");
+const captchaError = document.getElementById("captchaError");
+const refreshCaptcha = document.getElementById("refreshCaptcha");
+
+let captchaCode = "";
+
+function generateCaptcha() {
+    const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+    captchaCode = "";
+    for (let i = 0; i < 5; i++) {
+        captchaCode += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+
+    const ctx = captchaCanvas.getContext("2d");
+    ctx.clearRect(0, 0, captchaCanvas.width, captchaCanvas.height);
+    ctx.font = "25px Arial";
+    ctx.fillStyle = "#000";
+    ctx.textBaseline = "middle";
+    ctx.fillText(captchaCode, 10, captchaCanvas.height / 2);
+
+    for (let i = 0; i < 3; i++) {
+        ctx.strokeStyle = "#" + Math.floor(Math.random() * 16777215).toString(16);
+        ctx.beginPath();
+        ctx.moveTo(Math.random() * captchaCanvas.width, Math.random() * captchaCanvas.height);
+        ctx.lineTo(Math.random() * captchaCanvas.width, Math.random() * captchaCanvas.height);
+        ctx.stroke();
+    }
+}
+generateCaptcha();
+
+refreshCaptcha.addEventListener("click", function () {
+    generateCaptcha();
+    captchaInput.value = "";
+    captchaError.textContent = "";
+});
+
+// ------------------- LIVE VALIDATION -------------------
+email.addEventListener("input", function () {
+    const emailValue = email.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (emailValue === "") {
+        emailError.textContent = "Email is required";
+        email.classList.add("is-invalid");
+    } else if (!emailRegex.test(emailValue)) {
+        emailError.textContent = "Enter a valid email";
+        email.classList.add("is-invalid");
+    } else {
+        emailError.textContent = "";
+        email.classList.remove("is-invalid");
+    }
+});
+
+phone.addEventListener("input", validatePhone);
+countryCode.addEventListener("change", validatePhone);
+
+function validatePhone() {
+    const phoneValue = phone.value.trim();
+    const selectedCode = countryCode.value;
+
+    let minLength = 8;
+    let maxLength = 15;
+
+    if (selectedCode === "+91") minLength = maxLength = 10;
+    else if (["+1", "+44", "+971", "+968"].includes(selectedCode)) minLength = 7, maxLength = 12;
+
+    const phoneRegex = /^[0-9]{0,15}$/;
+
+    if (phoneValue === "") {
+        phoneError.textContent = "Phone number is required";
+        phone.classList.add("is-invalid");
+    } else if (!phoneRegex.test(phoneValue)) {
+        phoneError.textContent = "Only digits allowed";
+        phone.classList.add("is-invalid");
+    } else if (phoneValue.length < minLength || phoneValue.length > maxLength) {
+        phoneError.textContent = `Enter a valid phone number `;
+        phone.classList.add("is-invalid");
+    } else {
+        phoneError.textContent = "";
+        phone.classList.remove("is-invalid");
+    }
+}
+
+// ------------------- BUTTON CLICK VALIDATION -------------------
+submitBtn.addEventListener("click", function () {
+    [nameError, emailError, phoneError, commentError, captchaError].forEach(el => el.textContent = "");
+    [name, email, phone, comment, captchaInput].forEach(el => el.classList.remove("is-invalid"));
+    submitBtn.innerHTML = "Sign Up For Free";
+
+    let valid = true;
+
+    // Name
+    if (name.value.trim().length < 3) {
+        nameError.textContent = " Name must be at least 3 characters.";
+        name.classList.add("is-invalid");
+        valid = false;
+    }
+
+    // Email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email.value.trim())) {
+        emailError.textContent = "Enter a valid email address.";
+        email.classList.add("is-invalid");
+        valid = false;
+    }
+
+    // Phone
+    const phoneValue = phone.value.trim();
+    const selectedCode = countryCode.value;
+    let minLength = 8, maxLength = 15;
+    if (selectedCode === "+91") minLength = maxLength = 10;
+    else if (["+1", "+44", "+971", "+968"].includes(selectedCode)) minLength = 7, maxLength = 12;
+
+    if (phoneValue === "") {
+        phoneError.textContent = "Phone number is required";
+        phone.classList.add("is-invalid");
+        valid = false;
+    } else if (!/^[0-9]+$/.test(phoneValue)) {
+        phoneError.textContent = "Only digits allowed";
+        phone.classList.add("is-invalid");
+        valid = false;
+    } else if (phoneValue.length < minLength || phoneValue.length > maxLength) {
+        phoneError.textContent = `Enter a valid phone number`;
+        phone.classList.add("is-invalid");
+        valid = false;
+    }
+
+    // Comment
+    if (comment.value.trim().length < 2) {
+        commentError.textContent = "Company field cannot be empty.";
+        comment.classList.add("is-invalid");
+        valid = false;
+    }
+
+    // CAPTCHA
+    if (captchaInput.value.trim().toUpperCase() !== captchaCode) {
+        captchaError.textContent = "CAPTCHA does not match";
+        captchaInput.classList.add("is-invalid");
+        valid = false;
+    }
+
+    // Submit if valid
+    if (valid) {
+        // ADD: prepend country code to phone number
+        phone.value = selectedCode + phoneValue;
+
+        submitBtn.innerHTML = "Sending...";
+        form.submit();
+    }
 });
 </script>

@@ -11,6 +11,20 @@ import requests
 import traceback
 
 
+# from captcha.image import ImageCaptcha
+# from django.http import HttpResponse
+# import random, string
+
+# def generate_captcha(request):
+#     captcha_text = ''.join(random.choices(string.ascii_uppercase + string.digits, k=5))
+#     request.session['captcha_text'] = captcha_text
+
+#     image = ImageCaptcha()
+#     data = image.generate(captcha_text)
+#     return HttpResponse(data, content_type='image/png')
+
+
+
 # -------------------- BUY PAGE -------------------- #
 @csrf_exempt
 def buy(request):
@@ -233,11 +247,10 @@ def index(request):
 
             email_team = EmailMessage(
                 subject_team, body_team,
-                'info@psdigitise.com', ['sales@psdigitise.com'],
-                cc=['vinoth@psdigitise.com']
+                'info@psdigitise.com', ['sales@psdigitise.com']
             )
             email_team.content_subtype = "html"
-            email_team.send()
+
 
             # -----------------------------
             # 2️⃣ Confirmation Email to User
@@ -264,7 +277,7 @@ def index(request):
                 'info@psdigitise.com', [email]
             )
             email_user.content_subtype = "html"
-            email_user.send()
+
 
             # -----------------------------
             # API Headers
@@ -334,6 +347,8 @@ def index(request):
             # -----------------------------
             # SUCCESS RESPONSE
             # -----------------------------
+            email_team.send()
+            email_user.send()
             messages.success(request, '🎉 Your message has been submitted successfully!')
             return redirect('index')
 
@@ -359,7 +374,7 @@ def contact_us(request):
         comment = request.POST.get('comment', '').strip()
 
         if not all([name, email, phone, service, comment]):
-            messages.error(request, '⚠️ Please fill out all fields.')
+            messages.error(request, ' Please fill out all fields.')
             return redirect('contact_us')
 
         try:
