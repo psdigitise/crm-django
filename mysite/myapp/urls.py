@@ -27,7 +27,8 @@ from .views import (
     create_order,
     save_payment,
     privacy_policy,
-    data_deletion,   # ✅ add this
+    data_deletion,
+    terms_and_conditions,  # ✅ Added view
 )
 
 urlpatterns = [
@@ -40,5 +41,10 @@ urlpatterns = [
 
     # Privacy & Data Policy pages
     path('privacy-policy/', privacy_policy, name='privacy_policy'),
-    path('data-deletion/', data_deletion, name='data_deletion'),   # ✅ new route
+    path('data-deletion/', data_deletion, name='data_deletion'),
+
+    # Terms & Conditions Page
+    path('terms-and-conditions/', terms_and_conditions, name='terms_and_conditions'),  # ✅ New
 ]
+
+

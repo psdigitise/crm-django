@@ -224,7 +224,7 @@ def index(request):
     if request.method == 'POST':
         name = request.POST.get('name', '').strip()
         email = request.POST.get('email', '').strip()
-        phone = request.POST.get('phone', '').strip()
+        phone = request.POST.get('fullnum', '').strip()
         comment = request.POST.get('comment', '').strip()  # Used as Company Name
 
         if not all([name, email, phone, comment]):
@@ -467,4 +467,7 @@ def privacy_policy(request):
 
 def data_deletion(request):
     return render(request, "Data_Deletion.html")
+
+def terms_and_conditions(request):
+    return render(request, "terms_and_conditions.html")
 

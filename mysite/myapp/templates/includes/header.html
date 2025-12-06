@@ -28,6 +28,95 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/css/intlTelInput.css"/>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
+<!-- <style>
+    .skiptranslate { display: none !important; }
+    body { top: 0 !important; }
+    .goog-logo-link { display: none !important; }
+    .goog-te-gadget span { display: none !important; }
+
+    #google_translate_element {
+       /* position: absolute;
+    top: 53px;
+    right: 20px; */
+    /* background: #fff; */
+    /* padding: 8px 12px; */
+    border-radius: 6px;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    }
+    .goog-te-gadget{
+        display: block !important;
+    }
+    .goog-te-gadget span {
+    display: block !important;
+    }
+    /* Hide top banner */
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+/* body {
+    top: 0 !important;
+} */
+
+/* Hide Google branding */
+.goog-logo-link, .goog-te-gadget span {
+    display: none !important;
+}
+
+/* Language Dropdown Style */
+.lang-dropdown {
+    position: absolute;
+    top: 50px;
+    right: 100px;
+    background: #ffffff;
+    padding: 8px 10px;
+    border-radius: 6px;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+/* Button Cursor */
+#languageBtn {
+    cursor: pointer;
+}
+
+</style> -->
+
+
+<style>
+
+ 
+  body > .skiptranslate,.goog-logo-link,.gskiptranslate,.goog-te-gadget span,.goog-te-banner-frame,#goog-gt-tt, .goog-te-balloon-frame,div#goog-gt-{
+    display: none!important;
+  }
+  .goog-te-gadget {
+    color: transparent!important;
+    font-size:0px;
+        width: 125px !important;
+
+  }
+  .goog-text-highlight {
+    background: none !important;
+    box-shadow: none !important;
+  }
+  #google_translate_element select{
+    background:#2b1a1200;
+    color:#fff !important;
+    border: none !important;
+    font-weight:bold;
+    border-radius:3px;
+    padding:8px 12px
+  }
+header .header-top .contact-info a {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+#google_translate_element select:focus-visible{
+    border: 0px !important;
+}
+    </style>
+
 </head>
 
 <body>
@@ -42,8 +131,24 @@
 
                 <!-- Right icons -->
                 <div class="contact-info">
-                    <a href="#"><i class="fa-solid fa-globe"></i>  English</a>
-                    <a href="#"> Support</a>
+                    <div class="d-flex align-items-center">
+                    <i class="fa-solid text-white fa-globe me-2"></i>
+<div id='google_translate_element'></div>
+<script>
+ function googleTranslateElementInit() {
+ new google.translate.TranslateElement({
+ pageLanguage: 'en',
+ autoDisplay: 'true',
+ includedLanguages:'hi,en,bn,ar,ja,iw', // <- remove this line to show all language
+ layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+ }, 'google_translate_element');
+ }
+</script>
+                    </div>
+             
+
+
+                    <!-- <a href="#"> Support</a> -->
                    <a href="{% url 'about_us' %}">About Us</a>
                 </div>
             </div>
@@ -99,9 +204,9 @@
                          <a href="{% url 'contact_us' %}" class="contact-sales">Contact Us</a>
 
                         </div>
-                        <div class="m-1">
+                        <!-- <div class="m-1">
                              <a href="{% url 'contact_us' %}" class="contact-sales">Try For Free</a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -109,3 +214,6 @@
     </header>
 
     
+
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
