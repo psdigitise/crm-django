@@ -422,6 +422,82 @@
         background-color: #eef5ff;
         /* Soft light-blue background */
     }
+    input#phone {
+    padding-left: 75px !important;
+}
+.iti__selected-dial-code {
+    color: #fff !important;
+}
+
+/* Hide flags, names — show only dial codes */
+ .iti__flag-container .iti__selected-flag {
+    padding-left: 10px !important;
+}
+ .iti__country-name{
+    display: none !important;
+}
+ .iti__country-list .iti__dial-code {
+    font-size: 14px;
+    padding-left: 10px;
+}
+.iti {
+    position: relative;
+    display: block !important;
+}
+.contact-form .contact-submit {
+
+    z-index: 0;
+   
+}
+
+
+.iti__country-name {
+    display: none !important;
+}
+.only-codes .iti__country-list .iti__dial-code {
+    padding-left: 12px;
+}
+
+
+/* Toast container */
+#toastContainer {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+/* Base toast style */
+.toast {
+  backdrop-filter: blur(12px);
+  background: rgba(40, 40, 40, 0.6);
+  color: #fff;
+  padding: 14px 22px;
+  margin-top: 12px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Show animation */
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Success & Error variants */
+.toast.success {
+  border-left: 5px solid #28a745;
+}
+
+.toast.error {
+  border-left: 5px solid #dc3545;
+}
+
 </style>
 
 <section class="banner-area">
@@ -462,7 +538,7 @@
                             <div class="col-lg-4 col-md-12 col-sm-12">
 
 
-                                <form class="registration-form contact-form row g-3" method="post" id="signupForm"
+                                <form class="registration-form contact-form row g-3" method="post" id="signupForm"  autocomplete="off"
                                     novalidate>
                                     {% csrf_token %}
 
@@ -472,37 +548,38 @@
 
                                     <!-- Name -->
                                     <div class="col-12 mb-0 input-icon">
-                                        <i class="fas fa-user"></i>
+                                        <i class="fas fa-user" style="top:27px"></i>
                                         <input type="text" name="name" id="name" class="form-control custom-input"
-                                            placeholder="Name" autocomplete="name" value="{{ name|default:'' }}">
+                                            placeholder="Name" value="{{ name|default:'' }}">
                                         <small id="nameError" class="text-danger"></small>
                                     </div>
 
                                     <!-- Email -->
                                     <div class="col-12 mb-0 input-icon">
-                                        <i class="fas fa-envelope"></i>
-                                        <input type="text" name="email" id="email" class="form-control custom-input"
-                                            placeholder="Email" autocomplete="email" value="{{ email|default:'' }}">
+                                        <i class="fas fa-envelope" style="top:27px ;"></i>
+                                        <input type="text" name="email" id="email" class="form-control custom-input" style="margin-bottom: 10px;"
+                                            placeholder="Email"  value="{{ email|default:'' }}">
                                         <small id="emailError" class="text-danger"></small>
                                     </div>
 
                                     <!-- Phone -->
                                     <div class="col-12 mb-3 d-grid align-items-center phone-group">
-                                        <div class="d-flex">
-                                            <div class="country-select">
+                                        <div class="d-flex w-100">
+                                            <!-- <div class="country-select">
                                                 <select id="countryCode" class="form-select me-1"
                                                     style="width: 70px; text-align: center; padding: 10px !important;">
                                                     <option value="+91" selected>🇮🇳 +91</option>
                                                     <option value="+1">🇺🇸 +1</option>
                                                     <option value="+44">🇬🇧 +44</option>
                                                     <option value="+971">🇦🇪 +971</option>
-                                                    <option value="+968">🇴🇲 +968</option> <!-- Oman Added -->
+                                                    <option value="+968">🇴🇲 +968</option> 
                                                 </select>
-                                            </div>
+                                            </div> -->
 
-                                            <div class="phone-input flex-grow-1 position-relative">
+                                            <div class="phone-input position-relative w-100">
                                                 <input type="tel" name="phone" id="phone" class="ps-3 form-control"
-                                                    placeholder="Phone Number" autocomplete="tel" />
+                                                    placeholder="Phone Number"  style="background: rgba(255, 255, 255, 0.15); color: white
+;">
 
                                             </div>
                                         </div>
@@ -770,14 +847,11 @@
                         </ul>
                     </div>
 
-                    <p class="price-text text-center">On Request</p>
-                    <!-- <button class="plan-btn w-100"
-                        onclick="window.location.href='/buy/?plan=CRM Max&amount=0'">
-                        Contact Sales
-                    </button>  -->
-                    <button class="plan-btn w-100" onclick="window.location.href='{% url 'contact_us' %}'">
-                        Contact Sales
-                    </button>
+                  <p class="price-text text-center">On Request</p>
+<button class="plan-btn w-100" id="contactSalesBtn">
+    Contact Sales
+</button>
+
 
                 </div>
             </div>
@@ -1812,7 +1886,7 @@ submitBtn.addEventListener("click", function () {
 </script>
 
 
-<script>
+<!-- <script>
 
     const form = document.getElementById("signupForm");
     const submitBtn = document.getElementById("submitBtn");
@@ -1929,5 +2003,352 @@ submitBtn.addEventListener("click", function () {
             form.submit();
         }
     });
+
+</script> -->
+
+<input type="tel" name="phone" id="phone" class="form-control"
+       placeholder="Phone Number" />
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+
+
+<!-- <script>
+const phoneInput = document.querySelector("#phone");
+
+const iti = window.intlTelInput(phoneInput, {
+    initialCountry: "in",
+    separateDialCode: true,
+    onlyCountries: ["in", "us", "gb", "om", "ae"],
+    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js",
+    showFlags: false,
+    formatOnDisplay: false,
+    customContainer: "only-codes",
+     responsiveDropdown:true,
+
+    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js"
+});
+
+
+phoneInput.addEventListener("countrychange", function() {
+    const countryData = iti.getSelectedCountryData();
+    document.querySelector(".iti__selected-dial-code").textContent =
+        "+" + countryData.dialCode.replace("+", "");
+});
+</script> -->
+<!-- 
+<script>
+const form = document.getElementById("signupForm");
+const submitBtn = document.getElementById("submitBtn");
+
+// Fields
+const nameField = document.getElementById("name");
+const emailField = document.getElementById("email");
+const phoneField = document.getElementById("phone");
+const commentField = document.getElementById("comment");
+
+// Error fields
+const nameError = document.getElementById("nameError");
+const emailError = document.getElementById("emailError");
+const phoneError = document.getElementById("phoneError");
+const commentError = document.getElementById("commentError");
+
+// Initialize intlTelInput
+const iti = window.intlTelInput(phoneField, {
+    initialCountry: "in",
+    separateDialCode: true,
+    onlyCountries: ["in", "us", "gb", "om", "ae"],
+    showFlags: false,
+    formatOnDisplay: false,
+    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js",
+});
+
+// Validation — Email
+emailField.addEventListener("input", () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailField.value.trim())) {
+        emailError.textContent = "Enter valid email";
+        emailField.classList.add("is-invalid");
+    } else {
+        emailError.textContent = "";
+        emailField.classList.remove("is-invalid");
+    }
+});
+
+// Validation — Phone
+function validatePhone() {
+    const phoneValue = phoneField.value.trim();
+    const countryData = iti.getSelectedCountryData();
+    const dialCode = countryData.dialCode;
+
+    let minLength = 7, maxLength = 12;
+    if (dialCode === "91") minLength = maxLength = 10;
+
+    if (phoneValue === "") {
+        phoneError.textContent = "Phone number required";
+        phoneField.classList.add("is-invalid");
+    } 
+    else if (!/^[0-9]+$/.test(phoneValue)) {
+        phoneError.textContent = "Only digits allowed";
+        phoneField.classList.add("is-invalid");
+    } 
+    else if (phoneValue.length < minLength || phoneValue.length > maxLength) {
+        phoneError.textContent = "Enter valid phone number";
+        phoneField.classList.add("is-invalid");
+    }
+    else {
+        phoneError.textContent = "";
+        phoneField.classList.remove("is-invalid");
+    }
+}
+
+phoneField.addEventListener("input", validatePhone);
+
+submitBtn.addEventListener("click", function () {
+    let valid = true;
+
+    if (nameField.value.trim().length < 3) {
+        nameError.textContent = "Enter at least 3 characters";
+        nameField.classList.add("is-invalid");
+        valid = false;
+    }
+
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value.trim());
+    if (!emailValid) {
+        emailError.textContent = "Enter valid email";
+        emailField.classList.add("is-invalid");
+        valid = false;
+    }
+
+    validatePhone();
+    if (phoneField.classList.contains("is-invalid")) valid = false;
+
+    if (commentField.value.trim().length < 2) {
+        commentError.textContent = "Company name required";
+        commentField.classList.add("is-invalid");
+        valid = false;
+    }
+
+    if (valid) {
+        const fullNumber = "+" + iti.getSelectedCountryData().dialCode + phoneField.value.trim();
+        phoneField.value = fullNumber;
+        submitBtn.innerHTML = "Sending...";
+        form.submit();
+    }
+});
+</script> -->
+
+<script>
+const form = document.getElementById("signupForm");
+const submitBtn = document.getElementById("submitBtn");
+
+// Fields
+const nameField = document.getElementById("name");
+const emailField = document.getElementById("email");
+const phoneField = document.getElementById("phone");
+const commentField = document.getElementById("comment");
+
+// Error fields
+const nameError = document.getElementById("nameError");
+const emailError = document.getElementById("emailError");
+const phoneError = document.getElementById("phoneError");
+const commentError = document.getElementById("commentError");
+
+// Initialize intlTelInput
+const iti = window.intlTelInput(phoneField, {
+    initialCountry: "in",
+    separateDialCode: true,
+    onlyCountries: ["in", "us", "gb", "om", "ae"],
+    showFlags: false,
+    formatOnDisplay: false,
+    utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js",
+});
+
+// Toast setup
+const toastContainer = document.createElement("div");
+toastContainer.id = "toastContainer";
+toastContainer.style.position = "fixed";
+toastContainer.style.top = "20px";
+toastContainer.style.right = "20px";
+toastContainer.style.zIndex = "9999";
+document.body.appendChild(toastContainer);
+
+function showToast(message, type = "success") {
+    const toast = document.createElement("div");
+    toast.textContent = message;
+    toast.style.backdropFilter = "blur(12px)";
+    toast.style.background = "rgba(40,40,40,0.7)";
+    toast.style.color = "#fff";
+    toast.style.padding = "14px 22px";
+    toast.style.marginTop = "12px";
+    toast.style.borderRadius = "10px";
+    toast.style.fontSize = "15px";
+    toast.style.fontWeight = "500";
+    toast.style.boxShadow = "0 8px 20px rgba(0,0,0,0.25)";
+    toast.style.opacity = "0";
+    toast.style.transform = "translateX(100%)";
+    toast.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+
+    if (type === "success") {
+        toast.style.borderLeft = "5px solid #28a745";
+    } else {
+        toast.style.borderLeft = "5px solid #dc3545";
+    }
+
+    toastContainer.appendChild(toast);
+
+    setTimeout(() => {
+        toast.style.opacity = "1";
+        toast.style.transform = "translateX(0)";
+    }, 100);
+
+    setTimeout(() => {
+        toast.style.opacity = "0";
+        toast.style.transform = "translateX(100%)";
+        setTimeout(() => toast.remove(), 400);
+    }, 3000);
+}
+
+// Validation — Email
+emailField.addEventListener("input", () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailField.value.trim())) {
+        emailError.textContent = "Enter valid email";
+        emailField.classList.add("is-invalid");
+    } else {
+        emailError.textContent = "";
+        emailField.classList.remove("is-invalid");
+    }
+});
+
+// Validation — Phone
+function validatePhone() {
+    const phoneValue = phoneField.value.trim();
+    const countryData = iti.getSelectedCountryData();
+    const dialCode = countryData.dialCode;
+
+    let minLength, maxLength;
+
+    const rules = {
+        "91": { min: 10, max: 10 },  // India
+        "1":  { min: 10, max: 10 },  // USA
+        "44": { min: 10, max: 11 },  // UK
+        "968": { min: 8, max: 8 },   // Oman
+        "971": { min: 9, max: 9 }    // UAE
+    };
+
+    if (rules[dialCode]) {
+        minLength = rules[dialCode].min;
+        maxLength = rules[dialCode].max;
+    } else {
+        minLength = 7;
+        maxLength = 12; // fallback
+    }
+
+    if (phoneValue === "") {
+        phoneError.textContent = "Phone number required";
+        phoneField.classList.add("is-invalid");
+    } 
+    else if (!/^[0-9]+$/.test(phoneValue)) {
+        phoneError.textContent = "Only digits allowed";
+        phoneField.classList.add("is-invalid");
+    } 
+    else if (phoneValue.length < minLength || phoneValue.length > maxLength) {
+        phoneError.textContent = `Enter valid phone number (${minLength}-${maxLength} digits)`;
+        phoneField.classList.add("is-invalid");
+    }
+    else {
+        phoneError.textContent = "";
+        phoneField.classList.remove("is-invalid");
+    }
+}
+
+phoneField.addEventListener("input", validatePhone);
+
+submitBtn.addEventListener("click", function () {
+    let valid = true;
+
+    if (nameField.value.trim().length < 3) {
+        nameError.textContent = "Enter at least 3 characters";
+        nameField.classList.add("is-invalid");
+        valid = false;
+    }
+
+    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value.trim());
+    if (!emailValid) {
+        emailError.textContent = "Enter valid email";
+        emailField.classList.add("is-invalid");
+        valid = false;
+    }
+    nameField.addEventListener("input", () => {
+        if (nameField.value.trim().length >= 3) {
+            nameError.textContent = "";
+            nameField.classList.remove("is-invalid");
+        }
+    });
+    validatePhone();
+    if (phoneField.classList.contains("is-invalid")) valid = false;
+
+    if (commentField.value.trim().length < 2) {
+        commentError.textContent = "Company name required";
+        commentField.classList.add("is-invalid");
+        valid = false;
+    }
+
+    commentField.addEventListener("input", () => {
+        if (commentField.value.trim().length >= 2) {
+            commentError.textContent = "";
+            commentField.classList.remove("is-invalid");
+        }
+    });
+    if (valid) {
+        const fullNumber = "+" + iti.getSelectedCountryData().dialCode + phoneField.value.trim();
+        phoneField.value = fullNumber;
+        submitBtn.innerHTML = "Sending...";
+
+        // Example: send form data to backend
+        fetch("", {
+    method: "POST",
+    body: new FormData(form),
+    headers: {
+        "X-Requested-With": "XMLHttpRequest"
+    }
+})
+.then(res => res.json())
+.then(data => {
+    submitBtn.innerHTML = "Submit"; // Reset button always
+
+    if (data.status === "success") {
+        showToast("Message submitted successfully ✅");
+        form.reset();
+    } 
+    else if (data.status === "email_exists") {
+        showToast("Email already registered ⚠️", "error");
+        emailField.classList.add("is-invalid");
+        emailError.textContent = "Email already registered";
+    }
+    else if (data.status === "company_exists") {
+        showToast("Company already exists ⚠️", "error");
+        commentField.classList.add("is-invalid");
+        commentError.textContent = "Company already exists";
+    }
+    else {
+        showToast(data.message || "Something went wrong ❌", "error");
+    }
+})
+.catch(() => {
+    submitBtn.innerHTML = "Submit"; // Also reset here
+    showToast("Something went wrong ❌", "error");
+});
+    }
+});
+</script>
+
+
+<script>
+    document.getElementById("contactSalesBtn").addEventListener("click", function (e) {
+    e.preventDefault(); // prevent any redirect
+    showToast("Coming Soon 🚀", "error"); // using your existing toast
+});
 
 </script>

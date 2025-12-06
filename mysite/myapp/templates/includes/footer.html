@@ -725,7 +725,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
      -->
-<script>
+<!-- <script>
   document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector(".contact-form");
     const submitBtn = form.querySelector(".contact-submit");
@@ -837,7 +837,126 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
+</script> -->
+
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector(".contact-form");
+    const submitBtn = form.querySelector(".contact-submit");
+
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const phoneInput = document.getElementById("phone");
+    const commentInput = document.getElementById("comment");
+
+    const nameError = document.getElementById("error-name");
+    const emailError = document.getElementById("error-email");
+    const phoneError = document.getElementById("error-phone");
+    const commentError = document.getElementById("error-comment");
+
+    function validateName() {
+      const name = nameInput.value.trim();
+      if (!name) {
+        nameError.textContent = "⚠️ Name is required";
+        return false;
+      } else if (name.length < 3) {
+        nameError.textContent = "👤 Name must be at least 3 characters";
+        return false;
+      }
+      nameError.textContent = "";
+      return true;
+    }
+
+    function validateEmail() {
+      const email = emailInput.value.trim();
+      if (!email) {
+        emailError.textContent = "⚠️ Email is required";
+        return false;
+      } else if (!(email.includes("@") && email.includes("."))) {
+        emailError.textContent = "✉️ Enter a valid Email ID";
+        return false;
+      }
+      emailError.textContent = "";
+      return true;
+    }
+
+    function validatePhone() {
+      const phone = phoneInput.value.trim();
+      const phoneValid = /^[0-9]{10}$/.test(phone);
+      if (!phone) {
+        phoneError.textContent = "⚠️ Phone Number is required";
+        return false;
+      } else if (!phoneValid) {
+        phoneError.textContent = "📵 Phone must be 10 digits only";
+        return false;
+      }
+      phoneError.textContent = "";
+      return true;
+    }
+
+    function validateComment() {
+      if (!commentInput.value.trim()) {
+        commentError.textContent = "⚠️ Company is required";
+        return false;
+      }
+      commentError.textContent = "";
+      return true;
+    }
+
+    function validateForm() {
+      const valid =
+        validateName() &&
+        validateEmail() &&
+        validatePhone() &&
+        validateComment();
+
+      submitBtn.disabled = !valid;
+      submitBtn.style.opacity = valid ? "1" : "0.6";
+      submitBtn.style.cursor = valid ? "pointer" : "not-allowed";
+
+      return valid;
+    }
+
+    // Attach live validation
+    nameInput.addEventListener("input", () => {
+      validateName();
+      validateForm();
+    });
+
+    emailInput.addEventListener("input", () => {
+      validateEmail();
+      validateForm();
+    });
+
+    phoneInput.addEventListener("input", () => {
+      validatePhone();
+      validateForm();
+    });
+
+    commentInput.addEventListener("input", () => {
+      validateComment();
+      validateForm();
+    });
+
+    form.addEventListener("submit", function (e) {
+      if (!validateForm()) {
+        e.preventDefault();
+      } else {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = "Sending...";
+        submitBtn.style.opacity = "0.7";
+      }
+    });
+
+    window.addEventListener("pageshow", function () {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = "SUBMIT";
+      submitBtn.style.opacity = "1";
+    });
+  });
 </script>
+
 
 <!-- ✅ Script to handle button clicks
 <script>

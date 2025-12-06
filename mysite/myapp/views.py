@@ -211,6 +211,14 @@ from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_protect
 
+
+
+
+from django.views.decorators.csrf import csrf_protect
+from django.http import JsonResponse
+from django.core.mail import EmailMessage
+import requests, traceback
+
 @csrf_protect
 def index(request):
     if request.method == 'POST':
@@ -220,8 +228,7 @@ def index(request):
         comment = request.POST.get('comment', '').strip()  # Used as Company Name
 
         if not all([name, email, phone, comment]):
-            messages.error(request, '⚠️ Please fill all fields.')
-            return redirect('index')
+            return JsonResponse({"status": "error", "message": "⚠️ Please fill all fields."})
 
         try:
             # -----------------------------
@@ -229,19 +236,12 @@ def index(request):
             # -----------------------------
             subject_team = 'ERPNext AI - New Contact Form Submission'
             body_team = f"""
-            <html>
-            <body style="font-family: Arial, sans-serif; background-color: #f8f9fa;">
-                <table style="max-width: 600px; margin: 40px auto; background: #ffffff;
-                border-radius: 8px; border: 1px solid #ddd;">
-                <tr><td style="padding: 30px;">
-                    <h2>📩 New Contact Form Submission</h2>
-                    <p>You have received a new inquiry through the website form:</p>
-                    <hr>
-                    <p><strong>Name:</strong> {name}<br>
-                       <strong>Email:</strong> {email}<br>
-                       <strong>Phone:</strong> {phone}<br>
-                       <strong>Message:</strong> {comment}</p>
-                </td></tr></table>
+            <html><body>
+                <h2>📩 New Contact Form Submission</h2>
+                <p><strong>Name:</strong> {name}<br>
+                   <strong>Email:</strong> {email}<br>
+                   <strong>Phone:</strong> {phone}<br>
+                   <strong>Message:</strong> {comment}</p>
             </body></html>
             """
 
@@ -251,24 +251,18 @@ def index(request):
             )
             email_team.content_subtype = "html"
 
-
             # -----------------------------
             # 2️⃣ Confirmation Email to User
             # -----------------------------
             subject_user = 'ERPNext AI - Thank You for Contacting Us'
             body_user = f"""
-            <html><body style="font-family: Arial, sans-serif; background-color: #f6f6f6;">
-                <table style="max-width: 600px; margin: 40px auto; background: #ffffff;
-                border-radius: 8px; border: 1px solid #ddd;">
-                <tr><td style="padding: 30px;">
-                    <h2>Thank you for contacting us, {name}.</h2>
-                    <p>We have received your message and will get in touch with you shortly.</p>
-                    <hr>
-                    <p><strong>Name:</strong> {name}<br>
-                       <strong>Email:</strong> {email}<br>
-                       <strong>Phone:</strong> {phone}<br>
-                       <strong>Message:</strong> {comment}</p>
-                </td></tr></table>
+            <html><body>
+                <h2>Thank you for contacting us, {name}.</h2>
+                <p>We have received your message and will get in touch with you shortly.</p>
+                <p><strong>Name:</strong> {name}<br>
+                   <strong>Email:</strong> {email}<br>
+                   <strong>Phone:</strong> {phone}<br>
+                   <strong>Message:</strong> {comment}</p>
             </body></html>
             """
 
@@ -277,7 +271,6 @@ def index(request):
                 'info@psdigitise.com', [email]
             )
             email_user.content_subtype = "html"
-
 
             # -----------------------------
             # API Headers
@@ -294,8 +287,7 @@ def index(request):
             check_company_res = requests.get(check_company_url, headers=headers)
 
             if check_company_res.status_code == 200:
-                messages.error(request, "⚠️ This Company already exists!")
-                return redirect('index')
+                return JsonResponse({"status": "company_exists", "message": "⚠️ This Company already exists!"})
 
             # -----------------------------
             # 4️⃣ Check if Email already exists
@@ -304,8 +296,7 @@ def index(request):
             check_user_res = requests.get(check_user_url, headers=headers)
 
             if check_user_res.status_code == 200:
-                messages.error(request, "⚠️ This Email is already registered!")
-                return redirect('index')
+                return JsonResponse({"status": "email_exists", "message": "⚠️ This Email is already registered!"})
 
             # -----------------------------
             # 5️⃣ Create Company
@@ -320,9 +311,7 @@ def index(request):
             company_res = requests.post(company_url, json=company_payload, headers=headers)
 
             if company_res.status_code not in [200, 201]:
-                print("Company API Error:", company_res.text)
-                messages.error(request, "❌ Failed creating Company!")
-                return redirect('index')
+                return JsonResponse({"status": "error", "message": "❌ Failed creating Company!"})
 
             # -----------------------------
             # 6️⃣ Create User
@@ -335,30 +324,25 @@ def index(request):
                 "phone": phone,
                 "plan_id": "0"
             }
-            print("tyry",user_payload)
+
             user_url = "https://api.erpnext.ai/api/v2/document/User/"
             user_res = requests.post(user_url, json=user_payload, headers=headers)
-            print("tyry",user_res)
+
             if user_res.status_code not in [200, 201]:
-                print("User API Error:", user_res.text)
-                messages.error(request, "❌ Failed creating User!")
-                return redirect('index')
+                return JsonResponse({"status": "error", "message": "❌ Failed creating User!"})
 
             # -----------------------------
             # SUCCESS RESPONSE
             # -----------------------------
             email_team.send()
             email_user.send()
-            messages.success(request, '🎉 Your message has been submitted successfully!')
-            return redirect('index')
+            return JsonResponse({"status": "success", "message": "🎉 Your message has been submitted successfully!"})
 
         except Exception as e:
             print(traceback.format_exc())
-            messages.error(request, f'❌ Failed: {str(e)}')
-            return redirect('index')
+            return JsonResponse({"status": "error", "message": f"❌ Failed: {str(e)}"})
 
     return render(request, 'index.html')
-
 
 
 # -------------------- CONTACT US PAGE FORM -------------------- #
@@ -370,10 +354,9 @@ def contact_us(request):
         name = request.POST.get('name', '').strip()
         email = request.POST.get('email', '').strip()
         phone = request.POST.get('phone', '').strip()
-        service = request.POST.get('service', '').strip()
         comment = request.POST.get('comment', '').strip()
 
-        if not all([name, email, phone, service, comment]):
+        if not all([name, email, phone, comment]):
             messages.error(request, ' Please fill out all fields.')
             return redirect('contact_us')
 
@@ -381,7 +364,7 @@ def contact_us(request):
             # -----------------------------
             # 1️⃣ Email to PS Digitise Team
             # -----------------------------
-            subject_team = f'New Contact Form Submission - {service}'
+            subject_team = f'New Contact Form Submission'
             body_team = f"""
             <html>
               <body style="font-family: Arial, sans-serif; background-color: #f8f9fa; margin: 0; padding: 0;">
@@ -395,7 +378,6 @@ def contact_us(request):
                         <strong>Name:</strong> {name}<br>
                         <strong>Email:</strong> <a href="mailto:{email}" style="color: #1a73e8;">{email}</a><br>
                         <strong>Phone:</strong> {phone}<br>
-                        <strong>Service:</strong> {service}<br>
                         <strong>Company:</strong> {comment}
                       </p>
                     </td>
@@ -440,7 +422,6 @@ def contact_us(request):
                         <strong>Name:</strong> {name}<br>
                         <strong>Email:</strong> <a href="mailto:{email}" style="color: #1a73e8; text-decoration: none;">{email}</a><br>
                         <strong>Phone:</strong> {phone}<br>
-                        <strong>Service:</strong> {service}<br>
                         <strong>Comment:</strong> {comment}
                       </p>
                     </td>
