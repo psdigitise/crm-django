@@ -28,7 +28,8 @@ from .views import (
     save_payment,
     privacy_policy,
     data_deletion,
-    terms_and_conditions,  # ✅ Added view
+    terms_and_conditions,
+    security,  # ✅ Added security view
 )
 
 urlpatterns = [
@@ -44,7 +45,10 @@ urlpatterns = [
     path('data-deletion/', data_deletion, name='data_deletion'),
 
     # Terms & Conditions Page
-    path('terms-and-conditions/', terms_and_conditions, name='terms_and_conditions'),  # ✅ New
+    path('terms-and-conditions/', terms_and_conditions, name='terms_and_conditions'),
+
+    # Security Page
+    path('security/', security, name='security'),  # ✅ Added URL
 ]
 
 
