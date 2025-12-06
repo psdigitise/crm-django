@@ -1,10 +1,10 @@
 <!-- Footer -->
 <footer class="footer">
-    <div class="container">
-        <div class="row text-md-start">
+  <div class="container">
+    <div class="row text-md-start">
 
 
-              <!-- Products -->
+      <!-- Products -->
       <div class="col-md-3 mb-4">
         <h5 class="main-desc">QUICK Links</h5>
         <p class="sub-desc2"> <a href="{% url 'index' %}#our-pricing">Pricing</a></p>
@@ -17,41 +17,41 @@
       </div>
 
 
-            <!-- Services -->
-            <div class="col-md-3 mb-4">
-                <h5 class="main-desc">Integration</h5>
-                <p class="sub-desc2"><a href="#">Whatsapp</a></p>
-                <p class="sub-desc2"><a href="#">Facebook</a></p>
-                <p class="sub-desc2"><a href="#">Call</a></p>
-                <p class="sub-desc2"><a href="#">Mail</a></p>
-            </div>
+      <!-- Services -->
+      <div class="col-md-3 mb-4">
+        <h5 class="main-desc">Integration</h5>
+        <p class="sub-desc2"><a href="#">Whatsapp</a></p>
+        <p class="sub-desc2"><a href="#">Facebook</a></p>
+        <p class="sub-desc2"><a href="#">Call</a></p>
+        <p class="sub-desc2"><a href="#">Mail</a></p>
+      </div>
 
-    
 
-            <!-- Resources -->
-            <div class="col-md-3 mb-4">
+
+      <!-- Resources -->
+      <!-- <div class="col-md-3 mb-4">
                 <h5 class="main-desc">Resources</h5>
                 <p class="sub-desc2"><a href="#">Blog</a></p>
                 <p class="sub-desc2"><a href="#">Case Studies</a></p>
                 <p class="sub-desc2"><a href="#">Whitepapers</a></p>
                 <p class="sub-desc2"><a href="#">Documentation</a></p>
-            </div>
+            </div> -->
 
-            <!-- Contact -->
-            <div class="col-md-3 mb-4">
-                <!-- <p class="main-desc">Call us</p>
+      <!-- Contact -->
+      <div class="col-md-3 mb-4">
+        <!-- <p class="main-desc">Call us</p>
                 <p class="sub-desc2"><a href="tel:+91 95669 81217">+91 95669 81217</a></p> -->
 
-                <p class="main-desc">Email us</p>
-                <p class="sub-desc2"><a href="mailto:info@erpnext.ai.com">info@erpnext.ai</a></p>
-            </div>
-        </div>
-
-        <!-- Bottom -->
-        <div class="bottom-bar pt-2 text-center text-white">
-            <p>© 2025 ERPNext.AI — Built on ERPNext by Frappe.</p>
-        </div>
+        <p class="main-desc">Email us</p>
+        <p class="sub-desc2"><a href="mailto:info@erpnext.ai.com">info@erpnext.ai</a></p>
+      </div>
     </div>
+
+    <!-- Bottom -->
+    <div class="bottom-bar pt-2 text-center text-white">
+      <p>© 2025 ERPNext.AI — Built on ERPNext by Frappe.</p>
+    </div>
+  </div>
 </footer>
 
 
@@ -71,11 +71,11 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/js/intlTelInput.min.js"></script>
 <script>
-AOS.init({
+  AOS.init({
     duration: 1000, // animation speed (ms)
     once: false, // scroll panna oru thadavai mattum animate aaganum-na true
     offset: 0, // viewport la varumbodhu gap
-});
+  });
 </script>
 
 
@@ -85,50 +85,50 @@ AOS.init({
 
 
 <script>
-const hamburger = document.querySelector('.hamburger');
-const hamburgerIcon = document.querySelector('.hamburger i');
-const navMenu = document.getElementById('navMenu');
+  const hamburger = document.querySelector('.hamburger');
+  const hamburgerIcon = document.querySelector('.hamburger i');
+  const navMenu = document.getElementById('navMenu');
 
-// Toggle menu
-hamburger.addEventListener('click', () => {
+  // Toggle menu
+  hamburger.addEventListener('click', () => {
     navMenu.classList.toggle('show');
     hamburgerIcon.classList.toggle('fa-bars');
     hamburgerIcon.classList.toggle('fa-xmark');
-});
+  });
 
-// Close menu when clicking leaf links (no submenu)
-document.querySelectorAll('#navMenu li a').forEach(link => {
+  // Close menu when clicking leaf links (no submenu)
+  document.querySelectorAll('#navMenu li a').forEach(link => {
     link.addEventListener('click', (e) => {
-        if (window.innerWidth <= 992) {
-            const parent = link.parentElement;
+      if (window.innerWidth <= 992) {
+        const parent = link.parentElement;
 
-            // If link has submenu
-            if (parent.querySelector('ul')) {
-                e.preventDefault(); // stop page navigation
+        // If link has submenu
+        if (parent.querySelector('ul')) {
+          e.preventDefault(); // stop page navigation
 
-                // Close all other open submenus first
-                document.querySelectorAll('#navMenu li.open').forEach(openLi => {
-                    if (openLi !== parent) {
-                        openLi.classList.remove('open');
-                    }
-                });
-
-                // Toggle only this submenu
-                parent.classList.toggle('open');
-            } else {
-                // Close menu if it's a normal link
-                navMenu.classList.remove('show');
-                hamburgerIcon.classList.add('fa-bars');
-                hamburgerIcon.classList.remove('fa-xmark');
+          // Close all other open submenus first
+          document.querySelectorAll('#navMenu li.open').forEach(openLi => {
+            if (openLi !== parent) {
+              openLi.classList.remove('open');
             }
+          });
+
+          // Toggle only this submenu
+          parent.classList.toggle('open');
+        } else {
+          // Close menu if it's a normal link
+          navMenu.classList.remove('show');
+          hamburgerIcon.classList.add('fa-bars');
+          hamburgerIcon.classList.remove('fa-xmark');
         }
+      }
     });
-});
+  });
 </script>
 
 <script>
-//Owl Carousel
-$(".all-banner-slide").owlCarousel({
+  //Owl Carousel
+  $(".all-banner-slide").owlCarousel({
     items: 1,
     smartSpeed: 5000,
     autoplay: true,
@@ -138,11 +138,11 @@ $(".all-banner-slide").owlCarousel({
     autoplayTimeout: 5000,
     animateOut: 'fadeOut', // or custom 'flipOutX'
     animateIn: 'fadeIn' // or custom 'flipInX'
-});
+  });
 </script>
 
 <script>
-$(".our-integration-carousel").owlCarousel({
+  $(".our-integration-carousel").owlCarousel({
     autoplay: true,
     loop: true,
     margin: 15,
@@ -153,29 +153,29 @@ $(".our-integration-carousel").owlCarousel({
     autoplayHoverPause: true,
     autoplaySpeed: 4500,
     responsive: {
-        0: {
-            items: 1
-        },
-        500: {
-            items: 2
-        },
-        600: {
-            items: 3
-        },
-        800: {
-            items: 4
-        },
-        1200: {
-            items: 5
-        }
+      0: {
+        items: 1
+      },
+      500: {
+        items: 2
+      },
+      600: {
+        items: 3
+      },
+      800: {
+        items: 4
+      },
+      1200: {
+        items: 5
+      }
     }
-});
+  });
 </script>
 
 
 
 <script>
-$("#our-product-carousel").owlCarousel({
+  $("#our-product-carousel").owlCarousel({
     loop: false, // ❌ disable infinite loop
     margin: 15,
     dots: true,
@@ -184,27 +184,27 @@ $("#our-product-carousel").owlCarousel({
     smartSpeed: 7000, // transition speed
     autoplayHoverPause: true,
     responsive: {
-        0: {
-            items: 1
-        },
-        576: {
-            items: 1
-        },
-        768: {
-            items: 2
-        },
-        992: {
-            items: 3
-        },
-        1200: {
-            items: 3
-        }
+      0: {
+        items: 1
+      },
+      576: {
+        items: 1
+      },
+      768: {
+        items: 2
+      },
+      992: {
+        items: 3
+      },
+      1200: {
+        items: 3
+      }
     }
-});
+  });
 </script>
 
 <script>
-$("#our-service-carousel").owlCarousel({
+  $("#our-service-carousel").owlCarousel({
     loop: false, // ❌ disable infinite loop
     margin: 15,
     dots: true,
@@ -213,52 +213,52 @@ $("#our-service-carousel").owlCarousel({
     smartSpeed: 7000, // transition speed
     autoplayHoverPause: true,
     responsive: {
-        0: {
-            items: 1
-        },
-        576: {
-            items: 1
-        },
-        768: {
-            items: 1.5
-        },
-        992: {
-            items: 1.5
-        },
-        1200: {
-            items: 1.5
-        }
+      0: {
+        items: 1
+      },
+      576: {
+        items: 1
+      },
+      768: {
+        items: 1.5
+      },
+      992: {
+        items: 1.5
+      },
+      1200: {
+        items: 1.5
+      }
     }
-});
+  });
 </script>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
+  document.addEventListener("DOMContentLoaded", function () {
     const blogItems = document.querySelectorAll(".front-blog-item");
 
     blogItems.forEach(item => {
-        item.addEventListener("mouseenter", () => {
-            blogItems.forEach(otherItem => {
-                if (otherItem !== item) {
-                    otherItem.querySelector(".article__thumbnail").style.opacity =
-                        "0.5";
-                }
-            });
+      item.addEventListener("mouseenter", () => {
+        blogItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.querySelector(".article__thumbnail").style.opacity =
+              "0.5";
+          }
         });
+      });
 
-        item.addEventListener("mouseleave", () => {
-            blogItems.forEach(otherItem => {
-                otherItem.querySelector(".article__thumbnail").style.opacity = "1";
-            });
+      item.addEventListener("mouseleave", () => {
+        blogItems.forEach(otherItem => {
+          otherItem.querySelector(".article__thumbnail").style.opacity = "1";
         });
+      });
     });
-});
+  });
 </script>
 
 
 
 <script>
-jQuery(document).ready(function() {
+  jQuery(document).ready(function () {
     // Open first section by default
     let first = jQuery(".accordion_set").first();
     first.addClass("acactive");
@@ -266,267 +266,267 @@ jQuery(document).ready(function() {
     jQuery(".accontent").first().slideDown(200);
 
     // Toggle accordion on click
-    jQuery(".accordion_set > .select_div").click(function() {
-        let parent = jQuery(this).parents(".accordion_set");
-        if (parent.hasClass("acactive")) {
-            parent.removeClass("acactive");
-            jQuery(this).attr("aria-expanded", "false");
-            parent.find(".accontent").slideUp(200);
-        } else {
-            jQuery(".accordion_set").removeClass("acactive");
-            jQuery(".accordion_set > .select_div").attr("aria-expanded", "false");
-            jQuery(".accontent").slideUp(200);
+    jQuery(".accordion_set > .select_div").click(function () {
+      let parent = jQuery(this).parents(".accordion_set");
+      if (parent.hasClass("acactive")) {
+        parent.removeClass("acactive");
+        jQuery(this).attr("aria-expanded", "false");
+        parent.find(".accontent").slideUp(200);
+      } else {
+        jQuery(".accordion_set").removeClass("acactive");
+        jQuery(".accordion_set > .select_div").attr("aria-expanded", "false");
+        jQuery(".accontent").slideUp(200);
 
-            parent.addClass("acactive");
-            jQuery(this).attr("aria-expanded", "true");
-            parent.find(".accontent").slideDown(200);
-        }
+        parent.addClass("acactive");
+        jQuery(this).attr("aria-expanded", "true");
+        parent.find(".accontent").slideDown(200);
+      }
     });
-});
+  });
 </script>
 
 <script>
-particlesJS("particles-js", {
+  particlesJS("particles-js", {
     particles: {
-        number: {
-            value: 250,
-            density: {
-                enable: true,
-                value_area: 700
-            }
-        },
-        color: {
-            value: ["#00ffff", "#ff007f", "#ffcc00", "#00ff88", "#ffffff"]
-        },
-        shape: {
-            type: "circle"
-        },
-        opacity: {
-            value: 0.8,
-            random: true
-        },
-        size: {
-            value: 2.5,
-            random: true
-        },
-        line_linked: {
-            enable: false
-        },
-        move: {
-            enable: true,
-            speed: 0.95,
-            direction: "none",
-            random: true,
-            straight: false,
-            out_mode: "out",
-            bounce: false
+      number: {
+        value: 250,
+        density: {
+          enable: true,
+          value_area: 700
         }
+      },
+      color: {
+        value: ["#00ffff", "#ff007f", "#ffcc00", "#00ff88", "#ffffff"]
+      },
+      shape: {
+        type: "circle"
+      },
+      opacity: {
+        value: 0.8,
+        random: true
+      },
+      size: {
+        value: 2.5,
+        random: true
+      },
+      line_linked: {
+        enable: false
+      },
+      move: {
+        enable: true,
+        speed: 0.95,
+        direction: "none",
+        random: true,
+        straight: false,
+        out_mode: "out",
+        bounce: false
+      }
     },
     interactivity: {
-        detect_on: "canvas",
-        events: {
-            onclick: {
-                enable: true,
-                mode: "repulse"
-            },
-            resize: true
+      detect_on: "canvas",
+      events: {
+        onclick: {
+          enable: true,
+          mode: "repulse"
         },
-        modes: {
-            repulse: {
-                distance: 200,
-                duration: 0.4
-            }
+        resize: true
+      },
+      modes: {
+        repulse: {
+          distance: 200,
+          duration: 0.4
         }
+      }
     },
     retina_detect: true
-});
+  });
 </script>
 
 
 <script>
-function isEmail(email) {
+  function isEmail(email) {
     const regex = /^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+\.)([a-zA-Z0-9]{2,})+$/;
     return regex.test(email);
-}
+  }
 
-function isPhone(number) {
+  function isPhone(number) {
     const regex = /^[0-9]{10,15}$/;
     return regex.test(number);
-}
+  }
 
-/*$(document).ready(function() {
-    // Allow only numbers in phone field
-    $(document).on("input", "#phone", function() {
-        this.value = this.value.replace(/[^0-9]/g, "");
-    });
-
-    // Handle submit for all .contact-form elements
-    $(document).on("click", ".contact-submit", function(e) {
-        e.preventDefault(); // stop normal form submit
-
-        let form = $(this).closest(".contact-form");
-        form.find(".error-message").remove();
-        let isValid = true;
-
-        const name = form.find("#name").val().trim();
-        const email = form.find("#email").val().trim();
-        const phone = form.find("#phone").val().trim();
-        const comment = form.find("#comment").val().trim();
-        const serviceDropdown = form.find("#service"); // optional field
-        const service = serviceDropdown.length ? serviceDropdown.val() :
-        ""; // handle if dropdown not present
-
-        function showError(inputId, msg) {
-            const input = form.find("#" + inputId);
-            input.after(
-                `<div class="error-message" style="color:red; font-size:0.9em; margin-top:3px;">${msg}</div>`
-                );
-            isValid = false;
-        }
-
-        // Field validations
-        if (name === "") showError("name", "Please enter your name.");
-        if (!isEmail(email)) showError("email", "Please enter a valid email.");
-        if (!isPhone(phone)) showError("phone", "Please enter a valid phone number (10-15 digits).");
-        if (comment === "") showError("comment", "Please enter your message.");
-        if (serviceDropdown.length && service === "") showError("service", "Please select a service.");
-
-        if (!isValid) return;
-
-        // Prepare data (only include service if exists)
-        const formData = {
-            name,
-            email,
-            phone,
-            comment
-        };
-        if (serviceDropdown.length) {
-            formData.service = service;
-        }
-
-        // Disable button while sending
-        const btn = form.find(".contact-submit");
-        btn.prop("disabled", true).text("Sending...");
-
-        // Send email
-        $.post("./email_sender", formData)
-            .done(function() {
-                form.find(".emailresult").html(
-                    `<div style="color:green; font-weight:bold; margin-top:10px;">✅ Your message has been sent successfully!</div>`
-                );
-                form[0].reset();
-            })
-            .fail(function() {
-                form.find(".emailresult").html(
-                    `<div style="color:red; font-weight:bold; margin-top:10px;">❌ Unable to send email. Please try again.</div>`
-                );
-            })
-            .always(function() {
-                btn.prop("disabled", false).text("Try for Free");
-                setTimeout(() => {
-                    form.find(".error-message, .emailresult").fadeOut();
-                }, 8000);
-            });
-    });
-});*/
+  /*$(document).ready(function() {
+      // Allow only numbers in phone field
+      $(document).on("input", "#phone", function() {
+          this.value = this.value.replace(/[^0-9]/g, "");
+      });
+  
+      // Handle submit for all .contact-form elements
+      $(document).on("click", ".contact-submit", function(e) {
+          e.preventDefault(); // stop normal form submit
+  
+          let form = $(this).closest(".contact-form");
+          form.find(".error-message").remove();
+          let isValid = true;
+  
+          const name = form.find("#name").val().trim();
+          const email = form.find("#email").val().trim();
+          const phone = form.find("#phone").val().trim();
+          const comment = form.find("#comment").val().trim();
+          const serviceDropdown = form.find("#service"); // optional field
+          const service = serviceDropdown.length ? serviceDropdown.val() :
+          ""; // handle if dropdown not present
+  
+          function showError(inputId, msg) {
+              const input = form.find("#" + inputId);
+              input.after(
+                  `<div class="error-message" style="color:red; font-size:0.9em; margin-top:3px;">${msg}</div>`
+                  );
+              isValid = false;
+          }
+  
+          // Field validations
+          if (name === "") showError("name", "Please enter your name.");
+          if (!isEmail(email)) showError("email", "Please enter a valid email.");
+          if (!isPhone(phone)) showError("phone", "Please enter a valid phone number (10-15 digits).");
+          if (comment === "") showError("comment", "Please enter your message.");
+          if (serviceDropdown.length && service === "") showError("service", "Please select a service.");
+  
+          if (!isValid) return;
+  
+          // Prepare data (only include service if exists)
+          const formData = {
+              name,
+              email,
+              phone,
+              comment
+          };
+          if (serviceDropdown.length) {
+              formData.service = service;
+          }
+  
+          // Disable button while sending
+          const btn = form.find(".contact-submit");
+          btn.prop("disabled", true).text("Sending...");
+  
+          // Send email
+          $.post("./email_sender", formData)
+              .done(function() {
+                  form.find(".emailresult").html(
+                      `<div style="color:green; font-weight:bold; margin-top:10px;">✅ Your message has been sent successfully!</div>`
+                  );
+                  form[0].reset();
+              })
+              .fail(function() {
+                  form.find(".emailresult").html(
+                      `<div style="color:red; font-weight:bold; margin-top:10px;">❌ Unable to send email. Please try again.</div>`
+                  );
+              })
+              .always(function() {
+                  btn.prop("disabled", false).text("Try for Free");
+                  setTimeout(() => {
+                      form.find(".error-message, .emailresult").fadeOut();
+                  }, 8000);
+              });
+      });
+  });*/
 </script>
 
 
 <!-- JS for scrollspy effect -->
 <script>
-const sections = document.querySelectorAll("section");
-const navButtons = document.querySelectorAll(".sticky-btn");
+  const sections = document.querySelectorAll("section");
+  const navButtons = document.querySelectorAll(".sticky-btn");
 
-window.addEventListener("scroll", () => {
+  window.addEventListener("scroll", () => {
     let current = "";
     sections.forEach(section => {
-        const sectionTop = section.offsetTop - 120;
-        if (scrollY >= sectionTop) {
-            current = section.getAttribute("id");
-        }
+      const sectionTop = section.offsetTop - 120;
+      if (scrollY >= sectionTop) {
+        current = section.getAttribute("id");
+      }
     });
 
     navButtons.forEach(btn => {
-        btn.classList.remove("active");
-        if (btn.getAttribute("data-target") === current) {
-            btn.classList.add("active");
-        }
+      btn.classList.remove("active");
+      if (btn.getAttribute("data-target") === current) {
+        btn.classList.add("active");
+      }
     });
-});
+  });
 
-navButtons.forEach(btn => {
+  navButtons.forEach(btn => {
     btn.addEventListener("click", () => {
-        document.getElementById(btn.getAttribute("data-target")).scrollIntoView({
-            behavior: "smooth"
-        });
+      document.getElementById(btn.getAttribute("data-target")).scrollIntoView({
+        behavior: "smooth"
+      });
     });
-});
+  });
 </script>
 
 
 
 <script>
-const menuItems = document.querySelectorAll('.menu-section ul li');
-const images = document.querySelectorAll('.image-section img');
-const imageSection = document.querySelector('.image-section');
+  const menuItems = document.querySelectorAll('.menu-section ul li');
+  const images = document.querySelectorAll('.image-section img');
+  const imageSection = document.querySelector('.image-section');
 
-let currentIndex = 0;
-let autoSlideInterval;
-let autoStarted = false; // ✅ will start only after section visible
-let observerStarted = false;
+  let currentIndex = 0;
+  let autoSlideInterval;
+  let autoStarted = false; // ✅ will start only after section visible
+  let observerStarted = false;
 
-// Function to activate tab
-function activateTab(index) {
-  menuItems.forEach(li => li.classList.remove('active'));
-  images.forEach(img => img.classList.remove('active'));
+  // Function to activate tab
+  function activateTab(index) {
+    menuItems.forEach(li => li.classList.remove('active'));
+    images.forEach(img => img.classList.remove('active'));
 
-  menuItems[index].classList.add('active');
-  images[index].classList.add('active');
-  currentIndex = index;
-}
+    menuItems[index].classList.add('active');
+    images[index].classList.add('active');
+    currentIndex = index;
+  }
 
-// Function to start auto-slide
-function startAutoSlide() {
-  if (autoStarted) return; // Prevent multiple starts
-  autoStarted = true;
-  autoSlideInterval = setInterval(() => {
-    currentIndex = (currentIndex + 1) % menuItems.length;
-    activateTab(currentIndex);
-  }, 5000); // 30 sec
-}
+  // Function to start auto-slide
+  function startAutoSlide() {
+    if (autoStarted) return; // Prevent multiple starts
+    autoStarted = true;
+    autoSlideInterval = setInterval(() => {
+      currentIndex = (currentIndex + 1) % menuItems.length;
+      activateTab(currentIndex);
+    }, 5000); // 30 sec
+  }
 
-// Manual click listener (scrolls smoothly)
-menuItems.forEach((item, index) => {
-  item.addEventListener('click', () => {
-    clearInterval(autoSlideInterval);
-    activateTab(index);
-    imageSection.scrollIntoView({
-      behavior: 'smooth',
-      block: 'center'
+  // Manual click listener (scrolls smoothly)
+  menuItems.forEach((item, index) => {
+    item.addEventListener('click', () => {
+      clearInterval(autoSlideInterval);
+      activateTab(index);
+      imageSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+      startAutoSlide(); // restart if already started
     });
-    startAutoSlide(); // restart if already started
   });
-});
 
-// ✅ On page load: set first tab active, no scroll or blink
+  // ✅ On page load: set first tab active, no scroll or blink
 
 
-// ✅ Intersection Observer → start auto-slide only when section visible
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !observerStarted) {
-        observerStarted = true;
-        startAutoSlide(); // start only after section appears on screen
-      }
-    });
-  },
-  { threshold: 0.4 } // triggers when 40% of section visible
-);
+  // ✅ Intersection Observer → start auto-slide only when section visible
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !observerStarted) {
+          observerStarted = true;
+          startAutoSlide(); // start only after section appears on screen
+        }
+      });
+    },
+    { threshold: 0.4 } // triggers when 40% of section visible
+  );
 
-observer.observe(imageSection);
+  observer.observe(imageSection);
 
-// ✅ Extra safety to prevent scroll memory
+  // ✅ Extra safety to prevent scroll memory
 
 </script>
 
@@ -704,7 +704,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 </script> -->
-<script>
+<!-- <script>
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.querySelector(".contact-form");
     const submitBtn = form.querySelector(".contact-submit");
@@ -724,7 +724,120 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 </script>
-    
+     -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector(".contact-form");
+    const submitBtn = form.querySelector(".contact-submit");
+
+    const emailInput = document.getElementById("email");
+    const phoneInput = document.getElementById("phone");
+    const serviceInput = document.getElementById("service");
+    const commentInput = document.getElementById("comment");
+
+    const emailError = document.getElementById("error-email");
+    const phoneError = document.getElementById("error-phone");
+    const serviceError = document.getElementById("error-service");
+    const commentError = document.getElementById("error-comment");
+
+    function validateEmail() {
+      const email = emailInput.value.trim();
+      if (!email) {
+        emailError.textContent = "⚠️ Email is required";
+        return false;
+      } else if (!(email.includes("@") && email.includes("."))) {
+        emailError.textContent = "✉️ Email must contain @ and .";
+        return false;
+      }
+      emailError.textContent = "";
+      return true;
+    }
+
+    function validatePhone() {
+      const phone = phoneInput.value.trim();
+      const phoneValid = /^[0-9]{10}$/.test(phone);
+      if (!phone) {
+        phoneError.textContent = "⚠️ Phone is required";
+        return false;
+      } else if (!phoneValid) {
+        phoneError.textContent = "📵 Phone must be 10 digits only";
+        return false;
+      }
+      phoneError.textContent = "";
+      return true;
+    }
+
+    function validateService() {
+      if (!serviceInput.value.trim()) {
+        serviceError.textContent = "⚠️ Please select a service";
+        return false;
+      }
+      serviceError.textContent = "";
+      return true;
+    }
+
+    function validateComment() {
+      if (!commentInput.value.trim()) {
+        commentError.textContent = "⚠️ Company is required";
+        return false;
+      }
+      commentError.textContent = "";
+      return true;
+    }
+
+    function validateForm() {
+      const valid =
+        validateEmail() &&
+        validatePhone() &&
+        validateService() &&
+        validateComment();
+
+      submitBtn.disabled = !valid;
+      submitBtn.style.opacity = valid ? "1" : "0.6";
+      submitBtn.style.cursor = valid ? "pointer" : "not-allowed";
+
+      return valid;
+    }
+
+    // Attach field-specific validation + recheck form
+    emailInput.addEventListener("input", () => {
+      validateEmail();
+      validateForm();
+    });
+
+    phoneInput.addEventListener("input", () => {
+      validatePhone();
+      validateForm();
+    });
+
+    serviceInput.addEventListener("change", () => {
+      validateService();
+      validateForm();
+    });
+
+    commentInput.addEventListener("input", () => {
+      validateComment();
+      validateForm();
+    });
+
+    form.addEventListener("submit", function (e) {
+      if (!validateForm()) {
+        e.preventDefault();
+      } else {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = "Sending...";
+        submitBtn.style.opacity = "0.7";
+      }
+    });
+
+    window.addEventListener("pageshow", function () {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = "SUBMIT";
+      submitBtn.style.opacity = "1";
+    });
+  });
+
+</script>
 
 <!-- ✅ Script to handle button clicks
 <script>
@@ -737,3 +850,30 @@ document.querySelectorAll('.select-btn').forEach(btn => {
   });
 });
 </script> -->
+
+
+
+<script>
+  const toggleBtn = document.getElementById("languageToggle");
+  const popup = document.getElementById("languagePopup");
+  const langButtons = document.querySelectorAll(".lang-option");
+
+  // Toggle popup
+  toggleBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    popup.classList.toggle("hidden");
+  });
+
+  // Language selection
+  langButtons.forEach(btn => {
+    btn.addEventListener("click", function () {
+      const selectedLang = this.getAttribute("data-lang");
+
+      // Save to localStorage or cookie
+      localStorage.setItem("siteLang", selectedLang);
+
+      // Redirect or reload with language param
+      window.location.href = `/?lang=${selectedLang}`;
+    });
+  });
+</script>

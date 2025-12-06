@@ -396,7 +396,7 @@ def contact_us(request):
                         <strong>Email:</strong> <a href="mailto:{email}" style="color: #1a73e8;">{email}</a><br>
                         <strong>Phone:</strong> {phone}<br>
                         <strong>Service:</strong> {service}<br>
-                        <strong>Comment:</strong> {comment}
+                        <strong>Company:</strong> {comment}
                       </p>
                     </td>
                   </tr>

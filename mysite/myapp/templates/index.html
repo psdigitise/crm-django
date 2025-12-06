@@ -194,6 +194,234 @@
     .phone-group ::placeholder {
         color: rgba(255, 255, 255, 0.6);
     }
+
+
+    /* Pricing Section */
+    .crm-pricing-section {
+        padding: 3rem 0;
+    }
+
+    /* Smaller cards */
+    .crm-pricing-section .col-md-3 {
+        padding: 0 10px;
+    }
+
+    .crm-pricing-section .pricing-card {
+        border-radius: 14px;
+        padding: 22px 18px;
+        min-height: 540px;
+        /* Reduced height */
+        transition: .32s ease;
+        border: 1px solid #e5e5e5;
+        background: #fff;
+        box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Hover: subtle classic lift */
+    .crm-pricing-section .pricing-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Headers & Text Spacing */
+    .plan-title {
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+    }
+
+    .pricing-card p {
+        margin-bottom: 6px;
+        font-size: 0.92rem;
+        color: #000;
+    }
+
+    /* Feature lists */
+    .features-list li {
+        margin-bottom: 6px;
+        font-size: 0.9rem;
+    }
+
+    /* Price section clean */
+    .price-box .price-text {
+        font-size: 1.6rem;
+        margin-bottom: 4px;
+    }
+
+    .price-box span {
+        font-size: 0.85rem;
+    }
+
+    /* Buttons smaller & modern */
+    .plan-btn {
+        padding: 10px;
+        width: 100%;
+        font-size: 0.92rem !important;
+        border-radius: 10px;
+    }
+
+    /* Badge styling cleaner */
+    .recommended-badge {
+        font-size: 10px;
+        padding: 5px 12px;
+        border-radius: 0 0 6px 6px;
+    }
+
+    /* Mobile scroll optimization */
+    @media (max-width: 992px) {
+        .crm-pricing-section .row {
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .crm-pricing-section .col-md-3 {
+            min-width: 270px;
+            /* Much slimmer */
+        }
+    }
+
+
+    .recommended-badge {
+        background: #007bff;
+        color: #fff;
+        padding: 4px 10px;
+        font-size: 11px;
+        border-radius: 20px;
+        position: absolute;
+        top: -10px;
+        right: 10px;
+        font-weight: 600;
+    }
+
+    .old-price {
+        text-decoration: line-through;
+        font-size: 12px;
+        color: #666;
+    }
+
+    .price-box span {
+        font-size: 12px;
+    }
+
+    .price-box .note {
+        font-size: 12px;
+        color: #333;
+    }
+
+
+    .enterprise-blue {
+        background: #e9f4ff;
+        /* soft light blue */
+        border: 1px solid #b7d7f6;
+        box-shadow: 0 2px 12px rgba(0, 102, 204, 0.08);
+    }
+
+    .enterprise-blue:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 20px rgba(0, 102, 204, 0.15);
+    }
+
+    .enterprise-blue .plan-title {
+        color: #004a9f;
+        font-weight: 700;
+    }
+
+    .enterprise-blue .price-text {
+        color: #042f6a;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .enterprise-blue .section-label {
+        color: #003d80;
+    }
+
+    .crm-pricing-section {
+        padding: 50px 0;
+    }
+
+    .pricing-card {
+        background: #ffffff;
+        border-radius: 12px;
+        border: 1px solid #e0e7ff;
+        padding: 20px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        transition: 0.3s ease-in-out;
+    }
+
+    .pricing-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .recommended-card {
+        border: 2px solid #0066ff;
+    }
+
+    .recommended-badge {
+        position: absolute;
+        top: -10px;
+        right: 20px;
+        background: #0066ff;
+        color: #fff;
+        padding: 3px 12px;
+        font-size: 12px;
+        border-radius: 20px;
+    }
+
+    .small-card {
+        min-height: 880px;
+        /* Ensure equal height */
+    }
+
+    .section-label {
+        font-size: 14px;
+        font-weight: 600;
+        margin: 14px 0 6px;
+        color: #333;
+    }
+
+    .features-list {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    .features-list li {
+        font-size: 14px;
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .features-wrapper {
+        flex-grow: 1;
+    }
+
+    .plan-btn {
+        background: #0052e8;
+        color: #fff;
+        border: none;
+        padding: 10px 12px;
+        border-radius: 8px;
+        font-weight: 600;
+    }
+
+    .plan-btn:hover {
+        background: #003cb8;
+    }
+
+    .price-text {
+        font-size: 20px;
+        font-weight: 700;
+        margin-top: 15px;
+    }
+
+    .enterprise-blue {
+        background-color: #eef5ff;
+        /* Soft light-blue background */
+    }
 </style>
 
 <section class="banner-area">
@@ -261,22 +489,22 @@
                                     <!-- Phone -->
                                     <div class="col-12 mb-3 d-grid align-items-center phone-group">
                                         <div class="d-flex">
-                                        <div class="country-select">
-                                            <select id="countryCode" class="form-select me-1"
-                                                style="width: 70px; text-align: center; padding: 10px !important;">
-                                                <option value="+91" selected>🇮🇳 +91</option>
-                                                <option value="+1">🇺🇸 +1</option>
-                                                <option value="+44">🇬🇧 +44</option>
-                                                <option value="+971">🇦🇪 +971</option>
-                                                <option value="+968">🇴🇲 +968</option> <!-- Oman Added -->
-                                            </select>   
-                                        </div>
+                                            <div class="country-select">
+                                                <select id="countryCode" class="form-select me-1"
+                                                    style="width: 70px; text-align: center; padding: 10px !important;">
+                                                    <option value="+91" selected>🇮🇳 +91</option>
+                                                    <option value="+1">🇺🇸 +1</option>
+                                                    <option value="+44">🇬🇧 +44</option>
+                                                    <option value="+971">🇦🇪 +971</option>
+                                                    <option value="+968">🇴🇲 +968</option> <!-- Oman Added -->
+                                                </select>
+                                            </div>
 
-                                        <div class="phone-input flex-grow-1 position-relative">
-                                            <input type="tel" name="phone" id="phone" class="ps-3 form-control"
-                                                placeholder="Phone Number" autocomplete="tel" />
-                                            
-                                        </div>
+                                            <div class="phone-input flex-grow-1 position-relative">
+                                                <input type="tel" name="phone" id="phone" class="ps-3 form-control"
+                                                    placeholder="Phone Number" autocomplete="tel" />
+
+                                            </div>
                                         </div>
                                         <small id="phoneError" class="text-danger"></small>
 
@@ -290,7 +518,7 @@
                                     </div>
 
                                     <!-- CAPTCHA -->
-                                    <div class="col-12 mb-3 d-flex align-items-center">
+                                    <!-- <div class="col-12 mb-3 d-flex align-items-center">
                                         <div>
                                             <canvas id="captchaCanvas" width="100" height="40"
                                                 style="border:1px solid #ccc; margin-right:10px;"></canvas>
@@ -300,7 +528,7 @@
                                     </div>
                                     <small id="captchaError" class="text-danger"></small>
                                     <button type="button" id="refreshCaptcha" class="btn btn-sm btn-secondary mt-1">🔄
-                                        Refresh</button>
+                                        Refresh</button> -->
 
                                     <!-- Submit Button -->
                                     <div class="col-12 text-center">
@@ -388,112 +616,176 @@
 
 <!---plans-->
 <section class="crm-pricing-section" id="our-pricing">
-    <div class="container">
+    <div class="container-fluid">
         <h2 class="main-title"><span>AI-Powered CRM</span> Pricing Plan</h2>
 
         <div class="row g-4 justify-content-center align-items-stretch">
 
             <!-- FREE PLAN -->
-            <div class="col-md-4">
-                <div class="pricing-card free h-100">
-                    <p class="top-badge-free text-center">Free 15-Days</p>
-                    <h3 class="plan-title">Free Plan – CRM Lite</h3>
-                    <p class="plan-sub">For Individuals & Small Teams Starting Out</p>
+            <div class="col-md-3">
+                <div class="pricing-card small-card" style="background-color: #e9f6e7;">
+                    <h3 class="plan-title text-center mb-2">Free CRM Plan</h3>
+                    <p class="sub-label text-center"><b>For Individuals & Small Teams Starting Out</b></p>
 
-                    <p class="section-label">Ideal for :</p>
-                    <ul class="features-list">
-                        <li><i class="fa-solid fa-circle-check text-success"></i> Freelancers & startups exploring CRM
-                            solutions</li>
-                        <li><i class="fa-solid fa-circle-check text-success"></i> Teams managing a few leads or testing
-                            automation features</li>
-                    </ul>
+                    <div class="features-wrapper">
+                        <p class="section-label">CRM Features</p>
+                        <ul class="features-list">
+                            <li><i class="fa-solid fa-circle-check text-success"></i> Leads & Deals</li>
+                            <li><i class="fa-solid fa-circle-check text-success"></i> Contacts & Organizations</li>
+                            <li><i class="fa-solid fa-circle-check text-success"></i> Notes, Tasks & Call Logs</li>
+                            <li><i class="fa-solid fa-circle-check text-success"></i> Activity Timeline</li>
+                            <li><i class="fa-solid fa-circle-check text-success"></i> Email Tracking</li>
+                            <li><i class="fa-solid fa-circle-check text-success"></i> Website Lead Capture</li>
+                        </ul>
 
-                    <p class="section-label">Includes</p>
-                    <ul class="features-list">
-                        <li><i class="fa-solid fa-circle-check text-success"></i> Lead & Contact Management</li>
-                        <li><i class="fa-solid fa-circle-check text-success"></i> Email Integration</li>
-                        <li><i class="fa-solid fa-circle-check text-success"></i> Basic Task Management</li>
-                    </ul>
+                        <p class="section-label">Usage</p>
+                        <ul class="features-list">
+                            <li><i class="fa-solid fa-user text-primary"></i> 1 User</li>
+                        </ul>
 
-                    <p class="price-text">Free <span class="note">(No Credit Card Required)</span></p>
-                    <button class="plan-btn" onclick="window.location.href='/buy/?plan=CRM Lite&amount=0'">
-                        Start for Free
+                        <p class="section-label">Value Highlights</p>
+                        <ul class="features-list">
+                            <li><i class="fa-solid fa-circle-check text-success"></i> Simple CRM to start</li>
+                            <li><i class="fa-solid fa-circle-check text-success"></i> Track all interactions</li>
+                            <li><i class="fa-solid fa-circle-check text-success"></i> Email insights</li>
+                        </ul>
+                    </div>
+
+                    <p class="price-text text-center">₹0 / Free</p>
+                    <button class="plan-btn w-100" onclick="window.location.href='/buy/?plan=CRM Lite&amount=0'">
+                        Get Started Free
+                    </button>
+                </div>
+            </div>
+
+            <!-- STANDARD PLAN -->
+            <div class="col-md-3">
+                <div class="pricing-card recommended-card small-card" style="background-color: #f5ebff
+ ;">
+                    <span class="recommended-badge">Recommended</span>
+                    <h3 class="plan-title text-center mb-2">STANDARD PLAN – CRM</h3>
+                    <p class="sub-label text-center"><b>Best for Growing Teams</b></p>
+
+                    <div class="features-wrapper">
+                        <p class="section-label">CRM Features</p>
+                        <ul class="features-list">
+                            <li><i class="fa-solid fa-circle-check text-primary"></i> Everything in Free</li>
+                            <li><i class="fa-solid fa-circle-check text-primary"></i> Lead Assignment Rules</li>
+                            <li><i class="fa-solid fa-circle-check text-primary"></i> Basic Permission Access</li>
+                            <li><i class="fa-solid fa-circle-check text-primary"></i> Standard Lead Capture</li>
+                            <li><i class="fa-solid fa-circle-check text-primary"></i> Meta Ads Lead Sync</li>
+                            <li><i class="fa-solid fa-circle-check text-primary"></i> Up to 3 Users</li>
+                        </ul>
+
+                        <p class="section-label">AI Features</p>
+                        <ul class="features-list">
+                            <li><i class="fa-solid fa-microchip text-primary"></i> AI Lead Score</li>
+                            <li><i class="fa-solid fa-microchip text-primary"></i> AI Email Assist</li>
+                        </ul>
+
+                        <p class="section-label">Value Highlights</p>
+                        <ul class="features-list">
+                            <li><i class="fa-solid fa-circle-check text-success"></i> Lead sync automation</li>
+                            <li><i class="fa-solid fa-circle-check text-success"></i> AI-based prioritization</li>
+                            <li><i class="fa-solid fa-circle-check text-success"></i> Faster sales email response</li>
+                        </ul>
+                    </div>
+
+                    <p class="price-text text-center mb-1">₹1,500 <span>/month</span></p>
+                    <button class="plan-btn w-100"
+                        onclick="window.location.href='/buy/?plan=Professional CRM&amount=1500'">
+                        Select Plan
                     </button>
                 </div>
             </div>
 
             <!-- PROFESSIONAL PLAN -->
-            <div class="col-md-4">
-                <div class="pricing-card pro position-relative h-100">
-                    <span class="recommended-badge">Recommended Plan</span>
+            <div class="col-md-3">
+                <div class="pricing-card small-card" style="background-color:#fcf5e3
+ ;">
+                    <h3 class="plan-title text-center mb-2">PROFESSIONAL PLAN – CRM Pro</h3>
+                    <p class="sub-label text-center"><b>For Large Teams & Enterprises</b></p>
 
-                    <h3 class="plan-title">Professional Plan – CRM</h3>
-                    <p class="plan-sub">For Growing Businesses</p>
+                    <div class="features-wrapper">
+                        <p class="section-label">CRM Features</p>
+                        <ul class="features-list">
+                            <li><i class="fa-solid fa-circle-check text-warning"></i> Everything in Standard</li>
+                            <li><i class="fa-solid fa-circle-check text-warning"></i> Advanced Permissions</li>
+                            <li><i class="fa-solid fa-circle-check text-warning"></i> Advanced Lead Capture</li>
+                            <li><i class="fa-solid fa-circle-check text-warning"></i> Meta Ads Auto Sync</li>
+                            <li><i class="fa-solid fa-circle-check text-warning"></i> Up to 6 Users</li>
+                        </ul>
 
-                    <p class="section-label">Ideal for :</p>
-                    <ul class="features-list">
-                        <li><i class="fa-solid fa-circle-check text-primary"></i> Small to mid-sized businesses wanting
-                            predictive insights</li>
-                        <li><i class="fa-solid fa-circle-check text-primary"></i> Teams tracking performance across
-                            multiple channels</li>
-                    </ul>
+                        <p class="section-label">Advanced AI Features</p>
+                        <ul class="features-list">
+                            <li><i class="fa-solid fa-microchip text-warning"></i> AI Lead Score (Advanced)</li>
+                            <li><i class="fa-solid fa-microchip text-warning"></i> AI Assist Email (Advanced)</li>
+                            <li><i class="fa-solid fa-microchip text-warning"></i> Company Intelligence Report</li>
+                            <li><i class="fa-solid fa-microchip text-warning"></i> AI Forecasted Revenue</li>
+                        </ul>
 
-                    <p class="section-label">Includes</p>
-                    <ul class="features-list">
-                        <li><i class="fa-solid fa-circle-check text-primary"></i> Everything in Starter</li>
-                        <li><i class="fa-solid fa-circle-check text-primary"></i> AI Predictive Lead Scoring</li>
-                        <li><i class="fa-solid fa-circle-check text-primary"></i> Smart Follow-up Suggestions</li>
-                    </ul>
-
-                    <div class="price-box">
-                        <p class="price-text">₹1,500 <span>/month</span><span class="old-price"> Actual ₹1000</span></p>
-                        <p class="note">24/7 Support</p>
-                        <p class="note">Free Updates (1 Month)</p>
+                        <p class="section-label">Value Highlights</p>
+                        <ul class="features-list">
+                            <li><i class="fa-solid fa-circle-check text-success"></i> Real-time lead capture</li>
+                            <li><i class="fa-solid fa-circle-check text-success"></i> Revenue prediction</li>
+                            <li><i class="fa-solid fa-circle-check text-success"></i> Smart insights</li>
+                        </ul>
                     </div>
-
-                    <!-- CHANGE APPLIED -->
-                    <button class="plan-btn" onclick="window.location.href='/buy/?plan=Professional CRM&amount=1500'">
+                    <p class="price-text text-center mb-1">₹2,500 <span>/month</span></p>
+                    <!-- <p class="price-text text-center">On Request</p> -->
+                    <button class="plan-btn w-100" onclick="window.location.href='/buy/?plan=CRM Max&amount=2500'">
                         Select Plan
                     </button>
                 </div>
             </div>
 
             <!-- ENTERPRISE PLAN -->
-            <div class="col-md-4">
-                <div class="pricing-card enterprise h-100">
+            <div class="col-md-3">
+                <div class="pricing-card small-card enterprise-blue" style="background-color: rgb(217, 227, 233);">
+                    <h3 class="plan-title text-center mb-2">ENTERPRISE PLAN – CRM Max</h3>
+                    <p class="sub-label text-center"><b>For Multi-Location Companies</b></p>
 
-                    <h3 class="plan-title">Enterprise Plan – CRM Max</h3>
-                    <p class="plan-sub">For Large Teams & Enterprises</p>
+                    <div class="features-wrapper">
+                        <p class="section-label">CRM Features</p>
+                        <ul class="features-list">
+                            <li><i class="fa-solid fa-circle-check text-primary"></i> Everything in Professional</li>
+                            <li><i class="fa-solid fa-circle-check text-primary"></i> Unlimited Users</li>
+                            <li><i class="fa-solid fa-circle-check text-primary"></i> Custom Role Hierarchy</li>
+                            <li><i class="fa-solid fa-circle-check text-primary"></i> Full API & Integrations</li>
+                            <li><i class="fa-solid fa-circle-check text-primary"></i> Meta Ads Routing</li>
+                        </ul>
 
-                    <p class="section-label">Ideal for :</p>
-                    <ul class="features-list">
-                        <li><i class="fa-solid fa-circle-check text-warning"></i> Companies managing large lead volumes
-                        </li>
-                        <li><i class="fa-solid fa-circle-check text-warning"></i> Businesses needing advanced automation
-                            & workflow</li>
-                    </ul>
+                        <p class="section-label">Enterprise Support</p>
+                        <ul class="features-list">
+                            <li><i class="fa-solid fa-headset text-primary"></i> Dedicated Account Manager</li>
+                            <li><i class="fa-solid fa-headset text-primary"></i> SLA Support</li>
+                            <li><i class="fa-solid fa-headset text-primary"></i> Dedicated Cloud Storage</li>
+                        </ul>
 
-                    <p class="section-label">Includes</p>
-                    <ul class="features-list">
-                        <li><i class="fa-solid fa-circle-check text-warning"></i> Everything in Pro</li>
-                        <li><i class="fa-solid fa-circle-check text-warning"></i> Custom Workflow Builder</li>
-                        <li><i class="fa-solid fa-circle-check text-warning"></i> Multi-User Role Management</li>
-                        <li><i class="fa-solid fa-circle-check text-warning"></i> API & Third-party Integrations</li>
-                    </ul>
+                        <p class="section-label">Value Highlights</p>
+                        <ul class="features-list">
+                            <li><i class="fa-solid fa-circle-check text-success"></i> Best for distributed teams</li>
+                            <li><i class="fa-solid fa-circle-check text-success"></i> Custom workflows</li>
+                            <li><i class="fa-solid fa-circle-check text-success"></i> Priority SLA support</li>
+                        </ul>
+                    </div>
 
-                    <p class="price-text">On Request</p>
-                    <p class="note">Dedicated Account Manager</p>
-                    <p class="note">Premium Cloud Storage</p>
-
-                    <button class="plan-btn" onclick="window.location.href='/buy/?plan=CRM Max&amount=2999'">
-                        Select Plan
+                    <p class="price-text text-center">On Request</p>
+                    <!-- <button class="plan-btn w-100"
+                        onclick="window.location.href='/buy/?plan=CRM Max&amount=0'">
+                        Contact Sales
+                    </button>  -->
+                    <button class="plan-btn w-100" onclick="window.location.href='{% url 'contact_us' %}'">
+                        Contact Sales
                     </button>
+
                 </div>
             </div>
 
         </div>
     </div>
 </section>
+
 
 
 <!-- <section class="crm-pricing-section" id="our-pricing">
@@ -789,16 +1081,20 @@
             <div class="col-md-12">
                 <div class="owl-carousel owl-theme our-integration-carousel">
                     <div class="item box">
-                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/1.png'%}">
+                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/mail1.png'%}">
                     </div>
                     <div class="item box">
-                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/3.png'%}">
+                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/meta1.png'%}">
                     </div>
                     <div class="item box">
-                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/4.png'%}">
+                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/twilio.png'%}">
                     </div>
                     <div class="item box">
-                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/7.png'%}">
+                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/app.png'%}">
+                    </div>
+
+                      <div class="item box">
+                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/api.png'%}">
                     </div>
                 </div>
             </div>
@@ -1342,6 +1638,8 @@
 
 
 <script>
+
+    /*
 const form = document.getElementById("signupForm");
 const submitBtn = document.getElementById("submitBtn");
 
@@ -1510,4 +1808,126 @@ submitBtn.addEventListener("click", function () {
         form.submit();
     }
 });
+*/
+</script>
+
+
+<script>
+
+    const form = document.getElementById("signupForm");
+    const submitBtn = document.getElementById("submitBtn");
+
+    // Fields
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
+    const phone = document.getElementById("phone");
+    const comment = document.getElementById("comment");
+    const countryCode = document.getElementById("countryCode");
+
+    // Error fields
+    const nameError = document.getElementById("nameError");
+    const emailError = document.getElementById("emailError");
+    const phoneError = document.getElementById("phoneError");
+    const commentError = document.getElementById("commentError");
+
+    email.addEventListener("input", function () {
+        const emailValue = email.value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (emailValue === "") {
+            emailError.textContent = "Email is required";
+            email.classList.add("is-invalid");
+        } else if (!emailRegex.test(emailValue)) {
+            emailError.textContent = "Enter a valid email";
+            email.classList.add("is-invalid");
+        } else {
+            emailError.textContent = "";
+            email.classList.remove("is-invalid");
+        }
+    });
+
+    phone.addEventListener("input", validatePhone);
+    countryCode.addEventListener("change", validatePhone);
+
+    function validatePhone() {
+        const phoneValue = phone.value.trim();
+        const selectedCode = countryCode.value;
+
+        let minLength = 8;
+        let maxLength = 15;
+
+        if (selectedCode === "+91") minLength = maxLength = 10;
+        else if (["+1", "+44", "+971", "+968"].includes(selectedCode)) minLength = 7, maxLength = 12;
+
+        const phoneRegex = /^[0-9]{0,15}$/;
+
+        if (phoneValue === "") {
+            phoneError.textContent = "Phone number is required";
+            phone.classList.add("is-invalid");
+        } else if (!phoneRegex.test(phoneValue)) {
+            phoneError.textContent = "Only digits allowed";
+            phone.classList.add("is-invalid");
+        } else if (phoneValue.length < minLength || phoneValue.length > maxLength) {
+            phoneError.textContent = `Enter a valid phone number`;
+            phone.classList.add("is-invalid");
+        } else {
+            phoneError.textContent = "";
+            phone.classList.remove("is-invalid");
+        }
+    }
+
+    submitBtn.addEventListener("click", function () {
+        [nameError, emailError, phoneError, commentError].forEach(el => el.textContent = "");
+        [name, email, phone, comment].forEach(el => el.classList.remove("is-invalid"));
+        submitBtn.innerHTML = "Sign Up For Free";
+
+        let valid = true;
+
+        if (name.value.trim().length < 3) {
+            nameError.textContent = " Name must be at least 3 characters.";
+            name.classList.add("is-invalid");
+            valid = false;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email.value.trim())) {
+            emailError.textContent = "Enter a valid email address.";
+            email.classList.add("is-invalid");
+            valid = false;
+        }
+
+        const phoneValue = phone.value.trim();
+        const selectedCode = countryCode.value;
+
+        let minLength = 8, maxLength = 15;
+        if (selectedCode === "+91") minLength = maxLength = 10;
+        else if (["+1", "+44", "+971", "+968"].includes(selectedCode)) minLength = 7, maxLength = 12;
+
+        if (phoneValue === "") {
+            phoneError.textContent = "Phone number is required";
+            phone.classList.add("is-invalid");
+            valid = false;
+        } else if (!/^[0-9]+$/.test(phoneValue)) {
+            phoneError.textContent = "Only digits allowed";
+            phone.classList.add("is-invalid");
+            valid = false;
+        } else if (phoneValue.length < minLength || phoneValue.length > maxLength) {
+            phoneError.textContent = `Enter a valid phone number`;
+            phone.classList.add("is-invalid");
+            valid = false;
+        }
+
+        if (comment.value.trim().length < 2) {
+            commentError.textContent = "Company field cannot be empty.";
+            comment.classList.add("is-invalid");
+            valid = false;
+        }
+
+        if (valid) {
+            phone.value = selectedCode + phoneValue;
+            submitBtn.innerHTML = "Sending...";
+            form.submit();
+        }
+    });
+
 </script>
