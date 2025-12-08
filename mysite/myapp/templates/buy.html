@@ -147,7 +147,8 @@
     <form id="paymentForm">
       <input type="text" id="name" placeholder="Full Name">
       <input type="email" id="email" placeholder="Email">
-      <input type="text" id="phone" placeholder="Phone (10 digits)">
+     <input type="text" id="phone" placeholder="Phone Number" maxlength="14">
+
 
       {% if free %}
       <!-- FREE PLAN → No Amount Field -->
@@ -178,29 +179,28 @@
   const nameInput = document.getElementById("name");
   const submitBtn = freePlan ? document.getElementById("freeBtn") : document.getElementById("payBtn");
 
-  function validateForm() {
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-    const phone = phoneInput.value.trim();
+ function validateForm() {
+  const name = nameInput.value.trim();
+  const email = emailInput.value.trim();
+  const phone = phoneInput.value.trim();
 
-    const phoneValid = /^[0-9]{10}$/.test(phone); // exactly 10 digits
-    const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); // must end with @gmail.com
+  // ✅ Phone must be between 10 and 14 digits
+  const phoneValid = /^[0-9]{10,14}$/.test(phone);
 
-    if (phone && !phoneValid) {
-      showToast("📵 Phone must be 10 digits only", "error");
-    }
+  // ✅ Email must contain @ and .
+  const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-    if (email && !emailValid) {
-      showToast("✉️ Enter valid Email ID with @", "error");
-    }
-
-    const allValid = name && phoneValid && emailValid;
-    submitBtn.disabled = !allValid;
-    submitBtn.style.opacity = allValid ? "1" : "0.6";
-    submitBtn.style.cursor = allValid ? "pointer" : "not-allowed";
-
-    return allValid;
+  if (email && !emailValid) {
+    showToast(" Enter valid Email ID with @", "error");
   }
+
+  const allValid = name && phoneValid && emailValid;
+  submitBtn.disabled = !allValid;
+  submitBtn.style.opacity = allValid ? "1" : "0.6";
+  submitBtn.style.cursor = allValid ? "pointer" : "not-allowed";
+
+  return allValid;
+}
 
   // Attach live validation
   phoneInput.addEventListener("input", validateForm);
@@ -307,6 +307,21 @@
       rzp.open();
     };
   }
+
+  // Restrict phone input to digits only
+phoneInput.addEventListener("input", function (e) {
+  const value = phoneInput.value;
+
+  // If non-digit characters are typed, remove them and show toast
+  if (/[^0-9]/.test(value)) {
+    phoneInput.value = value.replace(/[^0-9]/g, ""); // keep only digits
+    showToast("Only numbers are allowed ", "error");
+  }
+
+  // Run validation after cleaning
+  validateForm();
+});
+
 </script>
 </body>
 

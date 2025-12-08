@@ -35,7 +35,8 @@
     <a href="{% url 'about_us' %}">About Us</a>
 </p>
                 <p class="sub-desc2"><a href="#">Blog</a></p>
-                <p class="sub-desc2"><a href="#">Partners</a></p>
+               <p class="sub-desc2"><a href="{% url 'partners' %}">Partners</a></p>
+
               <p class="sub-desc2"><a href="{% url 'security' %}">Security</a></p>
 
             </div>
@@ -875,10 +876,10 @@ document.addEventListener("DOMContentLoaded", function() {
     function validateName() {
       const name = nameInput.value.trim();
       if (!name) {
-        nameError.textContent = "⚠️ Name is required";
+        nameError.textContent = " Name is required";
         return false;
       } else if (name.length < 3) {
-        nameError.textContent = "👤 Name must be at least 3 characters";
+        nameError.textContent = " Name must be at least 3 characters";
         return false;
       }
       nameError.textContent = "";
@@ -888,10 +889,10 @@ document.addEventListener("DOMContentLoaded", function() {
     function validateEmail() {
       const email = emailInput.value.trim();
       if (!email) {
-        emailError.textContent = "⚠️ Email is required";
+        emailError.textContent = " Email is required";
         return false;
       } else if (!(email.includes("@") && email.includes("."))) {
-        emailError.textContent = "✉️ Enter a valid Email ID";
+        emailError.textContent = " Enter a valid Email ID";
         return false;
       }
       emailError.textContent = "";
@@ -902,10 +903,10 @@ document.addEventListener("DOMContentLoaded", function() {
       const phone = phoneInput.value.trim();
       const phoneValid = /^[0-9]{10}$/.test(phone);
       if (!phone) {
-        phoneError.textContent = "⚠️ Phone Number is required";
+        phoneError.textContent = " Phone Number is required";
         return false;
       } else if (!phoneValid) {
-        phoneError.textContent = "📵 Phone must be 10 digits only";
+        phoneError.textContent = " Phone must be 10 digits only";
         return false;
       }
       phoneError.textContent = "";
@@ -914,7 +915,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function validateComment() {
       if (!commentInput.value.trim()) {
-        commentError.textContent = "⚠️ Company is required";
+        commentError.textContent = "Company is required";
         return false;
       }
       commentError.textContent = "";

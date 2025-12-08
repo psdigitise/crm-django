@@ -1,0 +1,401 @@
+{% load static %}
+{% include 'includes/header.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Official Frappe Partner</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <style>
+    body {
+      background: #0c1221;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .main-wrapper {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 35px;
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .section-box {
+      background: #111a2b;
+      border-radius: 12px;
+      padding: 25px;
+      margin-bottom: 20px;
+      width: 100%;
+      min-height: 170px;
+      transition: 0.3s ease-in-out;
+    }
+
+    .section-box:hover {
+      transform: translateY(-4px);
+      background: #16223a;
+    }
+
+    h2 {
+      font-weight: 700;
+      font-size: 45px;
+     color: #F1B209;
+    }
+
+    h5 {
+      font-weight: 800;
+      margin-bottom: 20px;
+      font-size: 22px;
+      color: #F1B209;
+    }
+
+    .icon-box i {
+      font-size: 34px;
+      color: #00d1ff;
+    }
+
+    .section-box ul li,
+    .section-box p {
+      margin-bottom: 10px;
+      font-size: 17px;
+    }
+
+    .section-box ul {
+      padding-left: 18px;
+    }
+
+    .text-center p {
+      line-height: 1.8;
+      font-size: 18px;
+      padding-top: 15px;
+    }
+
+    .row.text-center .col-6 {
+      margin-bottom: 20px;
+    }
+.client-img {
+  vertical-align: middle;
+}
+
+.client-img {
+  width: 28px;
+  height: auto;
+}
+
+.frappe-label {
+  line-height: 1.4;
+}
+.section-box.bg-white {
+  padding: 30px;
+}
+
+.section-box.bg-white .shadow-sm:hover {
+  transform: translateY(-3px);
+  transition: 0.3s ease;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 18px 5px;
+  transition: 0.3s ease-in-out;
+}
+
+.feature-card i {
+  font-size: 28px;
+  color: #F1B209; /* yellow icon */
+  margin-bottom: 8px;
+}
+
+.feature-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-4px);
+}
+
+  .why-choose-us {
+  background:;
+  padding: 50px 0;
+  color: #fff;
+  text-align: center;
+}
+
+.main-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 35px;
+  color: #FFC933;
+ margin: 0 auto;
+}
+
+.choose-card {
+  background: #0C1F3A;
+  border-radius: 14px;
+  padding: 20px 25px;
+  display: flex;
+  align-items: start;
+  gap: 12px;
+  text-align: left;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: 0.3s ease-in-out;
+}
+
+.choose-card:hover {
+  border-color: #FFC933;
+  transform: translateY(-6px);
+}
+
+.choose-card .icon {
+  color: #FFC933;
+  font-size: 20px;
+  padding-top: 3px;
+}
+
+.choose-card p {
+  margin: 0;
+  line-height: 1.45;
+}
+
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="main-wrapper">
+
+    <!-- Title -->
+<div class="text-center mb-5">
+  <h2>Official Frappe Partner</h2>
+  <p class="text-light small mb-1">
+    Delivering AI-Enhanced CRM Solutions for Modern Businesses
+  </p>
+
+<div class="d-flex justify-content-center align-items-center mt-2" style="gap: 10px;">
+  <img alt="Frappe Logo" class="client-img" src="{% static 'img/home/integrations/frappe.png' %}" style="width:32px; height:auto;">
+  
+  <div class="text-start text-white" style="line-height: 1.2;">
+    <div style="font-size: 22px; font-weight: 700;">Frappe</div>
+    <div style="font-size: 15px; font-weight: 400;">Partner</div>
+  </div>
+</div>
+
+</div>
+
+
+    <!-- Partnership Info -->
+    <div class="row">
+      <div class="col-md-6">
+        <div class="section-box" style="
+    height: 225px;
+">
+          <h5>Our Partnership With Frappe</h5>
+          <p class="small">
+            We’re official partner with Frappe.
+          </p>
+          <p class="small">
+            Specialize in customization expertise in ERPNext CRM.
+          </p>
+          <p class="small">
+            Continuous support and product updates.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="section-box">
+          <h5>Why Choose a Frappe Partner?</h5>
+          <ul class="small">
+            <li>Certified Expertise</li>
+            <li>Best Practices Implementation</li>
+            <li>Seamless Upgrades</li>
+            <li>Support Aligned with Frappe Ecosystem</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Enhancements and Services -->
+    <div class="row">
+   <div class="col-md-6">
+  <div class="section-box">
+    <h5>How We Enhance ERPNext CRM</h5>
+
+    <div class="row g-3 mt-3">
+      <div class="col-6">
+        <div class="feature-card text-center">
+          <i class="bi bi-bar-chart"></i>
+          <p>AI Lead Score</p>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="feature-card text-center">
+          <i class="bi bi-envelope-check"></i>
+          <p>AI Email Assist</p>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="feature-card text-center">
+          <i class="bi bi-graph-up-arrow"></i>
+          <p>AI Forecasting</p>
+        </div>
+      </div>
+
+      <div class="col-6">
+        <div class="feature-card text-center">
+          <i class="bi bi-cpu"></i>
+          <p>AI Intelligence</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+      <div class="col-md-6">
+        <div class="section-box" style="height:280px;">
+          <h5>Services We Provide</h5>
+          <ul class="small">
+            <li>Requirement Analysis</li>
+            <li>CRM Setup</li>
+            <li>Customization</li>
+            <li>Data Migration</li>
+            <li>Education & Training</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+<div class="section-box bg-white text-dark mt-4" style="border-radius: 5px ;">
+  <h5 class="text-dark mb-4" style="
+    text-align: center;">Industries We Serve</h5>
+
+  <div class="row g-3 text-center">
+
+    <div class="col-6 col-md-3">
+      <div class="p-3 bg-white shadow-sm rounded">
+        <i class="bi bi-gear-fill text-warning" style="font-size: 30px;"></i>
+        <p class="m-0 small fw-semibold">Manufacturing</p>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+      <div class="p-3 bg-white shadow-sm rounded">
+        <i class="bi bi-graph-up text-warning" style="font-size: 30px;"></i>
+        <p class="m-0 small fw-semibold">Trading</p>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+      <div class="p-3 bg-white shadow-sm rounded">
+        <i class="bi bi-building text-warning" style="font-size: 30px;"></i>
+        <p class="m-0 small fw-semibold">Agencies</p>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+      <div class="p-3 bg-white shadow-sm rounded">
+        <i class="bi bi-house-door-fill text-warning" style="font-size: 30px;"></i>
+        <p class="m-0 small fw-semibold">Real Estate</p>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+      <div class="p-3 bg-white shadow-sm rounded">
+        <i class="bi bi-truck text-warning" style="font-size: 30px;"></i>
+        <p class="m-0 small fw-semibold">Logistics</p>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+      <div class="p-3 bg-white shadow-sm rounded">
+        <i class="bi bi-hospital text-warning" style="font-size: 30px;"></i>
+        <p class="m-0 small fw-semibold">Healthcare</p>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+      <div class="p-3 bg-white shadow-sm rounded">
+        <i class="bi bi-mortarboard-fill text-warning" style="font-size: 30px;"></i>
+        <p class="m-0 small fw-semibold">Education</p>
+      </div>
+    </div>
+
+    <div class="col-6 col-md-3">
+      <div class="p-3 bg-white shadow-sm rounded">
+        <i class="bi bi-cash-coin text-warning" style="font-size: 30px;"></i>
+        <p class="m-0 small fw-semibold">Finance</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<section class="why-choose-us">
+  <div class="container">
+    <h2 class="main-title">Why Businesses Choose Us</h2>
+
+    <div class="row justify-content-center g-4">
+
+      <!-- Card 1 -->
+      <div class="col-md-6">
+        <div class="choose-card">
+          <i class="fas fa-check-circle icon"></i>
+          <p><strong>Frappe-Certified Expertise</strong> — We deliver ERPNext CRM implementations that follow official Frappe development and deployment standards.</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-md-6">
+        <div class="choose-card">
+          <i class="fas fa-check-circle icon"></i>
+          <p><strong>AI-Enhanced CRM Capabilities</strong> — Lead scoring, email assistance, forecasting, and company intelligence — built directly into your CRM.</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-md-6">
+        <div class="choose-card">
+          <i class="fas fa-check-circle icon"></i>
+          <p><strong>Custom Workflows for Every Industry</strong> — Pipelines, automation, and role-based workflows that match your business process.</p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-md-6">
+        <div class="choose-card">
+          <i class="fas fa-check-circle icon"></i>
+          <p><strong>Fast Implementation & Reliable Support</strong> — Quick onboarding, smooth customizations, and long-term technical support.</p>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="col-md-6">
+        <div class="choose-card">
+          <i class="fas fa-check-circle icon"></i>
+          <p><strong>Affordable & Scalable</strong> — A future-ready CRM that grows with your team without enterprise-level cost.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  </div>
+
+  <!-- Industries We Serve -->
+
+</div>
+
+
+
+
+</body>
+</html>

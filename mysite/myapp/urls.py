@@ -30,6 +30,7 @@ from .views import (
     data_deletion,
     terms_and_conditions,
     security,  # ✅ Added security view
+    partners,   
 )
 
 urlpatterns = [
@@ -49,6 +50,8 @@ urlpatterns = [
 
     # Security Page
     path('security/', security, name='security'),  # ✅ Added URL
+
+    path('partners/', partners, name='partners'),
 ]
 
 

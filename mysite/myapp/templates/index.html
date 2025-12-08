@@ -733,10 +733,10 @@
                                         <i class="fa-solid fa-circle-check px-2"></i> Close deals faster
                                     </p>
                                 </div>
-                                <a href="./contact-us.php" class="btn-gradient" data-aos="fade-up"
+                                <!-- <a href="./contact-us.php" class="btn-gradient" data-aos="fade-up"
                                     data-aos-duration="2700">
                                     Watch Overview <i class="fa-solid fa-angles-right" style="font-size:15px;"></i>
-                                </a>
+                                </a> -->
                             </div>
 
                             <!-- ✅ Right Form -->
@@ -1477,7 +1477,7 @@
             <div class="col-md-12">
                 <div class="owl-carousel owl-theme our-integration-carousel">
                     <div class="item box">
-                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/mail1.png'%}">
+                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/mail2.png'%}">
                     </div>
                     <div class="item box">
                         <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/meta1.png'%}">
@@ -1486,7 +1486,7 @@
                         <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/twilio.png'%}">
                     </div>
                     <div class="item box">
-                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/app.png'%}">
+                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/app1.png'%}" style="width: 178px;">
                     </div>
 
                       <div class="item box">
@@ -1536,15 +1536,15 @@
                         <div class="mask half">
                             <div class="fill-2"></div>
                         </div>
-                        <div class="inside-circle">65%</div>
+                            <div class="inside-circle">65%</div>
+                        </div>
                     </div>
-                </div>
-                <div>
-                    <p class="main-desc color-orange">Smarter Team Productivity</p>
-                    <p class=" sub-desc color-white">Al automates tasks & suggests follow-ups,
-                        <br class="d-lg-block d-none"><span>
-                            saving hours weekly
-                    </p>
+                    <div>
+                        <p class="main-desc color-orange">Smarter Team Productivity</p>
+                        <p class=" sub-desc color-white">Al automates tasks & suggests follow-ups,
+                            <br class="d-lg-block d-none"><span>
+                                saving hours weekly
+                        </p>
                 </div>
             </div>
 
@@ -2577,7 +2577,7 @@ function validatePhone() {
         phoneField.classList.add("is-invalid");
     } 
     else if (phoneValue.length < minLength || phoneValue.length > maxLength) {
-        phoneError.textContent = `Enter valid phone number (${minLength}-${maxLength} digits)`;
+        phoneError.textContent = `Enter valid phone number ${maxLength} digits`;
         phoneField.classList.add("is-invalid");
     }
     else {

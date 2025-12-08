@@ -335,7 +335,7 @@ def index(request):
             # SUCCESS RESPONSE
             # -----------------------------
             email_team.send()
-            email_user.send()
+            # email_user.send()
             return JsonResponse({"status": "success", "message": "🎉 Your message has been submitted successfully!"})
 
         except Exception as e:
@@ -473,4 +473,8 @@ def terms_and_conditions(request):
 
 def security(request):
     return render(request, "Security.html")
+
+def partners(request):
+    return render(request, "Partners.html")
+
 
