@@ -1,52 +1,86 @@
 <!-- Footer -->
+ {% load static %}
 <footer class="footer">
   <div class="container">
+
+    <div class="container text-center py-lg-5 py-3">
+    <img src="{% static 'img/home/integrations/LOGO.png' %}" 
+         alt="ERPNext.AI Logo" 
+         class="img-fluid" 
+         style="max-height: 48px;margin-bottom: 25px;">
+         <p style="color: white;">Al-powered CRM built on Frappe. Simple. Smart. Secure.
+ </p>
+        <div class="d-flex justify-content-center align-items-center mt-3" style="gap: 10px;">
+  <img alt="Frappe Logo" class="client-img mb-3" src="{% static 'img/home/integrations/frappe.png' %}" style="width:32px; height:auto;">
+  
+  <div class="text-white" style="font-size: 18px; font-weight: 600;" margn>
+    Frappe Partner
+  </div>
+</div>
+
+  </div>
     <div class="row text-md-start">
 
 
       <!-- Products -->
     <div class="col-md-3 mb-4">
-    <h5 class="main-desc">QUICK Links</h5>
+    <h5 class="main-desc">PRODUCT</h5>
     <p class="sub-desc2"> <a href="{% url 'index' %}#our-pricing">Pricing</a></p>
     <p class="sub-desc2"><a href="#">Features</a></p>
     <p class="sub-desc2"><a href="#">Integration</a></p>
-    <p class="sub-desc2"> <a href="{% url 'privacy_policy' %}">Privacy Policy</a></p>
-    <p class="sub-desc2"><a href="{% url 'data_deletion' %}">User Data Deletion</a></p>
-    <p class="sub-desc2"><a href="{% url 'terms_and_conditions' %}">Terms & Conditions</a></p> <!-- ✅ Added -->
+ <!-- ✅ Added -->
 </div>
 
-
+   
       <!-- Services -->
-      <div class="col-md-3 mb-4">
+      <!-- <div class="col-md-3 mb-4">
         <h5 class="main-desc">Integration</h5>
         <p class="sub-desc2"><a href="#">Whatsapp</a></p>
         <p class="sub-desc2"><a href="#">Facebook</a></p>
         <p class="sub-desc2"><a href="#">Call</a></p>
         <p class="sub-desc2"><a href="#">Mail</a></p>
-      </div>
+      </div> -->
 
 
 
       <!-- Resources -->
       <div class="col-md-3 mb-4">
-                <h5 class="main-desc">Resources</h5>
+                <h5 class="main-desc">COMPANY</h5>
             
 <p class="sub-desc2">
     <a href="{% url 'about_us' %}">About Us</a>
 </p>
-                <p class="sub-desc2"><a href="#">Blog</a></p>
-               <p class="sub-desc2"><a href="{% url 'partners' %}">Partners</a></p>
+      <p class="sub-desc2"><a href="{% url 'partners' %}">Partners</a></p>
 
+            
+   <p class="sub-desc2"><a href="{% url 'terms_and_conditions' %}">Terms & Conditions</a></p>
+            </div>
+
+
+          <!-- Resources -->
+      <div class="col-md-3 mb-4">
+                <h5 class="main-desc">RESOURCES</h5>
+
+   <p class="sub-desc2"><a href="#">Blog</a></p>
+         
               <p class="sub-desc2"><a href="{% url 'security' %}">Security</a></p>
+            
+    <p class="sub-desc2"> <a href="{% url 'privacy_policy' %}">Privacy Policy</a></p>
+    <p class="sub-desc2"><a href="{% url 'data_deletion' %}">User Data Deletion</a></p>
 
             </div>
+
+
+
+
+
 
       <!-- Contact -->
       <div class="col-md-3 mb-4">
         <!-- <p class="main-desc">Call us</p>
                 <p class="sub-desc2"><a href="tel:+91 95669 81217">+91 95669 81217</a></p> -->
 
-        <p class="main-desc">Email us</p>
+        <p class="main-desc">CONTACT</p>
         <p class="sub-desc2"><a href="mailto:info@erpnext.ai.com">info@erpnext.ai</a></p>
             <p class="main-desc mt-3">Follow us</p>
   
