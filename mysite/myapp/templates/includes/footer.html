@@ -3,7 +3,7 @@
 <footer class="footer">
   <div class="container">
 
-    <div class="container text-center py-lg-5 py-3">
+    <div class="container text-center py-lg-5 py-3" style="padding-top: 0px !important;">
     <img src="{% static 'img/home/integrations/LOGO.png' %}" 
          alt="ERPNext.AI Logo" 
          class="img-fluid" 
@@ -1028,6 +1028,24 @@ document.querySelectorAll('.select-btn').forEach(btn => {
   const popup = document.getElementById("languagePopup");
   const langButtons = document.querySelectorAll(".lang-option");
 
+  // ---- DEFAULT LANGUAGE SET HERE ----
+  let savedLang = localStorage.getItem("siteLang");
+
+  // Change visible text to default selected language
+    const langLabel = document.getElementById("langLabel"); // <span> inside the button
+
+    if (savedLang === "en") {
+        langLabel.textContent = "English";
+    } else if (savedLang === "hi") {
+        langLabel.textContent = "Hindi";
+    } else if (savedLang === "ar") {
+        langLabel.textContent = "Arabic";
+    }
+
+
+  // Highlight default button (English)
+  document.querySelector(`[data-lang="${savedLang}"]`)?.classList.add("active");
+
   // Toggle popup
   toggleBtn.addEventListener("click", function (e) {
     e.preventDefault();
@@ -1039,7 +1057,7 @@ document.querySelectorAll('.select-btn').forEach(btn => {
     btn.addEventListener("click", function () {
       const selectedLang = this.getAttribute("data-lang");
 
-      // Save to localStorage or cookie
+      // Save to localStorage
       localStorage.setItem("siteLang", selectedLang);
 
       // Redirect or reload with language param
