@@ -1022,7 +1022,7 @@ document.querySelectorAll('.select-btn').forEach(btn => {
 </script> -->
 
 
-
+<!-- 
 <script>
   const toggleBtn = document.getElementById("languageToggle");
   const popup = document.getElementById("languagePopup");
@@ -1030,7 +1030,9 @@ document.querySelectorAll('.select-btn').forEach(btn => {
 
   // ---- DEFAULT LANGUAGE SET HERE ----
   let savedLang = localStorage.getItem("siteLang");
-
+  if (!savedLang){
+    savedLang="en"
+  }
   // Change visible text to default selected language
     const langLabel = document.getElementById("langLabel"); // <span> inside the button
 
@@ -1064,4 +1066,6 @@ document.querySelectorAll('.select-btn').forEach(btn => {
       window.location.href = `/?lang=${selectedLang}`;
     });
   });
-</script>
+
+  
+</script> -->

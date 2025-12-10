@@ -1,4 +1,4 @@
- {% load static %}
+{% load static %}
 
 
 <html lang="en">
@@ -12,23 +12,24 @@
     <!-- AOS CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    {% comment %} <link href="./assets/scss/main.css?v=1" rel="stylesheet"> {% endcomment %}
+    {% comment %}
+    <link href="./assets/scss/main.css?v=1" rel="stylesheet"> {% endcomment %}
 
-     
+
     <link href="{% static 'scss/main.css' %}" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css" />
 
- 
+
     <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/css/intlTelInput.css"/>
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/12.1.6/css/intlTelInput.css" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-<!-- <style>
+    <!-- <style>
     .skiptranslate { display: none !important; }
     body { top: 0 !important; }
     .goog-logo-link { display: none !important; }
@@ -84,37 +85,47 @@
 </style> -->
 
 
-<style>
+    <style>
+        body>.skiptranslate,
+        .goog-logo-link,
+        .gskiptranslate,
+        .goog-te-gadget span,
+        .goog-te-banner-frame,
+        #goog-gt-tt,
+        .goog-te-balloon-frame,
+        div#goog-gt- {
+            display: none !important;
+        }
 
- 
-  body > .skiptranslate,.goog-logo-link,.gskiptranslate,.goog-te-gadget span,.goog-te-banner-frame,#goog-gt-tt, .goog-te-balloon-frame,div#goog-gt-{
-    display: none!important;
-  }
-  .goog-te-gadget {
-    color: transparent!important;
-    font-size:0px;
-        width: 125px !important;
+        .goog-te-gadget {
+            color: transparent !important;
+            font-size: 0px;
+            width: 125px !important;
 
-  }
-  .goog-text-highlight {
-    background: none !important;
-    box-shadow: none !important;
-  }
-  #google_translate_element select{
-    background:#2b1a1200;
-    color:#fff !important;
-    border: none !important;
-    font-weight:bold;
-    border-radius:3px;
-    padding:8px 12px
-  }
-header .header-top .contact-info a {
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-#google_translate_element select:focus-visible{
-    border: 0px !important;
-}
+        }
+
+        .goog-text-highlight {
+            background: none !important;
+            box-shadow: none !important;
+        }
+
+        #google_translate_element select {
+            background: #2b1a1200;
+            color: #fff !important;
+            border: none !important;
+            font-weight: bold;
+            border-radius: 3px;
+            padding: 8px 12px
+        }
+
+        header .header-top .contact-info a {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        #google_translate_element select:focus-visible {
+            border: 0px !important;
+        }
     </style>
 
 </head>
@@ -132,23 +143,15 @@ header .header-top .contact-info a {
                 <!-- Right icons -->
                 <div class="contact-info">
                     <div class="d-flex align-items-center">
-                    <i class="fa-solid text-white fa-globe me-2"></i>
-<div id='google_translate_element'></div>
-<script>
- function googleTranslateElementInit() {
- new google.translate.TranslateElement({
-  autoDisplay: false,
-  includedLanguages: 'hi,en,ar',
-  layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
-}, 'google_translate_element');
- }
-</script>
+                        <i class="fa-solid text-white fa-globe me-2"></i>
+                        <div id='google_translate_element'></div>
+                      
                     </div>
-             
+
 
 
                     <!-- <a href="#"> Support</a> -->
-                   <a href="{% url 'about_us' %}">About Us</a>
+                    <a href="{% url 'about_us' %}">About Us</a>
                 </div>
             </div>
         </div>
@@ -158,23 +161,23 @@ header .header-top .contact-info a {
                 <div class="d-flex justify-content-start align-items-center pt-1 pb-1">
                     <div class="">
                         <div class="logo">
-                       <img src="{% static 'img/Erpnextlogo.png' %}" alt="ERP Logo" width="170">
+                            <img src="{% static 'img/Erpnextlogo.png' %}" alt="ERP Logo" width="170">
                         </div>
                     </div>
                     <div class="px-5">
-    <ul id="navMenu">
-        <li class="sub-desc pb-0"><a href="{% url 'index' %}">Home</a></li>
-        <li><a href="{% url 'index' %}#our-features">Features</a></li>
-        <li><a href="{% url 'index' %}#our-pricing">Pricing</a></li>
-        <li><a href="{% url 'index' %}#our-integration">Integrations</a></li>
-        <li class="menu-contact"><a href="{% url 'contact_us' %}">Contact Us</a></li>
-    </ul>
-</div>
+                        <ul id="navMenu">
+                            <li class="sub-desc pb-0"><a href="{% url 'index' %}">Home</a></li>
+                            <li><a href="{% url 'index' %}#our-features">Features</a></li>
+                            <li><a href="{% url 'index' %}#our-pricing">Pricing</a></li>
+                            <li><a href="{% url 'index' %}#our-integration">Integrations</a></li>
+                            <li class="menu-contact"><a href="{% url 'contact_us' %}">Contact Us</a></li>
+                        </ul>
+                    </div>
 
                     <div class="hamburger"><i class="fas fa-bars hamburger-icon"></i></div>
                     <div class="d-flex ms-auto header-btn">
                         <div class="m-1">
-                         <a href="{% url 'contact_us' %}" class="contact-sales">Contact Us</a>
+                            <a href="{% url 'contact_us' %}" class="contact-sales">Contact Us</a>
 
                         </div>
                         <!-- <div class="m-1">
@@ -186,7 +189,48 @@ header .header-top .contact-info a {
         </nav>
     </header>
 
-    
 
-<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script>
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            // pageLanguage: 'en',
+            autoDisplay: false,
+            includedLanguages: 'en,hi,ar',
+            layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+        }, 'google_translate_element');
+    }
+
+    const interval = setInterval(() => {
+        const select = document.querySelector(".goog-te-combo");
+
+        if (select && select.options.length > 0) {
+
+            // REMOVE default "Select Language" option
+            if (select.options[0].value === "" || select.options[0].textContent.includes("Select")) {
+                select.remove(0);
+            }
+
+            // COLLECT options
+            let options = Array.from(select.options);
+            let english = options.find(opt => opt.value === "en");
+            let others = options.filter(opt => opt.value !== "en");
+
+            // SORT others alphabetically
+            others.sort((a, b) => a.text.localeCompare(b.text));
+
+            // REBUILD dropdown
+            select.innerHTML = "";
+            if (english) select.appendChild(english); // English = first
+            others.forEach(opt => select.appendChild(opt));
+
+            // ✅ SET English as selected by default
+            select.value = "en";
+            select.dispatchEvent(new Event("change")); // ensure translate script updates
+
+            clearInterval(interval);
+        }
+    }, 300);
+</script>
 
