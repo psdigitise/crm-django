@@ -126,6 +126,22 @@
         #google_translate_element select:focus-visible {
             border: 0px !important;
         }
+
+        .goog-te-banner-frame {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0px !important;
+        }
+
+        body {
+            top: 0px !important;
+        }
+
+        body {
+            position: relative !important;
+            top: 0px !important;
+            margin-top: 0px !important;
+        }
     </style>
 
 </head>
@@ -145,7 +161,7 @@
                     <div class="d-flex align-items-center">
                         <i class="fa-solid text-white fa-globe me-2"></i>
                         <div id='google_translate_element'></div>
-                      
+
                     </div>
 
 
@@ -192,45 +208,44 @@
 
 
     <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<script>
-    function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-            // pageLanguage: 'en',
-            autoDisplay: false,
-            includedLanguages: 'en,hi,ar',
-            layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
-        }, 'google_translate_element');
-    }
-
-    const interval = setInterval(() => {
-        const select = document.querySelector(".goog-te-combo");
-
-        if (select && select.options.length > 0) {
-
-            // REMOVE default "Select Language" option
-            if (select.options[0].value === "" || select.options[0].textContent.includes("Select")) {
-                select.remove(0);
-            }
-
-            // COLLECT options
-            let options = Array.from(select.options);
-            let english = options.find(opt => opt.value === "en");
-            let others = options.filter(opt => opt.value !== "en");
-
-            // SORT others alphabetically
-            others.sort((a, b) => a.text.localeCompare(b.text));
-
-            // REBUILD dropdown
-            select.innerHTML = "";
-            if (english) select.appendChild(english); // English = first
-            others.forEach(opt => select.appendChild(opt));
-
-            // ✅ SET English as selected by default
-            select.value = "en";
-            select.dispatchEvent(new Event("change")); // ensure translate script updates
-
-            clearInterval(interval);
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                // pageLanguage: 'en',
+                autoDisplay: false,
+                includedLanguages: 'en,hi,ar',
+                layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL
+            }, 'google_translate_element');
         }
-    }, 300);
-</script>
 
+        const interval = setInterval(() => {
+            const select = document.querySelector(".goog-te-combo");
+
+            if (select && select.options.length > 0) {
+
+                // REMOVE default "Select Language" option
+                if (select.options[0].value === "" || select.options[0].textContent.includes("Select")) {
+                    select.remove(0);
+                }
+
+                // COLLECT options
+                let options = Array.from(select.options);
+                let english = options.find(opt => opt.value === "en");
+                let others = options.filter(opt => opt.value !== "en");
+
+                // SORT others alphabetically
+                others.sort((a, b) => a.text.localeCompare(b.text));
+
+                // REBUILD dropdown
+                select.innerHTML = "";
+                if (english) select.appendChild(english); // English = first
+                others.forEach(opt => select.appendChild(opt));
+
+                // ✅ SET English as selected by default
+                select.value = "en";
+                select.dispatchEvent(new Event("change")); // ensure translate script updates
+
+                clearInterval(interval);
+            }
+        }, 300);
+    </script>

@@ -147,7 +147,8 @@
     <form id="paymentForm">
       <input type="text" id="name" placeholder="Full Name">
       <input type="email" id="email" placeholder="Email">
-     <input type="text" id="phone" placeholder="Phone Number" maxlength="14">
+      <input type="text" id="phone" placeholder="Phone Number" maxlength="14">
+      <input type="company" id="company" placeholder="Company">
 
 
       {% if free %}
@@ -163,38 +164,253 @@
 
   <div id="toast" class="toast"></div>
 
+  <!-- <script>
+    function showToast(message, type = "info") {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.className = "toast show " + type;
+      setTimeout(() => { toast.className = "toast"; }, 3000);
+    }
+
+    const freePlan = "{{ free }}" === "True";
+    const plan = "{{ plan }}";
+
+    const phoneInput = document.getElementById("phone");
+    const emailInput = document.getElementById("email");
+    const nameInput = document.getElementById("name");
+    const companyInput = document.getElementById("company");
+    const submitBtn = freePlan ? document.getElementById("freeBtn") : document.getElementById("payBtn");
+
+    function validateForm() {
+      const name = nameInput.value.trim();
+      const company = companyInput.value.trim();
+      const email = emailInput.value.trim();
+      const phone = phoneInput.value.trim();
+
+      // ✅ Phone must be between 10 and 14 digits
+      const phoneValid = /^[0-9]{10,14}$/.test(phone);
+
+      // ✅ Email must contain @ and .
+      const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+      if (email && !emailValid) {
+        showToast(" Enter valid Email ID with @", "error");
+      }
+
+      const allValid = name && phoneValid && emailValid && company;
+      submitBtn.disabled = !allValid;
+      submitBtn.style.opacity = allValid ? "1" : "0.6";
+      submitBtn.style.cursor = allValid ? "pointer" : "not-allowed";
+
+      return allValid;
+    }
+
+    // Attach live validation
+    phoneInput.addEventListener("input", validateForm);
+    emailInput.addEventListener("input", validateForm);
+    nameInput.addEventListener("input", validateForm);
+    companyInput.addEventListener("input", validateForm);
+
+    /* ---------------- FREE PLAN ---------------- */
+    if (freePlan) {
+      submitBtn.onclick = async function () {
+        if (!validateForm()) return;
+
+        showToast("⏳ Submitting...", "info");
+
+        const res = await fetch("{% url 'save_payment' %}", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-CSRFToken": csrftoken
+          },
+          body: new URLSearchParams({
+            name: nameInput.value.trim(),
+            email: emailInput.value.trim(),
+            phone: phoneInput.value.trim(),
+            plan,
+            amount: 0,
+            status: "free",
+            company: companyInput.value.trim()
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.status === "company_exists") {
+          showToast(data.message, "error");
+          return;
+        }
+        if (data.status === "email_exists") {
+          showToast(data.message, "error");
+          return;
+        }
+        if (data.error) {
+          showToast("❌ " + data.error, "error");
+          return;
+        }
+        if (data.status === "free_saved") {
+          showToast("Free Plan Activated!", "success");
+          setTimeout(() => { window.location.href = "https://crm.erpnext.ai/login/"; }, 1200);
+        }
+      };
+    }
+
+
+    /* ---------------- PAID PLAN ---------------- */
+   /* ---------------- PAID PLAN ---------------- */
+else {
+  submitBtn.onclick = async function () {
+    if (!validateForm()) return;
+
+    showToast("⏳ Saving order...", "info");
+
+    const res = await fetch("{% url 'save_payment' %}", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "X-CSRFToken": csrftoken
+      },
+      body: new URLSearchParams({
+        name: nameInput.value.trim(),
+        email: emailInput.value.trim(),
+        phone: phoneInput.value.trim(),
+        company: companyInput.value.trim(),
+        plan,
+        amount: document.getElementById("amount").value,
+        status: "pending"   // initial status
+      })
+    });
+
+    const order = await res.json();
+
+    if (order.status === "company_exists") {
+      showToast(order.message, "error");
+      return;
+    }
+    if (order.status === "email_exists") {
+      showToast(order.message, "error");
+      return;
+    }
+    if (order.error) {
+      showToast("❌ " + order.error, "error");
+      return;
+    }
+
+    // If backend created order successfully, open Razorpay
+    const options = {
+      key: "{{ razorpay_key }}",
+      amount: order.amount,
+      currency: "INR",
+      name: "ERPNext AI",
+      description: `${plan} Payment`,
+      order_id: order.order_id,
+      prefill: {
+        name: nameInput.value.trim(),
+        email: emailInput.value.trim(),
+        contact: phoneInput.value.trim(),
+        company: companyInput.value.trim()
+      },
+      handler: async function (response) {
+        const res = await fetch("{% url 'save_payment' %}", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-CSRFToken": csrftoken
+          },
+          body: new URLSearchParams({
+            order_id: order.order_id,
+            payment_id: response.razorpay_payment_id,
+            status: "success",
+            name: nameInput.value.trim(),
+            email: emailInput.value.trim(),
+            phone: phoneInput.value.trim(),
+            plan,
+            company: companyInput.value.trim(),
+            amount: document.getElementById("amount").value
+          })
+        });
+
+        const data = await res.json();
+
+        if (data.status === "company_exists") {
+          showToast(data.message, "error");
+          return;
+        }
+        if (data.status === "email_exists") {
+          showToast(data.message, "error");
+          return;
+        }
+        if (data.error) {
+          showToast("❌ " + data.error, "error");
+          return;
+        }
+        if (data.status === "success") {
+          showToast("✅ Payment Successful!", "success");
+          setTimeout(() => { window.location.href = "https://crm.erpnext.ai/login/"; }, 1500);
+        }
+      }
+    };
+
+    const rzp = new Razorpay(options);
+    rzp.open();
+  };
+}
+
+        // Restrict phone input to digits only
+        phoneInput.addEventListener("input", function (e) {
+          const value = phoneInput.value;
+
+          // If non-digit characters are typed, remove them and show toast
+          if (/[^0-9]/.test(value)) {
+            phoneInput.value = value.replace(/[^0-9]/g, ""); // keep only digits
+            showToast("Only numbers are allowed ", "error");
+          }
+
+          // Run validation after cleaning
+          validateForm();
+        });
+
+  </script> -->
 <script>
-  function showToast(message, type = "info") {
-    const toast = document.getElementById("toast");
-    toast.textContent = message;
-    toast.className = "toast show " + type;
-    setTimeout(() => { toast.className = "toast"; }, 3000);
-  }
+/* ============================================================
+   TOAST MESSAGE UTILITY
+============================================================ */
+function showToast(message, type = "info") {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.className = "toast show " + type;
+  setTimeout(() => { toast.className = "toast"; }, 3000);
+}
 
-  const freePlan = "{{ free }}" === "True";
-  const plan = "{{ plan }}";
+/* ============================================================
+   FORM ELEMENTS
+============================================================ */
+const freePlan = "{{ free }}" === "True";
+const plan = "{{ plan }}";
 
-  const phoneInput = document.getElementById("phone");
-  const emailInput = document.getElementById("email");
-  const nameInput = document.getElementById("name");
-  const submitBtn = freePlan ? document.getElementById("freeBtn") : document.getElementById("payBtn");
+const phoneInput = document.getElementById("phone");
+const emailInput = document.getElementById("email");
+const nameInput = document.getElementById("name");
+const companyInput = document.getElementById("company");
+const submitBtn = freePlan ? document.getElementById("freeBtn") : document.getElementById("payBtn");
 
- function validateForm() {
+/* ============================================================
+   VALIDATION
+============================================================ */
+function validateForm() {
   const name = nameInput.value.trim();
+  const company = companyInput.value.trim();
   const email = emailInput.value.trim();
   const phone = phoneInput.value.trim();
 
-  // ✅ Phone must be between 10 and 14 digits
   const phoneValid = /^[0-9]{10,14}$/.test(phone);
-
-  // ✅ Email must contain @ and .
   const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-  if (email && !emailValid) {
-    showToast(" Enter valid Email ID with @", "error");
-  }
+  if (email && !emailValid) showToast("Enter valid Email ID", "error");
 
-  const allValid = name && phoneValid && emailValid;
+  const allValid = name && phoneValid && emailValid && company;
+
   submitBtn.disabled = !allValid;
   submitBtn.style.opacity = allValid ? "1" : "0.6";
   submitBtn.style.cursor = allValid ? "pointer" : "not-allowed";
@@ -202,76 +418,227 @@
   return allValid;
 }
 
-  // Attach live validation
-  phoneInput.addEventListener("input", validateForm);
-  emailInput.addEventListener("input", validateForm);
-  nameInput.addEventListener("input", validateForm);
+// Live validation
+[nameInput, companyInput, emailInput, phoneInput].forEach(input => {
+  input.addEventListener("input", validateForm);
+});
 
-  /* ---------------- FREE PLAN ---------------- */
-  if (freePlan) {
-    submitBtn.onclick = async function () {
-      if (!validateForm()) return;
+/* ============================================================
+   ERPNext API FUNCTIONS (Handled in JS only)
+============================================================ */
+const API_HEADERS = {
+  "Content-Type": "application/json",
+  "Authorization": "token 33c44b17631ceb3:2d01782c6c01a7f"
+};
 
-      showToast("⏳ Submitting...", "info");
+// 1️⃣ Check Company
+async function checkCompany(company) {
+  const res = await fetch(`https://api.erpnext.ai/api/v2/document/Company/${company}`, {
+    method: "GET",
+    headers: API_HEADERS
+  });
 
-      await fetch("{% url 'save_payment' %}", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "X-CSRFToken": csrftoken
-        },
-        body: new URLSearchParams({
-          name: nameInput.value.trim(),
-          email: emailInput.value.trim(),
-          phone: phoneInput.value.trim(),
-          plan,
-          amount: 0,
-          status: "free"
-        })
-      });
+  return res.status === 200;
+}
 
-      showToast("🎉 Free Plan Activated!", "success");
-      setTimeout(() => { window.location.href = "https://crm.erpnext.ai/login/"; }, 1200);
-    };
-  }
+// 2️⃣ Check User
+async function checkUser(email) {
+  const res = await fetch(`https://api.erpnext.ai/api/v2/document/User/${email}`, {
+    method: "GET",
+    headers: API_HEADERS
+  });
 
-  /* ---------------- PAID PLAN ---------------- */
-  else {
-    submitBtn.onclick = async function () {
-      if (!validateForm()) return;
+  return res.status === 200;
+}
 
-      showToast("⏳ Creating order...", "info");
+// 3️⃣ Create Company
+async function createCompany(email, company, plan_id) {
+  return fetch(`https://api.erpnext.ai/api/v2/document/Company/`, {
+    method: "POST",
+    headers: API_HEADERS,
+    body: JSON.stringify({
+      email_id: email,
+      company_name: company,
+      plan_id
+    })
+  });
+}
 
-      const res = await fetch("{% url 'create_order' %}", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "X-CSRFToken": csrftoken
-        },
-        body: new URLSearchParams({
-          name: nameInput.value.trim(),
-          email: emailInput.value.trim(),
-          phone: phoneInput.value.trim(),
-          amount: document.getElementById("amount").value,
-          plan
-        })
-      });
+// 4️⃣ Create User
+async function createUser(name, email, phone, company, plan_id) {
+  return fetch(`https://api.erpnext.ai/api/v2/document/User/`, {
+    method: "POST",
+    headers: API_HEADERS,
+    body: JSON.stringify({
+      email,
+      first_name: name,
+      company,
+      role_profile_name: "Only If Create",
+      phone,
+      plan_id
+    })
+  });
+}
 
-      const order = await res.json();
-      if (!order.order_id) {
-        showToast("❌ Failed to create order.", "error");
-        return;
-      }
+/* ============================================================
+   FREE PLAN FLOW
+============================================================ */
+if (freePlan) {
+  submitBtn.onclick = async function () {
+    if (!validateForm()) return;
 
-      const options = {
-        key: "{{ razorpay_key }}",
-        amount: order.amount,
-        currency: "INR",
-        name: "ERPNext AI",
-        description: `${plan} Payment`,
-        order_id: order.order_id,
-        prefill: { name: nameInput.value.trim(), email: emailInput.value.trim(), contact: phoneInput.value.trim() },
-        handler: async function (response) {
+    showToast("Checking details...", "info");
+
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const phone = phoneInput.value.trim();
+    const company = companyInput.value.trim();
+
+    // Company exists?
+    if (await checkCompany(company)) {
+      showToast("⚠️ Company already exists!", "error");
+      return;
+    }
+
+    // User exists?
+    if (await checkUser(email)) {
+      showToast("⚠️ Email already registered!", "error");
+      return;
+    }
+
+    showToast("Creating Company...", "info");
+    await createCompany(email, company, 0);
+
+    showToast("Creating User...", "info");
+    await createUser(name, email, phone, company, 0);
+
+    // Save Payment (free)
+    await fetch("{% url 'save_payment' %}", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "X-CSRFToken": csrftoken
+      },
+      body: new URLSearchParams({
+        name, email, phone, company,
+        plan, amount: 0,
+        status: "success"
+      })
+    });
+
+    showToast("Free Plan Activated!", "success");
+    setTimeout(() => { window.location.href = "https://crm.erpnext.ai/login/"; }, 1500);
+  };
+}
+
+/* ============================================================
+   PAID PLAN FLOW
+============================================================ */
+/* ============================================================
+   PAID PLAN FLOW
+============================================================ */
+/* ============================================================
+   PAID PLAN FLOW (FINAL FIXED VERSION)
+============================================================ */
+if (!freePlan) {
+  submitBtn.onclick = async function () {
+    if (!validateForm()) return;
+
+    showToast("Validating details...", "info");
+
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const phone = phoneInput.value.trim();
+    const company = companyInput.value.trim();
+    const amount = document.getElementById("amount").value;
+
+    const plan_id = amount == "1500" ? 1500 : amount == "2500" ? 2 : 0;
+
+    // Check Company exists
+    if (await checkCompany(company)) {
+      showToast("⚠️ Company already exists!", "error");
+      return;
+    }
+
+    // Check User exists
+    if (await checkUser(email)) {
+      showToast("⚠️ Email already registered!", "error");
+      return;
+    }
+
+    /* ----------------------------------------------------
+       1️⃣ CREATE RAZORPAY ORDER FIRST (MANDATORY)
+    ---------------------------------------------------- */
+    const orderRes = await fetch("{% url 'create_order' %}", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "X-CSRFToken": csrftoken
+      },
+      body: new URLSearchParams({
+        name, email, phone,
+        plan, amount
+      })
+    });
+
+    const orderData = await orderRes.json();
+
+    if (orderData.error) {
+      showToast("❌ Failed to create order", "error");
+      return;
+    }
+
+    const order_id = orderData.order_id; // REQUIRED
+
+    /* ----------------------------------------------------
+       2️⃣ OPEN RAZORPAY
+    ---------------------------------------------------- */
+    const rzp = new Razorpay({
+      key: "{{ razorpay_key }}",
+      order_id: order_id,
+      amount: amount * 100,
+      currency: "INR",
+      name: "ERPNext AI",
+      description: `${plan} Subscription`,
+      prefill: { name, email, contact: phone },
+
+      handler: async function (response) {
+        /* --------------------------------------------
+           3️⃣ CREATE USER & COMPANY AFTER SUCCESS
+        -------------------------------------------- */
+        showToast("Creating Company...", "info");
+        await createCompany(email, company, plan_id);
+
+        showToast("Creating User...", "info");
+        await createUser(name, email, phone, company, plan_id);
+
+        /* --------------------------------------------
+           4️⃣ SAVE PAYMENT SUCCESS
+        -------------------------------------------- */
+        await fetch("{% url 'save_payment' %}", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-CSRFToken": csrftoken
+          },
+          body: new URLSearchParams({
+            order_id: response.razorpay_order_id,
+            payment_id: response.razorpay_payment_id,
+            name, email, phone, company,
+            amount, plan,
+            status: "success"
+          })
+        });
+
+        showToast("Payment Successful!", "success");
+        setTimeout(() => { window.location.href = "https://crm.erpnext.ai/login/"; }, 1500);
+      },
+
+      modal: {
+        ondismiss: async function () {
+          /* --------------------------------------------
+             5️⃣ USER CLOSED PAYMENT (FAILED)
+          -------------------------------------------- */
           await fetch("{% url 'save_payment' %}", {
             method: "POST",
             headers: {
@@ -279,50 +646,36 @@
               "X-CSRFToken": csrftoken
             },
             body: new URLSearchParams({
-              order_id: order.order_id,
-              payment_id: response.razorpay_payment_id,
-              status: "success"
+              order_id: order_id,
+              name, email, phone, company,
+              amount, plan,
+              status: "failed"
             })
           });
-          showToast("✅ Payment Successful!", "success");
-          setTimeout(() => { window.location.href = "https://crm.erpnext.ai/login/"; }, 1500);
-        },
-        modal: {
-          ondismiss: async function () {
-            await fetch("{% url 'save_payment' %}", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "X-CSRFToken": csrftoken
-              },
-              body: new URLSearchParams({ order_id: order.order_id, status: "failed" })
-            });
-            showToast("❌ Payment Cancelled.", "error");
-          }
-        },
-        theme: { color: "#00b8ff" }
-      };
 
-      const rzp = new Razorpay(options);
-      rzp.open();
-    };
-  }
+          showToast("❌ Payment Cancelled.", "error");
+        }
+      }
+    });
 
-  // Restrict phone input to digits only
-phoneInput.addEventListener("input", function (e) {
+    rzp.open();
+  };
+}
+
+
+/* ============================================================
+   Restrict Phone Input
+============================================================ */
+phoneInput.addEventListener("input", function () {
   const value = phoneInput.value;
-
-  // If non-digit characters are typed, remove them and show toast
   if (/[^0-9]/.test(value)) {
-    phoneInput.value = value.replace(/[^0-9]/g, ""); // keep only digits
-    showToast("Only numbers are allowed ", "error");
+    phoneInput.value = value.replace(/[^0-9]/g, "");
+    showToast("Only numbers allowed", "error");
   }
-
-  // Run validation after cleaning
   validateForm();
 });
-
 </script>
+
 </body>
 
 </html>

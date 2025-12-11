@@ -1,4 +1,4 @@
-# from django.urls import path
+
 # from .views import index, about_us, contact_us,buy
 
 # urlpatterns = [
@@ -17,7 +17,8 @@
 #     path('about-us/', about_us, name='about_us'),
 #     path('contact-us/', contact_us, name='contact_us'),
 #     path('buy/', buy, name='buy'),
-# ]
+# ]from django.urls import path
+
 from django.urls import path
 from .views import (
     index,
@@ -29,8 +30,11 @@ from .views import (
     privacy_policy,
     data_deletion,
     terms_and_conditions,
-    security,  # ✅ Added security view
-    partners,   
+    security,
+    partners,
+
+    # NEW VIEW
+    subscription_form,
 )
 
 urlpatterns = [
@@ -41,17 +45,19 @@ urlpatterns = [
     path('create_order/', create_order, name='create_order'),
     path('save_payment/', save_payment, name='save_payment'),
 
-    # Privacy & Data Policy pages
+    # Privacy & Data
     path('privacy-policy/', privacy_policy, name='privacy_policy'),
     path('data-deletion/', data_deletion, name='data_deletion'),
 
-    # Terms & Conditions Page
+    # Terms & Security
     path('terms-and-conditions/', terms_and_conditions, name='terms_and_conditions'),
+    path('security/', security, name='security'),
 
-    # Security Page
-    path('security/', security, name='security'),  # ✅ Added URL
-
+    # Partners
     path('partners/', partners, name='partners'),
+
+    # NEW ERPNext API subscription form
+    path('subscribe/', subscription_form, name='subscription_form'),
 ]
 
 
