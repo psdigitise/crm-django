@@ -1,0 +1,1970 @@
+{% include 'includes/header.html' %}
+
+<style>
+    .crm-pricing-section {
+        padding: 3rem 0rem;
+    }
+
+    .crm-pricing-section li {
+        list-style: none;
+    }
+
+    .crm-pricing-section ul {
+        margin-bottom: 0.5rem;
+    }
+
+    .crm-pricing-section .pricing-card {
+        height: 100%;
+        border-radius: 16px;
+        border: 1px solid #d6d6d6;
+        padding: 35px 28px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        /* min-height: 620px; */
+        background: #fff;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        transition: .25s ease-in-out;
+    }
+
+    .crm-pricing-section .pricing-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+    }
+
+    .crm-pricing-section .pricing-card .plan-title {
+        font-size: 2rem;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 8px;
+        color: #0a0a0a;
+    }
+
+    .crm-pricing-section .pricing-card .plan-sub {
+        font-size: 1.1rem;
+        text-align: center;
+        font-weight: 600;
+        color: #0a0a0a;
+        margin-bottom: 0.7rem;
+    }
+
+    .crm-pricing-section .pricing-card .section-label {
+        font-size: 15px;
+        font-weight: 700;
+        color: #0a0a0a;
+        margin-top: 15px;
+        margin-bottom: 6px;
+    }
+
+    .crm-pricing-section .pricing-card .features-list li {
+        font-size: 1.1rem;
+        margin-bottom: 7px;
+        color: #0a0a0a;
+    }
+
+    .crm-pricing-section .pricing-card .price-text {
+        font-size: 30px;
+        font-weight: 900;
+        color: #0a0a0a;
+        margin-bottom: 3px;
+    }
+
+    .crm-pricing-section .pricing-card .price-text span {
+        font-size: 17px;
+    }
+
+    .crm-pricing-section .pricing-card .old-price {
+        font-size: 14px;
+        text-decoration: line-through;
+        color: red;
+        font-weight: 700;
+    }
+
+    .crm-pricing-section .pricing-card .note {
+        font-size: 1rem;
+        color: #0a0a0a;
+        font-weight: 500;
+        padding-bottom: 0.7rem;
+    }
+
+    .crm-pricing-section .pricing-card .plan-btn {
+        width: 100%;
+        padding: 13px;
+        font-size: 15px;
+        font-weight: 700;
+        border-radius: 10px;
+        border: 2px solid transparent;
+        /* transparent border */
+        transition: 0.3s;
+
+        color: #000;
+        margin-top: 12px;
+
+    }
+
+
+
+    /* FREE PLAN */
+    .crm-pricing-section .pricing-card.free {
+        background: #e7f5e6;
+    }
+
+    .crm-pricing-section .pricing-card.free .top-badge-free {
+        background: #d7f2dc;
+        color: #0a0a0a;
+        font-size: 16px;
+        padding: 5px 14px;
+        border-radius: 7px;
+        display: inline-block;
+        margin-bottom: 14px;
+        font-weight: 600;
+    }
+
+    .crm-pricing-section .pricing-card.free .plan-btn {
+        background: #0a8a4b;
+    }
+
+    /* PRO PLAN */
+    .crm-pricing-section .pricing-card.pro {
+        background: #f5ecff;
+    }
+
+    .crm-pricing-section .pricing-card.pro .recommended-badge {
+        /* background: #5b2cec; */
+        color: #fff;
+        padding: 6px 13px;
+        border-radius: 10px;
+        font-size: 12px;
+        font-weight: 700;
+        position: absolute;
+        top: -13px;
+        right: 18px;
+    }
+
+    .crm-pricing-section .pricing-card.pro .plan-title {
+        color: #5b2cec !important;
+    }
+
+    /* ENTERPRISE PLAN */
+    .crm-pricing-section .pricing-card.enterprise {
+        background: #fff4e3;
+    }
+
+    .crm-pricing-section .pricing-card.enterprise .plan-title {
+        color: #f39200 !important;
+    }
+
+    .phone-group select,
+    .phone-group input {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: #fff;
+        height: 52px;
+        border-radius: 30px;
+    }
+
+    .country-select select {
+        width: 110px;
+        text-align: center;
+    }
+
+    .phone-input input {
+        padding-left: 40px;
+    }
+
+    .phone-icon {
+        position: absolute;
+        top: 50%;
+        left: 12px;
+        transform: translateY(-50%);
+        color: #bbb;
+        font-size: 15px;
+    }
+
+    .phone-group select:focus,
+    .phone-group input:focus {
+        outline: none;
+        border-color: #4285f4;
+        box-shadow: 0 0 6px rgba(66, 133, 244, 0.4);
+    }
+
+    .phone-group ::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+
+    /* Pricing Section */
+    .crm-pricing-section {
+        padding: 3rem 0;
+    }
+
+    /* Smaller cards */
+    .crm-pricing-section .col-md-3 {
+        padding: 0 10px;
+    }
+
+    .crm-pricing-section .pricing-card {
+        border-radius: 14px;
+        padding: 22px 18px;
+        /* min-height: 540px; */
+        min-height: auto !important;
+        /* Reduced height */
+        transition: .32s ease;
+        border: 1px solid #e5e5e5;
+        background: #fff;
+        box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Hover: subtle classic lift */
+    .crm-pricing-section .pricing-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Headers & Text Spacing */
+    .plan-title {
+        font-size: 1.25rem;
+        margin-bottom: 10px;
+    }
+
+    .pricing-card p {
+        margin-bottom: 6px;
+        font-size: 0.92rem;
+        color: #000;
+    }
+
+    /* Feature lists */
+    .features-list li {
+        margin-bottom: 6px;
+        font-size: 0.9rem;
+    }
+
+    /* Price section clean */
+    .price-box .price-text {
+        font-size: 1.6rem;
+        margin-bottom: 4px;
+    }
+
+    .price-box span {
+        font-size: 0.85rem;
+    }
+
+    /* Buttons smaller & modern */
+    .plan-btn {
+        padding: 10px;
+        width: 100%;
+        font-size: 0.92rem !important;
+        border-radius: 10px;
+    }
+
+    /* Badge styling cleaner */
+    .recommended-badge {
+        font-size: 10px;
+        padding: 5px 12px;
+        border-radius: 0 0 6px 6px;
+    }
+
+    /* Mobile scroll optimization */
+    @media (max-width: 992px) {
+        .crm-pricing-section .row {
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .crm-pricing-section .col-md-3 {
+            min-width: 270px;
+            /* Much slimmer */
+        }
+    }
+
+
+    .recommended-badge {
+        background: #007bff;
+        color: #fff;
+        padding: 4px 10px;
+        font-size: 11px;
+        border-radius: 20px;
+        position: absolute;
+        top: -10px;
+        right: 10px;
+        font-weight: 600;
+    }
+
+    .old-price {
+        text-decoration: line-through;
+        font-size: 12px;
+        color: #666;
+    }
+
+    .price-box span {
+        font-size: 12px;
+    }
+
+    .price-box .note {
+        font-size: 12px;
+        color: #333;
+    }
+
+
+    .enterprise-blue {
+        background: #e9f4ff;
+        /* soft light blue */
+        border: 1px solid #b7d7f6;
+        box-shadow: 0 2px 12px rgba(0, 102, 204, 0.08);
+    }
+
+    .enterprise-blue:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 20px rgba(0, 102, 204, 0.15);
+    }
+
+    .enterprise-blue .plan-title {
+        color: #004a9f;
+        font-weight: 700;
+    }
+
+    .enterprise-blue .price-text {
+        color: #042f6a;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .enterprise-blue .section-label {
+        color: #003d80;
+    }
+
+    .crm-pricing-section {
+        padding: 50px 0;
+    }
+
+    .pricing-card {
+        background: #ffffff;
+        border-radius: 12px;
+        border: 1px solid #e0e7ff;
+        padding: 20px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        transition: 0.3s ease-in-out;
+    }
+
+    .pricing-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .recommended-card {
+        border: 2px solid #0066ff;
+    }
+
+    .recommended-badge {
+        position: absolute;
+        top: -10px;
+        right: 20px;
+        background: #0066ff;
+        color: #fff;
+        padding: 3px 12px;
+        font-size: 12px;
+        border-radius: 20px;
+    }
+
+    .small-card {
+        min-height: 880px;
+        /* Ensure equal height */
+    }
+
+    .section-label {
+        font-size: 14px;
+        font-weight: 600;
+        margin: 14px 0 6px;
+        color: #333;
+    }
+
+    .features-list {
+        padding-left: 0;
+        list-style: none;
+    }
+
+    .features-list li {
+        font-size: 14px;
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .features-wrapper {
+        flex-grow: 1;
+    }
+
+    .plan-btn {
+        background: #0052e8;
+        color: #fff;
+        border: none;
+        padding: 10px 12px;
+        border-radius: 8px;
+        font-weight: 600;
+    }
+
+    .plan-btn:hover {
+        background: #003cb8;
+    }
+
+    .price-text {
+        font-size: 20px;
+        font-weight: 700;
+        margin-top: 15px;
+    }
+
+    .enterprise-blue {
+        background-color: #eef5ff;
+        /* Soft light-blue background */
+    }
+
+    input#phone {
+        padding-left: 75px !important;
+
+    }
+
+    .iti__selected-dial-code {
+        color: #fff !important;
+        margin-left: 16px !important;
+        margin-top: 1px !important;
+    }
+
+    /* Hide flags, names — show only dial codes */
+    .iti__flag-container .iti__selected-flag {
+        padding-left: 10px !important;
+        background-color: transparent !important;
+    }
+
+    .iti__country-name {
+        display: none !important;
+    }
+
+    .iti__country-list .iti__dial-code {
+        font-size: 14px;
+        padding-left: 10px;
+    }
+
+    .iti {
+        position: relative;
+        display: block !important;
+    }
+
+    .contact-form .contact-submit {
+
+        z-index: 0;
+
+    }
+
+
+    .iti__country-name {
+        display: none !important;
+    }
+
+    .only-codes .iti__country-list .iti__dial-code {
+        padding-left: 12px;
+    }
+
+    .iti__arrow {
+        filter: brightness(0) invert(1);
+        display: none !important;
+    }
+
+
+    /* Toast container */
+    #toastContainer {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 9999;
+    }
+
+    /* Base toast style */
+    .toast {
+        backdrop-filter: blur(12px);
+        background: rgba(40, 40, 40, 0.6);
+        color: #fff;
+        padding: 14px 22px;
+        margin-top: 12px;
+        border-radius: 12px;
+        font-size: 15px;
+        font-weight: 500;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    /* Show animation */
+    .toast.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Success & Error variants */
+    .toast.success {
+        border-left: 5px solid #28a745;
+    }
+
+    .toast.error {
+        border-left: 5px solid #dc3545;
+    }
+
+    .crm-compare-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 15px;
+        background-color: #fff;
+    }
+
+    .crm-compare-table thead th {
+        background: #f6fafd;
+        font-weight: 700;
+        text-align: center;
+        padding: 12px;
+        border-bottom: 2px solid #e1e7ee;
+        color: white;
+    }
+
+    .crm-compare-table td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #eef2f6;
+        font-weight: 600;
+    }
+
+    .crm-compare-table td:first-child {
+        text-align: left;
+        font-weight: 600;
+        width: 300px;
+        color: white;
+    }
+
+    .crm-compare-table tr:hover {
+        background: #f9fcff;
+    }
+
+    .plan-highlight {
+        font-weight: 600;
+        color: #0066ff;
+    }
+
+
+    /* Pricing Section */
+    .pricing-card {
+        border-radius: 16px;
+        padding: 25px 18px;
+        background: #fff;
+        text-align: center;
+        border: 1px solid #e5e8ea;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+        transition: 0.3s ease-in-out;
+    }
+
+    .pricing-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .plan-title {
+        font-size: 18px;
+        font-weight: 800;
+        color: #1a1a1a;
+        /* text-transform: uppercase; */
+    }
+
+    .sub-label {
+        font-size: 12px;
+        color: #4f4f4f;
+        margin-bottom: 16px;
+    }
+
+    .price-text {
+        font-size: 30px;
+        font-weight: 800;
+        color: #111;
+        margin-top: 18px;
+    }
+
+    .price-text span {
+        font-size: 14px;
+        font-weight: 500;
+        color: #555;
+    }
+
+    .plan-btn {
+        margin-top: 20px;
+        padding: 10px 0;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 600;
+        border: none;
+        background: #111;
+        color: #fff;
+        transition: 0.3s ease;
+    }
+
+    .plan-btn:hover {
+        background: #000;
+    }
+
+    /* Recommended Badge */
+    .recommended-badge {
+        background: #1976ff;
+        color: #fff;
+        font-size: 11px;
+        padding: 3px 12px;
+        border-radius: 999px;
+        font-weight: 600;
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        box-shadow: 0 2px 10px rgba(25, 118, 255, 0.4);
+    }
+
+    .recommended-card {
+        position: relative;
+        border: 2px solid #1976ff !important;
+    }
+
+    /* Backgrounds like image */
+    .bg-free {
+        background: #e5f7ec !important;
+    }
+
+    .bg-standard {
+        background: #e8f0ff !important;
+    }
+
+    .bg-professional {
+        background: #fff4d6 !important;
+    }
+
+    .bg-enterprise {
+        background: #f2f5f7 !important;
+    }
+
+    /* Responsive */
+    @media(max-width: 768px) {
+        .pricing-card {
+            margin-bottom: 20px;
+        }
+    }
+
+    .plan-btn {
+        margin-top: 20px;
+        padding: 10px 0;
+        border-radius: 50px;
+        font-size: 14px;
+        font-weight: 600;
+        background: transparent;
+        color: #000;
+        border: 2px solid rgba(0, 0, 0, 0.8);
+        transition: 0.3s ease-in-out;
+    }
+
+    .plan-btn:hover {
+        background: rgba(0, 0, 0, 0.07);
+        border-color: #000;
+    }
+
+    .hoverbtn:hover {
+        border-color: #007bff !important;
+        /* blue border on hover */
+        background-color: 007bff !important;
+        /* optional: light blue background */
+        color: #007bff;
+        /* optional: text turns blue */
+        transition: 0.3s ease;
+        /* smooth effect */
+    }
+
+    /* Tablet adjustments */
+    @media (max-width: 992px) {
+        .crm-compare-table {
+            font-size: 14px;
+        }
+
+        .crm-compare-table th,
+        .crm-compare-table td {
+            padding: 10px;
+        }
+    }
+
+    /* Mobile stacked view */
+    @media (max-width: 768px) {
+
+        .crm-compare-table,
+        .crm-compare-table thead,
+        .crm-compare-table tbody,
+        .crm-compare-table th,
+        .crm-compare-table td,
+        .crm-compare-table tr {
+            display: block;
+            width: 100%;
+        }
+
+        .crm-compare-table thead {
+            display: none;
+            /* hide header row */
+        }
+
+        .crm-compare-table tr {
+            margin-bottom: 18px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .crm-compare-table td {
+            text-align: left;
+            padding: 8px;
+            position: relative;
+        }
+
+        /* Add labels before each cell */
+        .crm-compare-table td:before {
+            content: attr(data-label);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 4px;
+            color: #555;
+        }
+    }
+
+    input#phone::placeholder {
+        color: white;
+    }
+
+    /* -----------------------------------
+   CLEAN DARK COMPARISON TABLE (FINAL)
+----------------------------------- */
+    .crm-compare-table {
+        width: 100%;
+        margin-top: 60px;
+        border-collapse: collapse;
+        background: #0f152d;
+        /* MAIN DARK BG */
+        border-radius: 14px;
+        overflow: hidden;
+    }
+
+    /* -----------------------------------
+   TABLE HEADER — DARK, NO WHITE
+----------------------------------- */
+    .crm-compare-table th {
+        background: #161d37 !important;
+        /* Dark navy (like 2nd image) */
+        padding: 18px;
+        color: #ffffff;
+        /* White text */
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* -----------------------------------
+   TABLE ROWS — NO WHITE LINES
+----------------------------------- */
+    .crm-compare-table tr {
+        background: #0f152d !important;
+        /* Same bg as full table */
+    }
+
+    /* -----------------------------------
+   TABLE CELLS
+----------------------------------- */
+    .crm-compare-table td {
+        padding: 16px 18px;
+        color: #d1d5e0;
+        /* soft white text */
+        font-size: 15px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        /* Soft thin divider */
+    }
+
+    /* -----------------------------------
+   REMOVE ALL HOVER EFFECTS
+----------------------------------- */
+    .crm-compare-table tr:hover td,
+    .crm-compare-table td:hover,
+    .crm-compare-table th:hover {
+        background: none !important;
+    }
+
+    /* -----------------------------------
+   FIRST COLUMN LEFT ALIGNED
+----------------------------------- */
+    .crm-compare-table td:first-child {
+        text-align: left;
+        font-weight: 500;
+        color: #ffffff;
+    }
+
+    /* -----------------------------------
+   ICONS (CHECKMARKS)
+----------------------------------- */
+    .crm-compare-table td i {
+        font-size: 18px;
+        color: #2ecc71;
+        /* Green checkmark */
+        display: block;
+        text-align: center;
+    }
+
+    /* -----------------------------------
+   CENTER ALL PLAN COLUMNS
+----------------------------------- */
+    .plan-highlight {
+        text-align: center;
+    }
+
+    /* -----------------------------------
+   REMOVE ANY WHITE BORDER OUTSIDE
+----------------------------------- */
+    .crm-compare-table,
+    .crm-compare-table tr,
+    .crm-compare-table td,
+    .crm-compare-table th {
+        border: none !important;
+    }
+
+    /* Smooth Slide Glow */
+    .crm-compare-table tr {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .crm-compare-table tr::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.03);
+        transition: all 0.4s ease;
+    }
+
+    .crm-compare-table tr:hover::before {
+        left: 0;
+    }
+
+
+    /* Container spacing */
+    .row.g-4 {
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+
+    /* Card base */
+    .pricing-card {
+        border-radius: 12px;
+        padding: 24px 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        transition: transform 0.3s ease;
+    }
+
+    .pricing-card:hover {
+        transform: translateY(-6px);
+    }
+
+    /* Plan title */
+    .plan-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #2c3e50;
+    }
+
+    /* Subtitle */
+    .sub-label {
+        font-size: 14px;
+        color: #7f8c8d;
+        margin-bottom: 16px;
+    }
+
+    /* Price */
+    .price-text {
+        font-size: 24px;
+        font-weight: 600;
+        color: #34495e;
+        margin-bottom: 20px;
+    }
+
+    /* Button base */
+    .plan-btn {
+        padding: 10px 20px;
+        font-weight: 600;
+        border-radius: 6px;
+        background-color: #ffffff;
+        color: #2c3e50;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Button hover */
+    .plan-btn:hover {
+        background-color: #2c3e50;
+        color: #ffffff;
+    }
+
+    /* Recommended badge */
+    .recommended-badge {
+        display: inline-block;
+        background-color: #8f61b9;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 4px 10px;
+        border-radius: 20px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    /* Specific card backgrounds */
+    .small-card {
+        background-color: #ffffff;
+    }
+
+    .small-card:nth-child(1) {
+        background-color: #e9f6e7;
+    }
+
+    .small-card:nth-child(2) {
+        background-color: #f5ebff;
+    }
+
+    .small-card:nth-child(3) {
+        background-color: #fcf5e3;
+    }
+
+    .enterprise-blue {
+        background-color: rgb(217, 227, 233);
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+        .pricing-card {
+            padding: 20px 16px;
+        }
+
+        .plan-title {
+            font-size: 16px;
+        }
+
+        .price-text {
+            font-size: 20px;
+        }
+
+        .plan-btn {
+            font-size: 14px;
+        }
+    }
+
+    /* Container spacing */
+    .row.g-4 {
+        margin-top: 40px !important;
+        margin-bottom: 40px !important;
+    }
+
+    /* Card base */
+    .pricing-card {
+        border-radius: 12px !important;
+        padding: 24px 20px !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        height: 100% !important;
+        transition: transform 0.3s ease !important;
+        background-color: #ffffff !important;
+    }
+
+    .pricing-card:hover {
+        transform: translateY(-6px) !important;
+    }
+
+    /* Background colors for each plan */
+    .pricing-card.small-card:nth-child(1) {
+        background-color: #0f1624 !important;
+        /* Free Plan */
+    }
+
+    .pricing-card.recommended-card {
+        background-color: #f5ebff !important;
+        /* Standard Plan */
+    }
+
+    .pricing-card.small-card:nth-child(3) {
+        background-color: #fcf5e3 !important;
+        /* Professional Plan */
+    }
+
+    .pricing-card.enterprise-blue {
+        background-color: #d9e3e9 !important;
+        /* Enterprise Plan */
+    }
+
+    /* Plan title */
+    .plan-title {
+        font-size: 25px !important;
+        font-weight: 900 !important;
+        color: white !important;
+    }
+
+    /* Subtitle */
+    .sub-label {
+        font-size: 14px !important;
+        color: #7f8c8d !important;
+        margin-bottom: 16px !important;
+    }
+
+    /* Price */
+    .price-text {
+        font-size: 30px !important;
+        font-weight: 800 !important;
+        color: white !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* Button base */
+    /* .plan-btn {
+        padding: 10px 20px !important;
+        font-weight: 600 !important;
+        border-radius: 6px !important;
+        background-color: #ffffff !important;
+        color: #2c3e50 !important;
+        transition: background-color 0.3s ease, color 0.3s ease !important;
+        border: 1px solid transparent !important;
+    } */
+
+    /* Specific button borders */
+    .pricing-card:nth-child(1) .plan-btn {
+        border-color: green !important;
+    }
+
+    .pricing-card:nth-child(2) .plan-btn {
+        border-color: #8f61b9 !important;
+    }
+
+    .pricing-card:nth-child(3) .plan-btn {
+        border-color: #957b37 !important;
+    }
+
+    .pricing-card:nth-child(4) .plan-btn {
+        border-color: #5199c5 !important;
+    }
+
+    /* Button hover */
+    .plan-btn:hover {
+        background-color: #2c3e50 !important;
+        color: #ffffff !important;
+    }
+
+    /* Recommended badge */
+    .recommended-badge {
+        display: inline-block !important;
+        /* background-color: #8f61b9 !important; */
+        color: #fff !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        padding: 4px 10px !important;
+        border-radius: 20px !important;
+        margin-bottom: 10px !important;
+        text-align: center !important;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+        .pricing-card {
+            padding: 20px 16px !important;
+        }
+
+        .plan-title {
+            font-size: 16px !important;
+        }
+
+        .price-text {
+            font-size: 20px !important;
+        }
+
+        .plan-btn {
+            font-size: 14px !important;
+        }
+    }
+
+    /* -------------- MAIN SECTION BACKGROUND --------------- */
+    .pricing-section {
+        background: linear-gradient(180deg, #0c0f1a, #131a2b);
+        padding: 60px 0;
+        color: #fff;
+    }
+
+    /* -------------- MAIN TITLE --------------- */
+    .main-title {
+        
+        font-size: 48px;
+        font-weight: 800;
+        margin-bottom: 10px;
+    }
+
+    .main-title span {
+        color: #ffffff;
+    }
+
+    .main-title {
+        color: #ffb25f;
+        /* Pricing Plan golden look */
+    }
+
+    /* -------------- SUB TEXT --------------- */
+    .subheading {
+        text-align: center;
+        color: #9aa3b8;
+        margin-bottom: 50px;
+    }
+
+    /* -------------- CARD --------------- */
+    .pricing-card {
+        background: #0f1624;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 30px;
+        border-radius: 14px;
+        min-height: 360px;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    }
+
+    .pricing-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    /* -------------- PLAN TITLE --------------- */
+    .plan-title {
+        font-size: 18px;
+        font-weight: 700;
+        color: #ffffff;
+    }
+
+    .sub-label {
+        color: #b8c1d1;
+        font-size: 14px;
+    }
+
+    /* -------------- PRICE TEXT --------------- */
+    .price-text {
+        font-size: 38px;
+        font-weight: 800;
+        color: #ffffff;
+    }
+
+    .price-text span {
+        font-size: 14px;
+        color: #9aa3b8;
+    }
+
+    /* -------------- BUTTONS --------------- */
+
+    .plan-btn {
+        background: #1d2736;
+        border-radius: 10px;
+        padding: 12px;
+        text-align: center;
+        font-weight: 600;
+        border: none;
+        color: #ffffff;
+        transition: 0.3s;
+    }
+
+    .plan-btn:hover {
+        background: #2a3446;
+    }
+
+    /* Green button (Free Plan) */
+    .plan-btn.green {
+        background: #0e8a54;
+    }
+
+    .plan-btn.green:hover {
+        background: #0c7446;
+    }
+
+    /* Gold button (Standard Recommended) */
+    .plan-btn.gold {
+        background: #ffb25f;
+        color: #000;
+    }
+
+    .plan-btn.gold:hover {
+        background: #fda747;
+    }
+
+    /* Brown button (Professional) */
+    .plan-btn.brown {
+        background: #8b5e3c;
+    }
+
+    .plan-btn.brown:hover {
+        background: #734c31;
+    }
+
+    /* Blue button (Enterprise) */
+    .plan-btn.blue {
+        background: #144b75;
+    }
+
+    .plan-btn.blue:hover {
+        background: #0d3a5a;
+    }
+
+    /* -------------- RECOMMENDED BADGE --------------- */
+
+    .recommended-card {
+        border: 1px solid #ffb25f;
+        position: relative;
+    }
+
+    .recommended-badge {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #3c7bff;
+        padding: 5px 14px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .plan-title {
+        font-size: 25px !important;
+        font-weight: 800 !important;
+        color: white !important;
+    }
+
+    body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+.dark body {
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+.text-primary {
+  color:#ffb25f;
+}
+
+.mt-24 {
+  margin-top: 6rem;
+}
+.max-w-4xl {
+  max-width: 64rem;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.text-center {
+  text-align: center;
+}
+.mb-12 {
+  margin-bottom: 3rem;
+}
+.text-3xl {
+  font-size: 1.875rem;
+}
+.sm\:text-4xl {
+  font-size: 2.25rem;
+}
+.font-black {
+  font-weight: 900;
+}
+.text-slate-900 {
+  color: #0f172a;
+}
+.dark\:text-white {
+  color: #fff;
+  font: 40px;
+}
+.mt-4 {
+  margin-top: 1rem;
+}
+.text-lg {
+  font-size: 1.125rem;
+}
+.text-slate-600 {
+  color: #475569;
+}
+.dark\:text-slate-400 {
+  color: #94a3b8;
+}
+
+/* FAQ item styling */
+.faq-item {
+  border-radius: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease;
+}
+
+.dark .faq-item {
+  background-color: rgba(15, 23, 42, 0.5);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.faq-item[open] {
+  background-color: rgb(15 23 42 / 0.5) !important;
+}
+.dark .faq-item[open] {
+  background-color: #0f172a;
+}
+
+/* Summary */
+.faq-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  
+  color: #ffb25f ;
+}
+
+.dark .faq-summary {
+  color: #fff;
+}
+
+/* Expand icon */
+.expand-icon {
+  transition: transform 0.3s ease;
+  color: #6366f1;
+}
+
+.faq-item[open] .expand-icon {
+  transform: rotate(180deg);
+}
+
+/* Answer */
+.faq-answer {
+  margin-top: 1rem;
+  color: #475569;
+  line-height: 1.75;
+}
+
+.dark .faq-answer {
+  color: #94a3b8;
+}
+
+/* Spacing between items */
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+/* FAQ container alignment */
+.mt-24 {
+  margin-top: 6rem;
+}
+.max-w-4xl {
+  max-width: 64rem;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Header styling */
+.text-center {
+  text-align: center;
+}
+.mb-12 {
+  margin-bottom: 3rem;
+}
+.text-3xl {
+  font-size: 1.875rem;
+}
+.sm\:text-4xl {
+  font-size: 2.25rem;
+}
+.font-black {
+  font-weight: 900;
+}
+.text-primary {
+  color: #ffb25f !important;
+}
+.text-slate-900 {
+  color: #0f172a;
+}
+.dark\:text-white {
+  color: #fff;
+}
+.text-lg {
+  font-size: 1.125rem;
+}
+.text-slate-600 {
+  color: #475569;
+}
+.dark\:text-slate-400 {
+  color: #94a3b8;
+}
+
+/* FAQ item styling to match pricing card */
+.faq-item {
+  border-radius: 1rem;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  transition: background-color 0.3s ease;
+}
+
+.dark .faq-item {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+.faq-item[open] {
+  background-color: #f9fafb;
+}
+.dark .faq-item[open] {
+  background-color: #0f172a;
+}
+
+/* Summary styling */
+.faq-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  font-size:20px!important;
+    color: #ffb25f !important;
+}
+
+.dark .faq-summary {
+  color: #fff;
+}
+
+/* Expand icon */
+.expand-icon {
+  transition: transform 0.3s ease;
+  color: #6366f1;
+  font-size: 24px;
+}
+
+.faq-item[open] .expand-icon {
+  transform: rotate(180deg);
+}
+
+/* Answer text */
+.faq-answer {
+  margin-top: 1rem;
+  color: rgb(148 163 184 / var(--tw-text-opacity, 1)) !important;
+  line-height: 1.75;
+}
+
+.dark .faq-answer {
+  color: #94a3b8;
+}
+
+/* Spacing between items */
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+.faq-item {
+  border-radius: 1rem;
+  background-color: transparent; /* ✅ true transparency */
+  padding: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* subtle border for contrast */
+  transition: background-color 0.3s ease;
+}
+
+.dark .faq-item {
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.faq-item[open] {
+  background-color: transparent;
+}
+.dark .faq-item[open] {
+  background-color: transparent;
+}
+.faq-item {
+  backdrop-filter: blur(6px);
+}
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #0f172a;
+      color: #f8fafc;
+      margin: 0;
+      padding: 0;
+    }
+
+    .text-primary {
+      color: #6366f1;
+    }
+
+    .testimonial-section {
+      max-width: 1200px;
+      margin: 2rem auto !important;
+      padding: 0 1rem;
+      padding-bottom: 80px;
+    }
+
+    .testimonial-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .testimonial-header h2 {
+      font-size: 40px;
+      font-weight: 900;
+      color: #f8fafc;
+    }
+
+    .testimonial-header p {
+      margin-top: 1rem;
+      font-size: 1.125rem;
+      color: #94a3b8;
+    }
+
+    .testimonial-row {
+      display: flex;
+      gap: 2rem;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+      scroll-snap-type: x mandatory;
+    }
+
+    .testimonial-card {
+      flex: 0 0 360px;
+      scroll-snap-align: start;
+      border-radius: 1rem;
+      background-color: rgb(15 23 42 / 0.5);
+      padding: 2rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(6px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .testimonial-card .stars {
+      display: flex;
+      color: #ffb25f;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial-card p {
+      color: #cbd5e1;
+      font-style: italic;
+      flex-grow: 1;
+    }
+
+    .testimonial-footer {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .avatar {
+      height: 3rem;
+      width: 3rem;
+      border-radius: 9999px;
+      background-color: #334155;
+      color: #cbd5e1;
+      font-weight: bold;
+      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .testimonial-footer h4 {
+      font-weight: bold;
+      color: #f8fafc;
+      margin: 0;
+    }
+
+    .testimonial-footer p {
+      font-size: 0.875rem;
+      color: #94a3b8;
+      margin: 0;
+    }
+    
+</style>
+
+<section class="crm-pricing-section" id="our-pricing">
+    <div class="container">
+        <!-- <h2 class="main-title" style="text-align: center;">
+            <span>AI-Powered CRM</span> Pricing Plan
+        </h2> -->
+
+
+       <h2 class="main-title text-center mb-4" style="margin:0 auto;">
+    <span>AI-Powered CRM</span> Pricing Plan
+</h2>
+<p class="mt-4 text-lg text-slate-600 dark:text-slate-400" style="
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    font-size: large;
+">Choose the perfect plan to accelerate your growth.</p>
+<div class="row g-4 justify-content-center align-items-stretch mb-3">
+
+    <!-- FREE PLAN -->
+    <div class="col-md-3">
+        <div class="pricing-card small-card">
+            <h3 class="plan-title text-center mb-2">Free CRM Plan</h3>
+            <p class="sub-label text-center"><b>For Individuals & Small Teams Starting Out</b></p>
+
+            <p class="price-text text-center">Free</p>
+
+            <button class="plan-btn w-100"
+                onclick="window.location.href='/buy/?plan=CRM Lite&amount=0'"
+                style="
+                    border: 1px solid rgb(110 231 183);
+                    color: rgb(110 231 183);
+                    font-weight: 600;
+                    padding: 15px;
+                    width: 100%;
+                    border-radius: 0.5rem;
+                    /* background-color: rgb(57 134 103); */
+                ">
+                Get Started Free
+            </button>
+        </div>
+    </div>
+
+    <!-- STANDARD PLAN -->
+    <div class="col-md-3">
+        <div class="pricing-card recommended-card small-card">
+            <span class="recommended-badge" style="border: 1px solid;">Recommended</span>
+            <h3 class="plan-title text-center mb-2">Standard Plan  CRM</h3>
+            <p class="sub-label text-center"><b>Best for Growing Teams</b></p>
+
+            <p class="price-text text-center mb-1">₹1,500<span>/month</span></p>
+
+            <button onclick="window.location.href='/buy/?plan=Professional CRM&amount=1500'"
+                style="
+                    border: 1px solid rgb(37 99 235);
+                    background-color: rgb(37 99 235);
+                    color: white;
+                    font-weight: 600;
+                    padding: 10px;
+                    width: 100%;
+                    border-radius: 0.5rem;
+                ">
+                Select Plan
+            </button>
+        </div>
+    </div>
+
+    <!-- PROFESSIONAL PLAN -->
+    <div class="col-md-3">
+        <div class="pricing-card small-card">
+            <h3 class="plan-title text-center mb-2">Professional Plan CRM Pro</h3>
+            <p class="sub-label text-center"><b>For Large Teams & Enterprises</b></p>
+
+            <p class="price-text text-center mb-1">₹2,500<span>/month</span></p>
+
+            <button onclick="window.location.href='/buy/?plan=CRM Max&amount=2500'"
+                style="
+                    border: 1px solid rgb(253 186 116);
+                    background-color: rgb(253 186 116);
+                    color: rgb(120 53 15);
+                    font-weight: 600;
+                    padding: 10px;
+                    width: 100%;
+                    border-radius: 0.5rem;
+                ">
+                Select Plan
+            </button>
+        </div>
+    </div>
+
+    <!-- ENTERPRISE PLAN -->
+    <div class="col-md-3">
+        <div class="pricing-card small-card enterprise-blue">
+            <h3 class="plan-title text-center mb-2">Enterprise Plan CRM Max</h3>
+            <p class="sub-label text-center"><b>For Multi-Location Companies</b></p>
+
+            <p class="price-text text-center">On Request</p>
+
+            <a href="/subscribe/" style="text-decoration:none;">
+                <button
+                    style="
+                        width: 100%;
+                        border-radius: 0.5rem;
+                        background-color: rgb(12 59 82);
+                        padding: 10px;
+                        text-align: center;
+                        font-weight: 600;
+                        color: rgb(125 211 252);
+                        border: 1px inset;
+                    ">
+                    On Request
+                </button>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+        <table class="crm-compare-table">
+            <thead>
+                <tr>
+                    <th style="text-align: start;">CRM Features</th>
+                    <th class="plan-highlight">FREE</th>
+                    <th class="plan-highlight">Standard</th>
+                    <th class="plan-highlight">Professional</th>
+                    <th class="plan-highlight">Enterprise</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                    <td>Leads & Deals (Pipeline Management)</td>
+                    <td><i class="fa-solid fa-check text-success"></i></i></td>
+                    <td><i class="fa-solid fa-circle-check text-success"></i></td>
+                    <td><i class="fa-solid fa-circle-check text-success"></i></td>
+                    <td>Unlimited</td>
+                </tr>
+
+                <tr>
+                    <td>Contacts & Organizations</td>
+                    <td><i class="fa-solid fa-check text-success"></i></td>
+                    <td><i class="fa-solid fa-circle-check text-success"></td>
+                    <td><i class="fa-solid fa-circle-check text-success"></td>
+                    <td><i class="fa-solid fa-circle-check text-success"></td>
+                </tr>
+
+                <tr>
+                    <td>Notes, Tasks & Call Logs</td>
+                    <td><i class="fa-solid fa-check text-success"></i></td>
+                    <td><i class="fa-solid fa-circle-check text-success"></i></td>
+                    <td><i class="fa-solid fa-circle-check text-success"></i></td>
+                    <td><i class="fa-solid fa-circle-check text-success"></i></td>
+                </tr>
+
+                <tr>
+                    <td>Email Tracking (Opened / Not Opened)</td>
+                    <td><i class="fa-solid fa-check text-success"></i></td>
+                    <td><i class="fa-solid fa-circle-check text-success"></i></td>
+                    <td>Up to 6 Users</td>
+                    <td>Unlimited</td>
+                </tr>
+
+                <tr>
+                    <td>Website Lead Capture</td>
+                    <td>Basic</td>
+                    <td>Standard</td>
+                    <td><i class="fa-solid fa-circle-check text-success"></i></td>
+                    <td><i class="fa-solid fa-circle-check text-success"></i></td>
+                </tr>
+
+                <tr>
+                    <td>Lead Assignment Rules</td>
+                    <td>-</td>
+                    <td><i class="fa-solid fa-circle-check text-success"></i></td>
+                    <td>Advanced</td>
+                    <td>Auto Sync</td>
+                </tr>
+
+                <tr>
+                    <td>Role-Based Access</td>
+                    <td>-</td>
+                    <td>Basic</td>
+                    <td>Advanced</td>
+                    <td>Custom Roles</td>
+                </tr>
+
+                <tr>
+                    <td>Meta Ads Lead Sync</td>
+                    <td>-</td>
+                    <td>Periodic Sync</td>
+                    <td><i class="fa-solid fa-circle-check text-success"></i></td>
+                    <td>Auto Sync</td>
+                </tr>
+
+                <tr>
+                    <td>AI Lead Score</td>
+                    <td>-</td>
+                    <td><i class="fa-solid fa-circle-check text-success"></i></td>
+                    <td>Advanced</td>
+                    <td><i class="fa-solid fa-circle-check text-success"></i></td>
+                </tr>
+
+                <tr>
+                    <td>AI Assist Email</td>
+                    <td>-</td>
+                    <td>Basic</td>
+                    <td>Advanced</td>
+                    <td><i class="fa-solid fa-circle-check text-success"></i></td>
+                </tr>
+
+                <tr>
+                    <td>Users</td>
+                    <td>1 User</td>
+                    <td>Up to 3 Users</td>
+                    <td>Up to 6 Users</td>
+                    <td>Unlimited Users</td>
+                </tr>
+
+                <tr>
+                    <td>Advanced Features (API, SLA, Storage, Manager)</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>All Included</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div class="mt-24 max-w-4xl mx-auto">
+  <div class="text-center mb-12">
+    <h2 class="text-3xl font-black text-slate-900 dark:text-white sm:text-4xl">
+      Frequently Asked <span class="text-primary">Questions</span>
+    </h2>
+    <p class="mt-4 text-lg text-slate-600 dark:text-slate-400" style="
+    text-align: center;
+    color: white;
+    font-weight: 400;
+    font-size: 18px;">
+      Everything you need to know about our plans and billing.
+    </p>
+  </div>
+
+  <div class="space-y-4">
+    <details class="faq-item group">
+      <summary class="faq-summary">
+        <span>Can I switch plans later?</span>
+        <span class="material-icons expand-icon">expand_more</span>
+      </summary>
+      <div class="faq-answer">
+        Yes, you can upgrade or downgrade your plan at any time. If you upgrade, the new features will be available immediately. If you downgrade, changes will take effect at the start of your next billing cycle.
+      </div>
+    </details>
+
+    <details class="faq-item group">
+      <summary class="faq-summary">
+        <span>Is there a free trial for paid plans?</span>
+        <span class="material-icons expand-icon">expand_more</span>
+      </summary>
+      <div class="faq-answer">
+        Absolutely! We offer a 14-day free trial for both the Standard and Professional plans. No credit card is required to start your trial, giving you full access to test out the features.
+      </div>
+    </details>
+
+    <details class="faq-item group">
+      <summary class="faq-summary">
+        <span>What happens if I exceed my user limit?</span>
+        <span class="material-icons expand-icon">expand_more</span>
+      </summary>
+      <div class="faq-answer">
+        If you need to add more users than your current plan allows, you can easily add extra seats from your dashboard for an additional monthly fee, or upgrade to the next tier for better volume pricing.
+      </div>
+    </details>
+
+    <details class="faq-item group">
+      <summary class="faq-summary">
+        <span>Do you offer discounts for non-profits?</span>
+        <span class="material-icons expand-icon">expand_more</span>
+      </summary>
+      <div class="faq-answer">
+        Yes, we support non-profit organizations with special discounted pricing. Please contact our sales team with proof of your non-profit status to apply for the discount.
+      </div>
+    </details>
+  </div>
+</div>
+</section>
+<section class="testimonial-section">
+    <div class="testimonial-header">
+      <h2>Trusted by <span class="text-primary">Growing Teams</span></h2>
+      <p style="    text-align: center;
+    color: white;
+    font-weight: 400;
+    font-size: 18px;">See what our customers have to say about their experience.</p>
+    </div>
+
+    <div class="testimonial-row">
+      <div class="testimonial-card">
+        <div class="stars">
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+        </div>
+        <p>"The AI Lead Score feature alone has increased our conversion rate by 40%. It's incredibly accurate and saves our sales team hours every week."</p>
+        <div class="testimonial-footer">
+          <div class="avatar">SJ</div>
+          <div>
+            <h4>Sarah Jenkins</h4>
+            <p>VP of Sales, TechGrowth</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+          <span class="material-icons">star_half</span>
+        </div>
+        <p>"We started on the Free plan and seamlessly upgraded to Professional as we grew. The pipeline management is intuitive and powerful."</p>
+        <div class="testimonial-footer">
+          <div class="avatar">MR</div>
+          <div>
+            <h4>Marcus Reed</h4>
+            <p>Founder, Reed Logistics</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="stars">
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+          <span class="material-icons">star</span>
+        </div>
+        <p>"The enterprise support team is phenomenal. They helped us customize the role-based access for our 50+ person sales team perfectly."</p>
+        <div class="testimonial-footer">
+          <div class="avatar">EL</div>
+          <div>
+            <h4>Elena Liu</h4>
+            <p>Director of Operations, GlobalScale</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% include 'includes/footer.html' %}

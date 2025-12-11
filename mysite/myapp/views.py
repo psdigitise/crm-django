@@ -620,3 +620,9 @@ def partners(request):
     return render(request, "Partners.html")
 
 
+def pricing(request):
+    return render(request, "Pricing.html")
+
+def features(request):
+    return render(request, "Features.html")
+
