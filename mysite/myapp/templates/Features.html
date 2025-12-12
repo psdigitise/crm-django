@@ -1,401 +1,584 @@
+{% load static %}
+{% include 'includes/header.html' %}
+
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet">
 
 
-
-
 <style>
-body {
-    font-family: "Inter", sans-serif;
-    background-color: #f3f4f6;
-}
-.sidebar {
-    width: 260px;
-    background-color: #1e293b;
-    height: 100vh;
-    position: fixed;
-    left: 0;
-    top: 0;
-    padding-top: 1rem;
-    border-right: 1px solid #334155;
-}
-.sidebar a {
-    padding: 14px 22px;
-    font-size: 15px;
-    color: #cbd5e1;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    border-left: 4px solid transparent;
-}
-.sidebar a:hover {
-    background-color: #0f172a;
-    color: #fff;
-}
-.sidebar a.active {
-    background-color: #facc15;
-    color: #000;
-    font-weight: 600;
-}
+    body {
+        font-family: "Inter", sans-serif;
+        background-color: #f3f4f6;
+    }
 
-.main-content {
-    margin-left: 260px;
-    padding: 40px;
-}
+    .sidebar {
+        background-color: #1e293b;
+        /* padding-top: 1rem; */
+        border-right: 1px solid #334155;
+        height: 100%;
+    }
 
-.gradient-card {
-    padding: 2px;
-    border-radius: 18px;
-}
-.card-inner {
-    background: white;
-    padding: 30px;
-    border-radius: 16px;
-    height: 100%;
-    transition: 0.3s;
-}
-.card-inner:hover {
-    background: #f8fafc;
-}
+    .sidebar a {
+        padding: 14px 22px;
+        font-size: 15px;
+        color: #cbd5e1;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        border-left: 4px solid transparent;
+    }
 
-.feature-card {
-    background: white;
-    border-radius: 16px;
-    padding: 25px;
-    border: 1px solid #e5e7eb;
-    transition: 0.3s;
-}
-.feature-card:hover { border-color: #facc15; }
+    .sidebar a:hover {
+        background-color: #0f172a;
+        color: #fff;
+    }
 
-/* Gradient backgrounds */
-.grad-purple { background: linear-gradient(to right, #a855f7, #ec4899); }
-.grad-blue { background: linear-gradient(to right, #3b82f6, #06b6d4); }
-.grad-orange { background: linear-gradient(to right, #f59e0b, #f97316); }
-.grad-green { background: linear-gradient(to right, #10b981, #0d9488); }
+    .sidebar a.active {
+        background-color: #facc15;
+        color: #000;
+        font-weight: 600;
+    }
 
-.feature-card {
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    border-radius: 14px;
-    padding: 24px;
-    transition: 0.3s ease;
-    cursor: pointer;
-}
+    .main-content {
+        padding: 40px;
+        background-color: white;
+        margin-left: 0px !important;
+        margin-bottom: 20px;
+        height: 100%;
+    }
 
-.feature-card:hover {
-    border-color: #f4d03f; /* yellow border like screenshot */
-}
+    .gradient-card {
+        padding: 2px;
+        border-radius: 18px;
+    }
 
-.feature-card h5 {
-    font-weight: 600;
-    color: #1f2937;
-    margin-bottom: 8px;
-}
+    .card-inner {
+        background: white;
+        padding: 30px;
+        border-radius: 16px;
+        height: 100%;
+        transition: 0.3s;
+    }
 
-.feature-card p {
-    color: #6b7280;
-    font-size: 14px;
-    margin: 0;
-}
+    .card-inner:hover {
+        background: #f8fafc;
+    }
 
-.icon-box {
-    width: 48px;
-    height: 48px;
-    background: #f1f5f9;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #6b7280;
-    margin-bottom: 14px;
-    font-size: 26px;
-}
+    .feature-card {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        padding: 24px;
+        transition: 0.3s ease;
+        cursor: pointer;
+    }
 
-.feature-card {
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    border-radius: 14px;
-    padding: 24px;
-    transition: 0.3s ease;
-    cursor: pointer;
-}
+    .feature-card:hover {
+        border-color: #f4d03f;
+    }
 
-.feature-card:hover {
-    border-color: #f4d03f; /* yellow border */
-}
+    .feature-card h5 {
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 8px;
+    }
 
-.feature-card h5 {
-    font-weight: 700;
-    color: #1f2937;
-    margin-bottom: 8px;
-}
+    .feature-card p {
+        color: #6b7280;
+        font-size: 14px;
+        margin: 0;
+    }
 
-.feature-card p {
-    color: #6b7280;
-    font-size: 14px;
-    margin: 0;
-}
+    .icon-box {
+        width: 48px;
+        height: 48px;
+        background: #f1f5f9;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #334155;
+        margin-bottom: 14px;
+        font-size: 26px;
+    }
 
-.icon-box {
-    width: 48px;
-    height: 48px;
-    background: #f1f5f9;
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #334155;
-    margin-bottom: 14px;
-    font-size: 26px;
-}
+    .grad-purple {
+        background: linear-gradient(to right, #a855f7, #ec4899);
+    }
 
-.upgrade-box {
-    max-width: 1200px;
-    margin: 40px auto;
-    background: linear-gradient(to right, #0f172a, #111827);
-    padding: 50px 30px;
-    border-radius: 24px;
-    text-align: center;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-    color: white;
-}
+    .grad-blue {
+        background: linear-gradient(to right, #3b82f6, #06b6d4);
+    }
 
-.upgrade-box h2 {
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 12px;
-}
+    .grad-orange {
+        background: linear-gradient(to right, #f59e0b, #f97316);
+    }
 
-.upgrade-box p {
-    font-size: 16px;
-    color: #cbd5e1;
-    max-width: 600px;
-    margin: 0 auto 25px;
-}
+    .grad-green {
+        background: linear-gradient(to right, #10b981, #0d9488);
+    }
 
-.upgrade-btn {
-    background: #facc15;
-    color: black;
-    font-weight: 700;
-    padding: 14px 36px;
-    border-radius: 999px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    transition: 0.25s ease;
-}
+    .upgrade-box {
+        max-width: 1200px;
+        margin: 40px auto;
+        background: linear-gradient(to right, #0f172a, #111827);
+        padding: 50px 30px;
+        border-radius: 24px;
+        text-align: center;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        color: white;
+    }
 
-.upgrade-btn:hover {
-    background: #fdd447;
-    transform: translateY(-3px);
-}
+    .upgrade-box h2 {
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 12px;
+    }
 
+    .upgrade-box p {
+        font-size: 16px;
+        color: #cbd5e1;
+        max-width: 600px;
+        margin: 0 auto 25px;
+    }
+
+    .upgrade-btn {
+        background: #facc15;
+        color: black;
+        font-weight: 700;
+        padding: 14px 36px;
+        border-radius: 999px;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        transition: 0.25s ease;
+    }
+
+    .upgrade-btn:hover {
+        background: #fdd447;
+        transform: translateY(-3px);
+    }
+
+    @media (max-width: 992px) {
+        .main-content {
+            padding: 30px;
+        }
+
+        .card-inner {
+            padding: 24px;
+        }
+
+        .feature-card {
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .upgrade-box {
+            padding: 40px 25px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .main-content {
+            padding: 25px;
+        }
+
+        h1 {
+            font-size: 26px;
+        }
+
+        h3 {
+            font-size: 20px;
+        }
+
+        .upgrade-box {
+            padding: 35px 20px;
+        }
+
+        .upgrade-btn {
+            padding: 12px 28px;
+            font-size: 15px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .sidebar a {
+            font-size: 13px;
+            gap: 6px;
+            padding: 8px 12px;
+        }
+
+        .icon-box {
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+        }
+
+        .feature-card h5 {
+            font-size: 15px;
+        }
+
+        .feature-card p {
+            font-size: 13px;
+        }
+
+        .main-content {
+            padding: 18px;
+            margin-top: 20px;
+        }
+
+        .upgrade-box h2 {
+            font-size: 20px;
+        }
+
+        .upgrade-btn {
+            padding: 10px 24px;
+            font-size: 13.5px;
+        }
+    }
+
+    .feature-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+        min-height: 175px;
+        /* Adjust as needed */
+        padding: 43px;
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        background: #fff;
+        transition: 0.3s ease;
+        cursor: pointer;
+    }
+
+    .feature-card:hover {
+        border-color: #f4d03f;
+    }
+
+    .feature-card h5 {
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 8px;
+    }
+
+    .feature-card p {
+        color: #6b7280;
+        font-size: 14px;
+        margin-top: auto;
+    }
+
+
+    .feature-card {
+        transition:
+            transform 0.3s ease,
+            box-shadow 0.3s ease,
+            background-color 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        background-color: #f9fafb;
+    }
+
+    .feature-card:hover .icon-box {
+        background-color: #fde68a;
+        color: #1e293b;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
 </style>
+</head>
+
 <body>
+    <div class="container-fluid">
+        <div class="row">
 
-<!-- SIDEBAR -->
-<div class="sidebar">
-    <div class="px-4 mb-4">
-        <h3 class="text-white fw-bold d-flex align-items-center gap-1">
-            erpnext.ai 
-        </h3>
-    </div>
+            <!-- SIDEBAR -->
+            <div class="col-lg-2 col-md-3 col-sm-12 p-0">
+                <div class="sidebar">
 
-    <a class="active" href="#"><span class="material-symbols-rounded">auto_awesome</span> AI Capabilities</a>
-    <a href="#"><span class="material-symbols-rounded">manage_accounts</span> Lead Management</a>
-    <a href="#"><span class="material-symbols-rounded">business_center</span> Deals Management</a>
-    <a href="#"><span class="material-symbols-rounded">toc</span> Activity</a>
-    <a href="#"><span class="material-symbols-rounded">notifications</span> Notifications</a>
-    <a href="#"><span class="material-symbols-rounded">cloud_download</span> Data Import</a>
-    <a href="#"><span class="material-symbols-rounded">mail</span> Email Integration</a>
-    <a href="#"><span class="material-symbols-rounded">schedule</span> Task Reminders</a>
-</div>
+                    <!-- <div class="px-4 mb-4">
+                        <h3 class="text-white fw-bold d-flex align-items-center gap-1"></h3>
+                    </div> -->
 
-<!-- MAIN CONTENT -->
-<div class="main-content">
+                    <!-- ADDED data-target -->
+                    <a class="active sidebar-link" data-target="mainContent" href="#">
+                        <span class="material-symbols-rounded">auto_awesome</span> AI Capabilities
+                    </a>
 
-    <!-- HEADER -->
-    <div>
-        <p class="text-purple-600 mb-1 fw-semibold text-uppercase" style="letter-spacing: .5px;">
-            Platform Capabilities
-        </p>
+                    <a class="sidebar-link" data-target="img2" href="#">
+                        <span class="material-symbols-rounded">manage_accounts</span> Lead Management
+                    </a>
 
-        <h1 class="fw-bold mb-3">AI-Powered CRM Features</h1>
-        <p class="text-secondary fs-5 mb-5">
-            Accelerate your sales pipeline with our comprehensive suite of tools,
-            supercharged by next-generation artificial intelligence.
-        </p>
-    </div>
+                    <a class="sidebar-link" data-target="img3" href="#">
+                        <span class="material-symbols-rounded">business_center</span> Deals Management
+                    </a>
 
-    <!-- AI POWERHOUSE -->
-    <h3 class="fw-bold mb-4"><span class="material-symbols-rounded text-warning">sparkles</span> AI Powerhouse</h3>
+                    <a class="sidebar-link" data-target="img4" href="#">
+                        <span class="material-symbols-rounded">toc</span> Activity
+                    </a>
 
-    <div class="row g-4">
+                    <a class="sidebar-link" data-target="img5" href="#">
+                        <span class="material-symbols-rounded">notifications</span> Notifications
+                    </a>
 
-        <!-- CARD 1 -->
-        <div class="col-md-6">
-            <div class="gradient-card grad-purple">
-                <div class="card-inner">
-                    <div class="mb-3">
-                        <span class="material-symbols-rounded fs-1 text-purple-600">history_edu</span>
+                    <a class="sidebar-link" data-target="img6" href="#">
+                        <span class="material-symbols-rounded">cloud_download</span> Data Import
+                    </a>
+
+                    <a class="sidebar-link" data-target="img7" href="#">
+                        <span class="material-symbols-rounded">mail</span> Email Integration
+                    </a>
+
+                    <a class="sidebar-link" data-target="img8" href="#">
+                        <span class="material-symbols-rounded">schedule</span> Task Reminders
+                    </a>
+
+
+                    <!-- Contact Management -->
+                    <a class="sidebar-link" data-target="img9" href="#">
+                        <span class="material-symbols-rounded">contacts</span> Contact Management
+                    </a>
+
+                    <!-- Smart Notes -->
+                    <a class="sidebar-link" data-target="img10" href="#">
+   <span class="material-symbols-rounded">sticky_note_2</span>
+ Smart Notes
+</a>
+
+
+
+
+                </div>
+            </div>
+
+            <!-- MAIN CONTENT -->
+            <div class="col-lg-10 col-md-9 col-sm-12 p-0">
+
+                <!-- FULL CONTENT WRAPPER -->
+                <div id="mainContent" class="main-content">
+
+                    <p class="text-purple-600 mb-1 fw-semibold text-uppercase" style="letter-spacing: .5px;">
+                    </p>
+
+                    <h1 class="fw-bold mb-3" style="    color: #facc15;">AI-Powered CRM Features</h1>
+
+                    <p class="text-secondary fs-5 mb-5">
+                        Accelerate your sales pipeline with our comprehensive suite of tools,
+                        supercharged by next-generation artificial intelligence.
+                    </p>
+
+                    <!-- AI POWERHOUSE -->
+                    <h3 class="fw-bold mb-4" style="    color: #facc15;">
+                        <span class="material-symbols-rounded text-warning"></span> AI Powerhouse
+                    </h3>
+
+                    <div class="row g-4">
+
+                        <div class="col-md-6">
+                            <div class="gradient-card grad-purple">
+                                <div class="card-inner">
+                                    <span class="material-symbols-rounded fs-1 text-purple-600">history_edu</span>
+                                    <h4 class="fw-bold mt-3">Email Writing Assistant</h4>
+                                    <p class="text-secondary">Draft personalized, context-aware emails instantly.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="gradient-card grad-blue">
+                                <div class="card-inner">
+                                    <span class="material-symbols-rounded fs-1 text-primary">domain_verification</span>
+                                    <h4 class="fw-bold mt-3">Company Intelligence Reports</h4>
+                                    <p class="text-secondary">Auto-generate company insights instantly.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 3 -->
+                        <div class="col-md-6">
+                            <div class="gradient-card grad-orange">
+                                <div class="card-inner">
+                                    <span class="material-symbols-rounded fs-1 text-warning">scoreboard</span>
+                                    <h4 class="fw-bold mt-3">Smart Lead Scoring</h4>
+                                    <p class="text-secondary">AI evaluates behavioral data to prioritize leads.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CARD 4 -->
+                        <div class="col-md-6">
+                            <div class="gradient-card grad-green">
+                                <div class="card-inner">
+                                    <span class="material-symbols-rounded fs-1 text-success">query_stats</span>
+                                    <h4 class="fw-bold mt-3">Predictive Forecasting</h4>
+                                    <p class="text-secondary">Generate accurate revenue forecasts.</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    <h4 class="fw-bold mb-2">Email Writing Assistant</h4>
-                    <p class="text-secondary">Draft personalized, context-aware emails instantly.</p>
+
+                    <!-- CORE CRM -->
+                    <h3 class="fw-bold mt-5 mb-4" style="color: #facc15;">
+                        <span class="material-symbols-rounded text-secondary">grid_view</span> Core CRM Features
+                    </h3>
+
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="feature-card">
+                                <div class="icon-box"><span class="material-symbols-rounded">manage_accounts</span>
+                                </div>
+                                <h5>Lead Management</h5>
+                                <p>Capture, track, and nurture leads efficiently.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="feature-card">
+                                <div class="icon-box"><span class="material-symbols-rounded">business_center</span>
+                                </div>
+                                <h5>Deals Management</h5>
+                                <p>Drag-and-drop pipeline management.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="feature-card">
+                                <div class="icon-box"><span class="material-symbols-rounded">toc</span></div>
+                                <h5>Activity Tracking</h5>
+                                <p>Log calls, meetings, and emails automatically.</p>
+                            </div>
+                        </div>
+
+                        <!-- New 6 cards -->
+                        <div class="col-md-4">
+                            <div class="feature-card h-100">
+                                <div class="icon-box"><span class="material-symbols-rounded">mail</span></div>
+                                <h5>Email Integration</h5>
+                                <p>Sync your inbox seamlessly. Send and receive emails directly within the CRM.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="feature-card h-100">
+                                <div class="icon-box"><span class="material-symbols-rounded">schedule</span></div>
+                                <h5>Task Reminders</h5>
+                                <p>Never miss a follow-up with automated task reminders and calendar sync.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="feature-card h-100">
+                                <div class="icon-box"><span class="material-symbols-rounded">contacts</span></div>
+                                <h5>Contact Management</h5>
+                                <p>Maintain a centralized database of all your business contacts and organizations.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="feature-card h-100">
+                                <div class="icon-box"><span class="material-symbols-rounded">cloud_download</span></div>
+                                <h5>Data Import &amp; Export</h5>
+                                <p>Easily migrate data from other systems via CSV or Excel with our mapping tools.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="feature-card h-100">
+                                <div class="icon-box"><span class="material-symbols-rounded">notifications</span></div>
+                                <h5>Notifications &amp; Alerts</h5>
+                                <p style="padding: 3px;">Stay updated with real-time alerts on deal progress and team
+                                    activities.</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="feature-card h-100">
+                                <div class="icon-box"><span class="material-symbols-rounded">note_add</span></div>
+                                <h5>Smart Notes</h5>
+                                <p>Quickly jot down ideas or call summaries. AI can summarize long notes for you.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="upgrade-box mt-4">
+                        <h2 style="color: #facc15;">Ready to upgrade your workflow?</h2>
+                        <p>Join thousands of sales teams using erpnext.ai to close more deals.</p>
+                        
+                        <a href="{% url 'pricing' %}" class="upgrade-btn">
+                            Start Free Trial
+                        </a>
+
+                    </div>
+
+
+
                 </div>
-            </div>
-        </div>
 
-        <!-- CARD 2 -->
-        <div class="col-md-6">
-            <div class="gradient-card grad-blue">
-                <div class="card-inner">
-                    <span class="material-symbols-rounded fs-1 text-primary">domain_verification</span>
-                    <h4 class="fw-bold mt-3">Company Intelligence Reports</h4>
-                    <p class="text-secondary">Auto-generate detailed company insights instantly.</p>
+                <!-- IMAGE CONTAINER -->
+                <div class="text-center mt-4">
+                    <img src="{% static 'img/crm/crm/Leads21.png' %}" id="img2" class="feature-img img-fluid">
+                    <img src="{% static 'img/crm/crm/Deals21.png' %}" id="img3" class="feature-img img-fluid">
+                    <img src="{% static 'img/crm/crm/Activity21.png' %}" id="img4" class="feature-img img-fluid">
+                    <img src="{% static 'img/crm/crm/Notification21.png' %}" id="img5" class="feature-img img-fluid">
+                    <img src="{% static 'img/crm/crm/import21.png' %}" id="img6" class="feature-img img-fluid">
+                    <img src="{% static 'img/crm/crm/email21.png' %}" id="img7" class="feature-img img-fluid">
+                    <img src="{% static 'img/crm/crm/Task21.png' %}" id="img8" class="feature-img img-fluid">
+
+                    <img src="{% static 'img/crm/crm/contacts21.png' %}" id="img9" class="feature-img img-fluid">
+
+                    <img src="{% static 'img/crm/crm/notes21.png' %}" id="img10" class="feature-img img-fluid">
                 </div>
+
             </div>
-        </div>
-
-        <!-- CARD 3 -->
-        <div class="col-md-6">
-            <div class="gradient-card grad-orange">
-                <div class="card-inner">
-                    <span class="material-symbols-rounded fs-1 text-warning">scoreboard</span>
-                    <h4 class="fw-bold mt-3">Smart Lead Scoring</h4>
-                    <p class="text-secondary">AI evaluates behavioral data to prioritize leads.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- CARD 4 -->
-        <div class="col-md-6">
-            <div class="gradient-card grad-green">
-                <div class="card-inner">
-                    <span class="material-symbols-rounded fs-1 text-success">query_stats</span>
-                    <h4 class="fw-bold mt-3">Predictive Forecasting</h4>
-                    <p class="text-secondary">Generate accurate revenue forecasts.</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- CORE CRM -->
-    <h3 class="fw-bold mt-5 mb-4">
-        <span class="material-symbols-rounded text-secondary">grid_view</span> Core CRM Features
-    </h3>
-
-  <div class="row g-4">
-
-    <div class="col-md-4">
-        <div class="feature-card h-100">
-            <div class="icon-box">
-                <span class="material-symbols-rounded">manage_accounts</span>
-            </div>
-            <h5>Lead Management</h5>
-            <p>Capture, track, and nurture leads throughout the entire lifecycle efficiently..</p>
         </div>
     </div>
 
-    <div class="col-md-4">
-        <div class="feature-card h-100">
-            <div class="icon-box">
-                <span class="material-symbols-rounded">business_center</span>
-            </div>
-            <h5>Deals Management</h5>
-            <p>Visualize your sales pipeline and manage deals with a drag-and-drop kanban board.</p>
-        </div>
-    </div>
+    <!-- JAVASCRIPT -->
+    <script>document.addEventListener("DOMContentLoaded", () => {
 
-    <div class="col-md-4">
-        <div class="feature-card h-100">
-            <div class="icon-box">
-                <span class="material-symbols-rounded">toc</span>
-            </div>
-            <h5>Activity Tracking</h5>
-            <p>Log calls, meetings, and emails automatically to keep your team aligned.</p>
-        </div>
-    </div>
+            const sidebarLinks = document.querySelectorAll(".sidebar-link");
+            const featureImages = document.querySelectorAll(".feature-img");
+            const mainContent = document.getElementById("mainContent");
 
-    <div class="col-md-4">
-        <div class="feature-card h-100">
-            <div class="icon-box">
-                <span class="material-symbols-rounded">mail</span>
-            </div>
-            <h5>Email Integration</h5>
-            <p>Sync your inbox seamlessly. Send and receive emails directly within the CRM.</p>
-        </div>
-    </div>
+            // hide all images initially
+            featureImages.forEach(img => img.style.display = "none");
 
-    <div class="col-md-4">
-        <div class="feature-card h-100">
-            <div class="icon-box">
-                <span class="material-symbols-rounded">schedule</span>
-            </div>
-            <h5>Task Reminders</h5>
-            <p>Never miss a follow-up with automated task reminders and calendar sync.</p>
-        </div>
-    </div>
+            sidebarLinks.forEach(link => {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
 
-    <div class="col-md-4">
-        <div class="feature-card h-100">
-            <div class="icon-box">
-                <span class="material-symbols-rounded">contacts</span>
-            </div>
-            <h5>Contact Management</h5>
-            <p>Maintain a centralized database of all your business contacts and organizations.</p>
-        </div>
-    </div>
+                    // Remove active class
+                    sidebarLinks.forEach(a => a.classList.remove("active"));
+                    this.classList.add("active");
 
-    <!-- Data Import & Export -->
-    <div class="col-md-4">
-        <div class="feature-card h-100">
-            <div class="icon-box">
-                <span class="material-symbols-rounded">cloud_download</span>
-            </div>
-            <h5>Data Import &amp; Export</h5>
-            <p>Easily migrate data from other systems via CSV or Excel with our mapping tools</p>
-        </div>
-    </div>
+                    const target = this.getAttribute("data-target");
 
-    <!-- Notifications & Alerts -->
-    <div class="col-md-4">
-        <div class="feature-card h-100">
-            <div class="icon-box">
-                <span class="material-symbols-rounded">notifications</span>
-            </div>
-            <h5>Notifications &amp; Alerts</h5>
-            <p>Stay updated with real-time alerts on deal progress and team activities.</p>
-        </div>
-    </div>
+                    // Hide main content for specific features
+                    if (target === "mainContent") {
+                        mainContent.style.display = "block";
+                        featureImages.forEach(img => img.style.display = "none");
+                        return;
+                    }
 
-    <!-- Smart Notes -->
-    <div class="col-md-4">
-        <div class="feature-card h-100">
-            <div class="icon-box">
-                <span class="material-symbols-rounded">note_add</span>
-            </div>
-            <h5>Smart Notes</h5>
-            <p>Quickly jot down ideas or call summaries. AI can summarize long notes for you</p>
-        </div>
-    </div>
+                    // Otherwise show only the target image
+                    mainContent.style.display = "none";
+                    featureImages.forEach(img => img.style.display = "none");
 
+                    const targetImg = document.getElementById(target);
+                    if (targetImg) {
+                        targetImg.style.display = "block";
+                    }
+                });
+            });
 
-</div>
+        });
 
-
-<div class="upgrade-box">
-    <h2>Ready to upgrade your workflow?</h2>
-    <p>Join thousands of sales teams using erpnext.ai to close more deals with less effort.</p>
-
-    <button class="upgrade-btn">Start Free Trial</button>
-</div>
-
-
-</div>
-
-</body>
+    </script>
+    {% include 'includes/footer.html' %}

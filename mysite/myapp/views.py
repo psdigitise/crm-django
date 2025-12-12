@@ -626,3 +626,7 @@ def pricing(request):
 def features(request):
     return render(request, "Features.html")
 
+def cookies(request):
+    return render(request, "Cookies.html")
+
+

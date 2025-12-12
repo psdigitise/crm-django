@@ -77,6 +77,7 @@ from .views import (
     # NEW VIEWS
     pricing,
     features,   # <-- Added
+    cookies,
 )
 
 urlpatterns = [
@@ -106,4 +107,8 @@ urlpatterns = [
 
     # ERPNext API subscription form
     path('subscribe/', subscription_form, name='subscription_form'),
+
+    path('cookies/', cookies, name='cookies'),
+
+   
 ]

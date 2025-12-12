@@ -1,0 +1,275 @@
+{% include 'includes/header.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies & Session Policy</title>
+
+    <style>
+        body {
+            background: #071522;
+            font-family: Inter, sans-serif;
+            color: #dcdcdc;
+            margin: 0;
+            padding: 0;
+        }
+
+        .policy-container {
+            max-width: 900px;
+            margin: 80px auto;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 40px 50px;
+            border-radius: 16px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 45px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ffb703, #ffdd7e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            margin-top: 40px;
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffdd7e;
+            border-left: 4px solid #ffb703;
+            padding-left: 12px;
+        }
+
+        /* 🔥 Apply your requested style to all points */
+        p, li {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #dcdcdc;
+            margin-top: 10px;
+        }
+
+        .highlight-box {
+            background: #2a1f12;
+            padding: 14px 18px;
+            border-radius: 10px;
+            color: #e7e7e7;
+            margin: 12px 0;
+            border-left: 4px solid #ffcc48;
+        }
+
+        ul {
+            margin: 8px 0 12px 20px;
+        }
+
+        a {
+            color: #ffcc48;
+        }
+
+
+        /* ================================
+   📱 Mobile (max-width: 576px)
+   ================================ */
+@media (max-width: 576px) {
+
+    .policy-container {
+        margin: 40px 15px;
+        padding: 25px 20px;
+    }
+
+    h1 {
+        font-size: 30px;
+        margin-bottom: 25px;
+    }
+
+    .section-title {
+        font-size: 22px;
+        margin-top: 30px;
+        padding-left: 10px;
+    }
+
+    p, li {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    ul {
+        margin-left: 15px;
+    }
+
+    .highlight-box {
+        font-size: 15px;
+        padding: 12px 14px;
+    }
+}
+
+/* ================================
+   📲 Tablet (min-width: 577px to max-width: 768px)
+   ================================ */
+@media (min-width: 577px) and (max-width: 768px) {
+
+    .policy-container {
+        margin: 60px 30px;
+        padding: 35px 35px;
+    }
+
+    h1 {
+        font-size: 36px;
+        margin-bottom: 35px;
+    }
+
+    .section-title {
+        font-size: 24px;
+        margin-top: 35px;
+        padding-left: 10px;
+    }
+
+    p, li {
+        font-size: 16px;
+        line-height: 1.65;
+    }
+
+    .highlight-box {
+        padding: 12px 16px;
+    }
+}
+
+/* ================================
+   💻 Small Laptops (769px – 991px)
+   ================================ */
+@media (min-width: 769px) and (max-width: 991px) {
+
+    .policy-container {
+        margin: 70px 50px;
+        padding: 40px 45px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    .section-title {
+        font-size: 26px;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+<div class="policy-container">
+
+    <h1>Cookies & Session Policy</h1>
+
+    <p>
+        This Cookies & Session Policy explains how our CRM application (“we”, “our”, “the system”) 
+        uses cookies and browser storage technologies to provide a secure and seamless user experience.
+    </p>
+
+    <!-- Section -->
+    <div class="section-title">What Data We Store</div>
+    <p>Our CRM stores only essential session-based data during your active session:</p>
+
+    <ul>
+        <li>User ID</li>
+        <li>Login status</li>
+        <li>User role / permissions</li>
+        <li>Temporary CRM preferences</li>
+        <li>API authentication token (session-based)</li>
+    </ul>
+
+    <p>We do <b>not</b> store sensitive personal information in cookies.</p>
+
+    <!-- Section -->
+    <div class="section-title">How We Use Cookies and Sessions</div>
+
+    <p>We use session cookies and sessionStorage to:</p>
+
+    <ul>
+        <li>Keep you logged in</li>
+        <li>Enable smooth navigation between pages</li>
+        <li>Maintain temporary form inputs</li>
+        <li>Provide personalized dashboards</li>
+        <li>Improve CRM performance</li>
+    </ul>
+
+    <p>Session data is cleared when you log out, close the browser, or when the session expires.</p>
+
+    <!-- Section -->
+    <div class="section-title">Types of Storage Used</div>
+
+    <p><b>Session Cookies</b> — Used for login authentication and secure access.</p>
+    <p><b>Session Storage</b> — Used for temporary data during your browsing session.</p>
+
+    <!-- Section -->
+    <div class="section-title">Why We Use These</div>
+
+    <p>We use cookies and session storage for:</p>
+
+    <ul>
+        <li>Security</li>
+        <li>Functionality</li>
+        <li>Performance</li>
+        <li>User experience</li>
+    </ul>
+
+    <p>We do <b>not</b> use cookies for advertising or tracking.</p>
+
+    <!-- Section -->
+    <div class="section-title">How Long We Keep the Data</div>
+
+    <p>
+        Session cookies expire when the browser is closed.  
+        Session storage is deleted automatically when the tab or window is closed.
+    </p>
+
+    <!-- Section -->
+    <div class="section-title">Managing Cookies</div>
+
+    <p>You can disable cookies in your browser settings, but doing so may:</p>
+
+    <ul>
+        <li>Log you out immediately</li>
+        <li>Break essential CRM functions</li>
+        <li>Prevent access to the system</li>
+    </ul>
+
+    <!-- Section -->
+    <div class="section-title">Third-Party Services</div>
+
+    <p>
+        Third-party APIs integrated with our CRM do not have access to your cookies or session data.  
+        We do not share session data with any third parties.
+    </p>
+
+    <!-- Section -->
+    <div class="section-title">Data Protection</div>
+
+    <p>We follow strict security measures to ensure:</p>
+
+    <ul>
+        <li>Secure session storage</li>
+        <li>Encrypted communication (HTTPS)</li>
+        <li>Proper session expiry</li>
+        <li>Prevention of unauthorized access</li>
+    </ul>
+
+    <!-- Section -->
+    <div class="section-title">Contact Us</div>
+
+    <div class="highlight-box">
+        <b>Email:</b> info@erpnext.com
+    </div>
+
+</div>
+
+</body>
+</html>
+
+{% include 'includes/footer.html' %}

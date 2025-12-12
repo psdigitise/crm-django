@@ -18,19 +18,35 @@
     }
 
     .container1 {
-        max-width: 900px;
+        /* max-width: 900px;
         margin: 50px auto;
         background: #152233;
         padding: 35px;
         border-radius: 10px;
         border: 1px solid #23344a;
+         */
+             max-width: 900px;
+    margin: 80px auto;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 40px 50px;
+    border-radius: 16px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     h1 {
-        text-align: center;
+        /* text-align: center;
         font-size: 45px;
         color: #f5c542;
-        margin-bottom: 10px;
+        margin-bottom: 10px; */
+        text-align: center;
+    font-size: 45px;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ffb703, #ffdd7e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 40px;
+
     }
 
     .subtitle {
@@ -41,18 +57,20 @@
     }
 
     h2 {
-        font-size: 18px;
-        color: #f5c542;
-        margin-top: 25px;
-        padding-left: 12px;
-        border-left: 3px solid #ffc65c;
+            margin-top: 40px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffdd7e;
+    border-left: 4px solid #ffb703;
+    padding-left: 12px;
     }
 
     p, li {
-        font-size: 17px;
-        line-height: 1.7;
-        color: #ced8e4;
-        margin-top: 8px;
+            font-size: 17px;
+    line-height: 1.7;
+    color: #dcdcdc;
+    margin-top: 10px;
+
     }
 
     ul {
@@ -62,6 +80,78 @@
     .bottom-spacing {
         margin-bottom: 25px;
     }
+
+    /* ============================
+   RESPONSIVE — TABLET (≤ 991px)
+============================ */
+@media (max-width: 991px) {
+
+    .container1 {
+        margin: 30px auto;
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+    .subtitle {
+        font-size: 11px;
+    }
+
+    h2 {
+        font-size: 17px;
+        margin-top: 20px;
+    }
+
+    p, li {
+        font-size: 16px;
+        line-height: 1.65;
+    }
+}
+
+
+/* ============================
+   RESPONSIVE — MOBILE (≤ 576px)
+============================ */
+@media (max-width: 576px) {
+
+    body {
+        padding: 0;
+    }
+
+    .container1 {
+        margin: 20px auto;
+        padding: 18px;
+        border-radius: 8px;
+    }
+
+    h1 {
+        font-size: 26px;
+        line-height: 1.3;
+    }
+
+    .subtitle {
+        font-size: 10px;
+        margin-bottom: 18px;
+    }
+
+    h2 {
+        font-size: 16px;
+        padding-left: 10px;
+        border-left-width: 2px;
+    }
+
+    p, li {
+        font-size: 15px;
+        line-height: 1.55;
+    }
+
+    ul {
+        padding-left: 18px;
+    }
+}
+
 </style>
 
 </head>
@@ -69,7 +159,7 @@
 <body>
 
 <div class="container1">
-    <h1>Terms & Conditions – CRM.ERPNext.ai</h1>
+    <h1>Terms & Conditions CRM.ERPNext.ai</h1>
     <p class="subtitle">Last Updated: [06.12.2025]</p>
 
     <p>Welcome to crm.erpnext.ai, a cloud-based CRM software service owned and operated by PS Digitise LLP (“Company”, “We”, “Us”, “Our”). By accessing or using our services, you agree to these Terms & Conditions.</p>

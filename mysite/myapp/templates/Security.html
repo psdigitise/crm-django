@@ -1,185 +1,272 @@
 {% include 'includes/header.html' %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ERPNext.AI Security & Data Protection</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+
     <style>
         body {
+            background: #071522;
             font-family: 'Inter', sans-serif;
-            background-color: #0e1117;
-            color: #e1e1e1;
+            color: #dcdcdc;
             margin: 0;
             padding: 0;
         }
+
         .container1 {
             max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
+            margin: 80px auto;
+            background: rgba(255, 255, 255, 0.02);
+            padding: 40px 50px;
+            border-radius: 16px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        h1, h2 {
-            color: #fff;
-            margin-bottom: 20px;
-        }
+
         h1 {
-            font-size: 45px;
-            color: #f5c542;
             text-align: center;
+            font-size: 45px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #ffb703, #ffdd7e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 40px;
         }
-        h2 {
-            font-size: 22px;
+
+        .section-title {
             margin-top: 40px;
-        }
-        p {
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-        .section {
-            background-color: #151926;
-            padding: 20px 25px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        .section h3 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #ffdd7e;
+            border-left: 4px solid #ffb703;
+            padding-left: 12px;
             display: flex;
             align-items: center;
-            font-size: 18px;
-            margin-bottom: 10px;
+            gap: 8px;
         }
-        .section h3 span {
-            margin-right: 10px;
+
+        .section-title .material-symbols-rounded {
+            font-size: 26px;
+            color: #ffdd7e;
         }
+
+        .section-box {
+            background: #101825;
+            padding: 20px 25px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        p, li {
+            font-size: 17px;
+            line-height: 1.6;
+            color: #dcdcdc;
+        }
+
         ul {
-            padding-left: 20px;
-            margin-bottom: 10px;
+            margin-left: 20px;
+            margin-top: 10px;
         }
-        li {
-            margin-bottom: 8px;
-        }
+
         a {
-            color: #ffd700;
+            color: #ffcc48;
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
         }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container1 {
+                padding: 25px 20px;
+                margin: 40px 15px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+
+            p, li {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 26px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .section-box {
+                padding: 15px 18px;
+            }
+
+            p, li {
+                font-size: 14px;
+                line-height: 1.5;
+            }
+        }
+
     </style>
 </head>
+
 <body>
-    <div class="container1">
-        <h1>ERPNext.AI Security & Data Protection</h1>
-        <p>At ERPNext.AI, the security and privacy of your data is our highest priority. We follow strict industry standards to ensure your business information is safe, encrypted, and always available to the right people.</p>
 
-        <div class="section">
-            <h3>🧩 1. Data Encryption</h3>
-            <p><strong>Data at Rest:</strong> All customer data stored in our cloud environment is encrypted using AES-256 encryption, the industry standard for strong protection.</p>
-            <p><strong>Data in Transit:</strong> All communication between your browser, mobile app, and our servers is secured with HTTPS/TLS 1.2+ encryption. No unencrypted communication is allowed between any internal or external service.</p>
-        </div>
+<div class="container1">
 
-        <div class="section">
-            <h3>🔒 2. Secure Cloud Infrastructure</h3>
-            <p>ERPNext.AI is hosted on enterprise-grade secure cloud infrastructure with:</p>
-            <ul>
-                <li>Multi-layer firewall protection</li>
-                <li>Continuous security patching</li>
-                <li>Redundant backups</li>
-                <li>High-availability architecture</li>
-            </ul>
-            <p>Our infrastructure partners maintain international standards such as ISO/IEC 27001, SOC 1 / SOC 2, GDPR compliance, PCI DSS (payment gateways).</p>
-        </div>
+    <h1>ERPNext.AI Security & Data Protection</h1>
 
-        <div class="section">
-            <h3>📁 3. Role-Based Access Control (RBAC)</h3>
-            <p>You control who can view, edit, or delete data inside your CRM. Features include:</p>
-            <ul>
-                <li>Admin, Manager, User roles</li>
-                <li>Module-level and record-level restrictions</li>
-                <li>IP-based access rules (optional)</li>
-                <li>Multi-user permissions for teams</li>
-            </ul>
-            <p>Only authorized users can access sensitive CRM data.</p>
-        </div>
+    <p>At ERPNext.AI, the security and privacy of your data is our highest priority. We follow strict industry standards to ensure your business information is safe, encrypted, and always available to the right people.</p>
 
-        <div class="section">
-            <h3>📁 4. Data Backups & Recovery</h3>
-            <ul>
-                <li>Daily backups</li>
-                <li>Multiple restore points</li>
-                <li>Off-site backup replication</li>
-                <li>Data recovery support included in all plans</li>
-            </ul>
-            <p>You will never lose your CRM data — even if an unexpected incident occurs.</p>
-        </div>
-
-        <div class="section">
-            <h3>🛡️ 5. Application Security</h3>
-            <ul>
-                <li>OWASP-based secure development</li>
-                <li>SQL injection protection</li>
-                <li>XSS & CSRF prevention</li>
-                <li>Strict API authentication</li>
-                <li>Session timeout & device-level controls</li>
-            </ul>
-            <p>Every new feature undergoes a security review before deployment.</p>
-        </div>
-
-        <div class="section">
-            <h3>🧪 6. Continuous Monitoring</h3>
-            <ul>
-                <li>Real-time alerts</li>
-                <li>Audit logs</li>
-                <li>Intrusion detection</li>
-                <li>Automated anomaly detection</li>
-            </ul>
-            <p>Our systems detect threats before they impact customers.</p>
-        </div>
-
-        <div class="section">
-            <h3>🧾 7. Audit Logs & Activity Tracking</h3>
-            <ul>
-                <li>Login/logout logs</li>
-                <li>Lead/deal updates</li>
-                <li>Permission changes</li>
-                <li>API activity</li>
-            </ul>
-            <p>This protects your CRM from internal misuse and increases transparency.</p>
-        </div>
-
-        <div class="section">
-            <h3>🌍 8. GDPR & Data Privacy</h3>
-            <ul>
-                <li>Right to access your data</li>
-                <li>Right to delete your data</li>
-                <li>Right to export your data</li>
-                <li>No unauthorized data sharing</li>
-            </ul>
-            <p>We never sell or trade customer information.</p>
-        </div>
-
-        <div class="section">
-            <h3>🤝 9. Responsible Disclosure</h3>
-            <p>We encourage users, developers, and researchers to report any vulnerabilities. Our security team will respond quickly and patch issues with priority.</p>
-        </div>
-
-        <div class="section">
-            <h3>🗑️ 10. Data Ownership & Deletion</h3>
-            <p>Your data belongs only to you. At any time, you may:</p>
-            <ul>
-                <li>Export your data</li>
-                <li>Request full account deletion</li>
-                <li>Request backup deletion</li>
-            </ul>
-            <p>We permanently remove your data upon request, following secure deletion standards.</p>
-        </div>
-
-        <div class="section">
-            <h3>📫 11. Contact Our Security Team</h3>
-            <p>If you have any concerns, questions, or would like to report an issue: <a href="mailto:security@erpnext.ai">security@erpnext.ai</a></p>
-            <p>We respond within 24–48 hours for all security-related inquiries.</p>
-        </div>
+    <!-- 1 -->
+    <div class="section-title">
+        <span class="material-symbols-rounded">encrypted</span> Data Encryption
     </div>
+    <div class="section-box">
+        <p><b>Data at Rest:</b> All data is encrypted using AES-256 encryption.</p>
+        <p><b>Data in Transit:</b> All communication is secured with HTTPS/TLS 1.2+.</p>
+    </div>
+
+    <!-- 2 -->
+    <div class="section-title">
+        <span class="material-symbols-rounded">cloud_lock</span> Secure Cloud Infrastructure
+    </div>
+    <div class="section-box">
+        <ul>
+            <li>Multi-layer firewall</li>
+            <li>Continuous security patching</li>
+            <li>Redundant backups</li>
+            <li>High availability architecture</li>
+        </ul>
+        <p>Hosted on infrastructure compliant with ISO, SOC, GDPR, PCI DSS.</p>
+    </div>
+
+    <!-- 3 -->
+    <div class="section-title">
+        <span class="material-symbols-rounded">admin_panel_settings</span> Role-Based Access Control
+    </div>
+    <div class="section-box">
+        <ul>
+            <li>Admin/Manager/User privileges</li>
+            <li>Record-level access</li>
+            <li>IP restrictions</li>
+            <li>Team-based permissions</li>
+        </ul>
+    </div>
+
+    <!-- 4 -->
+    <div class="section-title">
+        <span class="material-symbols-rounded">backup</span> Backups & Recovery
+    </div>
+    <div class="section-box">
+        <ul>
+            <li>Daily backups</li>
+            <li>Multiple restore points</li>
+            <li>Off-site replication</li>
+            <li>Guaranteed data safety</li>
+        </ul>
+    </div>
+
+    <!-- 5 -->
+    <div class="section-title">
+        <span class="material-symbols-rounded">security</span> Application Security
+    </div>
+    <div class="section-box">
+        <ul>
+            <li>OWASP Secure development</li>
+            <li>SQL injection protection</li>
+            <li>XSS & CSRF prevention</li>
+            <li>Strict API authentication</li>
+            <li>Session timeout</li>
+        </ul>
+    </div>
+
+    <!-- 6 -->
+    <div class="section-title">
+        <span class="material-symbols-rounded">monitor_heart</span> Continuous Monitoring
+    </div>
+    <div class="section-box">
+        <ul>
+            <li>Real-time alerts</li>
+            <li>Audit logs</li>
+            <li>Intrusion detection</li>
+            <li>Anomaly detection</li>
+        </ul>
+    </div>
+
+    <!-- 7 -->
+    <div class="section-title">
+        <span class="material-symbols-rounded">history</span> Audit Logs & Tracking
+    </div>
+    <div class="section-box">
+        <ul>
+            <li>Login activity</li>
+            <li>Lead/Deal updates</li>
+            <li>Permission changes</li>
+            <li>API activity tracking</li>
+        </ul>
+    </div>
+
+    <!-- 8 -->
+    <div class="section-title">
+        <span class="material-symbols-rounded">privacy_tip</span> GDPR Compliance
+    </div>
+    <div class="section-box">
+        <ul>
+            <li>Right to access</li>
+            <li>Right to delete</li>
+            <li>Right to export</li>
+            <li>No unauthorized sharing</li>
+        </ul>
+    </div>
+
+    <!-- 9 -->
+    <div class="section-title">
+        <span class="material-symbols-rounded">bug_report</span> Responsible Disclosure
+    </div>
+    <div class="section-box">
+        <p>We welcome security reports. Our team responds promptly and fixes issues with priority.</p>
+    </div>
+
+    <!-- 10 -->
+    <div class="section-title">
+        <span class="material-symbols-rounded">delete_forever</span> Data Ownership & Deletion
+    </div>
+    <div class="section-box">
+        <ul>
+            <li>Export anytime</li>
+            <li>Request full deletion</li>
+            <li>Secure data wipe</li>
+        </ul>
+    </div>
+
+    <!-- 11 -->
+    <div class="section-title">
+        <span class="material-symbols-rounded">mail</span> Contact Security Team
+    </div>
+    <div class="section-box">
+        <p>Email our security team: <a href="mailto:security@erpnext.ai">security@erpnext.ai</a></p>
+        <p>We respond within 24–48 hours.</p>
+    </div>
+
+</div>
+
 </body>
 </html>
 
