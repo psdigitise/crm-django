@@ -1,4 +1,5 @@
 {% include 'includes/header.html' %}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <style>
     .crm-pricing-section {
@@ -1110,7 +1111,7 @@
 
     /* -------------- MAIN TITLE --------------- */
     .main-title {
-        
+
         font-size: 48px;
         font-weight: 800;
         margin-bottom: 10px;
@@ -1252,366 +1253,653 @@
     }
 
     body {
-  font-family: 'Inter', sans-serif;
-  background-color: #f8fafc;
-  color: #0f172a;
-}
+        font-family: 'Inter', sans-serif;
+        background-color: #f8fafc;
+        color: #0f172a;
+    }
 
-.dark body {
-  background-color: #0f172a;
-  color: #f8fafc;
-}
-
-.text-primary {
-  color:#ffb25f;
-}
-
-.mt-24 {
-  margin-top: 6rem;
-}
-.max-w-4xl {
-  max-width: 64rem;
-}
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
-.text-center {
-  text-align: center;
-}
-.mb-12 {
-  margin-bottom: 3rem;
-}
-.text-3xl {
-  font-size: 1.875rem;
-}
-.sm\:text-4xl {
-  font-size: 2.25rem;
-}
-.font-black {
-  font-weight: 900;
-}
-.text-slate-900 {
-  color: #0f172a;
-}
-.dark\:text-white {
-  color: #fff;
-  font: 40px;
-}
-.mt-4 {
-  margin-top: 1rem;
-}
-.text-lg {
-  font-size: 1.125rem;
-}
-.text-slate-600 {
-  color: #475569;
-}
-.dark\:text-slate-400 {
-  color: #94a3b8;
-}
-
-/* FAQ item styling */
-.faq-item {
-  border-radius: 0.75rem;
-  background-color: rgba(255, 255, 255, 0.5);
-  padding: 1.5rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  transition: background-color 0.3s ease;
-}
-
-.dark .faq-item {
-  background-color: rgba(15, 23, 42, 0.5);
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-.faq-item[open] {
-  background-color: rgb(15 23 42 / 0.5) !important;
-}
-.dark .faq-item[open] {
-  background-color: #0f172a;
-}
-
-/* Summary */
-.faq-summary {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  font-weight: 600;
-  
-  color: #ffb25f ;
-}
-
-.dark .faq-summary {
-  color: #fff;
-}
-
-/* Expand icon */
-.expand-icon {
-  transition: transform 0.3s ease;
-  color: #6366f1;
-}
-
-.faq-item[open] .expand-icon {
-  transform: rotate(180deg);
-}
-
-/* Answer */
-.faq-answer {
-  margin-top: 1rem;
-  color: #475569;
-  line-height: 1.75;
-}
-
-.dark .faq-answer {
-  color: #94a3b8;
-}
-
-/* Spacing between items */
-.space-y-4 > * + * {
-  margin-top: 1rem;
-}
-/* FAQ container alignment */
-.mt-24 {
-  margin-top: 6rem;
-}
-.max-w-4xl {
-  max-width: 64rem;
-}
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* Header styling */
-.text-center {
-  text-align: center;
-}
-.mb-12 {
-  margin-bottom: 3rem;
-}
-.text-3xl {
-  font-size: 1.875rem;
-}
-.sm\:text-4xl {
-  font-size: 2.25rem;
-}
-.font-black {
-  font-weight: 900;
-}
-.text-primary {
-  color: #ffb25f !important;
-}
-.text-slate-900 {
-  color: #0f172a;
-}
-.dark\:text-white {
-  color: #fff;
-}
-.text-lg {
-  font-size: 1.125rem;
-}
-.text-slate-600 {
-  color: #475569;
-}
-.dark\:text-slate-400 {
-  color: #94a3b8;
-}
-
-/* FAQ item styling to match pricing card */
-.faq-item {
-  border-radius: 1rem;
-  background-color: #ffffff;
-  padding: 1.5rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e2e8f0;
-  transition: background-color 0.3s ease;
-}
-
-.dark .faq-item {
-  background-color: #1e293b;
-  border-color: #334155;
-}
-
-.faq-item[open] {
-  background-color: #f9fafb;
-}
-.dark .faq-item[open] {
-  background-color: #0f172a;
-}
-
-/* Summary styling */
-.faq-summary {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  font-weight: 600;
-  font-size:20px!important;
-    color: #ffb25f !important;
-}
-
-.dark .faq-summary {
-  color: #fff;
-}
-
-/* Expand icon */
-.expand-icon {
-  transition: transform 0.3s ease;
-  color: #6366f1;
-  font-size: 24px;
-}
-
-.faq-item[open] .expand-icon {
-  transform: rotate(180deg);
-}
-
-/* Answer text */
-.faq-answer {
-  margin-top: 1rem;
-  color: rgb(148 163 184 / var(--tw-text-opacity, 1)) !important;
-  line-height: 1.75;
-}
-
-.dark .faq-answer {
-  color: #94a3b8;
-}
-
-/* Spacing between items */
-.space-y-4 > * + * {
-  margin-top: 1rem;
-}
-.faq-item {
-  border-radius: 1rem;
-  background-color: transparent; /* ✅ true transparency */
-  padding: 1.5rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1); /* subtle border for contrast */
-  transition: background-color 0.3s ease;
-}
-
-.dark .faq-item {
-  background-color: transparent;
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-.faq-item[open] {
-  background-color: transparent;
-}
-.dark .faq-item[open] {
-  background-color: transparent;
-}
-.faq-item {
-  backdrop-filter: blur(6px);
-}
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #0f172a;
-      color: #f8fafc;
-      margin: 0;
-      padding: 0;
+    .dark body {
+        background-color: #0f172a;
+        color: #f8fafc;
     }
 
     .text-primary {
-      color: #6366f1;
+        color: #ffb25f;
+    }
+
+    .mt-24 {
+        margin-top: 6rem;
+    }
+
+    .max-w-4xl {
+        max-width: 64rem;
+    }
+
+    .mx-auto {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+
+    .mb-12 {
+        margin-bottom: 3rem;
+    }
+
+    .text-3xl {
+        font-size: 1.875rem;
+    }
+
+    .sm\:text-4xl {
+        font-size: 2.25rem;
+    }
+
+    .font-black {
+        font-weight: 900;
+    }
+
+    .text-slate-900 {
+        color: #0f172a;
+    }
+
+    .dark\:text-white {
+        color: #fff;
+        font: 40px;
+    }
+
+    .mt-4 {
+        margin-top: 1rem;
+    }
+
+    .text-lg {
+        font-size: 1.125rem;
+    }
+
+    .text-slate-600 {
+        color: #475569;
+    }
+
+    .dark\:text-slate-400 {
+        color: #94a3b8;
+    }
+
+    /* FAQ item styling */
+    .faq-item {
+        border-radius: 0.75rem;
+        background-color: rgba(255, 255, 255, 0.5);
+        padding: 1.5rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(6px);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        transition: background-color 0.3s ease;
+    }
+
+    .dark .faq-item {
+        background-color: rgba(15, 23, 42, 0.5);
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .faq-item[open] {
+        background-color: rgb(15 23 42 / 0.5) !important;
+    }
+
+    .dark .faq-item[open] {
+        background-color: #0f172a;
+    }
+
+    /* Summary */
+    .faq-summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        font-weight: 600;
+
+        color: #ffb25f;
+    }
+
+    .dark .faq-summary {
+        color: #fff;
+    }
+
+    /* Expand icon */
+    .expand-icon {
+        transition: transform 0.3s ease;
+        color: #6366f1;
+    }
+
+    .faq-item[open] .expand-icon {
+        transform: rotate(180deg);
+    }
+
+    /* Answer */
+    .faq-answer {
+        margin-top: 1rem;
+        color: #475569;
+        line-height: 1.75;
+    }
+
+    .dark .faq-answer {
+        color: #94a3b8;
+    }
+
+    /* Spacing between items */
+    .space-y-4>*+* {
+        margin-top: 1rem;
+    }
+
+    /* FAQ container alignment */
+    .mt-24 {
+        margin-top: 6rem;
+    }
+
+    .max-w-4xl {
+        max-width: 64rem;
+    }
+
+    .mx-auto {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Header styling */
+    .text-center {
+        text-align: center;
+    }
+
+    .mb-12 {
+        margin-bottom: 3rem;
+    }
+
+    .text-3xl {
+        font-size: 1.875rem;
+    }
+
+    .sm\:text-4xl {
+        font-size: 2.25rem;
+    }
+
+    .font-black {
+        font-weight: 900;
+    }
+
+    .text-primary {
+        color: #ffb25f !important;
+    }
+
+    .text-slate-900 {
+        color: #0f172a;
+    }
+
+    .dark\:text-white {
+        color: #fff;
+    }
+
+    .text-lg {
+        font-size: 1.125rem;
+    }
+
+    .text-slate-600 {
+        color: #475569;
+    }
+
+    .dark\:text-slate-400 {
+        color: #94a3b8;
+    }
+
+    /* FAQ item styling to match pricing card */
+    .faq-item {
+        border-radius: 1rem;
+        background-color: #ffffff;
+        padding: 1.5rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        border: 1px solid #e2e8f0;
+        transition: background-color 0.3s ease;
+    }
+
+    .dark .faq-item {
+        background-color: #1e293b;
+        border-color: #334155;
+    }
+
+    .faq-item[open] {
+        background-color: #f9fafb;
+    }
+
+    .dark .faq-item[open] {
+        background-color: #0f172a;
+    }
+
+    /* Summary styling */
+    .faq-summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 20px !important;
+        color: #ffb25f !important;
+    }
+
+    .dark .faq-summary {
+        color: #fff;
+    }
+
+    /* Expand icon */
+    .expand-icon {
+        transition: transform 0.3s ease;
+        color: #6366f1;
+        font-size: 24px;
+    }
+
+    .faq-item[open] .expand-icon {
+        transform: rotate(180deg);
+    }
+
+    /* Answer text */
+    .faq-answer {
+        margin-top: 1rem;
+        color: rgb(148 163 184 / var(--tw-text-opacity, 1)) !important;
+        line-height: 1.75;
+    }
+
+    .dark .faq-answer {
+        color: #94a3b8;
+    }
+
+    /* Spacing between items */
+    .space-y-4>*+* {
+        margin-top: 1rem;
+    }
+
+    .faq-item {
+        border-radius: 1rem;
+        background-color: transparent;
+        /* ✅ true transparency */
+        padding: 1.5rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        /* subtle border for contrast */
+        transition: background-color 0.3s ease;
+    }
+
+    .dark .faq-item {
+        background-color: transparent;
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .faq-item[open] {
+        background-color: transparent;
+    }
+
+    .dark .faq-item[open] {
+        background-color: transparent;
+    }
+
+    .faq-item {
+        backdrop-filter: blur(6px);
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #0f172a;
+        color: #f8fafc;
+        margin: 0;
+        padding: 0;
+    }
+
+    .text-primary {
+        color: #6366f1;
     }
 
     .testimonial-section {
-      max-width: 1200px;
-      margin: 2rem auto !important;
-      padding: 0 1rem;
-      padding-bottom: 80px;
+        max-width: 1200px;
+        margin: 2rem auto !important;
+        padding: 0 1rem;
+        padding-bottom: 80px;
     }
 
     .testimonial-header {
-      text-align: center;
-      margin-bottom: 3rem;
+        text-align: center;
+        margin-bottom: 3rem;
     }
 
     .testimonial-header h2 {
-      font-size: 40px;
-      font-weight: 900;
-      color: #f8fafc;
+        font-size: 40px;
+        font-weight: 900;
+        color: #f8fafc;
     }
 
     .testimonial-header p {
-      margin-top: 1rem;
-      font-size: 1.125rem;
-      color: #94a3b8;
+        margin-top: 1rem;
+        font-size: 1.125rem;
+        color: #94a3b8;
     }
 
     .testimonial-row {
-      display: flex;
-      gap: 2rem;
-      overflow-x: auto;
-      padding-bottom: 1rem;
-      scroll-snap-type: x mandatory;
+        display: flex;
+        gap: 2rem;
+        overflow-x: auto;
+        padding-bottom: 1rem;
+        scroll-snap-type: x mandatory;
     }
 
     .testimonial-card {
-      flex: 0 0 360px;
-      scroll-snap-align: start;
-      border-radius: 1rem;
-      background-color: rgb(15 23 42 / 0.5);
-      padding: 2rem;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(6px);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+        flex: 0 0 360px;
+        scroll-snap-align: start;
+        border-radius: 1rem;
+        background-color: rgb(15 23 42 / 0.5);
+        padding: 2rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(6px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .testimonial-card .stars {
-      display: flex;
-      color: #ffb25f;
-      margin-bottom: 1rem;
+        display: flex;
+        color: #ffb25f;
+        margin-bottom: 1rem;
     }
 
     .testimonial-card p {
-      color: #cbd5e1;
-      font-style: italic;
-      flex-grow: 1;
+        color: #cbd5e1;
+        font-style: italic;
+        flex-grow: 1;
     }
 
     .testimonial-footer {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-top: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 2rem;
     }
 
     .avatar {
-      height: 3rem;
-      width: 3rem;
-      border-radius: 9999px;
-      background-color: #334155;
-      color: #cbd5e1;
-      font-weight: bold;
-      font-size: 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+        height: 3rem;
+        width: 3rem;
+        border-radius: 9999px;
+        background-color: #334155;
+        color: #cbd5e1;
+        font-weight: bold;
+        font-size: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .testimonial-footer h4 {
-      font-weight: bold;
-      color: #f8fafc;
-      margin: 0;
+        font-weight: bold;
+        color: #f8fafc;
+        margin: 0;
     }
 
     .testimonial-footer p {
-      font-size: 0.875rem;
-      color: #94a3b8;
-      margin: 0;
+        font-size: 0.875rem;
+        color: #94a3b8;
+        margin: 0;
     }
-    
+
+    .modal-overlay {
+        position: fixed;
+        inset: 0;
+        top: 0;
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(6px);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        margin: 0px;
+    }
+
+
+    .modal-box {
+        background: #0f172a;
+        border-radius: 16px;
+        max-width: 420px;
+        width: 100%;
+        padding: 25px;
+        position: relative;
+        animation: scaleIn 0.3s ease;
+    }
+
+    @keyframes scaleIn {
+        from {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 15px;
+        right: 18px;
+        font-size: 26px;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    /* 
+.input-group {
+  display: flex;
+  align-items: center;
+  background: #020617;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 10px;
+} */
+
+    .input-group input {
+        border: none;
+        outline: none;
+        background: transparent;
+        color: #fff;
+        width: 100%;
+        margin-left: 10px;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 14px;
+        background: rgb(110 231 183);
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .submit-btn:hover {
+        background: rgb(74 222 128);
+    }
+
+
+    /* Outer Card */
+    .form-card {
+        width: 329px;
+        /* FIXED WIDTH LIKE THE IMAGE */
+        padding: 20px 30px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.45);
+    }
+
+    /* Rocket Icon Box */
+    .form-icon {
+        width: 58px;
+        height: 58px;
+        background: rgba(0, 122, 255, 0.12);
+        border-radius: 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto 14px;
+        font-size: 28px;
+    }
+
+    /* Title */
+    .form-title {
+        text-align: center;
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin: 5px 0;
+    }
+
+    /* Subtitle */
+    .form-subtitle {
+        text-align: center;
+        color: #8fa2c2;
+        margin-bottom: 34px;
+        font-size: 0.92rem;
+    }
+
+    /* Labels */
+    label {
+        display: block;
+        color: white;
+        font-size: 0.68rem;
+        letter-spacing: 0.8px;
+        margin-bottom: 7px;
+    }
+
+    /* Input Box Wrapper */
+    .input-group {
+        position: relative;
+        margin-bottom: 22px;
+    }
+
+    /* Left-side Icon */
+    .input-group .icon {
+        position: absolute;
+        left: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 15px;
+        opacity: 0.5;
+    }
+
+    /* Input Field */
+    .input-group input {
+        width: 100%;
+        height: 44px;
+        /* FIXED EXACT HEIGHT */
+        padding: 0 15px 0 43px;
+        border-radius: 10px;
+
+        background: rgba(255, 255, 255, 0.04);
+        /* DARKER LIKE IMAGE */
+        border: 1px solid rgba(255, 255, 255, 0.07);
+
+        color: #d9e3f6;
+        font-size: 0.93rem;
+
+        outline: none;
+        transition: 0.25s ease;
+    }
+
+    /* Focus Border */
+    .input-group input:focus {
+        border-color: #0a84ff;
+        background: rgba(255, 255, 255, 0.06);
+    }
+
+    /* Submit Button */
+    .submit-btn {
+        width: 90%;
+
+        background: linear-gradient(90deg, #007aff, #00c6ff);
+        border: none;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: 0.25s ease;
+        /* text-align: center; */
+        margin-left: 15px;
+    }
+
+    .submit-btn:hover {
+        opacity: 0.92;
+        transform: translateY(-2px);
+    }
+
+    /* Terms Text */
+    .terms {
+        text-align: center;
+        margin-top: 22px;
+        font-size: 0.75rem;
+        color: #8fa2c2;
+    }
+
+    .terms a {
+        color: #4caeff;
+        text-decoration: none;
+    }
+
+    .modal-overlay.show {
+        display: flex !important;
+    }
+
+    .iti.iti--allow-dropdown.iti--separate-dial-code {
+        width: 100% !important;
+    }
+
+    <style>
+.faq-item {
+  border: 1px solid #3B82F6;
+  border-radius: 0.5rem;
+  background: rgba(59, 130, 246, 0.05);
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.faq-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 600;
+  color: #3B82F6;
+  transition: color 0.3s ease;
+}
+
+.faq-item[open] .faq-summary {
+  color: #1D4ED8;
+}
+
+.expand-icon {
+  font-size: 24px;
+  color: #3B82F6;
+  transition: transform 0.3s ease;
+}
+
+.faq-item[open] .expand-icon {
+  transform: rotate(180deg);
+  color: #1D4ED8;
+}
+
+.faq-answer {
+  margin-top: 1rem;
+  color: #1E293B;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
 </style>
 
+</style>
 <section class="crm-pricing-section" id="our-pricing">
     <div class="container">
         <!-- <h2 class="main-title" style="text-align: center;">
@@ -1619,115 +1907,166 @@
         </h2> -->
 
 
-       <h2 class="main-title text-center mb-4" style="margin:0 auto;">
-    <span>AI-Powered CRM</span> Pricing Plan
-</h2>
-<p class="mt-4 text-lg text-slate-600 dark:text-slate-400" style="
+        <h2 class="main-title text-center mb-4" style="margin:0 auto;">
+            <span>AI-Powered CRM</span> Pricing Plan
+        </h2>
+        <p class="mt-4 text-lg text-slate-600 dark:text-slate-400" style="
     text-align: center;
     color: white;
     font-weight: 600;
     font-size: large;
 ">Choose the perfect plan to accelerate your growth.</p>
-<div class="row g-4 justify-content-center align-items-stretch mb-3">
+        <div class="row g-4 justify-content-center align-items-stretch mb-3">
 
-    <!-- FREE PLAN -->
-    <div class="col-md-3">
-        <div class="pricing-card small-card">
-            <h3 class="plan-title text-center mb-2">Free CRM Plan</h3>
-            <p class="sub-label text-center"><b>For Individuals & Small Teams Starting Out</b></p>
+            <!-- FREE PLAN -->
+            <div class="col-md-3">
+                <div class="pricing-card small-card">
+                    <h3 class="plan-title text-center mb-2">Free CRM Plan</h3>
+                    <p class="sub-label text-center"><b>For Individuals & Small Teams Starting Out</b></p>
 
-            <p class="price-text text-center">Free</p>
+                    <p class="price-text text-center">Free</p>
 
-            <button class="plan-btn w-100"
-                onclick="window.location.href='/buy/?plan=CRM Lite&amount=0'"
-                style="
-                    border: 1px solid rgb(110 231 183);
-                    color: rgb(110 231 183);
-                    font-weight: 600;
-                    padding: 15px;
-                    width: 100%;
-                    border-radius: 0.5rem;
-                    /* background-color: rgb(57 134 103); */
-                ">
-                Get Started Free
-            </button>
+                    <!-- FREE PLAN -->
+                    <button class="plan-btn select-btn" data-plan="Free CRM" data-amount="0" style="
+            border: 1px solid rgb(110 231 183);
+            color: rgb(110 231 183);
+            font-weight: 600;
+            padding: 10px;
+            width: 100%;
+            border-radius: 0.5rem;
+        ">
+                        Get Started Free
+                    </button>
+                </div>
+            </div>
+
+            <!-- STANDARD PLAN -->
+            <div class="col-md-3">
+                <div class="pricing-card recommended-card small-card">
+                    <span class="recommended-badge" style="border: 1px solid;">Recommended</span>
+                    <h3 class="plan-title text-center mb-2">Standard Plan CRM</h3>
+                    <p class="sub-label text-center"><b>Best for Growing Teams</b></p>
+
+                    <p class="price-text text-center mb-1">₹1,500<span>/month</span></p>
+
+                    <button class="plan-btn w-100 select-btn" data-plan="Standard CRM" data-amount="1500"
+                        onclick="openFormModal(this)" style="
+        border: 1px solid #3B82F6;          /* Blue border */
+        color: white;                     /* Blue text */
+        font-weight: 600;
+        padding: 10px;
+        width: 100%;
+        border-radius: 0.5rem;
+        transition: all 0.25s ease;
+        backdrop-filter: blur(4px);
+        background: linear-gradient(90deg, #2c6dd5, #1e3a8a) !important ;
+    "> Choose Plan
+                    </button>
+
+
+
+
+                </div>
+            </div>
+
+            <!-- PROFESSIONAL PLAN -->
+            <div class="col-md-3">
+                <div class="pricing-card small-card">
+                    <h3 class="plan-title text-center mb-2">Professional Plan CRM Pro</h3>
+                    <p class="sub-label text-center"><b>For Large Teams & Enterprises</b></p>
+
+                    <p class="price-text text-center mb-1">₹2,500<span>/month</span></p>
+
+
+                    <button class="plan-btn w-100 select-btn" data-plan="CRM Pro" data-amount="2500"
+                        onclick="openFormModal(this)" style="
+        border: 1px solid #3B82F6;          /* Blue border */
+        background-color: #e3943f;
+        color: white;                     /* Blue text */
+        font-weight: 600;
+        padding: 10px;
+        width: 100%;
+        border-radius: 0.5rem;
+        transition: all 0.25s ease;
+        backdrop-filter: blur(4px);
+        background: linear-gradient(90deg, #e3943f, #e3943f) !important ;
+    ">
+                        Choose Plan
+                    </button>
+
+                </div>
+            </div>
+
+            <!-- ENTERPRISE PLAN -->
+            <div class="col-md-3">
+                <div class="pricing-card small-card enterprise-blue">
+                    <h3 class="plan-title text-center mb-2">Enterprise  CRM Plan Max</h3>
+                    <p class="sub-label text-center"><b>For Multi-Location Companies</b></p>
+
+                    <p class="price-text text-center">On Request</p>
+
+                    <button class="select-btn" data-plan="Enterprise Plan CRM Max" data-amount="request" style="
+    width: 100%;
+    border-radius: 0.5rem;
+    background-color: rgb(12 59 82);
+    padding: 10px;
+    font-weight: 600;
+    color: rgb(125 211 252);
+    border: 1px inset;
+  ">
+                        On Request
+                    </button>
+                </div>
+            </div>
+            <div id="formModal" class="modal-overlay">
+                <div class="modal-box p-0">
+
+                    <div class="form-card w-100">
+                        <span class="close-btn" onclick="closeFormModal()">×</span>
+
+                        <h2 class="form-title text-white" id="modalPlanTitle">CRM Lite</h2>
+                        <p class="form-subtitle" id="modalPlanPrice"></p>
+
+                        <form>
+                             {% csrf_token %}
+                            <label>FULL NAME</label>
+                            <div class="input-group">
+                                <input id="name_plan" type="text" placeholder="Full Name">
+                            </div>
+
+                            <label>EMAIL</label>
+                            <div class="input-group">
+                                <input id="email_plan" type="email" placeholder="Email">
+                            </div>
+
+                            <label>PHONE</label>
+                            <div class="input-group">
+                                <input id="phone_plan" type="text" placeholder="Phone" style="width:100% !important">
+                                <span id="phoneError" class="text-danger"></span>
+                            </div>
+
+                            <label>COMPANY</label>
+                            <div class="input-group">
+                                <input id="company_plan" type="text" placeholder="Company">
+                            </div>
+
+                            <!-- Hidden fields -->
+                            <input type="hidden" id="plan_plan">
+                            <input type="hidden" id="amount_plan">
+
+                            <button type="button" id="payBtn" class="submit-btn">
+                                Pay
+                            </button>
+                        </form>
+
+                        <p class="terms">
+                            By submitting, you agree to our Terms.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </div>
-
-    <!-- STANDARD PLAN -->
-    <div class="col-md-3">
-        <div class="pricing-card recommended-card small-card">
-            <span class="recommended-badge" style="border: 1px solid;">Recommended</span>
-            <h3 class="plan-title text-center mb-2">Standard Plan  CRM</h3>
-            <p class="sub-label text-center"><b>Best for Growing Teams</b></p>
-
-            <p class="price-text text-center mb-1">₹1,500<span>/month</span></p>
-
-            <button onclick="window.location.href='/buy/?plan=Professional CRM&amount=1500'"
-                style="
-                    border: 1px solid rgb(37 99 235);
-                    background-color: rgb(37 99 235);
-                    color: white;
-                    font-weight: 600;
-                    padding: 10px;
-                    width: 100%;
-                    border-radius: 0.5rem;
-                ">
-                Select Plan
-            </button>
-        </div>
-    </div>
-
-    <!-- PROFESSIONAL PLAN -->
-    <div class="col-md-3">
-        <div class="pricing-card small-card">
-            <h3 class="plan-title text-center mb-2">Professional Plan CRM Pro</h3>
-            <p class="sub-label text-center"><b>For Large Teams & Enterprises</b></p>
-
-            <p class="price-text text-center mb-1">₹2,500<span>/month</span></p>
-
-            <button onclick="window.location.href='/buy/?plan=CRM Max&amount=2500'"
-                style="
-                    border: 1px solid rgb(253 186 116);
-                    background-color: rgb(253 186 116);
-                    color: rgb(120 53 15);
-                    font-weight: 600;
-                    padding: 10px;
-                    width: 100%;
-                    border-radius: 0.5rem;
-                ">
-                Select Plan
-            </button>
-        </div>
-    </div>
-
-    <!-- ENTERPRISE PLAN -->
-    <div class="col-md-3">
-        <div class="pricing-card small-card enterprise-blue">
-            <h3 class="plan-title text-center mb-2">Enterprise Plan CRM Max</h3>
-            <p class="sub-label text-center"><b>For Multi-Location Companies</b></p>
-
-            <p class="price-text text-center">On Request</p>
-
-            <a href="/subscribe/" style="text-decoration:none;">
-                <button
-                    style="
-                        width: 100%;
-                        border-radius: 0.5rem;
-                        background-color: rgb(12 59 82);
-                        padding: 10px;
-                        text-align: center;
-                        font-weight: 600;
-                        color: rgb(125 211 252);
-                        border: 1px inset;
-                    ">
-                    On Request
-                </button>
-            </a>
-        </div>
-    </div>
-
-</div>
 
         <table class="crm-compare-table">
             <thead>
@@ -1841,9 +2180,6 @@
         </table>
 
     </div>
-
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
 <div class="mt-24 max-w-4xl mx-auto">
   <div class="text-center mb-12">
     <h2 class="text-3xl font-black text-slate-900 dark:text-white sm:text-4xl">
@@ -1872,7 +2208,7 @@
     <details class="faq-item group">
       <summary class="faq-summary">
         <span>Is there a free trial for paid plans?</span>
-        <span class="material-icons expand-icon">expand_more</span>
+        <span class="material-icons expand-icon"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">expand_more</font></font></span>
       </summary>
       <div class="faq-answer">
         Absolutely! We offer a 14-day free trial for both the Standard and Professional plans. No credit card is required to start your trial, giving you full access to test out the features.
@@ -1882,7 +2218,7 @@
     <details class="faq-item group">
       <summary class="faq-summary">
         <span>What happens if I exceed my user limit?</span>
-        <span class="material-icons expand-icon">expand_more</span>
+        <span class="material-icons expand-icon"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">expand_more</font></font></span>
       </summary>
       <div class="faq-answer">
         If you need to add more users than your current plan allows, you can easily add extra seats from your dashboard for an additional monthly fee, or upgrade to the next tier for better volume pricing.
@@ -1892,7 +2228,7 @@
     <details class="faq-item group">
       <summary class="faq-summary">
         <span>Do you offer discounts for non-profits?</span>
-        <span class="material-icons expand-icon">expand_more</span>
+        <span class="material-icons expand-icon"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">expand_more</font></font></span>
       </summary>
       <div class="faq-answer">
         Yes, we support non-profit organizations with special discounted pricing. Please contact our sales team with proof of your non-profit status to apply for the discount.
@@ -1900,71 +2236,829 @@
     </details>
   </div>
 </div>
+
 </section>
-<section class="testimonial-section">
+
+<!-- <section class="testimonial-section">
     <div class="testimonial-header">
-      <h2>Trusted by <span class="text-primary">Growing Teams</span></h2>
-      <p style="    text-align: center;
+        <h2>Trusted by <span class="text-primary">Growing Teams</span></h2>
+        <p style="    text-align: center;
     color: white;
     font-weight: 400;
     font-size: 18px;">See what our customers have to say about their experience.</p>
     </div>
 
     <div class="testimonial-row">
-      <div class="testimonial-card">
-        <div class="stars">
-          <span class="material-icons">star</span>
-          <span class="material-icons">star</span>
-          <span class="material-icons">star</span>
-          <span class="material-icons">star</span>
-          <span class="material-icons">star</span>
+        <div class="testimonial-card">
+            <div class="stars">
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+            </div>
+            <p>"The AI Lead Score feature alone has increased our conversion rate by 40%. It's incredibly accurate and
+                saves our sales team hours every week."</p>
+            <div class="testimonial-footer">
+                <div class="avatar">SJ</div>
+                <div>
+                    <h4>Sarah Jenkins</h4>
+                    <p>VP of Sales, TechGrowth</p>
+                </div>
+            </div>
         </div>
-        <p>"The AI Lead Score feature alone has increased our conversion rate by 40%. It's incredibly accurate and saves our sales team hours every week."</p>
-        <div class="testimonial-footer">
-          <div class="avatar">SJ</div>
-          <div>
-            <h4>Sarah Jenkins</h4>
-            <p>VP of Sales, TechGrowth</p>
-          </div>
-        </div>
-      </div>
 
-      <div class="testimonial-card">
-        <div class="stars">
-          <span class="material-icons">star</span>
-          <span class="material-icons">star</span>
-          <span class="material-icons">star</span>
-          <span class="material-icons">star</span>
-          <span class="material-icons">star_half</span>
+        <div class="testimonial-card">
+            <div class="stars">
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star_half</span>
+            </div>
+            <p>"We started on the Free plan and seamlessly upgraded to Professional as we grew. The pipeline management
+                is intuitive and powerful."</p>
+            <div class="testimonial-footer">
+                <div class="avatar">MR</div>
+                <div>
+                    <h4>Marcus Reed</h4>
+                    <p>Founder, Reed Logistics</p>
+                </div>
+            </div>
         </div>
-        <p>"We started on the Free plan and seamlessly upgraded to Professional as we grew. The pipeline management is intuitive and powerful."</p>
-        <div class="testimonial-footer">
-          <div class="avatar">MR</div>
-          <div>
-            <h4>Marcus Reed</h4>
-            <p>Founder, Reed Logistics</p>
-          </div>
-        </div>
-      </div>
 
-      <div class="testimonial-card">
-        <div class="stars">
-          <span class="material-icons">star</span>
-          <span class="material-icons">star</span>
-          <span class="material-icons">star</span>
-          <span class="material-icons">star</span>
-          <span class="material-icons">star</span>
+        <div class="testimonial-card">
+            <div class="stars">
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+                <span class="material-icons">star</span>
+            </div>
+            <p>"The enterprise support team is phenomenal. They helped us customize the role-based access for our 50+
+                person sales team perfectly."</p>
+            <div class="testimonial-footer">
+                <div class="avatar">EL</div>
+                <div>
+                    <h4>Elena Liu</h4>
+                    <p>Director of Operations, GlobalScale</p>
+                </div>
+            </div>
         </div>
-        <p>"The enterprise support team is phenomenal. They helped us customize the role-based access for our 50+ person sales team perfectly."</p>
-        <div class="testimonial-footer">
-          <div class="avatar">EL</div>
-          <div>
-            <h4>Elena Liu</h4>
-            <p>Director of Operations, GlobalScale</p>
-          </div>
-        </div>
-      </div>
     </div>
-  </section>
+</section> -->
+<script>
+        const toastContainer = document.createElement("div");
+    toastContainer.id = "toastContainer";
+    toastContainer.style.position = "fixed";
+    toastContainer.style.top = "20px";
+    toastContainer.style.right = "20px";
+    toastContainer.style.zIndex = "9999";
+    document.body.appendChild(toastContainer);
 
+    function showToast(message, type = "success") {
+        const toast = document.createElement("div");
+        toast.textContent = message;
+        toast.style.backdropFilter = "blur(12px)";
+        toast.style.background = "rgba(40,40,40,0.7)";
+        toast.style.color = "#fff";
+        toast.style.padding = "14px 22px";
+        toast.style.marginTop = "12px";
+        toast.style.borderRadius = "10px";
+        toast.style.fontSize = "15px";
+        toast.style.fontWeight = "500";
+        toast.style.boxShadow = "0 8px 20px rgba(0,0,0,0.25)";
+        toast.style.opacity = "0";
+        toast.style.transform = "translateX(100%)";
+        toast.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+
+        if (type === "success") {
+            toast.style.borderLeft = "5px solid #28a745";
+        } else {
+            toast.style.borderLeft = "5px solid #dc3545";
+        }
+
+        toastContainer.appendChild(toast);
+
+        setTimeout(() => {
+            toast.style.opacity = "1";
+            toast.style.transform = "translateX(0)";
+        }, 100);
+
+        setTimeout(() => {
+            toast.style.opacity = "0";
+            toast.style.transform = "translateX(100%)";
+            setTimeout(() => toast.remove(), 400);
+        }, 3000);
+    }
+</script>
 {% include 'includes/footer.html' %}
+
+
+<script>
+    $(document).ready(function () {
+        $('.tab-slick-slider').slick({
+            dots: true,
+            arrows: false,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 1
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('.crm-testimonial-right').slick({
+            dots: true,
+            arrows: false,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            responsive: [{
+                breakpoint: 1024, // tablets & small laptops
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 768, // mobile landscape
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 480, // mobile portrait
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+            ]
+        });
+    });
+</script>
+
+
+
+<script>
+    const thumbnail = document.getElementById('thumbnail');
+    const videoContainer = document.getElementById('videoContainer');
+    const overlay = document.getElementById('overlay');
+    const closeBtn = document.getElementById('closeBtn');
+    const videoPlayer = document.getElementById('videoPlayer');
+
+    thumbnail.addEventListener('click', () => {
+        videoContainer.style.display = 'block';
+        overlay.style.display = 'block';
+    });
+
+    closeBtn.addEventListener('click', () => {
+        videoContainer.style.display = 'none';
+        overlay.style.display = 'none';
+        videoPlayer.pause();
+    });
+
+    overlay.addEventListener('click', () => {
+        videoContainer.style.display = 'none';
+        overlay.style.display = 'none';
+        videoPlayer.pause();
+    });
+</script>
+
+
+
+
+
+
+<script>
+    const autoScrollContainers = document.querySelectorAll('.taxi-booking-customer__detail');
+
+    autoScrollContainers.forEach((container) => {
+        const clonedContent = container.innerHTML;
+        container.innerHTML += clonedContent; // Clone content for seamless scrolling
+
+        let autoScrollInterval;
+        // Start auto-scrolling
+        const startAutoScroll = () => {
+            autoScrollInterval = setInterval(() => {
+                container.scrollLeft += 5; // Increase this value for faster scrolling
+
+                // Reset scroll when reaching the end of the original content
+                if (container.scrollLeft >= container.scrollWidth / 2) {
+                    container.style.scrollBehavior = 'auto';
+                    container.scrollLeft = 0;
+                    container.style.scrollBehavior = 'smooth';
+                }
+            }, 20); // Adjust the interval if needed
+        };
+
+        // Stop auto-scrolling
+        const stopAutoScroll = () => clearInterval(autoScrollInterval);
+
+        container.addEventListener('mouseenter', startAutoScroll);
+        container.addEventListener('mouseleave', stopAutoScroll);
+    });
+</script>
+<script>
+    $(document).ready(function () {
+
+
+        // Helpers
+        function isEmail(email) {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(email);
+        }
+
+        function isNumber(input) {
+            const regex = /^[0-9]+$/;
+            return regex.test(input);
+        }
+    });
+</script>
+
+
+
+
+<script>
+    // Subtle hover scale effect
+    const card = document.querySelector('.pricing-card');
+    card.addEventListener('mouseenter', () => card.style.transform = 'scale(1.02)');
+    card.addEventListener('mouseleave', () => card.style.transform = 'scale(1)');
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
+
+<script>
+    const form = document.getElementById("signupForm");
+    const submitBtn = document.getElementById("submitBtn");
+
+    // Fields
+    const nameField = document.getElementById("name");
+    const emailField = document.getElementById("email");
+    const phoneField = document.getElementById("phone");
+    const fullNumField = document.getElementById("fullnum");
+    const commentField = document.getElementById("comment");
+
+    // Error fields
+    const nameError = document.getElementById("nameError");
+    const emailError = document.getElementById("emailError");
+    const phoneError = document.getElementById("phoneError");
+    const commentError = document.getElementById("commentError");
+
+    // Initialize intlTelInput
+    const iti = window.intlTelInput(phoneField, {
+        initialCountry: "in",
+        separateDialCode: true,
+        onlyCountries: ["in", "us", "gb", "om", "ae"],
+        showFlags: false,
+        formatOnDisplay: false,
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js",
+    });
+
+    // Toast setup
+
+
+    // Validation — Email
+    emailField.addEventListener("input", () => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(emailField.value.trim())) {
+            emailError.textContent = "Enter valid email";
+            emailField.classList.add("is-invalid");
+        } else {
+            emailError.textContent = "";
+            emailField.classList.remove("is-invalid");
+        }
+    });
+
+    // Validation — Phone
+    function validatePhone() {
+        const phoneValue = phoneField.value.trim();
+        const countryData = iti.getSelectedCountryData();
+        const dialCode = countryData.dialCode;
+
+        let minLength, maxLength;
+
+        const rules = {
+            "91": { min: 10, max: 10 },  // India
+            "1": { min: 10, max: 10 },  // USA
+            "44": { min: 10, max: 11 },  // UK
+            "968": { min: 8, max: 8 },   // Oman
+            "971": { min: 9, max: 9 }    // UAE
+        };
+
+        if (rules[dialCode]) {
+            minLength = rules[dialCode].min;
+            maxLength = rules[dialCode].max;
+        } else {
+            minLength = 7;
+            maxLength = 12; // fallback
+        }
+
+        if (phoneValue === "") {
+            phoneError.textContent = "Phone number required";
+            phoneField.classList.add("is-invalid");
+        }
+        else if (!/^[0-9]+$/.test(phoneValue)) {
+            phoneError.textContent = "Only digits allowed";
+            phoneField.classList.add("is-invalid");
+        }
+        else if (phoneValue.length < minLength || phoneValue.length > maxLength) {
+            phoneError.textContent = `Enter valid phone number ${maxLength} digits`;
+            phoneField.classList.add("is-invalid");
+        }
+        else {
+            phoneError.textContent = "";
+            phoneField.classList.remove("is-invalid");
+        }
+    }
+
+    phoneField.addEventListener("input", validatePhone);
+
+    submitBtn.addEventListener("click", function () {
+        let valid = true;
+
+        if (nameField.value.trim().length < 3) {
+            nameError.textContent = "Enter at least 3 characters";
+            nameField.classList.add("is-invalid");
+            valid = false;
+        }
+
+        const emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailField.value.trim());
+        if (!emailValid) {
+            emailError.textContent = "Enter valid email";
+            emailField.classList.add("is-invalid");
+            valid = false;
+        }
+        nameField.addEventListener("input", () => {
+            if (nameField.value.trim().length >= 3) {
+                nameError.textContent = "";
+                nameField.classList.remove("is-invalid");
+            }
+        });
+        validatePhone();
+        if (phoneField.classList.contains("is-invalid")) valid = false;
+
+        if (commentField.value.trim().length < 2) {
+            commentError.textContent = "Company name required";
+            commentField.classList.add("is-invalid");
+            valid = false;
+        }
+
+        commentField.addEventListener("input", () => {
+            if (commentField.value.trim().length >= 2) {
+                commentError.textContent = "";
+                commentField.classList.remove("is-invalid");
+            }
+        });
+        if (valid) {
+            const fullNumber = "+" + iti.getSelectedCountryData().dialCode + phoneField.value.trim();
+            fullNumField.value = fullNumber;
+            submitBtn.innerHTML = "Sending...";
+
+            // Example: send form data to backend
+            fetch("", {
+                method: "POST",
+                body: new FormData(form),
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest"
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    submitBtn.innerHTML = "Submit"; // Reset button always
+
+                    if (data.status === "success") {
+                        showToast("Message submitted successfully ✅");
+                        form.reset();
+                    }
+                    else if (data.status === "email_exists") {
+                        showToast("Email already registered", "error");
+                        emailField.classList.add("is-invalid");
+                        emailError.textContent = "Email already registered";
+                    }
+                    else if (data.status === "company_exists") {
+                        showToast("Company already exists", "error");
+                        commentField.classList.add("is-invalid");
+                        commentError.textContent = "Company already exists";
+                    }
+                    else {
+                        showToast(data.message || "Something went wrong ❌", "error");
+                    }
+                })
+                .catch(() => {
+                    submitBtn.innerHTML = "Submit"; // Also reset here
+                    showToast("Something went wrong ❌", "error");
+                });
+        }
+    });
+</script>
+
+
+<script>
+    document.getElementById("contactSalesBtn").addEventListener("click", function (e) {
+        e.preventDefault(); // prevent any redirect
+        showToast("Coming Soon 🚀", "error"); // using your existing toast
+    });
+
+</script>
+
+
+
+<script>
+    let itiInitialized = false;
+let itiModal = null;
+function openFormModal(btn) {
+
+  if (!btn || !btn.dataset) return;
+  const plan = btn.dataset.plan;
+  const amount = btn.dataset.amount;
+  if (!itiInitialized) {
+        window.itiModal = window.intlTelInput(phoneInput, {
+        initialCountry: "in",
+        separateDialCode: true,
+        onlyCountries: ["in", "us", "gb", "om", "ae"],
+        showFlags: false,
+        formatOnDisplay: false,
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js",
+    });
+        itiInitialized = true;
+    }
+
+  document.getElementById("plan_plan").value = plan;
+  document.getElementById("amount_plan").value = amount;
+
+  document.getElementById("modalPlanTitle").innerText = plan;
+  document.getElementById("modalPlanPrice").innerText =
+    amount == 0 ? "Free CRM" : `₹${amount} / month`;
+
+  document.getElementById("payBtn").innerText =
+    amount == 0 ? "Activate Free Plan" : `Pay ₹${amount}`;
+
+  document.getElementById("formModal").classList.add("show");
+}
+
+function closeFormModal() {
+  document.getElementById("formModal").classList.remove("show");
+}
+document.querySelectorAll(".select-btn").forEach(btn => {
+  btn.addEventListener("click", function () {
+    openFormModal(this);
+  });
+});
+
+const nameInput = document.getElementById("name_plan");
+const emailInput = document.getElementById("email_plan");
+const phoneInput = document.getElementById("phone_plan");
+const companyInput = document.getElementById("company_plan");
+const payBtn = document.getElementById("payBtn");
+phoneInput.addEventListener("input", validatePhonePlan);
+function validateForm() {
+
+  if (nameInput.value.trim().length < 2) {
+    showToast("Enter your full name", "error");
+    return false;
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
+    showToast("Enter a valid email", "error");
+    return false;
+  }
+
+  if (!/^[6-9][0-9]{9}$/.test(phoneInput.value)) {
+    showToast("Enter a valid 10-digit phone number", "error");
+    return false;
+  }
+
+  if (companyInput.value.trim().length < 2) {
+    showToast("Enter company name", "error");
+    return false;
+  }
+
+  return true;
+}
+function validatePhonePlan() {
+    const phoneValue = phoneInput.value.trim();
+    const countryData = itiModal.getSelectedCountryData(); // <-- use itiModal
+    const dialCode = countryData.dialCode;
+
+    let minLength, maxLength;
+
+    const rules = {
+        "91": { min: 10, max: 10 },  // India
+        "1": { min: 10, max: 10 },   // USA
+        "44": { min: 10, max: 11 },  // UK
+        "968": { min: 8, max: 8 },   // Oman
+        "971": { min: 9, max: 9 }    // UAE
+    };
+
+    if (rules[dialCode]) {
+        minLength = rules[dialCode].min;
+        maxLength = rules[dialCode].max;
+    } else {
+        minLength = 7;
+        maxLength = 12;
+    }
+
+    if (phoneValue === "") {
+        phoneError.textContent = "Phone number required";
+        phoneInput.classList.add("is-invalid");
+    }
+    else if (!/^[0-9]+$/.test(phoneValue)) {
+        phoneError.textContent = "Only digits allowed";
+        phoneInput.classList.add("is-invalid");
+    }
+    else if (phoneValue.length < minLength || phoneValue.length > maxLength) {
+        phoneError.textContent = `Enter valid phone number ${maxLength} digits`;
+        phoneInput.classList.add("is-invalid");
+    }
+    else {
+        phoneError.textContent = "";
+        phoneInput.classList.remove("is-invalid");
+    }
+}
+
+
+payBtn.addEventListener("click", async function () {
+  if (!validateForm()) return;
+
+  const name = nameInput.value.trim();
+  const email = emailInput.value.trim();
+  const phone = phoneInput.value.trim();
+  const company = companyInput.value.trim();
+  const plan = document.getElementById("plan_plan").value;
+  const amount = document.getElementById("amount_plan").value || 0;
+  const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+  console.log("plan amount",plan,amount)
+if (amount === "request" && plan=="Enterprise Plan CRM Max") {
+    console.log("plan amount",plan,amount)
+  showToast("Submitting request...", "info");
+
+  const res = await fetch("{% url 'subscription_form' %}", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "X-CSRFToken": csrftoken
+    },
+    body: new URLSearchParams({
+      name,
+      email,
+      phone,
+      company
+    })
+  });
+
+  if (!res.ok) {
+    showToast("Failed to submit request", "error");
+    return;
+  }
+
+  showToast("Request submitted successfully!", "success");
+  closeFormModal();
+  return; // ⛔ stop further execution
+}
+  const plan_id = amount == "1500" ? 1500 : amount == "2500" ? 2 : 0;
+    const credits = amount == "1500" 
+    ? 50 
+    : amount == "2500" 
+        ? 200 
+        : 0;
+  showToast("Checking details...", "info");
+
+  /* ----------------------------------
+     CHECK COMPANY & USER (OLD LOGIC)
+  ---------------------------------- */
+  if (await checkCompany(company)) {
+    showToast("⚠️ Company already exists!", "error");
+    return;
+  }
+
+  if (await checkUser(email)) {
+    showToast("⚠️ Email already registered!", "error");
+    return;
+  }
+
+  /* ==================================
+     ✅ FREE PLAN FLOW
+  ================================== */
+ // ENTERPRISE PLAN (ON REQUEST)
+
+
+  if (parseFloat(amount) === 0) {
+
+    showToast("Creating Company...", "info");
+    await createCompany(email, company, 0,"15");
+
+    showToast("Creating User...", "info");
+    await createUser(name, email, phone, company, 0);
+
+    await fetch("{% url 'save_payment' %}", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "X-CSRFToken": csrftoken
+      },
+      body: new URLSearchParams({
+        name, email, phone, company,
+        plan, amount: 0,
+        status: "success"
+      })
+    });
+
+    showToast("Free Plan Activated!", "success");
+    resetModalForm();
+    closeFormModal();
+    setTimeout(() => {
+      window.location.href = "https://crm.erpnext.ai/app/";
+    }, 1200);
+
+    return;
+  }
+
+  /* ==================================
+     💳 PAID PLAN FLOW
+  ================================== */
+
+  // 1️⃣ CREATE ORDER
+  const orderRes = await fetch("{% url 'create_order' %}", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      "X-CSRFToken": csrftoken
+    },
+    body: new URLSearchParams({
+      name, email, phone, plan, amount
+    })
+  });
+
+  const order = await orderRes.json();
+
+  if (!order.order_id) {
+    showToast("❌ Failed to create order", "error");
+    return;
+  }
+
+  // 2️⃣ OPEN RAZORPAY
+  const rzp = new Razorpay({
+    key: "{{ razorpay_key }}",
+    order_id: order.order_id,
+    amount: amount * 100,
+    currency: "INR",
+    name: "ERPNext AI",
+    description: plan,
+    prefill: { name, email, contact: phone },
+
+    handler: async function (response) {
+
+      showToast("Creating Company...", "info");
+      await createCompany(email, company, plan_id,credits);
+
+      showToast("Creating User...", "info");
+      await createUser(name, email, phone, company, plan_id);
+
+      await fetch("{% url 'save_payment' %}", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "X-CSRFToken": csrftoken
+        },
+        body: new URLSearchParams({
+          order_id: response.razorpay_order_id,
+          payment_id: response.razorpay_payment_id,
+          name, email, phone, company,
+          amount, plan,
+          status: "success"
+        })
+      });
+
+      showToast("Payment Successful!", "success");
+        resetModalForm();
+      closeFormModal();
+      setTimeout(() => {
+        window.location.href = "https://crm.erpnext.ai/app/";
+      }, 1200);
+    },
+
+    modal: {
+      ondismiss: async function () {
+        await fetch("{% url 'save_payment' %}", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-CSRFToken": csrftoken
+          },
+          body: new URLSearchParams({
+            order_id: order.order_id,
+            name, email, phone, company,
+            amount, plan,
+            status: "failed"
+          })
+        });
+
+        showToast("❌ Payment Cancelled", "error");
+      }
+    }
+  });
+
+  rzp.open();
+});
+
+
+/* ======================================================
+   PHONE NUMBER RESTRICTION
+====================================================== */
+phoneInput.addEventListener("input", function () {
+  this.value = this.value.replace(/[^0-9]/g, "");
+});
+
+/* ============================================================
+   ERPNext API FUNCTIONS (FROM OLD buy.html)
+============================================================ */
+const API_HEADERS = {
+  "Content-Type": "application/json",
+  "Authorization": "token 33c44b17631ceb3:2d01782c6c01a7f"
+};
+
+// 1️⃣ Check Company
+async function checkCompany(company) {
+  const res = await fetch(
+    `https://api.erpnext.ai/api/v2/document/Company/${company}`,
+    { method: "GET", headers: API_HEADERS }
+  );
+  return res.status === 200;
+}
+
+// 2️⃣ Check User
+async function checkUser(email) {
+  const res = await fetch(
+    `https://api.erpnext.ai/api/v2/document/User/${email}`,
+    { method: "GET", headers: API_HEADERS }
+  );
+  return res.status === 200;
+}
+
+// 3️⃣ Create Company
+async function createCompany(email, company, plan_id,credits) {
+  return fetch(
+    `https://api.erpnext.ai/api/v2/document/Company/`,
+    {
+      method: "POST",
+      headers: API_HEADERS,
+      body: JSON.stringify({
+        email_id: email,
+        company_name: company,
+        plan_id,
+        credits
+      })
+    }
+  );
+}
+
+// 4️⃣ Create User
+async function createUser(name, email, phone, company, plan_id) {
+  return fetch(
+    `https://api.erpnext.ai/api/v2/document/User/`,
+    {
+      method: "POST",
+      headers: API_HEADERS,
+      body: JSON.stringify({
+        email,
+        first_name: name,
+        company,
+        role_profile_name: "Only If Create",
+        phone,
+        plan_id
+      })
+    }
+  );
+}
+
+function resetModalForm() {
+  document.getElementById("name_plan").value = "";
+  document.getElementById("email_plan").value = "";
+  document.getElementById("phone_plan").value = "";
+  document.getElementById("company_plan").value = "";
+
+  // remove validation styles
+  document.querySelectorAll(".is-invalid").forEach(el =>
+    el.classList.remove("is-invalid")
+  );
+
+  // reset intl-tel-input country
+  if (itiModal) {
+    itiModal.setCountry("in");
+  }
+}
+
+
+</script>

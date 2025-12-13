@@ -141,7 +141,7 @@ def create_order(request):
 
             return JsonResponse({
                 'status': 'success',
-                'redirect': 'https://crm.erpnext.ai/login/'
+                'redirect': 'https://crm.erpnext.ai/app/'
             })
 
         # -------------------------------
@@ -204,7 +204,7 @@ def save_payment(request):
     phone = request.POST.get('phone')
     print( name,email,phone,plan)
     # ---------- FREE PLAN LOGIC ----------
-    if plan == "CRM Lite":
+    if plan == "Free CRM":
         Payment.objects.create(
             name=name,
             email=email,
@@ -220,7 +220,7 @@ def save_payment(request):
     payment_id = request.POST.get('payment_id', '')
     status = request.POST.get('status', 'failed')
 
-    if not order_id and plan !="Free":
+    if not order_id and plan !="Free CRM":
         return JsonResponse({'error': 'Missing order_id for paid plan'}, status=400)
 
     try:
@@ -446,7 +446,8 @@ def index(request):
             company_payload = {
                 "email_id": email,
                 "company_name": comment,
-                "plan_id": "0"
+                "plan_id": "0",
+                "credits":"15",
             }
 
             company_url = "https://api.erpnext.ai/api/v2/document/Company/"
@@ -619,7 +620,7 @@ def security(request):
 def partners(request):
     return render(request, "Partners.html")
 
-
+@csrf_protect
 def pricing(request):
     return render(request, "Pricing.html")
 
