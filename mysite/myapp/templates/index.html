@@ -424,13 +424,13 @@
     }
 
     input#phone {
-        padding-left: 78px !important;
+        padding-left: 70px !important;
 
     }
 
     .iti__selected-dial-code {
         color: #fff !important;
-        margin-left: 16px !important;
+        margin-left: 7px !important;
         margin-top: 1px !important;
     }
 
@@ -654,6 +654,7 @@
         .pricing-card {
             margin-bottom: 20px;
         }
+
     }
 
     .plan-btn {
@@ -705,14 +706,14 @@
         .crm-compare-table th,
         .crm-compare-table td,
         .crm-compare-table tr {
-            display: block;
+            /* display: block; */
             width: 100%;
         }
 
-        .crm-compare-table thead {
+        /* .crm-compare-table thead {
             display: none;
-            /* hide header row */
-        }
+            /* hide header row 
+        } */
 
         .crm-compare-table tr {
             margin-bottom: 18px;
@@ -1089,6 +1090,9 @@
         .pricing-card {
             padding: 20px 16px !important;
         }
+        .crm-why-choose .why-us__details{
+            padding: 0px !important;
+        }
 
         .plan-title {
             font-size: 16px !important;
@@ -1100,6 +1104,10 @@
 
         .plan-btn {
             font-size: 14px !important;
+        }
+
+        .crm-testimonial-section .crm-testimonial-right .crm-testimonial-card{
+            padding: 1rem !important;
         }
     }
 
@@ -1403,7 +1411,7 @@
         width: 100%;
         height: 44px;
         /* FIXED EXACT HEIGHT */
-        padding: 0 15px 0 43px;
+        padding: 0 15px 0 5px;
         border-radius: 10px;
 
         background: rgba(255, 255, 255, 0.04);
@@ -1480,7 +1488,23 @@
     font-weight: 500;
 }
 
-    
+  @media screen and (max-width: 991.96px) and (min-width: 320px) {
+    .main-title {
+        width: 100%;
+        max-width: 100%;
+        font-size: 2rem !important;}} 
+        
+        .crm-faq .accordion .accordion-header .accordion-button {
+    font-size: 0.9rem;
+    color: #fff !important;
+    font-weight: 600;
+    transition: color 0.25s ease; /* smooth premium transition */
+}
+
+.crm-faq .accordion .accordion-header .accordion-button:hover {
+    color: #ffb25f !important;
+}
+
 </style>
 
 <div id="google_translate_element"></div>
@@ -1830,7 +1854,7 @@
 
                             <label>PHONE</label>
                             <div class="input-group">
-                                <input id="phone_plan" type="text" placeholder="Phone" style="width:100% !important">
+                                <input id="phone_plan" type="text" placeholder="Phone" style="width:100% !important; margin-left: 4px !important;">
                                 <span id="phoneError" class="text-danger"></span>
                             </div>
 
@@ -1856,8 +1880,8 @@
             </div>
 
         </div>
-
-        <table class="crm-compare-table">
+<div class="table-responsive">
+      <table class="crm-compare-table">
             <thead>
                 <tr>
                     <th style="text-align: start;">CRM Features</th>
@@ -1966,7 +1990,8 @@
                 </tr>
 
             </tbody>
-        </table>
+        </table></div>
+      
 
     </div>
 
@@ -2202,21 +2227,21 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="owl-carousel owl-theme our-integration-carousel">
-                    <div class="item box">
+                    <div class="item box mx-auto">
                         <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/mail2.png'%}">
                     </div>
-                    <div class="item box">
+                    <div class="item box mx-auto">
                         <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/meta1.png'%}">
                     </div>
-                    <div class="item box">
+                    <div class="item box mx-auto">
                         <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/twilio.png'%}">
                     </div>
-                    <div class="item box">
+                    <div class="item box mx-auto">
                         <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/app1.png'%}"
                             style="width: 178px;">
                     </div>
 
-                    <div class="item box">
+                    <div class="item box mx-auto">
                         <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/api.png'%}">
                     </div>
                 </div>
