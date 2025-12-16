@@ -1504,7 +1504,15 @@
 .crm-faq .accordion .accordion-header .accordion-button:hover {
     color: #ffb25f !important;
 }
+.banner-area .all-banner-slide .single-banner-slide{
+    height: 100% !important;
+}
 
+
+.banner-area {
+    position: relative !important;
+    padding-top: 110px !important; /* height of header */
+}
 </style>
 
 <div id="google_translate_element"></div>
@@ -3379,3 +3387,22 @@ function resetModalForm() {
 
 
 </script>
+
+
+<script>
+    const header = document.querySelector("header");
+
+    // Initial state
+    header.classList.add("transparent");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 80) {
+            header.classList.remove("transparent");
+            header.classList.add("scrolled");
+        } else {
+            header.classList.add("transparent");
+            header.classList.remove("scrolled");
+        }
+    });
+</script>
+

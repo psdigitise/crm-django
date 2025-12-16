@@ -71,7 +71,7 @@
         background: #fff;
         border: 1px solid #e5e7eb;
         border-radius: 14px;
-        padding: 24px;
+        padding: 15px;
         transition: 0.3s ease;
         cursor: pointer;
     }
@@ -101,7 +101,7 @@
         justify-content: center;
         align-items: center;
         color: #334155;
-        margin-bottom: 14px;
+        
         font-size: 26px;
     }
 
@@ -239,6 +239,9 @@
             padding: 10px 24px;
             font-size: 13.5px;
         }
+            .sar{
+    padding-top: 130px !important ;
+}
     }
 
     .feature-card {
@@ -291,10 +294,273 @@
         color: #1e293b;
         transition: background-color 0.3s ease, color 0.3s ease;
     }
+
+
+    .sar{
+    padding-top: 118px !important ;
+}
+/* ===== FEATURES GRID ===== */
+
+.gradient-card {
+    /* height: 100%; */
+    background: #ffffff;
+    border-radius: 18px;
+    /* padding: 32px; */
+    border: 1.5px solid transparent;
+    transition: all 0.3s ease;
+}
+
+/* Equal content alignment */
+.gradient-card .card-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* ICON STYLE */
+.gradient-card span.material-symbols-rounded {
+         width: 3.5rem;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    font-size: 40px !important;
+    margin-bottom: 1.5rem;
+
+}
+
+/* TITLE */
+.gradient-card h4 {
+    font-size: 1.25rem;
+    line-height: 1.7;
+}
+
+/* DESCRIPTION */
+.gradient-card p {
+        font-size: 16px;
+    line-height: 1.7;
+    margin-top: 2px;
+}
+
+/* ===== COLOR VARIANTS ===== */
+
+/* Purple */
+.grad-purple {
+    border-color: #d946ef;
+}
+.grad-purple span {
+    background: #f3e8ff;
+    color: #9333ea;
+}
+
+/* Blue */
+.grad-blue {
+    border-color: #3b82f6;
+}
+.grad-blue span {
+    background: #e0f2fe;
+    color: #2563eb;
+}
+
+/* Orange */
+.grad-orange {
+    border-color: #f97316;
+}
+.grad-orange span {
+    background: #fff7ed;
+    color: #ea580c;
+}
+
+/* Green */
+.grad-green {
+    border-color: #22c55e;
+}
+.grad-green span {
+    background: #ecfdf5;
+    color: #16a34a;
+}
+
+/* ===== HOVER EFFECT ===== */
+.gradient-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+}
+/* ===============================
+   CORE CRM FEATURES – EXACT MATCH
+================================ */
+
+.feature-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 24px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.25s ease;
+}
+
+/* ICON + TITLE ROW */
+.feature-card .icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.feature-card .icon-box span {
+    font-size: 20px;
+    color: #334155;
+}
+
+/* HEADER ROW (ICON + HEADING SAME LINE) */
+.feature-card h5 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+}
+
+/* WRAP ICON + TITLE */
+.feature-card > .icon-box,
+.feature-card > h5 {
+    display: inline-flex;
+    align-items: center;
+}
+
+.feature-card {
+    gap: 14px;
+}
+
+/* FIX ALIGNMENT */
+.feature-card {
+    position: relative;
+}
+
+.feature-card::before {
+    content: "";
+}
+
+/* FORCE ICON + TITLE SAME ROW */
+.feature-card {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    grid-template-rows: auto 1fr;
+    column-gap: 14px;
+}
+
+/* ICON POSITION */
+.feature-card .icon-box {
+    grid-row: 1;
+}
+
+/* TITLE POSITION */
+.feature-card h5 {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+}
+
+/* DESCRIPTION */
+.feature-card p {
+    grid-column: 1 / -1;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #64748b;
+    margin: 6px 0 0;
+}
+
+/* HOVER EFFECT */
+.feature-card:hover {
+    border-color: #facc15;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+    transform: translateY(-4px);
+}
+
+/* ===============================
+   CORE CRM FEATURES – PERFECT ALIGNMENT
+================================ */
+
+.feature-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 24px;
+    height: 100%;
+
+    /* GRID CONTROLS ALIGNMENT */
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    grid-template-rows: auto 1fr;
+    column-gap: 14px;
+    row-gap: 10px;
+
+    transition: all 0.25s ease;
+}
+
+/* ICON BOX */
+.feature-card .icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #f1f5f9;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    grid-column: 1;
+    grid-row: 1;
+}
+
+/* ICON */
+.feature-card .icon-box span {
+    font-size: 22px;
+    color: #334155;
+}
+
+/* TITLE */
+.feature-card h5 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+}
+
+/* DESCRIPTION – SAME START LINE FOR ALL */
+/* DESCRIPTION – START UNDER TITLE (NOT ICON) */
+.feature-card p {
+    grid-column: 2;   /* forces text under title */
+    grid-row: 2;
+
+    font-size: 15px;
+    line-height: 1.6;
+    color: #64748b;
+    margin: 0;
+}
+
+/* HOVER */
+.feature-card:hover {
+    border-color: #facc15;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+    transform: translateY(-4px);
+}
+
 </style>
 </head>
 
 <body>
+    <div class="sar py-lg-5 py-3">
+</div>
     <div class="container-fluid">
         <div class="row">
 
@@ -366,7 +632,7 @@
                     <p class="text-purple-600 mb-1 fw-semibold text-uppercase" style="letter-spacing: .5px;">
                     </p>
 
-                    <h1 class="fw-bold mb-3" style="    color: #facc15;">AI-Powered CRM Features</h1>
+                    <h1 class="fw-bold mb-3" >AI-Powered CRM Features</h1>
 
                     <p class="text-secondary fs-5 mb-5" style="color: black !important;">
                         Accelerate your sales pipeline with our comprehensive suite of tools,
@@ -378,7 +644,7 @@
                         <span class="material-symbols-rounded text-warning"></span>
                     </h3>
 
-                    <div class="row g-4">
+                    <div class="row g-4 align-items-stretch">
 
                         <div class="col-md-6">
                             <div class="gradient-card grad-purple">
@@ -425,7 +691,7 @@
                     </div>
 
                     <!-- CORE CRM -->
-                    <h3 class="fw-bold mt-5 mb-4" style="color: #facc15;">
+                    <h3 class="fw-bold mt-5 mb-4">
                         <span class="material-symbols-rounded text-secondary">grid_view</span> Core CRM Features
                     </h3>
 
@@ -444,7 +710,7 @@
                                 <div class="icon-box"><span class="material-symbols-rounded">business_center</span>
                                 </div>
                                 <h5>Deals Management</h5>
-                                <p>Drag-and-drop pipeline management.</p>
+                                <p>Visualize your sales pipeline and manage deals with a drag-and-drop kanban board.</p>
                             </div>
                         </div>
 
@@ -452,7 +718,7 @@
                             <div class="feature-card">
                                 <div class="icon-box"><span class="material-symbols-rounded">toc</span></div>
                                 <h5>Activity Tracking</h5>
-                                <p>Log calls, meetings, and emails automatically.</p>
+                                <p>Log calls, meetings, and emails automatically to keep your team aligned.</p>
                             </div>
                         </div>
 

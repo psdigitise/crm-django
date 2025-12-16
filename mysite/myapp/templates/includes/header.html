@@ -145,6 +145,52 @@
             top: 0px !important;
             margin-top: 0px !important;
         }
+
+        /* ===== Header base ===== */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Transparent state */
+header.transparent {
+    background: transparent;
+}
+
+/* Solid state after scroll */
+header.scrolled {
+    background: rgba(5, 10, 25, 0.95);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+
+}
+
+/* Header spacing */
+
+
+/* Text visibility on transparent header */
+header a,
+header i {
+    color: #ffffff;
+}
+
+/* Banner should start behind header */
+.banner-area {
+    position: relative;
+    padding-top: 110px; /* height of header */
+}
+
+.scrolled .header-top{
+ display: none !important;
+}
+
+.header nav ul li a{
+    padding: 0px 1.5rem !important;
+    font-weight: 500 !important;
+}
     </style>
 
 </head>
@@ -177,7 +223,7 @@
 
         <nav>
             <div class="container-fluid">
-                <div class="d-flex justify-content-start align-items-center pt-1 pb-1">
+                <div class="d-flex justify-content-start align-items-center" style="height: 70px !important;">
                     <div class="">
                         <div class="logo">
                             <img src="{% static 'img/Erpnextlogo.png' %}" alt="ERP Logo" width="170">
@@ -210,6 +256,34 @@
     </header>
 
 
+
+
+
+
+
+
+
+
+
+<script>
+    const header = document.querySelector("header");
+
+    // Initial state
+    header.classList.add("transparent");
+
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 80) {
+            header.classList.remove("transparent");
+            header.classList.add("scrolled");
+        } else {
+            header.classList.add("transparent");
+            header.classList.remove("scrolled");
+        }
+    });
+</script>
+
+
+    
 
     <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script>
