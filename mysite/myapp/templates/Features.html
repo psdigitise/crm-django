@@ -14,7 +14,7 @@
     }
 
     .sidebar {
-        background-color: #1e293b;
+        background-color: #111827;
         /* padding-top: 1rem; */
         border-right: 1px solid #334155;
         height: 100%;
@@ -32,19 +32,42 @@
     }
 
     .sidebar a:hover {
-        background-color: #0f172a;
+        background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
         color: #fff;
     }
 
     .sidebar a.active {
-        background-color: #facc15;
-        color: #000;
+        /* background-color: #facc15; */
+        color: #fff;
         font-weight: 600;
     }
+.blur-circle-right {
+  position: fixed;
+  top: 5rem;              /* top-20 → 20 * 0.25rem */
+  right: 0;
+  width: 500px;
+  height: 500px;
+  background-color: rgba(37, 99, 235, 0.1); /* blue-600 / 10% */
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+}
+.blur-circle-left {
+  position: fixed;
+  bottom: 0;
+  left: 5rem;               /* left-20 → 20 * 0.25rem */
+  width: 400px;
+  height: 400px;
+  background-color: rgba(147, 51, 234, 0.05); /* purple-600 / 5% */
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+}
+
 
     .main-content {
         padding: 40px;
-        background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
+        background-color:#111827;
         margin-left: 0px !important;
         margin-bottom: 20px;
         height: 100%;
@@ -283,17 +306,13 @@
             background-color 0.3s ease;
     }
 
-    .feature-card:hover {
+    /* .feature-card:hover {
         transform: translateY(-6px);
         box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
         background-color: #f9fafb;
-    }
+    } */
 
-    .feature-card:hover .icon-box {
-        background-color: #fde68a;
-        color: #1e293b;
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
+
 
 
     .sar{
@@ -487,19 +506,14 @@
 ================================ */
 
 .feature-card {
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
-    border-radius: 16px;
+    background: #131a29;
+    border: 1px solid #ffffff0d;
+    border-radius: 12px;
     padding: 24px;
     height: 100%;
-
-    /* GRID CONTROLS ALIGNMENT */
-    display: grid;
-    grid-template-columns: 48px 1fr;
-    grid-template-rows: auto 1fr;
-    column-gap: 14px;
-    row-gap: 10px;
-
+    display: flex;
+    align-items: start;
+    gap: 0 !important;
     transition: all 0.25s ease;
 }
 
@@ -508,32 +522,29 @@
     width: 48px;
     height: 48px;
     border-radius: 12px;
-    background: #f1f5f9;
-
+    background: #1e293b;
     display: flex;
     align-items: center;
     justify-content: center;
-
     grid-column: 1;
     grid-row: 1;
+    margin-bottom: 14px;
 }
 
 /* ICON */
 .feature-card .icon-box span {
     font-size: 22px;
-    color: #334155;
+    color: #fff;
 }
 
 /* TITLE */
 .feature-card h5 {
     font-size: 18px;
     font-weight: 700;
-    color: #0f172a;
+    color: #fff;
     margin: 0;
-
-    grid-column: 2;
-    grid-row: 1;
-    align-self: center;
+    margin-bottom: 8px;
+width: 100%;
 }
 
 /* DESCRIPTION – SAME START LINE FOR ALL */
@@ -544,7 +555,7 @@
 
     font-size: 15px;
     line-height: 1.6;
-    color: #64748b;
+    color: #94a3b8;
     margin: 0;
 }
 
@@ -552,8 +563,394 @@
 .feature-card:hover {
     border-color: #facc15;
     box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
-    transform: translateY(-4px);
+    transform:none;
+    background-color: #1a2332 !important;
 }
+
+    .feature-card:hover .icon-box {
+        background-color: #facc15;
+        color: #000;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+.gradient-text {
+  background: linear-gradient(
+    to right,
+    #FFD60A,
+    #fef08a,          /* yellow-200 */
+    #FFD60A
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+
+    /* ================= CARD BASE ================= */
+    .ai-card {
+      height: 100%;
+      padding: 34px;
+      border-radius: 18px;
+      background: #111620;
+      border: 1px solid rgba(255,255,255,0.06);
+      /* box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.02),
+        0 20px 50px rgba(0,0,0,0.6); */
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+      outline: 
+      5px solid #ffffff13;
+    }
+
+
+    /* ================= HEADER ================= */
+    .ai-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    /* ================= ICON ================= */
+    .ai-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 26px;
+      color: #fff;
+    }
+
+    /* ================= BADGE ================= */
+    .ai-badge {
+      padding: 6px 14px;
+      font-size: 12px;
+      border-radius: 999px;
+      border: 1px solid;
+      backdrop-filter: blur(6px);
+      white-space: nowrap;
+    }
+
+    /* ================= TEXT ================= */
+    .ai-card h4 {
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+
+    .ai-card p {
+      color: #94a3b8;
+      font-size: 16px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ================= PURPLE ================= */
+    .ai-purple .ai-icon {
+      background: linear-gradient(135deg, #ec4899, #9333ea);
+    }
+
+    .ai-purple .ai-badge {
+      color: #f9a8d4;
+      background: rgba(236,72,153,0.15);
+      border-color: rgba(236,72,153,0.35);
+    }
+
+    .ai-purple:hover {
+      box-shadow:
+        0 0 0 1px rgba(236,72,153,0.35),
+        0 30px 80px rgba(236,72,153,0.15);
+    }
+
+    /* ================= BLUE ================= */
+    .ai-blue .ai-icon {
+      background: linear-gradient(135deg, #3b82f6, #6366f1);
+    }
+
+    .ai-blue .ai-badge {
+      color: #93c5fd;
+      background: rgba(59,130,246,0.15);
+      border-color: rgba(59,130,246,0.35);
+    }
+
+    .ai-blue:hover {
+      box-shadow:
+        0 0 0 1px rgba(59,130,246,0.4),
+        0 30px 80px rgba(59,130,246,0.15);
+    }
+
+    /* ================= ORANGE ================= */
+    .ai-orange .ai-icon {
+      background: linear-gradient(135deg, #fb923c, #f97316);
+    }
+
+    .ai-orange .ai-badge {
+      color: #fdba74;
+      background: rgba(249,115,22,0.15);
+      border-color: rgba(249,115,22,0.35);
+    }
+
+    .ai-orange:hover {
+      box-shadow:
+        0 0 0 1px rgba(249,115,22,0.4),
+        0 30px 80px rgba(249,115,22,0.15);
+    }
+
+    /* ================= GREEN ================= */
+    .ai-green .ai-icon {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+    }
+
+    .ai-green .ai-badge {
+      color: #86efac;
+      background: rgba(34,197,94,0.15);
+      border-color: rgba(34,197,94,0.35);
+    }
+
+    .ai-green:hover {
+      box-shadow:
+        0 0 0 1px rgba(34,197,94,0.4),
+        0 30px 80px rgba(34,197,94,0.15);
+    }
+
+
+    .ai-card h4 {
+  transition: color 0.3s ease;
+}
+
+.ai-icon {
+  transition: all 0.35s ease;
+}
+.ai-purple:hover h4{
+  color: #ec4899;
+}
+
+.ai-purple:hover .ai-icon {
+    transform: scale(1.1);
+}
+.ai-blue:hover h4{  
+  color: #3b82f6;
+}
+
+.ai-orange:hover h4{
+  color: #fb923c;
+}
+
+.ai-green:hover h4 {
+  color: #22c55e;
+}
+
+.ai-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle at top left,
+      rgba(255,255,255,0.06),
+      transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.ai-card:hover::before {
+  opacity: 1;
+}
+/* ================= CTA SECTION BACKGROUND ================= */
+.cta-section {
+  padding: 80px 20px;
+  /* background: radial-gradient(
+    circle at top,
+    rgba(30, 58, 138, 0.25),
+    #050810 70%
+  ); */
+}
+
+/* ================= CTA BOX ================= */
+.cta-box {
+  max-width: 1100px;
+  margin: auto;
+  padding: 80px 40px;
+  text-align: center;
+
+
+  border-radius: 28px;
+  border: 5px solid #ffffff13;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.03),
+    0 40px 100px rgba(0,0,0,0.7);
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* ================= INNER GLOW ================= */
+.cta-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at top center,
+    rgba(255,255,255,0.08),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+/* ================= TEXT ================= */
+.cta-box h2 {
+  font-size: 42px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.cta-box p {
+  max-width: 760px;
+  margin: 0 auto 36px;
+  font-size: 18px;
+  line-height: 1.7;
+  color: #94a3b8;
+}
+
+/* ================= BUTTONS ================= */
+.cta-actions {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: #facc15;
+  color: #000;
+  padding: 14px 34px;
+  border-radius: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 12px 30px rgba(250,204,21,0.4);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 45px rgba(250,204,21,0.55);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.06);
+  color: #ffffff;
+  padding: 14px 34px;
+  border-radius: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.14);
+  transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.25);
+}
+
+/* ================= FOOT NOTE ================= */
+.cta-box small {
+  display: block;
+  margin-top: 12px;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .cta-box {
+    padding: 60px 24px;
+  }
+
+  .cta-box h2 {
+    font-size: 32px;
+  }
+
+  .cta-box p {
+    font-size: 16px;
+  }
+}
+/* ================= SIDEBAR CONTAINER ================= */
+.sidebar {
+  height: auto;
+  padding: 18px 12px;
+  background: linear-gradient(180deg, #0b1220, #070b14);
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+
+/* ================= SIDEBAR LINK BASE ================= */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 15px !important;
+  margin-bottom: 6px;
+
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+
+  border-radius: 12px;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+/* ================= ICON ================= */
+.sidebar-link .material-symbols-rounded {
+  font-size: 20px;
+  transition: color 0.25s ease;
+}
+
+/* ================= HOVER EFFECT ================= */
+.sidebar-link:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: #e5e7eb;
+}
+
+.sidebar-link:hover .material-symbols-rounded {
+  color: #facc15;
+}
+
+/* ================= ACTIVE STATE ================= */
+.sidebar-link.active {
+  background: linear-gradient(
+    90deg,
+    rgba(250, 204, 21, 0.18),
+    rgba(250, 204, 21, 0.05)
+  );
+  color: #facc15;
+  font-weight: 600;
+  border-left: 3px solid #facc15;
+}
+
+/* Left glowing bar */
+/* .sidebar-link.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 4px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #facc15, #fde047);
+  box-shadow: 0 0 12px rgba(250, 204, 21, 0.8);
+} */
+
+/* Icon color when active */
+.sidebar-link.active .material-symbols-rounded {
+  color: #facc15;
+}
+
+
 
 </style>
 </head>
@@ -561,6 +958,9 @@
 <body>
     <div class="sar py-lg-5 py-3">
 </div>
+
+
+
     <div class="container-fluid">
         <div class="row">
 
@@ -627,15 +1027,19 @@
             <div class="col-lg-10 col-md-9 col-sm-12 p-0">
 
                 <!-- FULL CONTENT WRAPPER -->
-                <div id="mainContent" class="main-content">
+                <div id="mainContent" class="main-content position-relative">
+<div class="blur-circle-left"></div>
+<div class="blur-circle-right"></div>
 
                     <p class="text-purple-600 mb-1 fw-semibold text-uppercase" style="letter-spacing: .5px;">
                     </p>
 
-                    <h1 class="fw-bold mb-3" >AI-Powered CRM Features</h1>
+                    <h1 class=" h1 fw-bold mb-3 text-white" >Supercharge your CRM with <br class="d-lg-block d-none">
+<span class="gradient-text">Artificial Intelligence</span>
+</h1>
 
-                    <p class="text-secondary fs-5 mb-5" style="color: black !important;">
-                        Accelerate your sales pipeline with our comprehensive suite of tools,
+                    <p class="fs-5 mb-lg-4 mb-2" style="color: #94a3b8 !important;">
+                        Accelerate your sales pipeline with our comprehensive suite of tools,<br class="d-lg-block d-none">
                         supercharged by next-generation artificial intelligence.
                     </p>
 
@@ -644,55 +1048,83 @@
                         <span class="material-symbols-rounded text-warning"></span>
                     </h3>
 
-                    <div class="row g-4 align-items-stretch">
+                    <div class="row gy-4 align-items-stretch">
 
-                        <div class="col-md-6">
-                            <div class="gradient-card grad-purple">
-                                <div class="card-inner">
-                                    <span class="material-symbols-rounded fs-1 text-purple-600">history_edu</span>
-                                    <h4 class="fw-bold mt-3">Email Writing Assistant</h4>
-                                    <p class="text-secondary">Draft personalized, context-aware emails instantly. Our AI analyzes past interactions to suggest the perfect tone and content to move deals forward.</p>
-                                </div>
-                            </div>
-                        </div>
 
-                        <div class="col-md-6">
-                            <div class="gradient-card grad-blue">
-                                <div class="card-inner">
-                                    <span class="material-symbols-rounded fs-1 text-primary">domain_verification</span>
-                                    <h4 class="fw-bold mt-3">Company Intelligence Reports</h4>
-                                    <p class="text-secondary">Auto-generate detailed company profiles. Get instant insights on financial health, recent news, and key decision-makers without leaving your dashboard.</p>
-                                </div>
-                            </div>
-                        </div>
+    
+    <!-- CARD 2 -->
+    <div class="col-md-6">
+      <div class="ai-card ai-blue">
+        <div class="ai-card-header">
+          <div class="ai-icon">
+            <span class="material-symbols-rounded">domain</span>
+          </div>
+          <span class="ai-badge">Data Enrichment</span>
+        </div>
+        <h4>AI Company Intelligence</h4>
+        <p>
+          Auto-generate detailed company profiles. Get instant insights on financial health, recent news, and key decision-makers without leaving your dashboard.
+        </p>
+      </div>
+    </div>
 
-                        <!-- CARD 3 -->
-                        <div class="col-md-6">
-                            <div class="gradient-card grad-orange">
-                                <div class="card-inner">
-                                    <span class="material-symbols-rounded fs-1 text-warning">scoreboard</span>
-                                    <h4 class="fw-bold mt-3">Smart Lead Scoring</h4>
-                                    <p class="text-secondary">Stop guessing. Our AI evaluates behavioral data and engagement metrics to assign a probability score to every lead, helping you prioritize hot prospects</p>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- CARD 4 -->
-                        <div class="col-md-6">
-                            <div class="gradient-card grad-green">
-                                <div class="card-inner">
-                                    <span class="material-symbols-rounded fs-1 text-success">query_stats</span>
-                                    <h4 class="fw-bold mt-3">Predictive Forecasting</h4>
-                                    <p class="text-secondary">Generate accurate revenue forecasts based on historical data and current pipeline velocity. Make data-driven decisions with confidence.</p>
-                                </div>
-                            </div>
-                        </div>
+                        <!-- CARD 1 -->
+    <div class="col-md-6">
+      <div class="ai-card ai-purple">
+        <div class="ai-card-header">
+          <div class="ai-icon">
+            <span class="material-symbols-rounded">history_edu</span>
+          </div>
+          <span class="ai-badge">Generative AI</span>
+        </div>
+        <h4>AI Email Writing Assistant</h4>
+        <p>
+          Draft personalized, context-aware emails instantly. Our AI analyzes past
+          interactions to suggest the perfect tone and content to move deals forward.
+        </p>
+      </div>
+    </div>
+
+      <!-- CARD 4 -->
+    <div class="col-md-6">
+      <div class="ai-card ai-green">
+        <div class="ai-card-header">
+          <div class="ai-icon">
+            <span class="material-symbols-rounded">query_stats</span>
+          </div>
+          <span class="ai-badge">Forecasting</span>
+        </div>
+        <h4>AI Predictive Forecasting</h4>
+        <p>
+          Generate accurate revenue forecasts based on historical data and current pipeline velocity. Make data-driven decisions with confidence.
+        </p>
+      </div>
+    </div>
+    <!-- CARD 3 -->
+    <div class="col-md-6">
+      <div class="ai-card ai-orange">
+        <div class="ai-card-header">
+          <div class="ai-icon">
+            <span class="material-symbols-rounded">scoreboard</span>
+          </div>
+          <span class="ai-badge">Analytics</span>
+        </div>
+        <h4>AI Smart Lead Scoring</h4>
+        <p>
+      Stop guessing. Our AI evaluates behavioral data and engagement metrics to assign a probability score to every lead, helping you prioritize hot prospects.
+        </p>
+      </div>
+    </div>
+
+  
+
 
                     </div>
 
                     <!-- CORE CRM -->
-                    <h3 class="fw-bold mt-5 mb-4">
-                        <span class="material-symbols-rounded text-secondary">grid_view</span> Core CRM Features
+                    <h3 class="fw-bold text-white mt-5 mb-4">
+                        <span class="material-symbols-rounded text-secondary text-white">grid_view</span> Core CRM Features
                     </h3>
 
                     <div class="row g-4">
@@ -772,16 +1204,25 @@
                             </div>
                         </div>
                     </div>
+<section class="cta-section">
+  <div class="cta-box">
+    <h2>Ready to upgrade your workflow?</h2>
+    <p>
+      Join thousands of forward-thinking sales teams using erpnext.ai
+      to close more deals faster, smarter, and with less effort.
+    </p>
 
-                    <div class="upgrade-box mt-4">
-                        <h2 style="color: #facc15;">Ready to upgrade your workflow?</h2>
-                        <p>Join thousands of sales teams using erpnext.ai to close more deals.</p>
-                        
-                        <a href="{% url 'pricing' %}" class="upgrade-btn">
-                            Start Free Trial
-                        </a>
+    <div class="cta-actions">
+      <a href="{% url 'pricing' %}" class="btn-primary">
+        Start Free Trial
+      </a>
+    
+    </div>
 
-                    </div>
+    <small>No credit card required. 14-day free trial.</small>
+  </div>
+</section>
+
 
 
 

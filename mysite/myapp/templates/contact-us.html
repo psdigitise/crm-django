@@ -8,6 +8,142 @@
 .sar{
     padding-top: 60px !important ;
 }
+
+.contact-team-section {
+  padding: 80px 0;
+
+  color: #fff;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #8ab4ff;
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #f5c542;
+}
+
+.contact-card {
+  height: 100%;
+  background: linear-gradient(180deg, #111c2e, #0b1220);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 40px 30px;
+  text-align: center;
+  transition: all 0.35s ease;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.contact-card img {
+  width: 48px;
+  margin-bottom: 20px;
+  filter: brightness(0) invert(1);
+}
+
+.contact-card h3 {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #fff;
+}
+
+.contact-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(138, 180, 255, 0.5);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 12px 26px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #0b1c34;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: #f5c542;
+  color: #000;
+}
+
+.banner-area .all-banner-slide .single-banner-slide{
+    padding-top: 0px !important;
+}
+
+.office-location {
+  padding: 90px 0;
+
+  color: #fff;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: #8ab4ff;
+  margin-bottom: 10px;
+}
+
+.main-title {
+  font-size: 42px;
+  font-weight: 700;
+  color: #f5c542;
+}
+
+.office-card {
+  height: 100%;
+  background: #ffffff;
+  color: #000;
+  border-radius: 12px;
+  padding: 40px 35px;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+  transition: all 0.35s ease;
+}
+
+.office-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.45);
+}
+
+.country-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.phone {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #0b5ed7;
+  text-decoration: none;
+  margin-bottom: 18px;
+}
+
+.phone:hover {
+  text-decoration: underline;
+}
+
+.address {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #333;
+}
+
+
+
 </style>
 <div class="sar py-lg-5 py-3">
 </div>
@@ -34,7 +170,7 @@
     </div>
 </section>
 
-<section class="contact-team-section w-100">
+<!-- <section class="contact-team-section w-100">
     <div class="container">
         <div class="row gy-3">
             <div class="col-md-6">
@@ -59,7 +195,33 @@
             </div>
         </div>
     </div>
+</section> -->
+
+
+<section class="contact-team-section">
+  <div class="container-fluid">
+
+
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="contact-card">
+          <img src="https://www.mendix.com/wp-content/uploads/Icon-4.svg" alt="">
+          <h3>Talk to our sales team</h3>
+          <a href="#" class="btn-primary">Contact Sales</a>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="contact-card">
+          <img src="https://www.mendix.com/wp-content/uploads/Icon-6.svg" alt="">
+          <h3>Find technical support</h3>
+          <a href="#" class="btn-primary">Visit ERPNextAI Support</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
 
 
 
@@ -70,6 +232,9 @@
                 <h2 class="main-title">Send us a message</h2>
                 <p class="main-desc">Let us know how we can help you. Just complete this form and we’ll be in touch
                     soon.</p>
+                <div class="row justify-content-center">
+                    <div class="col-lg-6 col-12">
+                
                 <!-- ✅ Registration Form -->
                 <form class="registration-form contact-form row g-3" action="{% url 'contact_us' %}" method="post">
                     {% csrf_token %}
@@ -142,65 +307,55 @@
                     </div>
                     {% endif %}
                 </form>
+                </div>
+  </div>
 
             </div>
         </div>
     </div>
 </section>
+
 
 
 <section class="office-location">
-    <div class="container">
-        <h2 class="main-title">Office Locations</h2>
-        <div class="row justify-content-center gy-3">
-            <div class="col-md-4">
-                <div class="office">
-                    <div class="grid">
-                        <div class="cell">
-                            <!-- <figure class="office__flag">
-                                <img width="62" height="38" src="https://www.mendix.com/wp-content/uploads/uae.svg"
-                                    class=" flag uae attachment-206926" alt="" loading="lazy" decoding="async">
-                            </figure> -->
-                            <h4 class="sub-title color-blue">INDIA</h4>
-                        </div>
-                        <div class="cell">
-                            <p class="address"><a href="tel:+91 95669 81217" class="sub-desc">+91 95669 81217</a></p>
-                            <div class="">
-                                <p class="sub-desc2 color-black">
-                                   132, First Floor, Maniyan Chetti Street, Bazaar, Palakarai, Tiruchirappalli, Tamil Nadu 620001
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="office h-100">
-                    <div class="grid">
-                        <div class="cell">
-                            <!-- <figure class="office__flag">
-                                <img width="62" height="38" src="https://www.mendix.com/wp-content/uploads/uae.svg"
-                                    class=" flag uae attachment-206926" alt="" loading="lazy" decoding="async">
-                            </figure> -->
-                            <h4 class="sub-title color-blue">Oman</h4>
-                        </div>
-                        <div class="cell">
-                            <p class="address"><a href="tel:+91 95669 81217" class="sub-desc">+91 95669 81217</a></p>
-                            <div class="">
-                                <p class="sub-desc2 color-black">Expo City Dubai
-                                    Level 6, Building Parcel
-                                    4 Al Wasl Avenue
-                                    Mobility District
-                                    Dubai</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-        </div>
+  <div class="container">
+    <div class="text-center mb-5">
+
+      <h2 class="main-title">Office Locations</h2>
     </div>
+
+    <div class="row justify-content-center g-4">
+      <div class="col-md-4">
+        <div class="office-card">
+          <h4 class="country-title">INDIA</h4>
+
+          <a href="tel:+919566981217" class="phone">+91 95669 81217</a>
+
+          <p class="address">
+            132, First Floor, Maniyan Chetti Street,<br>
+            Bazaar, Palakarai, Tiruchirappalli,<br>
+            Tamil Nadu 620001
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="office-card">
+
+           <h4 class="sub-title color-blue country-title">Oman</h4>
+          <a href="tel:+919566981217" class="phone">+91 95669 81217</a>
+
+          <p class="address">
+            Expo City Dubai, Level 6,<br>
+            Building Parcel 4, Al Wasl Avenue,<br>
+            Mobility District, Dubai
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
 
 
 

@@ -1,115 +1,253 @@
 <!-- Footer -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
+
+<style>
+  /* ================= FOOTER BASE ================= */
+.footer {
+  background: radial-gradient(
+      circle at top left,
+      rgba(37, 99, 235, 0.15),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(147, 51, 234, 0.12),
+      transparent 45%
+    ),
+    linear-gradient(180deg, #050810, #03060c);
+  padding-top: 70px;
+  color: #cbd5f5;
+}
+
+/* ================= LOGO + BRAND ================= */
+.footer img {
+  filter: drop-shadow(0 6px 20px rgba(0,0,0,0.6));
+}
+
+.footer p {
+  color: #94a3b8;
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+/* ================= SECTION HEADINGS ================= */
+.footer .main-desc {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  margin-bottom: 14px;
+}
+
+/* ================= LINKS ================= */
+.footer .sub-desc2 {
+  margin-bottom: 10px;
+}
+
+.footer .sub-desc2 a {
+  color: #94a3b8;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.footer .sub-desc2 a:hover {
+  color: #e5e7eb;
+  text-decoration: underline;
+}
+
+/* ================= PARTNER BADGE ================= */
+.partner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  color: #e5e7eb;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  margin-top: 18px;
+}
+
+/* ================= SOCIAL ICONS ================= */
+.footer .fab {
+  color: #94a3b8;
+  transition: all 0.25s ease;
+}
+
+.footer .fab:hover {
+  color: #facc15;
+  transform: translateY(-2px);
+}
+
+/* ================= DIVIDER ================= */
+.footer .bottom-bar {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin-top: 40px;
+  padding: 18px 0;
+}
+
+.footer .bottom-bar p {
+  color: #64748b;
+  font-size: 13px;
+  margin: 0;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .footer {
+    text-align: center;
+  }
+
+  .footer .row > div {
+    margin-bottom: 28px;
+  }
+
+  .footer .sub-desc2 {
+    justify-content: center;
+  }
+}
+.partner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+
+  font-size: 14px;
+  font-weight: 500;
+  color: #e5e7eb;
+
+  background: radial-gradient(
+      circle at top left,
+      rgba(255, 255, 255, 0.15),
+      transparent 60%
+    ),
+    rgba(255, 255, 255, 0.08);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.partner-badge .verified-icon {
+  font-size: 18px;
+  color: #60a5fa; /* blue verified */
+}
+.partner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #0a2a52, #0b3d91);
+  color: #fff;
+  font-size: 14px;
+  box-shadow: 0 0 15px rgba(0, 102, 255, 0.4);
+}
+
+.partner-badge .verified-icon {
+  color: #4da3ff;
+  font-size: 16px;
+}
+
+</style>
+
 {% load static %}
-<footer class="footer" style="padding: 0px !important;">
-  <div class="container">
+<footer class="footer py-lg-5 p4">
+  <div class="container ">
 
-    <div class="container text-center py-lg-5 py-3" style="padding-top: 30px !important;">
-      <img src="{% static 'img/home/integrations/LOGO.png' %}" alt="ERPNext.AI Logo" class="img-fluid"
-        style="max-height: 48px;margin-bottom: 25px;">
-      <p style="color: white;">AI-enabled CRM on Frappe. Modern. Minimal. Robust.
-      </p>
-      <div class="d-flex justify-content-center align-items-center mt-3 pb-lg-5 pb-3" style="gap: 10px;">
+    <!-- TOP ROW -->
+    <div class="row g-5 align-items-start justify-content-between">
 
-        <img alt="Frappe Logo" class="client-img" src="{% static 'img/home/integrations/img2.png' %}"
-          style="width: 155px;height:auto;position: relative;top: 5px;">
-      </div>
+      <!-- BRAND COLUMN -->
+      <div class="col-lg-4 col-md-12">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <img src="{% static 'img/home/integrations/LOGO.png' %}" alt="ERPNext.AI Logo"
+            style="max-height:42px;">
+          <span class="fw-semibold text-white fs-5"></span>
+        </div>
 
-    </div>
-    <div class="row text-md-start justify-content-evenly">
-
-
-      <!-- Products -->
-      <div class="col-md-2 col-12 mb-4">
-        <h5 class="main-desc">PRODUCT</h5>
-     <p class="sub-desc2">
-    <a href="{% url 'pricing' %}">Pricing</a>
-</p>
-
-  <p class="sub-desc2"><a href="{% url 'features' %}">Features</a></p>
-
-
-        <p class="sub-desc2"><a href="#">Integration</a></p>
-        <!-- ✅ Added -->
-      </div>
-
-
-      <!-- Services -->
-      <!-- <div class="col-md-2 col-12 mb-4">
-        <h5 class="main-desc">Integration</h5>
-        <p class="sub-desc2"><a href="#">Whatsapp</a></p>
-        <p class="sub-desc2"><a href="#">Facebook</a></p>
-        <p class="sub-desc2"><a href="#">Call</a></p>
-        <p class="sub-desc2"><a href="#">Mail</a></p>
-      </div> -->
-
-
-
-      <!-- Resources -->
-      <div class="col-md-2 col-12 mb-4">
-        <h5 class="main-desc">COMPANY</h5>
-
-        <p class="sub-desc2">
-          <a href="{% url 'about_us' %}">About Us</a>
+        <p class="footer-desc">
+          AI-powered CRM built on Frappe. Simple. Smart. Secure.
+          We help businesses of all sizes modernize their sales process.
         </p>
-        <p class="sub-desc2"><a href="{% url 'partners' %}">Partners</a></p>
-          <p class="sub-desc2"><a href="{% url 'cookies' %}">Cookies</a></p>
 
-        <p class="sub-desc2"><a href="{% url 'terms_and_conditions' %}">Terms & Conditions</a></p>
-
-        
-    
-
-      </div>
-
-
-      <!-- Resources -->
-      <div class="col-md-2 col-12 mb-4">
-        <h5 class="main-desc">RESOURCES</h5>
-
-        <p class="sub-desc2"><a href="#">Blog</a></p>
-
-        <p class="sub-desc2"><a href="{% url 'security' %}">Security</a></p>
-
-        <p class="sub-desc2"> <a href="{% url 'privacy_policy' %}">Privacy Policy</a></p>
-        <p class="sub-desc2"><a href="{% url 'data_deletion' %}">User Data Deletion</a></p>
-
-      </div>
-
-
-
-
-
-
-      <!-- Contact -->
- <div class="col-md-2 col-12 mb-4 text-md-start text-center">
-  <p class="main-desc">CONTACT</p>
-  <p class="sub-desc2">
-    <a href="mailto:info@erpnext.ai.com">info@erpnext.ai</a>
-  </p>
-
-  <p class="main-desc mt-3">Follow us</p>
-  <div class="sub-desc2 d-flex justify-content-md-start justify-content-center gap-3">
-    <a href="#" target="_blank" class="text-warning">
-      <i class="fab fa-instagram fa-2x"></i>
-    </a>
-    <a href="#" target="_blank" class="text-warning">
-      <i class="fab fa-linkedin fa-2x"></i>
-    </a>
-    <a href="#" target="_blank" class="text-warning">
-      <i class="fab fa-facebook fa-2x"></i>
-    </a>
-  </div>
+        <!-- Partner Badge -->
+  <div class="partner-badge mt-3">
+  <i class="fa-solid fa-circle-check verified-icon"></i>
+  <span>Official Frappe Partner</span>
 </div>
 
 
+      </div>
+
+      <!-- PRODUCT -->
+      <div class="col-lg-2 col-md-3 col-6">
+        <h6 class="main-desc">Product</h6>
+        <p class="sub-desc2"><a href="{% url 'pricing' %}">Pricing</a></p>
+        <p class="sub-desc2"><a href="{% url 'features' %}">Features</a></p>
+        <p class="sub-desc2"><a href="#">Integrations</a></p>
+                  <p class="sub-desc2"><a href="{% url 'contact_us' %}">Contact</a></p>
+       
+
+        <!-- <p class="sub-desc2"><a href="#">Changelog</a></p> -->
+      </div>
+
+      <!-- COMPANY -->
+      <div class="col-lg-2 col-md-3 col-6">
+        <h6 class="main-desc">Company</h6>
+        <p class="sub-desc2"><a href="{% url 'about_us' %}">About Us</a></p>
+     <p class="sub-desc2"><a href="#">Blog</a></p>
+        <p class="sub-desc2"><a href="{% url 'partners' %}">Partners</a></p>
+     <p class="sub-desc2"><a href="{% url 'privacy_policy' %}">Privacy Policy</a></p>
+      </div>
+
+      <!-- RESOURCES -->
+      <!-- <div class="col-lg-2 col-md-3 col-6">
+        <h6 class="main-desc">Resources</h6>
+        <p class="sub-desc2"><a href="#">Blog</a></p>
+        <p class="sub-desc2"><a href="#">Community</a></p>
+        <p class="sub-desc2"><a href="#">Help Center</a></p>
+        <p class="sub-desc2"><a href="#">API Docs</a></p>
+      </div> -->
+
+      <!-- LEGAL -->
+      <div class="col-lg-2 col-md-3 col-6">
+        <h6 class="main-desc">Legal</h6>
+        <p class="sub-desc2"><a href="{% url 'terms_and_conditions' %}">Terms of Service</a></p>
+        <p class="sub-desc2"><a href="{% url 'security' %}">Security</a></p>
+        <p class="sub-desc2"><a href="{% url 'cookies' %}">Cookie Policy</a></p>
+        <p class="sub-desc2"><a href="/data-deletion/">User Data Deletion</a></p>
+      </div>
+
     </div>
 
-    <!-- Bottom -->
-    <div class="bottom-bar pt-2 text-center text-white">
-      <p>© 2025 ERPNext.AI — Built on ERPNext by Frappe.</p>
+    <!-- BOTTOM BAR -->
+    <div class="bottom-bar d-flex flex-column flex-md-row justify-content-between align-items-center mt-5 pt-3">
+      <p class="mb-2 mb-md-0">© 2025 ERPNext.AI — Built on ERPNext by Frappe.</p>
+
+      <div class="d-flex gap-4">
+      <a href="https://www.instagram.com/erpnext.ai?igsh=Zm91eXhudGR0ZzA0" target="_blank" aria-label="Instagram">
+  <i class="fab fa-instagram"></i>
+</a>
+
+<a href="#" target="_blank" aria-label="Facebook">
+  <i class="fab fa-facebook-f"></i>
+</a>
+
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
     </div>
+
   </div>
 </footer>
+
 
 
 
