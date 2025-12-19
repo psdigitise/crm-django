@@ -191,6 +191,10 @@ header i {
     padding: 0px 1.5rem !important;
     font-weight: 500 !important;
 }
+
+.logo img{
+    filter: none !important;
+}
     </style>
 
 </head>
@@ -225,10 +229,14 @@ header i {
             <div class="container-fluid">
                 <div class="d-flex justify-content-start align-items-center" style="height: 70px !important;">
                     <div class="">
-                        <div class="logo">
-                            <img src="{% static 'img/Erpnextlogo.png' %}" alt="ERP Logo" width="170">
-                        </div>
-                    </div>
+    <div class="logo">
+       <img src="{% static '/img/crm/crm/crm1.png' %}"
+     alt="CRM Logo"
+     style="max-height:40px;">
+
+    </div>
+</div>
+
                     <div class="px-5">
                         <ul id="navMenu">
                             <li class="sub-desc pb-0"><a href="{% url 'index' %}">Home</a></li>
