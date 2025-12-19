@@ -1,0 +1,24 @@
+@import "../variable";
+
+.our-integration {
+    padding: 0rem 0rem 3rem;
+
+    .box{
+        height: 200px;
+        width: 200px;
+        border-radius: 100%;
+        border: 2px dotted $color-white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .owl-carousel .owl-item img {
+        display: block;
+        width: 150px;
+        height: auto;
+    }
+
+}

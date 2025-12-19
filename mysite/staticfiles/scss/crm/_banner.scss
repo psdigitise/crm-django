@@ -1,0 +1,258 @@
+.banner-area {
+  position: relative;
+  overflow: hidden;
+
+
+  .banner-list{
+    // border-left: 5px solid #fff;
+    // padding-left: 2rem;
+    i{
+      color: $color-orange;
+    }
+  }
+
+  #particles-js {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; // match the box height
+    z-index: 1; // behind content
+
+    canvas {
+      filter: drop-shadow(0 0 6px rgba(0, 255, 255, 0.5)) drop-shadow(0 0 8px rgba(255, 0, 127, 0.4)) drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+    }
+  }
+
+  .content-overlay {
+    position: relative;
+    z-index: 2; // above particles
+  }
+
+
+  p {
+    width: 85%;
+  }
+
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    background-image: url("../img/home/bg-6.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    z-index: 1;
+    opacity: 1;
+    pointer-events: none;
+  }
+
+  &::before {
+    top: -200px;
+    left: -200px;
+    animation: floatCircle 8s infinite linear;
+  }
+
+  &::after {
+    bottom: -200px;
+    right: -200px;
+    animation: floatCircleReverse 8s infinite linear;
+  }
+
+
+  .all-banner-slide {
+    .single-banner-slide {
+      height: 100%;
+      flex-direction: column;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      padding: 2rem 0rem;
+      position: relative;
+      z-index: 2;
+    }
+  }
+}
+
+.contact-form {
+  position: relative;
+  z-index: 5; // content on top of background
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  padding: 1.5rem;
+  margin: 1rem;
+
+  // hide labels visually but keep for accessibility
+  label {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  // input + icon wrapper
+  .input-icon {
+    position: relative;
+
+    i {
+      position: absolute;
+      left: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 16px;
+      pointer-events: none;
+      transition: color 0.3s ease;
+    }
+
+    .custom-input {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff; // text color
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 3rem;
+      padding: 1rem 2rem 1rem 3.5rem; // left padding for icon
+      font-size: 15px;
+      transition: all 0.3s ease;
+      width: 100%;
+
+      &::placeholder {
+        color: #fff;
+        font-weight: 500;
+        font-size: 14px;
+      }
+
+      &:focus {
+        border-color: #7D1E2A;
+        color: #fff; // keep text white
+        box-shadow: 0 0 0 0.2rem rgba(125, 30, 42, 0.15);
+        outline: none;
+
+        // icon color on focus
+        &+i {
+          color: #7D1E2A;
+        }
+      }
+    }
+  }
+
+  // textarea styling
+  textarea.custom-input {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3rem;
+    padding: 1rem 2rem;
+    font-size: 15px;
+    resize: none;
+    height: 60px;
+    transition: all 0.3s ease;
+
+    &::placeholder {
+      color: #fff;
+      font-weight: 500;
+      font-size: 14px;
+    }
+
+    &:focus {
+      border-color: #7D1E2A;
+      color: #fff;
+      box-shadow: 0 0 0 0.2rem rgba(125, 30, 42, 0.15);
+      outline: none;
+    }
+  }
+
+  // submit button
+  .contact-submit {
+    position: relative;
+    z-index: 20; // button always on top
+    pointer-events: auto;
+    cursor: pointer;
+    border: none;
+    border-radius: 3rem;
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(90deg, #2c6dd5, #1e3a8a);
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: linear-gradient(90deg, #1e3a8a, #2c6dd5);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+/* prevent pseudo elements from blocking clicks */
+.banner-area::before,
+.banner-area::after {
+  pointer-events: none;
+}
+
+
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes floatCircle {
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(180deg) translateY(-20px);
+  }
+
+  100% {
+    transform: rotate(360deg) translateY(0);
+  }
+}
+
+@keyframes floatCircleReverse {
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+
+  50% {
+    transform: rotate(-180deg) translateY(20px);
+  }
+
+  100% {
+    transform: rotate(-360deg) translateY(0);
+  }
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 991px) {
+  .banner-area {
+
+    &::before,
+    &::after {
+      width: 300px;
+      height: 300px;
+      opacity: 0.5;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .banner-area {
+    .all-banner-slide {
+      .single-banner-slide {
+        padding: 2rem 0rem;
+      }
+    }
+
+    &::before,
+    &::after {
+      width: 500px;
+      height: 500px;
+      opacity: 0.9;
+    }
+  }
+}

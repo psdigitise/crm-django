@@ -1,0 +1,55 @@
+@import "../variable";
+
+.integration-section {
+  color: white;
+  border-top: 2px solid #ffffff26;
+  border-bottom: 2px solid #ffffff26;
+  padding: 3rem 0rem;
+
+     .main-title{
+    max-width: 100% !important;
+    text-align: center;
+  }
+
+
+  .section-title {
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
+    margin-top: 5px;
+    margin-bottom: 30px;
+  }
+
+  .integration-icons {
+    justify-content: space-evenly;
+
+    .icon-box {
+
+      height: 200px;
+      width: 200px;
+      border-radius: 1rem;
+      border: 2px dotted $color-green;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+
+
+
+
+      img {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        margin-bottom: 10px;
+        filter: brightness(0) invert(1);
+
+
+      }
+    }
+  }
+}

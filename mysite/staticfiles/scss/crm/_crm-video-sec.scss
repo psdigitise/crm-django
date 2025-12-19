@@ -1,0 +1,77 @@
+.crm-video-sec {
+    background-color: transparent;
+    padding: 4em 0em;
+
+    &__details img {
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .video-container {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .video-container video {
+        width: 100%;
+        height: auto;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        display: none;
+        z-index: 999;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+}
+
+
+
+
+@media (min-width: 576px) and (max-width: 768px) {
+    .taxi-bussniess {
+        .video-container iframe {
+            width: 400px !important;
+            height: 300px !important;
+        }
+    }
+
+}
+
+@media (min-width: 320px) and (max-width: 575px) {
+    .taxi-bussniess {
+        .video-container iframe {
+            width: 275px !important;
+            height: 235px !important;
+        }
+    }
+}
+
+
+@media (min-width: 320px) and (max-width: 991px) {
+
+    .taxi-bussniess {
+        padding: 2em 0em !important;
+    }
+}

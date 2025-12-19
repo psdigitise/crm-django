@@ -1,9 +1,6 @@
 {% load static %}
 
 {% include 'includes/header.html' %}
-
-
-
 <style>
 .sar{
     padding-top: 60px !important ;
@@ -143,6 +140,54 @@
 }
 
 
+.form-toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #e53935; /* error red */
+    color: #fff;
+    padding: 14px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    z-index: 9999;
+}
+
+.form-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.form-toast.success {
+    background: #2e7d32; /* green */
+}
+
+<style>
+.toast {
+  background-color: #333;
+  color: #fff;
+  padding: 12px 20px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  animation: fadein 0.5s, fadeout 0.5s 3s;
+}
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeout {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+
+</style>
+
 
 </style>
 <div class="sar py-lg-5 py-3">
@@ -222,6 +267,7 @@
   </div>
 </section>
 
+<div id="toast-container"></div>
 
 
 
@@ -358,6 +404,32 @@
 
 
 
+
+<!-- 
+<script>
+document.querySelector('.contact-form').addEventListener('submit', function (e) {
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const comment = document.getElementById('comment').value.trim();
+
+    if (!name || !email || !phone || !comment) {
+        e.preventDefault();
+        showToast('Please fill all required fields');
+        return;
+    }
+});
+
+function showToast(message, type = 'error') {
+    const toast = document.getElementById('formToast');
+    toast.textContent = message;
+    toast.className = 'form-toast show ' + (type === 'success' ? 'success' : '');
+
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
+</script> -->
 
 
 

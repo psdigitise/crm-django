@@ -1,0 +1,157 @@
+// $green-bg: #e7f5e6;
+// $lavender-bg: #f5ecff;
+// $cream-bg: #fff4e3;
+// $primary-purple: #5b2cec;
+// $orange: #f39200;
+// $text-dark: #0a0a0a;
+
+// .crm-pricing-section {
+//   padding:3rem 0rem;
+
+//   li{
+//     list-style: none;
+//   }
+
+//   ul{
+//     margin-bottom: 0.5rem;
+//   }
+
+//   .pricing-card {
+//     height: 100%;
+//     border-radius: 16px;
+//     border: 1px solid #d6d6d6;
+//     padding: 35px 28px;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     min-height: 620px;
+//     background: #fff;
+//     box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+//     transition: .25s ease-in-out;
+
+//     &:hover {
+//       transform: translateY(-6px);
+//       box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+//     }
+
+//     .plan-title {
+//       font-size: 2rem;
+//       font-weight: 800;
+//       text-align: center;
+//       margin-bottom: 8px;
+//       color: $text-dark;
+//     }
+
+//     .plan-sub {
+//       font-size: 1.1rem;
+//       text-align: center;
+//       font-weight: 600;
+//       color: $text-dark;
+//       margin-bottom: 0.7rem;
+//     }
+
+//     .section-label {
+//       font-size: 15px;
+//       font-weight: 700;
+//       color: $text-dark;
+//       margin-top: 15px;
+//       margin-bottom: 6px;
+//     }
+
+//     .features-list li {
+//       font-size: 1.1rem;
+//       margin-bottom: 7px;
+//       color: $text-dark;
+//     }
+
+//     .price-text {
+//       font-size: 30px;
+//       font-weight: 900;
+//       color: $text-dark;
+//       margin-bottom: 3px;
+
+//       span {
+//         font-size: 17px;
+//       }
+//     }
+
+//     .old-price {
+//       font-size: 14px;
+//       text-decoration: line-through;
+//       color: red;
+//       font-weight: 700;
+//     }
+
+//     .note {
+//       font-size: 1rem;
+//       color: $text-dark;
+//       font-weight: 500;
+//       padding-bottom: 0.7rem;
+//     }
+
+//     .plan-btn {
+//       width: 100%;
+//       padding: 13px;
+//       font-size: 15px;
+//       font-weight: 700;
+//       border-radius: 10px;
+//       border: none;
+//       transition: .3s;
+//       background: #000;
+//       color: #fff;
+//       margin-top: 12px;
+
+//       &:hover {
+//         opacity: .9;
+//         transform: scale(1.02);
+//       }
+//     }
+//   }
+
+//   .pricing-card.free {
+//     background: $green-bg;
+
+//     .top-badge-free {
+//       background: #d7f2dc;
+//       color: $text-dark;
+//       font-size: 16px;
+//       padding: 5px 14px;
+//       border-radius: 7px;
+//       display: inline-block;
+//       margin-bottom: 14px;
+//       font-weight: 600;
+//     }
+
+//     .plan-btn {
+//       background: #0a8a4b;
+//     }
+//   }
+
+//   .pricing-card.pro {
+//     background: $lavender-bg;
+
+//     .recommended-badge {
+//       background: $primary-purple;
+//       color: #fff;
+//       padding: 6px 13px;
+//       border-radius: 10px;
+//       font-size: 12px;
+//       font-weight: 700;
+//       position: absolute;
+//       top: -13px;
+//       right: 18px;
+//     }
+
+//     .plan-title {
+//       color: $primary-purple !important;
+//     }
+//   }
+
+//   .pricing-card.enterprise {
+//     background: $cream-bg;
+
+//     .plan-title {
+//       color: $orange !important;
+//     }
+//   }
+// }
