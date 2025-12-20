@@ -1100,7 +1100,8 @@
         .plan-btn {
             font-size: 14px !important;
         }
-        .sar{
+
+        .sar {
             padding-top: 130px !important;
         }
     }
@@ -1861,50 +1862,96 @@
     }
 
 
-.faq-item {
-  /* border: 1px solid #3B82F6; */
-  border-radius: 0.5rem;
-  background: rgba(59, 130, 246, 0.05);
-  padding: 1rem;
-  transition: all 0.3s ease;
-}
+    .faq-item {
+        /* border: 1px solid #3B82F6; */
+        border-radius: 0.5rem;
+        background: rgba(59, 130, 246, 0.05);
+        padding: 1rem;
+        transition: all 0.3s ease;
+    }
 
-.faq-summary {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  font-weight: 600;
-  color: #3B82F6;
-  transition: color 0.3s ease;
-}
+    .faq-summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        font-weight: 600;
+        color: #3B82F6;
+        transition: color 0.3s ease;
+    }
 
-.faq-item[open] .faq-summary {
-  color: #1D4ED8;
-}
+    .faq-item[open] .faq-summary {
+        color: #1D4ED8;
+    }
 
-.expand-icon {
-  font-size: 24px;
-  color: #3B82F6;
-  transition: transform 0.3s ease;
-}
+    .expand-icon {
+        font-size: 24px;
+        color: #3B82F6;
+        transition: transform 0.3s ease;
+    }
 
-.faq-item[open] .expand-icon {
-  transform: rotate(180deg);
-  color: #1D4ED8;
-}
+    .faq-item[open] .expand-icon {
+        transform: rotate(180deg);
+        color: #1D4ED8;
+    }
 
-.faq-answer {
-  margin-top: 1rem;
-  color: #1E293B;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
+    .faq-answer {
+        margin-top: 1rem;
+        color: #1E293B;
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
 
-.sar{
-    padding-top: 80px !important ;
-}
+    .sar {
+        padding-top: 80px !important;
+    }
 
+    .ai-actions-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 12px 0;
+        background: transparent;
+    }
+
+    /* Header */
+    .ai-actions-table th {
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #cbd5e1;
+        padding-bottom: 12px;
+        text-align: center;
+    }
+
+    .ai-actions-table th:first-child {
+        text-align: left;
+    }
+
+    /* Separate boxes */
+    .ai-actions-row td {
+        background: linear-gradient(180deg, #0f172a, #0b1224);
+        color: #e5e7eb;
+        padding: 14px 12px;
+        border-radius: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    /* First column label */
+    .ai-actions-row td:first-child {
+        text-align: left;
+        font-weight: 600;
+        color: #ffffff;
+    }
+
+    /* Remove default table borders */
+    .ai-actions-table td,
+    .ai-actions-table th {
+        border: none !important;
+    }
 </style>
 
 <div class="sar py-lg-5 py-3">
@@ -2009,7 +2056,7 @@
             <!-- ENTERPRISE PLAN -->
             <div class="col-md-3">
                 <div class="pricing-card small-card enterprise-blue">
-                    <h3 class="plan-title text-center mb-2">Enterprise  CRM Plan Max</h3>
+                    <h3 class="plan-title text-center mb-2">Enterprise CRM Plan Max</h3>
                     <p class="sub-label text-center"><b>For Multi-Location Companies</b></p>
 
                     <p class="price-text text-center">On Request</p>
@@ -2037,7 +2084,7 @@
                         <p class="form-subtitle" id="modalPlanPrice"></p>
 
                         <form>
-                             {% csrf_token %}
+                            {% csrf_token %}
                             <label>FULL NAME</label>
                             <div class="input-group">
                                 <input id="name_plan" type="text" placeholder="Full Name">
@@ -2077,7 +2124,7 @@
 
         </div>
 
-       <table class="crm-compare-table">
+        <table class="crm-compare-table">
             <thead>
                 <tr>
                     <th style="text-align: start;">CRM Features</th>
@@ -2091,7 +2138,7 @@
 
                 <tr>
                     <td>Leads & Deals (Pipeline Management)</td>
-                        <td><i class="fa-solid fa-circle-check text-success"></i></td>
+                    <td><i class="fa-solid fa-circle-check text-success"></i></td>
                     <td><i class="fa-solid fa-circle-check text-success"></i></td>
                     <td><i class="fa-solid fa-circle-check text-success"></i></td>
                     <td>Unlimited</td>
@@ -2107,7 +2154,7 @@
 
                 <tr>
                     <td>Notes, Tasks & Call Logs</td>
-                        <td><i class="fa-solid fa-circle-check text-success"></i></td>
+                    <td><i class="fa-solid fa-circle-check text-success"></i></td>
                     <td><i class="fa-solid fa-circle-check text-success"></i></td>
                     <td><i class="fa-solid fa-circle-check text-success"></i></td>
                     <td><i class="fa-solid fa-circle-check text-success"></i></td>
@@ -2115,7 +2162,7 @@
 
                 <tr>
                     <td>Email Tracking (Opened / Not Opened)</td>
-                        <td><i class="fa-solid fa-circle-check text-success"></i></td>
+                    <td><i class="fa-solid fa-circle-check text-success"></i></td>
                     <td><i class="fa-solid fa-circle-check text-success"></i></td>
                     <td>Up to 6 Users</td>
                     <td>Unlimited</td>
@@ -2153,7 +2200,7 @@
                     <td>Auto Sync</td>
                 </tr>
 
-
+                <!-- 
                 <tr>
                     <td>AI Actions</td>
                      <td>10 AI Actions</td>
@@ -2161,22 +2208,22 @@
                     <td>200 AI Actions</td>
                     <td> Custom AI Actions</td>
                 </tr>
-<tr>
-                    <td>AI Company Intelligence</td>
-                     <td><i class="fa-solid fa-circle-check text-success"></i></td>
-                    <td><i class="fa-solid fa-circle-check text-success"></i></td>
-                    <td><i class="fa-solid fa-circle-check text-success"></i></td>
-                    <td><i class="fa-solid fa-circle-check text-success"></i></td>
+<tr> -->
+                <td>AI Company Intelligence</td>
+                <td><i class="fa-solid fa-circle-check text-success"></i></td>
+                <td><i class="fa-solid fa-circle-check text-success"></i></td>
+                <td><i class="fa-solid fa-circle-check text-success"></i></td>
+                <td><i class="fa-solid fa-circle-check text-success"></i></td>
                 </tr>
                 <tr>
                     <td>AI Lead Score</td>
-                        <td><i class="fa-solid fa-circle-check text-success"></i></td>
+                    <td><i class="fa-solid fa-circle-check text-success"></i></td>
                     <td><i class="fa-solid fa-circle-check text-success"></i></td>
                     <td>Advanced</td>
                     <td><i class="fa-solid fa-circle-check text-success"></i></td>
                 </tr>
 
-                    
+
 
 
                 <tr>
@@ -2204,64 +2251,112 @@
                 </tr>
 
             </tbody>
-        </table>    
+        </table>
     </div>
-<div class="mt-24 max-w-4xl mx-auto">
-  <div class="text-center mb-12">
-    <h2 class="text-3xl font-black text-slate-900 dark:text-white sm:text-4xl">
-      Frequently Asked <span class="text-primary">Questions</span>
-    </h2>
-    <p class="mt-4 text-lg text-slate-600 dark:text-slate-400" style="
+
+
+<div class="container">
+
+    <!-- Centered Heading -->
+    <h3 class="ai-actions-title" style="text-align: center; font-weight: 700; padding-top: 85px;">AI ACTION</h3>
+
+    <table class="table ai-actions-table" style="padding-top: 20px;">
+        <thead>
+            <tr>
+                <th style="color: white; text-align: center; background-color: #161d37 !important;">FREE</th>
+                <th style="color: white ; background-color: #161d37 !important">STANDARD</th>
+                <th style="color: white; background-color: #161d37 !important">PROFESSIONAL</th>
+                <th style="color: white; background-color: #161d37 !important">ENTERPRISE</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr class="ai-actions-row">
+                <td style="font-weight: 700; text-align: center;">10 AI Actions</td>
+                <td style="font-weight: 700;">50 AI Actions</td>
+                <td style="font-weight: 700;">200 AI Actions</td>
+                <td style="font-weight: 700;">Custom AI Actions</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+
+    <div class="mt-24 max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-black text-slate-900 dark:text-white sm:text-4xl">
+                Frequently Asked <span class="text-primary">Questions</span>
+            </h2>
+            <p class="mt-4 text-lg text-slate-600 dark:text-slate-400" style="
     text-align: center;
     color: white;
     font-weight: 400;
     font-size: 18px;">
-      Everything you need to know about our plans and billing.
-    </p>
-  </div>
+                Everything you need to know about our plans and billing.
+            </p>
+        </div>
 
-  <div class="space-y-4">
-    <details class="faq-item group">
-      <summary class="faq-summary">
-        <span>Can I switch plans later?</span>
-        <span class="material-icons expand-icon">expand_more</span>
-      </summary>
-      <div class="faq-answer">
-        Yes, you can upgrade or downgrade your plan at any time. If you upgrade, the new features will be available immediately. If you downgrade, changes will take effect at the start of your next billing cycle.
-      </div>
-    </details>
+        <div class="space-y-4">
+            <details class="faq-item group">
+                <summary class="faq-summary">
+                    <span>Can I switch plans later?</span>
+                    <span class="material-icons expand-icon">expand_more</span>
+                </summary>
+                <div class="faq-answer">
+                    Yes, you can upgrade or downgrade your plan at any time. If you upgrade, the new features will be
+                    available immediately. If you downgrade, changes will take effect at the start of your next billing
+                    cycle.
+                </div>
+            </details>
 
-    <details class="faq-item group">
-      <summary class="faq-summary">
-        <span>Is there a free trial for paid plans?</span>
-        <span class="material-icons expand-icon"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">expand_more</font></font></span>
-      </summary>
-      <div class="faq-answer">
-        Absolutely! We offer a 14-day free trial for both the Standard and Professional plans. No credit card is required to start your trial, giving you full access to test out the features.
-      </div>
-    </details>
+            <details class="faq-item group">
+                <summary class="faq-summary">
+                    <span>Is there a free trial for paid plans?</span>
+                    <span class="material-icons expand-icon">
+                        <font dir="auto" style="vertical-align: inherit;">
+                            <font dir="auto" style="vertical-align: inherit;">expand_more</font>
+                        </font>
+                    </span>
+                </summary>
+                <div class="faq-answer">
+                    Absolutely! We offer a 14-day free trial for both the Standard and Professional plans. No credit
+                    card is required to start your trial, giving you full access to test out the features.
+                </div>
+            </details>
 
-    <details class="faq-item group">
-      <summary class="faq-summary">
-        <span>What happens if I exceed my user limit?</span>
-        <span class="material-icons expand-icon"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">expand_more</font></font></span>
-      </summary>
-      <div class="faq-answer">
-        If you need to add more users than your current plan allows, you can easily add extra seats from your dashboard for an additional monthly fee, or upgrade to the next tier for better volume pricing.
-      </div>
-    </details>
+            <details class="faq-item group">
+                <summary class="faq-summary">
+                    <span>What happens if I exceed my user limit?</span>
+                    <span class="material-icons expand-icon">
+                        <font dir="auto" style="vertical-align: inherit;">
+                            <font dir="auto" style="vertical-align: inherit;">expand_more</font>
+                        </font>
+                    </span>
+                </summary>
+                <div class="faq-answer">
+                    If you need to add more users than your current plan allows, you can easily add extra seats from
+                    your dashboard for an additional monthly fee, or upgrade to the next tier for better volume pricing.
+                </div>
+            </details>
 
-    <details class="faq-item group">
-      <summary class="faq-summary">
-        <span>Do you offer discounts for non-profits?</span>
-        <span class="material-icons expand-icon"><font dir="auto" style="vertical-align: inherit;"><font dir="auto" style="vertical-align: inherit;">expand_more</font></font></span>
-      </summary>
-      <div class="faq-answer">
-        Yes, we support non-profit organizations with special discounted pricing. Please contact our sales team with proof of your non-profit status to apply for the discount.
-      </div>
-    </details>
-  </div>
-</div>
+            <details class="faq-item group">
+                <summary class="faq-summary">
+                    <span>Do you offer discounts for non-profits?</span>
+                    <span class="material-icons expand-icon">
+                        <font dir="auto" style="vertical-align: inherit;">
+                            <font dir="auto" style="vertical-align: inherit;">expand_more</font>
+                        </font>
+                    </span>
+                </summary>
+                <div class="faq-answer">
+                    Yes, we support non-profit organizations with special discounted pricing. Please contact our sales
+                    team with proof of your non-profit status to apply for the discount.
+                </div>
+            </details>
+        </div>
+    </div>
 
 </section>
 
@@ -2335,7 +2430,7 @@
     </div>
 </section> -->
 <script>
-        const toastContainer = document.createElement("div");
+    const toastContainer = document.createElement("div");
     toastContainer.id = "toastContainer";
     toastContainer.style.position = "fixed";
     toastContainer.style.top = "20px";
@@ -2704,388 +2799,384 @@
 
 <script>
     let itiInitialized = false;
-let itiModal = null;
-function openFormModal(btn) {
+    let itiModal = null;
+    function openFormModal(btn) {
 
-  if (!btn || !btn.dataset) return;
-  const plan = btn.dataset.plan;
-  const amount = btn.dataset.amount;
-  if (!itiInitialized) {
-        window.itiModal = window.intlTelInput(phoneInput, {
-        initialCountry: "in",
-        separateDialCode: true,
-        onlyCountries: ["in", "us", "gb", "om", "ae"],
-        showFlags: false,
-        formatOnDisplay: false,
-        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js",
-    });
-        itiInitialized = true;
+        if (!btn || !btn.dataset) return;
+        const plan = btn.dataset.plan;
+        const amount = btn.dataset.amount;
+        if (!itiInitialized) {
+            window.itiModal = window.intlTelInput(phoneInput, {
+                initialCountry: "in",
+                separateDialCode: true,
+                onlyCountries: ["in", "us", "gb", "om", "ae"],
+                showFlags: false,
+                formatOnDisplay: false,
+                utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js",
+            });
+            itiInitialized = true;
+        }
+
+        document.getElementById("plan_plan").value = plan;
+        document.getElementById("amount_plan").value = amount;
+
+        document.getElementById("modalPlanTitle").innerText = plan;
+        document.getElementById("modalPlanPrice").innerText =
+            amount == 0 ? "Free CRM" : `₹${amount} / month`;
+
+        document.getElementById("payBtn").innerText =
+            amount == 0 ? "Activate Free Plan" : `Pay ₹${amount}`;
+
+        document.getElementById("formModal").classList.add("show");
     }
 
-  document.getElementById("plan_plan").value = plan;
-  document.getElementById("amount_plan").value = amount;
-
-  document.getElementById("modalPlanTitle").innerText = plan;
-  document.getElementById("modalPlanPrice").innerText =
-    amount == 0 ? "Free CRM" : `₹${amount} / month`;
-
-  document.getElementById("payBtn").innerText =
-    amount == 0 ? "Activate Free Plan" : `Pay ₹${amount}`;
-
-  document.getElementById("formModal").classList.add("show");
-}
-
-function closeFormModal() {
-  document.getElementById("formModal").classList.remove("show");
-}
-document.querySelectorAll(".select-btn").forEach(btn => {
-  btn.addEventListener("click", function () {
-    openFormModal(this);
-  });
-});
-
-const nameInput = document.getElementById("name_plan");
-const emailInput = document.getElementById("email_plan");
-const phoneInput = document.getElementById("phone_plan");
-const companyInput = document.getElementById("company_plan");
-const payBtn = document.getElementById("payBtn");
-phoneInput.addEventListener("input", validatePhonePlan);
-function validateForm() {
-
-  if (nameInput.value.trim().length < 2) {
-    showToast("Enter your full name", "error");
-    return false;
-  }
-
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
-    showToast("Enter a valid email", "error");
-    return false;
-  }
-
-  if (!/^[6-9][0-9]{9}$/.test(phoneInput.value)) {
-    showToast("Enter a valid 10-digit phone number", "error");
-    return false;
-  }
-
-  if (companyInput.value.trim().length < 2) {
-    showToast("Enter company name", "error");
-    return false;
-  }
-
-  return true;
-}
-function validatePhonePlan() {
-    const phoneValue = phoneInput.value.trim();
-    const countryData = itiModal.getSelectedCountryData(); // <-- use itiModal
-    const dialCode = countryData.dialCode;
-
-    let minLength, maxLength;
-
-    const rules = {
-        "91": { min: 10, max: 10 },  // India
-        "1": { min: 10, max: 10 },   // USA
-        "44": { min: 10, max: 11 },  // UK
-        "968": { min: 8, max: 8 },   // Oman
-        "971": { min: 9, max: 9 }    // UAE
-    };
-
-    if (rules[dialCode]) {
-        minLength = rules[dialCode].min;
-        maxLength = rules[dialCode].max;
-    } else {
-        minLength = 7;
-        maxLength = 12;
+    function closeFormModal() {
+        document.getElementById("formModal").classList.remove("show");
     }
-
-    if (phoneValue === "") {
-        phoneError.textContent = "Phone number required";
-        phoneInput.classList.add("is-invalid");
-    }
-    else if (!/^[0-9]+$/.test(phoneValue)) {
-        phoneError.textContent = "Only digits allowed";
-        phoneInput.classList.add("is-invalid");
-    }
-    else if (phoneValue.length < minLength || phoneValue.length > maxLength) {
-        phoneError.textContent = `Enter valid phone number ${maxLength} digits`;
-        phoneInput.classList.add("is-invalid");
-    }
-    else {
-        phoneError.textContent = "";
-        phoneInput.classList.remove("is-invalid");
-    }
-}
-
-
-payBtn.addEventListener("click", async function () {
-  if (!validateForm()) return;
-
-  const name = nameInput.value.trim();
-  const email = emailInput.value.trim();
-  const phone = phoneInput.value.trim();
-  const company = companyInput.value.trim();
-  const plan = document.getElementById("plan_plan").value;
-  const amount = document.getElementById("amount_plan").value || 0;
-  const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
-  console.log("plan amount",plan,amount)
-if (amount === "request" && plan=="Enterprise Plan CRM Max") {
-    console.log("plan amount",plan,amount)
-  showToast("Submitting request...", "info");
-
-  const res = await fetch("{% url 'subscription_form' %}", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-      "X-CSRFToken": csrftoken
-    },
-    body: new URLSearchParams({
-      name,
-      email,
-      phone,
-      company
-    })
-  });
-
-  if (!res.ok) {
-    showToast("Failed to submit request", "error");
-    return;
-  }
-
-  showToast("Request submitted successfully!", "success");
-  closeFormModal();
-  return; // ⛔ stop further execution
-}
-  const plan_id = amount == "1500" ? 1500 : amount == "2500" ? 2 : 0;
-    const credits = amount == "1500" 
-    ? 50 
-    : amount == "2500" 
-        ? 200 
-        : 0;
-  showToast("Checking details...", "info");
-
-  /* ----------------------------------
-     CHECK COMPANY & USER (OLD LOGIC)
-  ---------------------------------- */
-  if (await checkCompany(company)) {
-    showToast("⚠️ Company already exists!", "error");
-    return;
-  }
-
-  if (await checkUser(email)) {
-    showToast("⚠️ Email already registered!", "error");
-    return;
-  }
-
-  /* ==================================
-     ✅ FREE PLAN FLOW
-  ================================== */
- // ENTERPRISE PLAN (ON REQUEST)
-
-
-  if (parseFloat(amount) === 0) {
-
-    showToast("Creating Company...", "info");
-    await createCompany(email, company, 0,"15");
-
-    showToast("Creating User...", "info");
-    await createUser(name, email, phone, company, 0);
-
-    await fetch("{% url 'save_payment' %}", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "X-CSRFToken": csrftoken
-      },
-      body: new URLSearchParams({
-        name, email, phone, company,
-        plan, amount: 0,
-        status: "success"
-      })
+    document.querySelectorAll(".select-btn").forEach(btn => {
+        btn.addEventListener("click", function () {
+            openFormModal(this);
+        });
     });
 
-    showToast("Free Plan Activated!", "success");
-    resetModalForm();
-    closeFormModal();
-    setTimeout(() => {
-      window.location.href = "https://crm.erpnext.ai/app/";
-    }, 1200);
+    const nameInput = document.getElementById("name_plan");
+    const emailInput = document.getElementById("email_plan");
+    const phoneInput = document.getElementById("phone_plan");
+    const companyInput = document.getElementById("company_plan");
+    const payBtn = document.getElementById("payBtn");
+    phoneInput.addEventListener("input", validatePhonePlan);
+    function validateForm() {
 
-    return;
-  }
+        if (nameInput.value.trim().length < 2) {
+            showToast("Enter your full name", "error");
+            return false;
+        }
 
-  /* ==================================
-     💳 PAID PLAN FLOW
-  ================================== */
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
+            showToast("Enter a valid email", "error");
+            return false;
+        }
 
-  // 1️⃣ CREATE ORDER
-  const orderRes = await fetch("{% url 'create_order' %}", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-      "X-CSRFToken": csrftoken
-    },
-    body: new URLSearchParams({
-      name, email, phone, plan, amount
-    })
-  });
+        if (!/^[6-9][0-9]{9}$/.test(phoneInput.value)) {
+            showToast("Enter a valid 10-digit phone number", "error");
+            return false;
+        }
 
-  const order = await orderRes.json();
+        if (companyInput.value.trim().length < 2) {
+            showToast("Enter company name", "error");
+            return false;
+        }
 
-  if (!order.order_id) {
-    showToast("❌ Failed to create order", "error");
-    return;
-  }
+        return true;
+    }
+    function validatePhonePlan() {
+        const phoneValue = phoneInput.value.trim();
+        const countryData = itiModal.getSelectedCountryData(); // <-- use itiModal
+        const dialCode = countryData.dialCode;
 
-  // 2️⃣ OPEN RAZORPAY
-  const rzp = new Razorpay({
-    key: "{{ razorpay_key }}",
-    order_id: order.order_id,
-    amount: amount * 100,
-    currency: "INR",
-    name: "ERPNext AI",
-    description: plan,
-    prefill: { name, email, contact: phone },
+        let minLength, maxLength;
 
-    handler: async function (response) {
+        const rules = {
+            "91": { min: 10, max: 10 },  // India
+            "1": { min: 10, max: 10 },   // USA
+            "44": { min: 10, max: 11 },  // UK
+            "968": { min: 8, max: 8 },   // Oman
+            "971": { min: 9, max: 9 }    // UAE
+        };
 
-      showToast("Creating Company...", "info");
-      await createCompany(email, company, plan_id,credits);
+        if (rules[dialCode]) {
+            minLength = rules[dialCode].min;
+            maxLength = rules[dialCode].max;
+        } else {
+            minLength = 7;
+            maxLength = 12;
+        }
 
-      showToast("Creating User...", "info");
-      await createUser(name, email, phone, company, plan_id);
+        if (phoneValue === "") {
+            phoneError.textContent = "Phone number required";
+            phoneInput.classList.add("is-invalid");
+        }
+        else if (!/^[0-9]+$/.test(phoneValue)) {
+            phoneError.textContent = "Only digits allowed";
+            phoneInput.classList.add("is-invalid");
+        }
+        else if (phoneValue.length < minLength || phoneValue.length > maxLength) {
+            phoneError.textContent = `Enter valid phone number ${maxLength} digits`;
+            phoneInput.classList.add("is-invalid");
+        }
+        else {
+            phoneError.textContent = "";
+            phoneInput.classList.remove("is-invalid");
+        }
+    }
 
-      await fetch("{% url 'save_payment' %}", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "X-CSRFToken": csrftoken
-        },
-        body: new URLSearchParams({
-          order_id: response.razorpay_order_id,
-          payment_id: response.razorpay_payment_id,
-          name, email, phone, company,
-          amount, plan,
-          status: "success"
-        })
-      });
 
-      showToast("Payment Successful!", "success");
-        resetModalForm();
-      closeFormModal();
-      setTimeout(() => {
-        window.location.href = "https://crm.erpnext.ai/app/";
-      }, 1200);
-    },
+    payBtn.addEventListener("click", async function () {
+        if (!validateForm()) return;
 
-    modal: {
-      ondismiss: async function () {
-        await fetch("{% url 'save_payment' %}", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "X-CSRFToken": csrftoken
-          },
-          body: new URLSearchParams({
-            order_id: order.order_id,
-            name, email, phone, company,
-            amount, plan,
-            status: "failed"
-          })
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const phone = phoneInput.value.trim();
+        const company = companyInput.value.trim();
+        const plan = document.getElementById("plan_plan").value;
+        const amount = document.getElementById("amount_plan").value || 0;
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        console.log("plan amount", plan, amount)
+        if (amount === "request" && plan == "Enterprise Plan CRM Max") {
+            console.log("plan amount", plan, amount)
+            showToast("Submitting request...", "info");
+
+            const res = await fetch("{% url 'subscription_form' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "X-CSRFToken": csrftoken
+                },
+                body: new URLSearchParams({
+                    name,
+                    email,
+                    phone,
+                    company
+                })
+            });
+
+            if (!res.ok) {
+                showToast("Failed to submit request", "error");
+                return;
+            }
+
+            showToast("Request submitted successfully!", "success");
+            closeFormModal();
+            return; // ⛔ stop further execution
+        }
+        const plan_id = amount == "1500" ? 1500 : amount == "2500" ? 2 : 0;
+        const credits = amount == "1500"
+            ? 50
+            : amount == "2500"
+                ? 200
+                : 0;
+        //   showToast("Checking details...", "info");
+
+        /* ----------------------------------
+           CHECK COMPANY & USER (OLD LOGIC)
+        ---------------------------------- */
+        if (await checkCompany(company)) {
+            showToast("⚠️ Company already exists!", "error");
+            return;
+        }
+
+        if (await checkUser(email)) {
+            showToast("⚠️ Email already registered!", "error");
+            return;
+        }
+
+        /* ==================================
+           ✅ FREE PLAN FLOW
+        ================================== */
+        // ENTERPRISE PLAN (ON REQUEST)
+
+
+        if (parseFloat(amount) === 0) {
+
+            // showToast("Creating Company...", "info");
+            await createCompany(email, company, 0, "15");
+
+            // showToast("Creating User...", "info");
+            await createUser(name, email, phone, company, 0);
+
+            await fetch("{% url 'save_payment' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                    "X-CSRFToken": csrftoken
+                },
+                body: new URLSearchParams({
+                    name, email, phone, company,
+                    plan, amount: 0,
+                    status: "success"
+                })
+            });
+
+            showToast("Free Plan Activated!", "success");
+            resetModalForm();
+            closeFormModal();
+
+
+            return;
+        }
+
+        /* ==================================
+           💳 PAID PLAN FLOW
+        ================================== */
+
+        // 1️⃣ CREATE ORDER
+        const orderRes = await fetch("{% url 'create_order' %}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "X-CSRFToken": csrftoken
+            },
+            body: new URLSearchParams({
+                name, email, phone, plan, amount
+            })
         });
 
-        showToast("❌ Payment Cancelled", "error");
-      }
+        const order = await orderRes.json();
+
+        if (!order.order_id) {
+            showToast("❌ Failed to create order", "error");
+            return;
+        }
+
+        // 2️⃣ OPEN RAZORPAY
+        const rzp = new Razorpay({
+            key: "{{ razorpay_key }}",
+            order_id: order.order_id,
+            amount: amount * 100,
+            currency: "INR",
+            name: "ERPNext AI",
+            description: plan,
+            prefill: { name, email, contact: phone },
+
+            handler: async function (response) {
+
+                //   showToast("Creating Company...", "info");
+                await createCompany(email, company, plan_id, credits);
+
+                //   showToast("Creating User...", "info");
+                await createUser(name, email, phone, company, plan_id);
+
+                await fetch("{% url 'save_payment' %}", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "X-CSRFToken": csrftoken
+                    },
+                    body: new URLSearchParams({
+                        order_id: response.razorpay_order_id,
+                        payment_id: response.razorpay_payment_id,
+                        name, email, phone, company,
+                        amount, plan,
+                        status: "success"
+                    })
+                });
+
+                showToast("Payment Successful!", "success");
+                resetModalForm();
+                closeFormModal();
+
+            },
+
+            modal: {
+                ondismiss: async function () {
+                    await fetch("{% url 'save_payment' %}", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded",
+                            "X-CSRFToken": csrftoken
+                        },
+                        body: new URLSearchParams({
+                            order_id: order.order_id,
+                            name, email, phone, company,
+                            amount, plan,
+                            status: "failed"
+                        })
+                    });
+
+                    showToast("❌ Payment Cancelled", "error");
+                }
+            }
+        });
+
+        rzp.open();
+    });
+
+
+    /* ======================================================
+       PHONE NUMBER RESTRICTION
+    ====================================================== */
+    phoneInput.addEventListener("input", function () {
+        this.value = this.value.replace(/[^0-9]/g, "");
+    });
+
+    /* ============================================================
+       ERPNext API FUNCTIONS (FROM OLD buy.html)
+    ============================================================ */
+    const API_HEADERS = {
+        "Content-Type": "application/json",
+        "Authorization": "token 33c44b17631ceb3:2d01782c6c01a7f"
+    };
+
+    // 1️⃣ Check Company
+    async function checkCompany(company) {
+        const res = await fetch(
+            `https://api.erpnext.ai/api/v2/document/Company/${company}`,
+            { method: "GET", headers: API_HEADERS }
+        );
+        return res.status === 200;
     }
-  });
 
-  rzp.open();
-});
-
-
-/* ======================================================
-   PHONE NUMBER RESTRICTION
-====================================================== */
-phoneInput.addEventListener("input", function () {
-  this.value = this.value.replace(/[^0-9]/g, "");
-});
-
-/* ============================================================
-   ERPNext API FUNCTIONS (FROM OLD buy.html)
-============================================================ */
-const API_HEADERS = {
-  "Content-Type": "application/json",
-  "Authorization": "token 33c44b17631ceb3:2d01782c6c01a7f"
-};
-
-// 1️⃣ Check Company
-async function checkCompany(company) {
-  const res = await fetch(
-    `https://api.erpnext.ai/api/v2/document/Company/${company}`,
-    { method: "GET", headers: API_HEADERS }
-  );
-  return res.status === 200;
-}
-
-// 2️⃣ Check User
-async function checkUser(email) {
-  const res = await fetch(
-    `https://api.erpnext.ai/api/v2/document/User/${email}`,
-    { method: "GET", headers: API_HEADERS }
-  );
-  return res.status === 200;
-}
-
-// 3️⃣ Create Company
-async function createCompany(email, company, plan_id,credits) {
-  return fetch(
-    `https://api.erpnext.ai/api/v2/document/Company/`,
-    {
-      method: "POST",
-      headers: API_HEADERS,
-      body: JSON.stringify({
-        email_id: email,
-        company_name: company,
-        plan_id,
-        credits
-      })
+    // 2️⃣ Check User
+    async function checkUser(email) {
+        const res = await fetch(
+            `https://api.erpnext.ai/api/v2/document/User/${email}`,
+            { method: "GET", headers: API_HEADERS }
+        );
+        return res.status === 200;
     }
-  );
-}
 
-// 4️⃣ Create User
-async function createUser(name, email, phone, company, plan_id) {
-  return fetch(
-    `https://api.erpnext.ai/api/v2/document/User/`,
-    {
-      method: "POST",
-      headers: API_HEADERS,
-      body: JSON.stringify({
-        email,
-        first_name: name,
-        company,
-        role_profile_name: "Only If Create",
-        phone,
-        plan_id
-      })
+    // 3️⃣ Create Company
+    async function createCompany(email, company, plan_id, credits) {
+        return fetch(
+            `https://api.erpnext.ai/api/v2/document/Company/`,
+            {
+                method: "POST",
+                headers: API_HEADERS,
+                body: JSON.stringify({
+                    email_id: email,
+                    company_name: company,
+                    plan_id,
+                    credits
+                })
+            }
+        );
     }
-  );
-}
 
-function resetModalForm() {
-  document.getElementById("name_plan").value = "";
-  document.getElementById("email_plan").value = "";
-  document.getElementById("phone_plan").value = "";
-  document.getElementById("company_plan").value = "";
+    // 4️⃣ Create User
+    async function createUser(name, email, phone, company, plan_id) {
+        return fetch(
+            `https://api.erpnext.ai/api/v2/document/User/`,
+            {
+                method: "POST",
+                headers: API_HEADERS,
+                body: JSON.stringify({
+                    email,
+                    first_name: name,
+                    company,
+                    role_profile_name: "Only If Create",
+                    phone,
+                    plan_id
+                })
+            }
+        );
+    }
 
-  // remove validation styles
-  document.querySelectorAll(".is-invalid").forEach(el =>
-    el.classList.remove("is-invalid")
-  );
+    function resetModalForm() {
+        document.getElementById("name_plan").value = "";
+        document.getElementById("email_plan").value = "";
+        document.getElementById("phone_plan").value = "";
+        document.getElementById("company_plan").value = "";
 
-  // reset intl-tel-input country
-  if (itiModal) {
-    itiModal.setCountry("in");
-  }
-}
+        // remove validation styles
+        document.querySelectorAll(".is-invalid").forEach(el =>
+            el.classList.remove("is-invalid")
+        );
+
+        // reset intl-tel-input country
+        if (itiModal) {
+            itiModal.setCountry("in");
+        }
+    }
 
 
 </script>

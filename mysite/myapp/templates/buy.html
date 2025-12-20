@@ -283,7 +283,7 @@ if (freePlan) {
   submitBtn.onclick = async function () {
     if (!validateForm()) return;
 
-    showToast("Checking details...", "info");
+    // showToast("Checking details...", "info");
 
     const name = nameInput.value.trim();
     const email = emailInput.value.trim();
@@ -302,7 +302,7 @@ if (freePlan) {
       return;
     }
 
-    showToast("Creating Company...", "info");
+    // showToast("Creating Company...", "info");
     await createCompany(email, company, 0);
 
     showToast("Creating User...", "info");
@@ -397,7 +397,7 @@ if (!freePlan) {
         /* --------------------------------------------
            3️⃣ CREATE USER & COMPANY AFTER SUCCESS
         -------------------------------------------- */
-        showToast("Creating Company...", "info");
+        // showToast("Creating Company...", "info");
         await createCompany(email, company, plan_id);
 
         showToast("Creating User...", "info");

@@ -141,7 +141,7 @@ def create_order(request):
 
             return JsonResponse({
                 'status': 'success',
-                'redirect': 'https://crm.erpnext.ai/app/'
+                # 'redirect': 'https://crm.erpnext.ai/app/'
             })
 
         # -------------------------------
@@ -447,7 +447,7 @@ def index(request):
                 "email_id": email,
                 "company_name": comment,
                 "plan_id": "0",
-                "credits":"15",
+              
             }
 
             company_url = "https://api.erpnext.ai/api/v2/document/Company/"

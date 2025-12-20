@@ -1666,9 +1666,9 @@
             <!-- <div class="logo">
                 <img src="{% static 'img/Erpnextlogo.png '%}" alt="ERP Logo" width="170"> 
             </div> -->
-            <div class="logo">
+            <!-- <div class="logo">
                 <img src="{% static 'img/logo.png' %}" alt="ERP Logo" width="170">
-            </div>
+            </div> -->
 
 
             <ul>
@@ -1690,17 +1690,17 @@
 
         <!-- Right Image -->
         <div class="image-section">
-            <img src="{% static 'img/crm/crm/crm/CRM.gif' %}" id="img1" class="active">
+            <img src="{% static 'img/crm/crm/crm/CRM1.gif' %}" id="img1" class="active">
 
 
-            <img src="{% static 'img/crm/crm/Leads.png' %}" id="img2">
-            <img src="{% static 'img/crm/crm/Deals.png' %}" id="img3">
+            <img src="{% static 'img/crm/crm/l7.png' %}" id="img2">
+            <img src="{% static 'img/crm/crm/deal7.png' %}" id="img3">
             <img src="{% static 'img/crm//crm/Activity.png' %}" id="img4">
             <img src="{% static 'img/crm/crm/Notifications.png' %}" id="img5">
             <img src="{% static 'img/crm/crm/import.png' %}" id="img6">
             <img src="{% static 'img/crm/crm/email.png' %}" id="img7">
-            <img src="{% static 'img/crm/crm/Task.png' %}" id="img8">
-            <img src="{% static 'img/crm/crm/contacts.png' %}" id="img9">
+            <img src="{% static 'img/crm/crm/task.png' %}" id="img8">
+            <img src="{% static 'img/crm/crm/Contacts.png' %}" id="img9">
             <img src="{% static 'img/crm/crm/notes.png' %}" id="img10">
             <img src="{% static 'img/crm/crm/attachiments.png' %}" id="img11">
         </div>
@@ -1965,13 +1965,13 @@
                     <td>Auto Sync</td>
                 </tr>
 
-                 <tr>
+                 <!-- <tr>
                     <td>AI Actions</td>
                      <td>10 AI Actions</td>
                     <td>50 AI Actions</td>
                     <td>200 AI Actions</td>
                     <td> Custom AI Actions</td>
-                </tr>
+                </tr> -->
    <tr>
                     <td>AI Company Intelligence</td>
                      <td><i class="fa-solid fa-circle-check text-success"></i></td>
@@ -2892,7 +2892,7 @@
         setTimeout(() => {
             toast.style.opacity = "0";
             toast.style.transform = "translateX(100%)";
-            setTimeout(() => toast.remove(), 400);
+            setTimeout(() => toast.remove(), 1200);
         }, 3000);
     }
 
@@ -3006,7 +3006,8 @@
                     submitBtn.innerHTML = "Submit"; // Reset button always
 
                     if (data.status === "success") {
-                        showToast("Message submitted successfully ✅");
+                        showToast("Registration successful!\
+                        Please check your Gmail to set your password.");
                         form.reset();
                     }
                     else if (data.status === "email_exists") {
@@ -3200,7 +3201,7 @@ if (amount === "request" && plan=="Enterprise Plan CRM Max") {
     : amount == "2500" 
         ? 200 
         : 0;
-  showToast("Checking details...", "info");
+//   showToast("Checking details...", "info");
 
   /* ----------------------------------
      CHECK COMPANY & USER (OLD LOGIC)
@@ -3223,10 +3224,10 @@ if (amount === "request" && plan=="Enterprise Plan CRM Max") {
 
   if (parseFloat(amount) === 0) {
 
-    showToast("Creating Company...", "info");
+    // showToast("Creating Company...", "info");
     await createCompany(email, company, 0,"15");
 
-    showToast("Creating User...", "info");
+    // showToast("Creating User...", "info");
     await createUser(name, email, phone, company, 0);
 
     await fetch("{% url 'save_payment' %}", {
@@ -3242,12 +3243,14 @@ if (amount === "request" && plan=="Enterprise Plan CRM Max") {
       })
     });
 
-    showToast("Free Plan Activated!", "success");
+  showToast(
+  "Registration successful!\nPlease check your Gmail to set your password!",
+  "success"
+);
+
     resetModalForm();
     closeFormModal();
-    setTimeout(() => {
-      window.location.href = "https://crm.erpnext.ai/app/";
-    }, 1200);
+    
 
     return;
   }
@@ -3287,10 +3290,10 @@ if (amount === "request" && plan=="Enterprise Plan CRM Max") {
 
     handler: async function (response) {
 
-      showToast("Creating Company...", "info");
-      await createCompany(email, company, plan_id,credits);
+    //   showToast("Creating Company...", "info");
+      await createCompany(email, company, plan_id);
 
-      showToast("Creating User...", "info");
+    //   showToast("Creating User...", "info");
       await createUser(name, email, phone, company, plan_id);
 
       await fetch("{% url 'save_payment' %}", {
@@ -3311,9 +3314,7 @@ if (amount === "request" && plan=="Enterprise Plan CRM Max") {
       showToast("Payment Successful!", "success");
         resetModalForm();
       closeFormModal();
-      setTimeout(() => {
-        window.location.href = "https://crm.erpnext.ai/app/";
-      }, 1200);
+     
     },
 
     modal: {
@@ -3375,7 +3376,7 @@ async function checkUser(email) {
 }
 
 // 3️⃣ Create Company
-async function createCompany(email, company, plan_id,credits) {
+async function createCompany(email, company, plan_id) {
   return fetch(
     `https://api.erpnext.ai/api/v2/document/Company/`,
     {
@@ -3385,7 +3386,7 @@ async function createCompany(email, company, plan_id,credits) {
         email_id: email,
         company_name: company,
         plan_id,
-        credits
+    
       })
     }
   );

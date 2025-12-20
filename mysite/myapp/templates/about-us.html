@@ -1,134 +1,575 @@
 {% load static %}
 {% include 'includes/header.html' %}
 
+<!DOCTYPE html>
+<html class="dark" lang="en">
 
-<style>  .sar{
-    padding-top: 105px !important ;
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>ERPNext.ai - About Us</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#2563eb", // Blue button color
+            secondary: "#FFB000", // Orange accent color
+            "background-light": "#ffffff",
+            "background-dark": "#050a14", // Deep dark navy from screenshot
+            "surface-dark": "#0f1623",
+            "surface-light": "#f3f4f6",
+          },
+          fontFamily: {
+            display: ["Inter", "sans-serif"],
+          },
+          borderRadius: {
+            DEFAULT: "0.5rem",
+          },
+          backgroundImage: {
+            'hero-glow': 'radial-gradient(circle at center, rgba(37, 99, 235, 0.15) 0%, rgba(5, 10, 20, 0) 70%)',
+            'card-gradient': 'linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%)',
+          }
+        },
+      },
+    };
+  </script>
+  <style>
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #050a14;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+
+    .text-glow {
+      text-shadow: 0 0 20px rgba(255, 176, 0, 0.3);
+    }
+
+    .blue-glow {
+      box-shadow: 0 0 30px -5px rgba(37, 99, 235, 0.3);
+    }
+
+
+    /* ===== Section ===== */
+    .team-section {
+      background: rgb(15 22 35 / 1);
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    /* ===== Title ===== */
+    .team-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 50px;
+    }
+
+    .team-title span {
+      color: #facc15;
+      /* yellow */
+    }
+
+    /* ===== Card ===== */
+    .team-card {
+      max-width: 320px;
+      margin: 0 auto;
+      border: 2px solid white;
+      border-radius: 16px;
+      padding: 36px 28px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    /* ===== Name ===== */
+    .team-name {
+      font-size: 23px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+
+    /* ===== Role ===== */
+    .team-role {
+      font-size: 16px !;
+      font-weight: 600;
+      color: darkgoldenrod;
+      /* yellow/orange */
+      margin-bottom: 14px;
+    }
+
+    /* ===== Description ===== */
+    .team-desc {
+      font-size: 13px;
+      line-height: 1.6;
+      color: #6b7280;
+    }
+
+    /* Section background */
+    .team-section {
+      background: rgb(15 22 35 / 1);
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    /* Title */
+    .team-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 60px;
+    }
+
+    .team-title span {
+      color: #facc15;
+    }
+
+    /* Grid */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 28px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Card */
+    .team-card {
+
+      border-radius: 16px;
+      padding: 32px 22px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .team-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 28px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Name */
+    .team-name {
+      font-size: 23px;
+      font-weight: 700;
+      color: white !important;
+      margin-bottom: 6px;
+    }
+
+    /* Role */
+    .team-role {
+      font-size: 16px;
+      font-weight: 600;
+      color: #f59e0b;
+      margin-bottom: 14px;
+    }
+
+    /* Description */
+    .team-desc {
+      font-size: 13px;
+      line-height: 1.6;
+      color: white !important;
+    }
+
+    /* Responsive */
+    @media (max-width: 1280px) {
+      .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .text-secondary {
+      color: #ffb000 !important;
+    }
+    .team-section {
+  padding: 40px 20px;
+
+  color: #fff;
+  text-align: center;
 }
-</style>
 
+.team-title {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.team-title span {
+  color: #facc15; /* Tailwind yellow-400 */
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.team-card {
+  background-color: #0f1623;
+  border: 1px solid #fff;
+  border-radius: 12px;
+  padding: 24px;
+  width: 100%;
+  max-width: 260px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+}
+
+.team-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.team-role {
+  font-size: 0.95rem;
+  color:darkgoldenrod;
+  margin-bottom: 12px;
+}
+
+.team-desc {
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+  </style>
+</head>
+
+<body
+  class="bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200 font-display antialiased transition-colors duration-300">
+
+  <section class="relative pt-32  overflow-hidden bg-background-light dark:bg-background-dark"
+    style="padding-top: 200px !important;">
+    <div
+      class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-hero-glow pointer-events-none opacity-50 dark:opacity-100">
+    </div>
+    <div class="absolute top-20 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+    <div class="absolute top-20 right-10 w-64 h-64 bg-secondary/5 rounded-full blur-3xl"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h1 class="text-5xl md:text-6xl font-bold text-secondary mb-4 tracking-tight text-glow">ABOUT US</h1>
+      <nav class="flex justify-center text-sm font-medium text-gray-500 dark:text-gray-400">
+
+      </nav>
+    </div>
+  </section>
+  <section class="py-16 md:py-24 bg-surface-light dark:bg-surface-dark/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-200 dark:border-gray-800 group">
+          <img alt="Team analyzing digital data on screens"
+            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBc_0VnjYszQmRbL19t7Qu0yairqKyNRXEcDPGviO542bF4Xedc2uPqjDwiBSom6AZlxMZAQQgK4uPfbEthKY67FAzLWkootBaMc8ItZUME7QTKOQFwXC71RyPfLi0W8LvgzbYl53ZDZ0rpMItkSkInAJrDDb5bHul10K7zmx2wAnsU2zvMIqb23bScpLkQ4nY1sPVfca6Y9KM3fWHfuz7e8c-LHlHNGAT3ZL4fOpUU2TgtY9uTpBx83nhWp52m5ypd7EzKujFqXHM" />
+          <div class="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent"></div>
+          <div class="absolute bottom-6 left-6 right-6">
+            <p
+              class="text-white text-sm font-medium bg-primary/90 px-3 py-1 inline-block rounded-md mb-2 backdrop-blur-sm">
+              Certified Partner</p>
+            <p class="text-gray-200 text-xs">Transforming businesses through intelligent ERP solutions.</p>
+          </div>
+        </div>
+        <div class="space-y-6">
+          <div>
+            <span class="text-primary font-semibold tracking-wider text-sm uppercase">Get to Know Us</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mt-2 leading-tight">
+              Creating 360 degree value to our <span class="text-secondary">clients</span>
+            </h2>
+          </div>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            PS Digitise is an IT and business consulting firm based in India. As a certified Frappe Partner for ERPNext,
+            we bring over a decade of experience, delivering solutions to 500+ clients worldwide. Our focus is on
+            enhancing business operations through technical excellence and dedicated service.
+          </p>
+          <h3 class="text-lg font-semibold text-secondary">We enhance ERPNext with our customised market solutions</h3>
+          <ul class="space-y-3">
+            <li class="flex items-center space-x-3 text-gray-700 dark:text-gray-300">
+              <span class="material-icons-outlined text-secondary text-xl">check_circle</span>
+              <span>ERPNext Implementation</span>
+            </li>
+            <li class="flex items-center space-x-3 text-gray-700 dark:text-gray-300">
+              <span class="material-icons-outlined text-secondary text-xl">check_circle</span>
+              <span>ERPNext Customization</span>
+            </li>
+            <li class="flex items-center space-x-3 text-gray-700 dark:text-gray-300">
+              <span class="material-icons-outlined text-secondary text-xl">check_circle</span>
+              <span>ERPNext Integration</span>
+            </li>
+          </ul>
+          <div class="pt-4">
+            <a class="text-primary hover:text-blue-400 font-medium flex items-center gap-1 group"
+              href="{% url 'contact_us' %}">
+              Contact Us
+              <span
+                class="material-icons-outlined text-sm transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="py-20 bg-background-light dark:bg-background-dark relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Expertise</h2>
+        <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          We deliver comprehensive digital solutions tailored to elevate your brand and streamline your operations.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div
+          class="bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-800 p-8 rounded-xl hover:shadow-xl dark:hover:shadow-primary/10 transition-all duration-300 group">
+          <div
+            class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
+            <span
+              class="material-icons-outlined text-primary text-3xl transition-colors duration-300 group-hover:!text-white">brush</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Branding</h3>
+          <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            Crafting unique visual identities that resonate with your audience and stand out in the marketplace.
+          </p>
+        </div>
+        <div
+          class="bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-800 p-8 rounded-xl hover:shadow-xl dark:hover:shadow-primary/10 transition-all duration-300 group">
+          <div
+            class="w-14 h-14 bg-secondary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-secondary transition-colors duration-300">
+            <span class="material-icons-outlined text-secondary text-3xl group-hover:!text-white">campaign</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Marketing</h3>
+          <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            Data-driven strategies to amplify your reach, engage customers, and drive measurable growth.
+          </p>
+        </div>
+        <div
+          class="bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-800 p-8 rounded-xl hover:shadow-xl dark:hover:shadow-primary/10 transition-all duration-300 group">
+          <div
+            class="w-14 h-14 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-colors duration-300">
+            <span class="material-icons-outlined text-purple-600 text-3xl group-hover:text-white">code</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Development</h3>
+          <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            Robust, scalable web solutions built on modern architectures like ERPNext and Frappe Framework.
+          </p>
+        </div>
+        <div
+          class="bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-800 p-8 rounded-xl hover:shadow-xl dark:hover:shadow-primary/10 transition-all duration-300 group">
+          <div
+            class="w-14 h-14 bg-green-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-600 transition-colors duration-300">
+            <span class="material-icons-outlined text-green-600 text-3xl group-hover:text-white">smartphone</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Mobile Apps</h3>
+          <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+            Intuitive mobile experiences for iOS and Android that connect your business with users on the go.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="team-section">
+      <h2 class="team-title">
+        Meet Our <span>Team</span>
+      </h2>
+
+      <div class="team-grid">
+        <div class="team-card">
+          <h3 class="team-name">Arun kumar Balraj</h3>
+          <p class="team-role">CEO & Founder</p>
+          <p class="team-desc">
+
+          </p>
+        </div>
+
+        <div class="team-card">
+          <h3 class="team-name">Sathyanarayanan Ganesh </h3>
+          <p class="team-role">CTO</p>
+          <p class="team-desc">
+         
+          </p>
+        </div>
+
+        <div class="team-card">
+          <h3 class="team-name">Madanlal</h3>
+          <p class="team-role">Chief Marketing Officer</p>
+          <p class="team-desc">
   
-
-    <div class="sar py-lg-5 py-3">
-</div>
-
-<section class="banner-area pt-5 pb-5">
-    <div class="all-banner-slide owl-carousel">
-        <div class="single-banner-slide text-center">
-            <h2 class="banner-title">ABOUT US</h2>
-
-            <!-- Breadcrumbs -->
-            <nav class="breadcrumbs">
-                <ul class="d-flex justify-content-center">
-                   <li class="sub-desc"><a href="{% url 'index' %}">Home</a></li>
-
-                    <li class="sub-desc px-2">/</li>
-                    <li class="sub-desc">About Us</li>
-                </ul>
-            </nav>
+          </p>
         </div>
+
+        <div class="team-card">
+          <h3 class="team-name">Vinoth kumar </h3>
+          <p class="team-role">Lead Developer</p>
+          <p class="team-desc">
+          
+          </p>
+        </div>
+
+        <div class="team-card">
+          <h3 class="team-name"> Rosary Auxilia Fenila
+ </h3>
+          <p class="team-role">Customer Success</p>
+          <p class="team-desc">
+          
+          </p>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
 
-
-<section class="about-section">
+  <section class="py-20 bg-background-light dark:bg-background-dark relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -mr-48 -mt-48"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-secondary/5 rounded-full blur-3xl -ml-48 -mb-48"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-16">
+        Core <span class="text-secondary">Values</span>
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="flex flex-col items-center text-center p-6">
+          <div
+            class="w-20 h-20 rounded-full bg-surface-light dark:bg-surface-dark flex items-center justify-center mb-4 text-primary shadow-lg">
+            <span class="material-icons-outlined text-3xl">change_circle</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">We Embrace Change</h3>
+          <p class="text-m text-gray-500 dark:text-gray-400">Adaptability is in our DNA. We evolve with technology to
+            keep you ahead.</p>
+        </div>
+        <div class="flex flex-col items-center text-center p-6">
+          <div
+            class="w-20 h-20 rounded-full bg-surface-light dark:bg-surface-dark flex items-center justify-center mb-4 text-secondary shadow-lg">
+            <span class="material-icons-outlined text-3xl">diamond</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Offer Exceptional Service</h3>
+          <p class="text-m text-gray-500 dark:text-gray-400">Our clients are partners. We go the extra mile to ensure
+            your success.</p>
+        </div>
+        <div class="flex flex-col items-center text-center p-6">
+          <div
+            class="w-20 h-20 rounded-full bg-surface-light dark:bg-surface-dark flex items-center justify-center mb-4 text-green-500 shadow-lg">
+            <span class="material-icons-outlined text-3xl">trending_up</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Results That Deliver</h3>
+          <p class="text-m text-gray-500 dark:text-gray-400">We focus on outcomes. Your growth is the metric of our
+            performance.</p>
+        </div>
+        <div class="flex flex-col items-center text-center p-6 md:col-start-1 md:col-end-2 lg:col-auto">
+          <div
+            class="w-20 h-20 rounded-full bg-surface-light dark:bg-surface-dark flex items-center justify-center mb-4 text-purple-500 shadow-lg">
+            <span class="material-icons-outlined text-3xl">psychology</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Honest. Ethical. Intellectuals</h3>
+          <p class="text-m text-gray-500 dark:text-gray-400">Integrity guides every decision. We build trust through
+            transparency.</p>
+        </div>
+        <div class="flex flex-col items-center text-center p-6 md:col-start-3 md:col-end-4 lg:col-auto">
+          <div
+            class="w-20 h-20 rounded-full bg-surface-light dark:bg-surface-dark flex items-center justify-center mb-4 text-red-500 shadow-lg">
+            <span class="material-icons-outlined text-3xl">design_services</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Designing &amp; Marketing Experts</h3>
+          <p class="text-m text-gray-500 dark:text-gray-400">Blending creativity with strategy to deliver comprehensive
+            brand solutions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="our-integration" id="our-integration">
     <div class="container">
-        <div class="row">
-            <div class="content-column col-lg-6 col-md-12 col-sm-12 order-2">
-                <div class="inner-column">
-                    <div class="sec-title">
-                        <span class="main-desc">Get to Know Us</span>
-                        <h2 class="sub-title pb-0">Leading ERPNext Solution <span class="color-orange">Provider in the
-                                Market</span>
-                    </div>
-                    <div class="sub-desc color-white">PS Digitise is an IT and business consulting firm based in India.
-                        As a certified Frappe Partner for ERPNext, we bring over a decade of experience, delivering
-                        solutions to 500+ clients worldwide. Our focus is on enhancing business operations through
-                        technical excellence and dedicated service.
-                    </div>
-                    <p class="sub-desc color-orange"><b>We enhance ERPNext with our customised market solutions</b></p>
-                    <ul class="list-style-one">
-                        <li class="sub-desc2"><i class="fas fa-check-circle me-2"></i>ERPNext Implementation
-                        </li>
-                        <li class="sub-desc2"><i class="fas fa-check-circle me-2"></i>ERPNext Customization</li>
-                        <li class="sub-desc2"><i class="fas fa-check-circle me-2"></i>ERPNext Integration
-                        </li>
-                    </ul>
-                    <div class="btn-box">
-                     <a href="{% url 'contact_us' %}">Contact Us</a>
-                    </div>
-                </div>
+      <div class="" data-aos="flip-down" data-aos-duration="2000">
+        <h2 class="main-title">Integrations</h2>
+        <p class="main-desc">Connect ERPNext.AI to the tools you already use. Our pre-built connectors and
+          custom
+          APIs
+          keep orders, payments, communications and reporting in sync across your stack.</p>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="owl-carousel owl-theme our-integration-carousel">
+            <div class="item box mx-auto">
+              <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/mail2.png'%}">
+            </div>
+            <div class="item box mx-auto">
+              <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/meta1.png'%}">
+            </div>
+            <div class="item box mx-auto">
+              <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/twilio.png'%}">
+            </div>
+            <div class="item box mx-auto">
+              <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/app1.png'%}"
+                style="width: 178px;">
             </div>
 
-            <!-- Image Column -->
-            <div class="col-lg-6 col-md-12 col-sm-12">
-             <div class="image">
-               <img src="{% static 'img/abt/abt.jpg' %}" alt="" width="100%" height="auto">
- 
-             
+            <div class="item box mx-auto">
+              <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/api.png'%}">
             </div>
-            </div>
+          </div>
         </div>
+      </div>
     </div>
-</section>
+  </section>
 
-
-<section class="our-integration">
-    <div class="container">
-        <div class="" data-aos="flip-down" data-aos-duration="2000">
-            <h2 class="main-title">Integrations</h2>
-            <p class="main-desc">
-                Connect ERPNext.AI to the tools you already use. Our pre-built connectors and custom APIs
-                keep orders, payments, communications and reporting in sync across your stack.
-            </p>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="owl-carousel owl-theme our-integration-carousel">
-                    <div class="item box mx-auto">
-                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/mail2.png'%}">
-                    </div>
-                    <div class="item box mx-auto">
-                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/meta1.png'%}">
-                    </div>
-                    <div class="item box mx-auto">
-                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/twilio.png'%}">
-                    </div>
-                    <div class="item box mx-auto">
-                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/app1.png'%}">
-                    </div>
-
-                      <div class="item box">
-                        <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/api.png'%}">
-                    </div>
-                </div>
-            </div>
-        </div>
+  <section class="py-24 relative overflow-hidden bg-background-light dark:bg-background-dark">
+    <div
+      class="absolute left-10 top-1/2 -translate-y-1/2 w-40 h-40 border-4 border-gray-200 dark:border-gray-800 rounded-full opacity-20">
     </div>
-</section>
-
-
-
-
-
-
-<section class="schedule-section">
-    <div class="container">
-        <div class="schedule-section__details" data-aos="flip-down" data-aos-duration="1000">
-            <!-- Section Header -->
-            <div class="text-center">
-                <h2 class="main-title color-orange">Talk to an Expert</h2>
-                <p class="main-desc color-white">See ERPNext.AI with your data. Book a 30-minute personalised demo to
-                    evaluate use cases, ROI and implementation timelines.</p>
-                <div class="">
-                    <a href="{% url 'pricing' %}" class="btn-gradient">Book a Demo</a>
-                  
-                </div>
-            </div>
-        </div>
+    <div class="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-64 border-[40px] border-primary/20 rounded-l-full">
     </div>
-</section>
+    <div class="relative z-10 max-w-4xl mx-auto text-center px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-secondary mb-6">Talk to an Expert</h2>
+      <p class="text-lg text-gray-600 dark:text-gray-300 mb-10 leading-relaxed">
+        See ERPNext.AI with your data. Book a 30-minute personalised demo to evaluate use cases, ROI and implementation
+        timelines.
+      </p>
+      <a href="{% url 'pricing' %}"
+        class="inline-block bg-primary hover:bg-blue-600 text-white font-semibold py-4 px-10 rounded-lg shadow-lg hover:shadow-primary/50 transition-all duration-300 transform hover:-translate-y-1">
+        Book a Demo
+      </a>
+
+    </div>
+  </section>
+
+</body>
+
+</html>
 
 
 {% include 'includes/footer.html' %}
