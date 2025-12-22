@@ -1,4 +1,8 @@
 {% load static %}
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
 
 {% include 'includes/header.html' %}
 <style>
@@ -187,6 +191,165 @@
 .sub-desc{
   font-size: 2.7rem !important;
 }
+.office-location {
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  padding: 80px 0;
+}
+
+.main-title {
+  color: #facc15;
+  font-weight: 700;
+}
+
+/* Card */
+.office-card {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  color: #cbd5f5;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.office-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* Icon */
+.office-icon {
+  width: 56px;
+  height: 56px;
+  background: rgba(59, 130, 246, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.office-icon span {
+  color: #3b82f6;
+  font-size: 28px;
+}
+
+/* Text */
+.country-title {
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.phone {
+  display: inline-block;
+  color: #3b82f6;
+  font-weight: 600;
+  margin-bottom: 16px;
+  text-decoration: none;
+}
+
+.address {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #94a3b8;
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: rgba(255,255,255,0.1);
+  margin: 22px 0;
+}
+
+/* View map */
+.view-map {
+  color: #94a3b8;
+  font-size: 13px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 1px;
+}
+
+.view-map span {
+  font-size: 18px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .office-card {
+    padding: 30px 20px;
+  }
+}
+.faq-section {
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  padding: 80px 0;
+}
+
+.faq-title {
+  text-align: center;
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+/* Card */
+.faq-item {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Question */
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 22px 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.faq-question i {
+  transition: transform 0.3s ease;
+  color: #94a3b8;
+}
+
+/* Answer */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.faq-answer p {
+  padding: 0 26px 22px;
+  margin: 0;
+  color: #cbd5f5;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* Active state */
+.faq-item.active .faq-answer {
+  max-height: 300px;
+}
+
+.faq-item.active .faq-question i {
+  transform: rotate(180deg);
+}
 
 </style>
 
@@ -278,8 +441,7 @@
         <div class="row align-items-center">
             <div class="col-md-12">
                 <h2 class="main-title">Send us a message</h2>
-                <p class="main-desc">Let us know how we can help you. Just complete this form and we’ll be in touch
-                    soon.</p>
+                <p class="main-desc">Let us know how we can help you. Just complete this form and we’ll be in <br> touch soon to modernize your sales process.</p>
                 <div class="row justify-content-center">
                     <div class="col-lg-6 col-12">
                 
@@ -368,15 +530,19 @@
 <section class="office-location">
   <div class="container">
     <div class="text-center mb-5">
-
       <h2 class="main-title">Office Locations</h2>
     </div>
 
     <div class="row justify-content-center g-4">
-      <div class="col-md-4">
-        <div class="office-card">
-          <h4 class="country-title">INDIA</h4>
 
+      <!-- INDIA -->
+      <div class="col-md-6 col-lg-5">
+        <div class="office-card">
+         <div class="office-icon">
+  <i class="fa-solid fa-location-dot"></i>
+</div>
+
+          <h4 class="country-title">INDIA</h4>
           <a href="tel:+919566981217" class="phone">+91 95669 81217</a>
 
           <p class="address">
@@ -384,27 +550,90 @@
             Bazaar, Palakarai, Tiruchirappalli,<br>
             Tamil Nadu 620001
           </p>
+
+          <div class="divider"></div>
+<a href="#" class="view-map">
+  <i class="fa-solid fa-map-location-dot"></i> VIEW MAP
+</a>
+
         </div>
       </div>
 
-      <div class="col-md-4">
+      <!-- OMAN -->
+      <div class="col-md-6 col-lg-5">
         <div class="office-card">
+          <div class="office-icon">
+  <i class="fa-solid fa-building"></i>
+</div>
 
-           <h4 class="sub-title color-blue country-title">Oman</h4>
-          <a href="tel:+919566981217" class="phone">+91 95669 81217</a>
 
-          <p class="address">
-            Expo City Dubai, Level 6,<br>
-            Building Parcel 4, Al Wasl Avenue,<br>
-            Mobility District, Dubai
+          <h4 class="country-title">Oman</h4>
+          <a href="tel:+919566981217" class="phone">+968 94588778</a>
+
+          <p class="address" style="padding-bottom: 45px;">
+            19AI, Block No 240, Way No 4003, <br>
+Bowsher, Muscat
           </p>
+
+          <div class="divider"></div>
+
+       <a href="#" class="view-map">
+  <i class="fa-solid fa-map-location-dot"></i> VIEW MAP
+</a>
+
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
+<section class="faq-section">
+  <div class="container">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
 
+    <div class="faq-item active">
+      <button class="faq-question">
+        <span>What is the typical response time for support inquiries?</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>
+          Our team typically responds to all inquiries within 24 business hours.
+          For enterprise customers with SLAs, response times are expedited
+          according to your contract.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>Do you offer on-premise installation?</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>
+          
+expand_more
+Yes, ERPNext AI offers both cloud-hosted and on-premise solutions for organizations that require strict data sovereignty or have specific infrastructure needs.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">
+        <span>Can I schedule a product demo?</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+      <div class="faq-answer">
+        <p>
+          Absolutely! You can schedule a personalized demo with our sales team by filling out the contact form above and selecting "Request Demo" in the message body, or by booking directly through our main website.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 
 <!-- 
@@ -434,6 +663,21 @@ function showToast(message, type = 'error') {
 </script> -->
 
 
+<script>
+document.querySelectorAll(".faq-question").forEach(button => {
+  button.addEventListener("click", () => {
+    const item = button.closest(".faq-item");
+
+    document.querySelectorAll(".faq-item").forEach(faq => {
+      if (faq !== item) {
+        faq.classList.remove("active");
+      }
+    });
+
+    item.classList.toggle("active");
+  });
+});
+</script>
 
 
 {% include 'includes/footer.html' %}
