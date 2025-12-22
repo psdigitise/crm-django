@@ -950,6 +950,31 @@ width: 100%;
   color: #facc15;
 }
 
+.feature-img {
+  display: none;
+  outline: none;
+}
+
+/* Active image */
+.feature-img.active {
+  display: block;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mobile focus highlight */
+.feature-img:focus {
+  outline: 3px solid #facc15; /* yellow focus */
+  outline-offset: 6px;
+}
+@media (max-width: 768px) {
+  .feature-img {
+    scroll-margin-top: 160px;
+  }
+}
 
 
 </style>
@@ -1291,4 +1316,41 @@ width: 100%;
         });
 
     </script>
+
+    <script>
+document.querySelectorAll(".sidebar-link").forEach(link => {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const targetId = this.getAttribute("data-target");
+    const targetImg = document.getElementById(targetId);
+
+    if (!targetImg) return;
+
+    /* Hide all images */
+    document.querySelectorAll(".feature-img").forEach(img => {
+      img.classList.remove("active");
+    });
+
+    /* Show selected image */
+    targetImg.classList.add("active");
+
+    /* Scroll + focus (mobile friendly) */
+    setTimeout(() => {
+      targetImg.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+      targetImg.focus();
+    }, 100);
+
+    /* Active sidebar state */
+    document.querySelectorAll(".sidebar-link").forEach(l =>
+      l.classList.remove("active")
+    );
+    this.classList.add("active");
+  });
+});
+</script>
+
     {% include 'includes/footer.html' %}
