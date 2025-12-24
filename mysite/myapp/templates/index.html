@@ -1743,7 +1743,7 @@
                 <div class="pricing-card small-card">
                     <h3 class="plan-title text-center mb-2">Free CRM Plan</h3>
                     <p class="sub-label text-center"><b>For Individuals & Small Teams Starting Out</b></p>
-
+   
                     <p class="price-text text-center">Free</p>
 
                     <!-- FREE PLAN -->
@@ -3076,11 +3076,21 @@ function openFormModal(btn) {
   document.getElementById("amount_plan").value = amount;
 
   document.getElementById("modalPlanTitle").innerText = plan;
-  document.getElementById("modalPlanPrice").innerText =
-    amount == 0 ? "Free CRM" : `₹${amount} / month`;
+   document.getElementById("modalPlanPrice").innerText =
+    amount === 0 
+        ? "Free CRM" 
+        : amount === "request" 
+            ? "" 
+            : `₹${amount} / month`;
 
-  document.getElementById("payBtn").innerText =
-    amount == 0 ? "Activate Free Plan" : `Pay ₹${amount}`;
+
+document.getElementById("payBtn").innerText =
+    amount == 0 
+        ? "Activate Free Plan" 
+        : amount === "request" 
+            ? "Request" 
+            : `Pay ₹${amount}`;
+
 
   document.getElementById("formModal").classList.add("show");
 }

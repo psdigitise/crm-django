@@ -2792,11 +2792,21 @@
         document.getElementById("amount_plan").value = amount;
 
         document.getElementById("modalPlanTitle").innerText = plan;
-        document.getElementById("modalPlanPrice").innerText =
-            amount == 0 ? "Free CRM" : `₹${amount} / month`;
+     document.getElementById("modalPlanPrice").innerText =
+    amount === 0 
+        ? "Free CRM" 
+        : amount === "request" 
+            ? "" 
+            : `₹${amount} / month`;
 
-        document.getElementById("payBtn").innerText =
-            amount == 0 ? "Activate Free Plan" : `Pay ₹${amount}`;
+
+document.getElementById("payBtn").innerText =
+    amount == 0 
+        ? "Activate Free Plan" 
+        : amount === "request" 
+            ? "Request" 
+            : `Pay ₹${amount}`;
+
 
         document.getElementById("formModal").classList.add("show");
     }
