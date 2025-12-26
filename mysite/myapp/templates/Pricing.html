@@ -2901,7 +2901,7 @@ payBtn.addEventListener("click", async function () {
   const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
   if (amount === "request" && plan == "Enterprise Plan CRM Max") {
-    showToast("Submitting request...", "info");
+ 
 
     const res = await fetch("{% url 'subscription_form' %}", {
       method: "POST",
