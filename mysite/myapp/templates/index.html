@@ -1522,6 +1522,23 @@
   background: #fff;
   box-shadow: 0 10px 30px rgba(0,0,0,0.25);
 }
+@media (max-width: 768px) {
+  .crm-feature-section .image-section {
+    display: none; /* hide right image section on mobile */
+  }
+
+  .crm-feature-section .menu-section img.mobile-img {
+    width: 100%;
+    margin: 10px 0 16px;
+    border-radius: 12px;
+    display: block;
+  }
+
+  .crm-feature-section .menu-section li {
+    cursor: pointer;
+  }
+}
+
 </style>
 
 <div id="google_translate_element"></div>
@@ -1671,13 +1688,7 @@
         <!-- <div class="crm-feature-section-bg"> -->
         <!-- Left Menu -->
         <div class="menu-section">
-            <!-- Logo -->
-            <!-- <div class="logo">
-                <img src="{% static 'img/Erpnextlogo.png '%}" alt="ERP Logo" width="170"> 
-            </div> -->
-            <!-- <div class="logo">
-                <img src="{% static 'img/logo.png' %}" alt="ERP Logo" width="170">
-            </div> -->
+       
 
 
             <ul>
@@ -3016,7 +3027,7 @@
 
                     if (data.status === "success") {
                         showToast("Registration successful!\
-                        Please check your Gmail to set your password.");
+                        Please check your mail to set your password.");
                         form.reset();
                     }
                     else if (data.status === "email_exists") {
@@ -3263,7 +3274,7 @@ if (amount === "request" && plan=="Enterprise Plan CRM Max") {
     });
 
   showToast(
-  "Registration successful!\nPlease check your Gmail to set your password!",
+  "Registration successful!\nPlease check your mail to set your password!",
   "success"
 );
 
@@ -3468,3 +3479,47 @@ function resetModalForm() {
     });
 </script>
 
+<script>
+document.querySelectorAll(".crm-feature-section .menu-section li").forEach(item => {
+  item.addEventListener("click", function () {
+
+    const imgIndex = this.dataset.img;
+    if (!imgIndex) return;
+
+    /* Active state */
+    document.querySelectorAll(".crm-feature-section .menu-section li")
+      .forEach(li => li.classList.remove("active"));
+    this.classList.add("active");
+
+    /* DESKTOP / TABLET */
+    if (window.innerWidth > 768) {
+      document.querySelectorAll(".crm-feature-section .image-section img")
+        .forEach(img => img.classList.remove("active"));
+
+      const desktopImg = document.getElementById("img" + imgIndex);
+      if (desktopImg) desktopImg.classList.add("active");
+      return;
+    }
+
+    /* --------------------
+       MOBILE ONLY LOGIC
+    -------------------- */
+
+    // Remove old mobile images
+    document.querySelectorAll(".crm-feature-section .menu-section img.mobile-img")
+      .forEach(img => img.remove());
+
+    // Get original image
+    const originalImg = document.getElementById("img" + imgIndex);
+    if (!originalImg) return;
+
+    // Clone image
+    const mobileImg = originalImg.cloneNode(true);
+    mobileImg.classList.add("mobile-img");
+    mobileImg.removeAttribute("id");
+
+    // Insert image below clicked item
+    this.insertAdjacentElement("afterend", mobileImg);
+  });
+});
+</script>
