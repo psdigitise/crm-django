@@ -1974,7 +1974,7 @@
             <div class="col-md-3">
                 <div class="pricing-card small-card">
                     <h3 class="plan-title text-center mb-2">Free CRM Plan</h3>
-                    <p class="sub-label text-center"><b>For Individuals & Small Teams Starting Out</b></p>
+                    <p class="sub-label text-center"><b>For Individuals & Small </b></p>
 
                     <p class="price-text text-center">Free</p>
 
@@ -2736,12 +2736,12 @@
                         form.reset();
                     }
                     else if (data.status === "email_exists") {
-                        showToast("Email already registered", "error");
+                        showToast("Email address already registered", "error");
                         emailField.classList.add("is-invalid");
                         emailError.textContent = "Email already registered";
                     }
                     else if (data.status === "company_exists") {
-                        showToast("Company already exists", "error");
+                        showToast("Company name already exists", "error");
                         commentField.classList.add("is-invalid");
                         commentError.textContent = "Company already exists";
                     }
@@ -2839,7 +2839,7 @@ function validateForm() {
   }
 
   if (!/^[6-9][0-9]{9}$/.test(phoneInput.value)) {
-    showToast("Enter a valid 10-digit phone number", "error");
+    showToast("Please enter a valid 10‑digit phone number", "error");
     return false;
   }
 
@@ -2927,12 +2927,12 @@ payBtn.addEventListener("click", async function () {
   const credits = amount == "1500" ? 50 : amount == "2500" ? 200 : 0;
 
   if (await checkCompany(company)) {
-    showToast("⚠️ Company already exists!", "error");
+    showToast("Company name already exists.", "error");
     return;
   }
 
   if (await checkUser(email)) {
-    showToast("⚠️ Email already registered!", "error");
+    showToast(" Email address already registered!", "error");
     return;
   }
 

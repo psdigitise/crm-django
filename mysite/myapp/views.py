@@ -10,6 +10,8 @@ from .models import Payment
 import requests
 import traceback
 from django.shortcuts import redirect
+from django.core.mail import EmailMessage
+
 
 # from captcha.image import ImageCaptcha
 # from django.http import HttpResponse
@@ -29,6 +31,90 @@ from django.shortcuts import render
 from django.http import JsonResponse
 
 def subscription_form(request):
+    if request.method == "GET":
+        return render(request, "payment_form.html")
+
+    if request.method == "POST":
+        name = request.POST.get("name", "").strip()
+        email = request.POST.get("email", "").strip()
+        phone = request.POST.get("phone", "").strip()
+        company = request.POST.get("company", "").strip()
+
+        if not all([name, email, phone, company]):
+            return JsonResponse({"status": "error", "message": "All fields required"}, status=400)
+
+        url = "https://api.erpnext.ai/api/v2/document/On Request Form"
+
+        payload = {
+            "name1": name,
+            "email": email,
+            "phone_number": phone,
+            "company": company
+        }
+
+        headers = {
+            "Authorization": "token 33c44b17631ceb3:2d01782c6c01a7f",
+            "Content-Type": "application/json"
+        }
+
+        try:
+            response = requests.post(url, json=payload, headers=headers)
+
+            # ✅ SEND EMAIL ONLY IF REQUEST IS SUCCESSFUL
+            if response.status_code in [200, 201]:
+
+                subject = "Thank you for contacting us"
+                body = f"""
+                <html>
+                  <body style="font-family: Arial, sans-serif; background:#f6f6f6; margin:0; padding:0;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td align="center" style="padding:40px 10px;">
+                          <table width="600" style="background:#ffffff; border-radius:10px; overflow:hidden; border:1px solid #ddd;">
+                            <tr>
+                              <td style="padding:30px;">
+                                <h2 style="color:#333;">Thank you for your interest in our Enterprise Plan, {name}.</h2>
+                                <p style="color:#555;">
+                                    We have received your request for a custom subscription plan.
+                                    Our team will review your requirements and get in touch with you shortly.
+                                </p>
+                                <hr style="border:none; border-top:1px solid #eee; margin:20px 0;">
+                                <h3 style="color:#333;">Your Submitted Details:</h3>
+                                <p style="color:#555; line-height:1.6;">
+                                  <strong>Name:</strong> {name}<br>
+                                  <strong>Email:</strong> <a href="mailto:{email}" style="color:#1a73e8;">{email}</a><br>
+                                  <strong>Phone:</strong> {phone}<br>
+                                  <strong>Comment:</strong> {company}
+                                </p>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td style="background:#f9f4e8; text-align:center; padding:12px; font-size:13px; color:#777;">
+                                © ERPNext AI 2025
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </body>
+                </html>
+                """
+
+                email_user = EmailMessage(
+                    subject,
+                    body,
+                    "info@psdigitise.com",
+                    [email]
+                )
+                email_user.content_subtype = "html"
+                email_user.send()
+
+            return redirect("/subscribe")
+
+        except Exception as e:
+            return JsonResponse({"status": "error", "message": str(e)}, status=500)
+
     if request.method == "GET":
         return render(request, "payment_form.html")
 
@@ -242,107 +328,6 @@ def save_payment(request):
         return JsonResponse({'error': str(e)}, status=500)
 
 
-# @csrf_exempt
-# def save_payment(request):
-#     if request.method != 'POST':
-#         return JsonResponse({'error': 'Invalid request'}, status=400)
-
-#     plan = request.POST.get('plan')
-#     name = request.POST.get('name')
-#     company = request.POST.get('company')
-#     email = request.POST.get('email')
-#     phone = request.POST.get('phone')
-#     amount = request.POST.get('amount', '0')  # ✅ Fix: capture amount
-
-#     print(name, email, phone, plan)
-
-#     # ---------- FREE PLAN ----------
-
-
-#     # ---------- PAID PLAN ----------
-#     order_id = request.POST.get('order_id')
-#     payment_id = request.POST.get('payment_id', '')
-#     status = request.POST.get('status', 'failed')
-
-#     try:
-#         headers = {
-#             "Content-Type": "application/json",
-#             "Authorization": "token 33c44b17631ceb3:2d01782c6c01a7f"
-#         }
-
-#         # 3️⃣ Check if Company exists
-#         check_company_url = f"https://api.erpnext.ai/api/v2/document/Company/{company}"
-#         check_company_res = requests.get(check_company_url, headers=headers)
-#         if check_company_res.status_code == 200:
-        
-#             return JsonResponse({"status": "company_exists", "message": "⚠️ This Company already exists!"})
-
-#         # 4️⃣ Check if Email exists
-#         check_user_url = f"https://api.erpnext.ai/api/v2/document/User/{email}"
-#         check_user_res = requests.get(check_user_url, headers=headers)
-#         if check_user_res.status_code == 200:
-        
-#             return JsonResponse({"status": "email_exists", "message": "⚠️ This Email is already registered!"})
-
-#         # 5️⃣ Create Company
-#         plan_id = 0
-#         if amount == "1500":
-#             plan_id = 1
-#         elif amount == "2500":
-#             plan_id = 2
-
-#         company_payload = {
-#             "email_id": email,
-#             "company_name": company,   # ✅ Fix: use company
-#             "plan_id": plan_id
-#         }
-#         company_url = "https://api.erpnext.ai/api/v2/document/Company/"
-#         company_res = requests.post(company_url, json=company_payload, headers=headers)
-#         if company_res.status_code not in [200, 201]:
-#             return JsonResponse({"status": "error", "message": "❌ Failed creating Company!"})
-
-#         # 6️⃣ Create User
-#         user_payload = {
-#             "email": email,
-#             "first_name": name,
-#             "company": company,   # ✅ Fix: use company
-#             "role_profile_name": "Only If Create",
-#             "phone": phone,
-#             "plan_id": str(plan_id)
-#         }
-#         user_url = "https://api.erpnext.ai/api/v2/document/User/"
-#         user_res = requests.post(user_url, json=user_payload, headers=headers)
-#         if user_res.status_code not in [200, 201]:
-#             return JsonResponse({"status": "error", "message": "❌ Failed creating User!"})
-
-#         # ✅ Only now create Payment entry
-#         if plan == "CRM Lite":
-#             Payment.objects.create(
-#                 name=name,
-#                 email=email,
-#                 phone=phone,
-#                 plan=plan,
-#                 amount=0,
-#                 status="success"
-#             )
-#             return JsonResponse({'status': 'free_saved'})
-#         else:
-#             Payment.objects.create(
-#                 order_id=order_id,
-#                 payment_id=payment_id,
-#                 name=name,
-#                 email=email,
-#                 phone=phone,
-#                 plan=plan,
-#                 amount=amount,
-#                 status="success"
-#             )
-
-#             return JsonResponse({'status': 'success'})
-
-#     except Exception as e:
-#         print("❌ Error saving payment:", str(e))
-#         return JsonResponse({'error': str(e)}, status=500)
 
 
 # -------------------- INDEX PAGE FORM -------------------- #
