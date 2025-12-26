@@ -994,6 +994,29 @@ html {
   margin-right: 10px;
   color: inherit;
 } */
+.image-panel {
+  display: none;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-img {
+  display: none;
+  max-width: 100%;
+}
+
+.feature-img.active {
+  display: block;
+}
+
+@media (min-width: 769px) {
+  .image-panel {
+    display: flex;
+  }
+}
+
+
 
 </style>
 </head>
@@ -1371,84 +1394,213 @@ document.querySelectorAll(".sidebar-link").forEach(link => {
 });
 </script> -->
 
-<script>
+<!-- <script>
+const MOBILE_WIDTH = 600; // Changed from 768 to 600 to treat tablets as desktop
+
+/* ---------- HELPERS ---------- */
+function cleanupMobileClones() {
+  document.querySelectorAll(".sidebar .feature-img.clone").forEach(img => img.remove());
+}
+
+function hideAllImages() {
+  document.querySelectorAll(".feature-img").forEach(img => {
+    img.style.display = "none";
+    img.classList.remove("active");
+  });
+}
+
+function activateLink(link) {
+  if (!link) return;
+
+  const targetId = link.dataset.target;
+  if (!targetId) return;
+
+  document.querySelectorAll(".sidebar-link").forEach(l => l.classList.remove("active"));
+  link.classList.add("active");
+
+  const mainContent = document.getElementById("mainContent");
+  const imagePanel = document.querySelector(".image-panel");
+
+  /* MAIN CONTENT */
+  if (targetId === "mainContent") {
+    cleanupMobileClones();
+    hideAllImages();
+    if (imagePanel) imagePanel.style.display = "none";
+    if (mainContent) mainContent.style.display = "block";
+    return;
+  }
+
+  /* IMAGE MODE */
+  if (mainContent) mainContent.style.display = "none";
+
+  /* DESKTOP + TABLET */
+  if (window.innerWidth > MOBILE_WIDTH) {
+    cleanupMobileClones();
+    hideAllImages();
+    if (imagePanel) imagePanel.style.display = "flex";
+
+    const img = document.getElementById(targetId);
+    if (img) {
+      img.style.display = "block";
+      img.classList.add("active");
+    }
+    return;
+  }
+
+  /* MOBILE */
+  cleanupMobileClones();
+  if (imagePanel) imagePanel.style.display = "none";
+
+  const originalImg = document.getElementById(targetId);
+  if (!originalImg) return;
+
+  const clone = originalImg.cloneNode(true);
+  clone.classList.add("clone", "active");
+  clone.style.display = "block";
+  link.insertAdjacentElement("afterend", clone);
+}
+
+/* ---------- CLICK HANDLER ---------- */
 document.querySelectorAll(".sidebar-link").forEach(link => {
   link.addEventListener("click", function (e) {
     e.preventDefault();
-
-    const targetId = this.dataset.target;
-    if (!targetId) return;
-
-    /* -------------------------
-       ACTIVE STATE
-    ------------------------- */
-    document.querySelectorAll(".sidebar-link").forEach(l => l.classList.remove("active"));
-    this.classList.add("active");
-
-    /* -------------------------
-       MAIN CONTENT CLICK
-    ------------------------- */
-    if (targetId === "mainContent") {
-      // Show main content
-      const mainContent = document.getElementById("mainContent");
-      if (mainContent) {
-        mainContent.style.display = "block";
-        mainContent.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-
-      // Hide all images
-      document.querySelectorAll(".feature-img").forEach(img => {
-        img.style.display = "none";
-        img.classList.remove("active");
-      });
-
-      // Remove mobile cloned images
-      document.querySelectorAll(".sidebar .feature-img").forEach(img => img.remove());
-
-      return; // ⛔ stop here
-    }
-
-    /* -------------------------
-       IMAGE HANDLING
-    ------------------------- */
-
-    // Hide main content when image is clicked
-    const mainContent = document.getElementById("mainContent");
-    if (mainContent) mainContent.style.display = "none";
-
-    /* ---------- DESKTOP ---------- */
-    if (window.innerWidth > 768) {
-      document.querySelectorAll(".feature-img").forEach(img => {
-        img.style.display = "none";
-        img.classList.remove("active");
-      });
-
-      const desktopImg = document.getElementById(targetId);
-      if (desktopImg) {
-        desktopImg.style.display = "block";
-        desktopImg.classList.add("active");
-        desktopImg.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-      return;
-    }
-
-    /* ---------- MOBILE ---------- */
-
-    // Remove previous mobile image
-    document.querySelectorAll(".sidebar .feature-img").forEach(img => img.remove());
-
-    const originalImg = document.getElementById(targetId);
-    if (!originalImg) return;
-
-    const mobileImg = originalImg.cloneNode(true);
-    mobileImg.classList.add("active");
-    mobileImg.style.display = "block";
-
-    // Insert image below clicked menu
-    this.insertAdjacentElement("afterend", mobileImg);
+    activateLink(this);
   });
 });
+
+/* ---------- DEFAULT LOAD (TABLET + DESKTOP) ---------- */
+document.addEventListener("DOMContentLoaded", () => {
+  if (window.innerWidth > MOBILE_WIDTH) {
+    const active = document.querySelector(".sidebar-link.active");
+    if (!active) {
+      activateLink(document.querySelector(".sidebar-link"));
+    }
+  }
+});
+
+/* ---------- RESIZE FIX ---------- */
+window.addEventListener("resize", () => {
+  if (window.innerWidth > MOBILE_WIDTH) {
+    cleanupMobileClones();
+
+    let active = document.querySelector(".sidebar-link.active");
+    if (!active) {
+      active = document.querySelector(".sidebar-link");
+    }
+    activateLink(active);
+  }
+});
+</script> -->
+
+<script>
+const MOBILE_WIDTH = 600; // Changed from 768 to 600 to treat tablets as desktop
+
+/* ---------- HELPERS ---------- */
+function cleanupMobileClones() {
+  document.querySelectorAll(".sidebar .feature-img.clone").forEach(img => img.remove());
+}
+
+function hideAllImages() {
+  document.querySelectorAll(".feature-img").forEach(img => {
+    img.style.display = "none";
+    img.classList.remove("active");
+  });
+}
+
+function activateLink(link) {
+  if (!link) return;
+
+  const targetId = link.dataset.target;
+  if (!targetId) return;
+
+  document.querySelectorAll(".sidebar-link").forEach(l => l.classList.remove("active"));
+  link.classList.add("active");
+
+  const mainContent = document.getElementById("mainContent");
+  const imagePanel = document.querySelector(".image-panel");
+
+  /* MAIN CONTENT */
+  if (targetId === "mainContent") {
+    cleanupMobileClones();
+    hideAllImages();
+    if (imagePanel) imagePanel.style.display = "none";
+    if (mainContent) {
+      mainContent.style.display = "block";
+      // 🔥 Auto scroll to main content
+      mainContent.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    return;
+  }
+
+  /* IMAGE MODE */
+  if (mainContent) mainContent.style.display = "none";
+
+  /* DESKTOP + TABLET */
+  if (window.innerWidth > MOBILE_WIDTH) {
+    cleanupMobileClones();
+    hideAllImages();
+    if (imagePanel) imagePanel.style.display = "flex";
+
+    const img = document.getElementById(targetId);
+    if (img) {
+      img.style.display = "block";
+      img.classList.add("active");
+      // 🔥 Auto scroll to image
+      img.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    return;
+  }
+
+  /* MOBILE */
+  cleanupMobileClones();
+  if (imagePanel) imagePanel.style.display = "none";
+
+  const originalImg = document.getElementById(targetId);
+  if (!originalImg) return;
+
+  const clone = originalImg.cloneNode(true);
+  clone.classList.add("clone", "active");
+  clone.style.display = "block";
+  link.insertAdjacentElement("afterend", clone);
+
+  // 🔥 Auto scroll to cloned image
+  clone.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+/* ---------- CLICK HANDLER ---------- */
+document.querySelectorAll(".sidebar-link").forEach(link => {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+    activateLink(this);
+  });
+});
+
+/* ---------- DEFAULT LOAD (TABLET + DESKTOP) ---------- */
+document.addEventListener("DOMContentLoaded", () => {
+  if (window.innerWidth > MOBILE_WIDTH) {
+    const active = document.querySelector(".sidebar-link.active");
+    if (!active) {
+      activateLink(document.querySelector(".sidebar-link"));
+    }
+  }
+});
+
+/* ---------- RESIZE FIX ---------- */
+window.addEventListener("resize", () => {
+  if (window.innerWidth > MOBILE_WIDTH) {
+    cleanupMobileClones();
+
+    let active = document.querySelector(".sidebar-link.active");
+    if (!active) {
+      active = document.querySelector(".sidebar-link");
+    }
+    activateLink(active);
+  }
+});
 </script>
+
+
+
 
 
     {% include 'includes/footer.html' %}
