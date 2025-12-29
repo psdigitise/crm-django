@@ -242,6 +242,9 @@
             font-size: larger;
             font-weight: 400;
         }
+        header .header-top .contact-info{
+            gap: 0px !important;
+        }
     </style>
 
 </head>
@@ -252,7 +255,7 @@
             <div class="header-top">
                 <!-- Left contact info -->
                 <div class="detail-info">
-                    <a href="#">The agentic era is here! Lead it with ERPNext AI.
+                    <a href="#">Automate sales, support, and follow-ups with ERPNext AI.
                     </a>
                 </div>
 
@@ -269,10 +272,7 @@
 
                     <!-- <a href="#"> Support</a> -->
                     <a href="{% url 'about_us' %}">About Us</a>
-                       <a href="https://crm.erpnext.ai/app/"  target="_blank"
-                                rel="noopener noreferrer" style="font-size: 17px;">
-                                Login
-                            </a>
+                       
                 </div>
             </div>
         </div>
@@ -304,15 +304,17 @@
                         <i class="fas fa-bars hamburger-icon"></i>
                     </div>
 
-                    <div class="d-flex ms-auto header-btn">
-                        <div class="m-1">
-                           
-                        </div>
+                   <div class="d-flex ms-auto header-btn" style="gap: 0.5rem;">
+    <a href="https://crm.erpnext.ai/app/" target="_blank" rel="noopener noreferrer"
+       style="font-size: 16px; padding: 5px 16px; background-color: #1e1e2f; color: #f5f5f5; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); text-decoration: none; transition: all 0.3s ease-in-out;">
+        Login
+    </a>
+    <a href="{% url 'contact_us' %}" class="contact-sales"
+       style="font-size: 16px; padding: 5px 16px; background-color: #ffd700; color: #1e1e2f; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); text-decoration: none; transition: all 0.3s ease-in-out;">
+        Contact Us
+    </a>
+</div>
 
-                        <div class="m-1">
-                            <a href="{% url 'contact_us' %}" class="contact-sales">Contact Us</a>
-                        </div>
-                    </div>
 
                 </div>
             </div>
