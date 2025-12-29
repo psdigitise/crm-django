@@ -1,357 +1,470 @@
 {% load static %}
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
 {% include 'includes/header.html' %}
 <style>
-.sar{
-    padding-top: 60px !important ;
-}
+  .sar {
+    padding-top: 60px !important;
+  }
 
-.contact-team-section {
-  padding: 80px 0;
+  .contact-team-section {
+    padding: 80px 0;
 
-  color: #fff;
-}
+    color: #fff;
+  }
 
-.section-tag {
-  display: inline-block;
-  font-size: 13px;
-  letter-spacing: 2px;
-  color: #8ab4ff;
-  margin-bottom: 10px;
-}
+  .section-tag {
+    display: inline-block;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #8ab4ff;
+    margin-bottom: 10px;
+  }
 
-.section-title {
-  font-size: 42px;
-  font-weight: 700;
-  color: #f5c542;
-}
+  .section-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: #f5c542;
+  }
 
-.contact-card {
-  height: 100%;
-  background: linear-gradient(180deg, #111c2e, #0b1220);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
-  padding: 40px 30px;
-  text-align: center;
-  transition: all 0.35s ease;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
+  .contact-card {
+    height: 100%;
+    background: linear-gradient(180deg, #111c2e, #0b1220);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.35s ease;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  }
 
-.contact-card img {
-  width: 48px;
-  margin-bottom: 20px;
-  filter: brightness(0) invert(1);
-}
+  .contact-card img {
+    width: 48px;
+    margin-bottom: 20px;
+    filter: brightness(0) invert(1);
+  }
 
-.contact-card h3 {
-  font-size: 22px;
-  font-weight: 600;
-  margin-bottom: 25px;
-  color: #fff;
-}
+  .contact-card h3 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #fff;
+  }
 
-.contact-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(138, 180, 255, 0.5);
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-}
+  .contact-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(138, 180, 255, 0.5);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  }
 
-.btn-primary {
-  display: inline-block;
-  padding: 12px 26px;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 8px;
-  background: #ffffff;
-  color: #0b1c34;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
+  .btn-primary {
+    display: inline-block;
+    padding: 12px 26px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #0b1c34;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
 
-.btn-primary:hover {
-  background: #f5c542;
-  color: #000;
-}
+  .btn-primary:hover {
+    background: #f5c542;
+    color: #000;
+  }
 
-.banner-area .all-banner-slide .single-banner-slide{
+  .banner-area .all-banner-slide .single-banner-slide {
     padding-top: 0px !important;
-}
+  }
 
-.office-location {
-  padding: 90px 0;
+  .office-location {
+    padding: 90px 0;
 
-  color: #fff;
-}
+    color: #fff;
+  }
 
-.section-tag {
-  display: inline-block;
-  font-size: 13px;
-  letter-spacing: 2px;
-  color: #8ab4ff;
-  margin-bottom: 10px;
-}
+  .section-tag {
+    display: inline-block;
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #8ab4ff;
+    margin-bottom: 10px;
+  }
 
-.main-title {
-  font-size: 42px;
-  font-weight: 700;
-  color: #f5c542;
-}
+  .main-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: #f5c542;
+  }
 
-.office-card {
-  height: 100%;
-  background: #ffffff;
-  color: #000;
-  border-radius: 12px;
-  padding: 40px 35px;
-  text-align: center;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
-  transition: all 0.35s ease;
-}
+  .office-card {
+    height: 100%;
+    background: #ffffff;
+    color: #000;
+    border-radius: 12px;
+    padding: 40px 35px;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+    transition: all 0.35s ease;
+  }
 
-.office-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.45);
-}
+  .office-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.45);
+  }
 
-.country-title {
-  font-size: 26px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
-}
+  .country-title {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+  }
 
-.phone {
-  display: inline-block;
-  font-size: 16px;
-  font-weight: 600;
-  color: #0b5ed7;
-  text-decoration: none;
-  margin-bottom: 18px;
-}
+  .phone {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    color: #0b5ed7;
+    text-decoration: none;
+    margin-bottom: 18px;
+  }
 
-.phone:hover {
-  text-decoration: underline;
-}
+  .phone:hover {
+    text-decoration: underline;
+  }
 
-.address {
-  font-size: 15px;
-  line-height: 1.7;
-  color: #333;
-}
+  .address {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #333;
+  }
 
 
-.form-toast {
+  .form-toast {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background: #e53935; /* error red */
+    background: #e53935;
+    /* error red */
     color: #fff;
     padding: 14px 22px;
     border-radius: 8px;
     font-size: 14px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
     opacity: 0;
     pointer-events: none;
     transform: translateY(20px);
     transition: all 0.4s ease;
     z-index: 9999;
-}
+  }
 
-.form-toast.show {
+  .form-toast.show {
     opacity: 1;
     transform: translateY(0);
-}
-
-.form-toast.success {
-    background: #2e7d32; /* green */
-}
-
-
-.toast {
-  background-color: #333;
-  color: #fff;
-  padding: 12px 20px;
-  margin-bottom: 10px;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  animation: fadein 0.5s, fadeout 0.5s 3s;
-}
-@keyframes fadein {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeout {
-  from { opacity: 1; }
-  to { opacity: 0; }
-}
-.sub-desc{
-  font-size: 2.7rem !important;
-}
-.office-location {
-  background: radial-gradient(circle at top, #0f172a, #020617);
-  padding: 80px 0;
-}
-
-.main-title {
-  color: #facc15;
-  font-weight: 700;
-}
-
-/* Card */
-.office-card {
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 20px;
-  padding: 40px 30px;
-  text-align: center;
-  color: #cbd5f5;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.office-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-}
-
-/* Icon */
-.office-icon {
-  width: 56px;
-  height: 56px;
-  background: rgba(59, 130, 246, 0.15);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 16px;
-}
-
-.office-icon span {
-  color: #3b82f6;
-  font-size: 28px;
-}
-
-/* Text */
-.country-title {
-  color: #ffffff;
-  font-weight: 700;
-  letter-spacing: 1px;
-  margin-bottom: 8px;
-}
-
-.phone {
-  display: inline-block;
-  color: #3b82f6;
-  font-weight: 600;
-  margin-bottom: 16px;
-  text-decoration: none;
-}
-
-.address {
-  font-size: 14px;
-  line-height: 1.7;
-  color: #94a3b8;
-}
-
-/* Divider */
-.divider {
-  height: 1px;
-  background: rgba(255,255,255,0.1);
-  margin: 22px 0;
-}
-
-/* View map */
-.view-map {
-  color: #94a3b8;
-  font-size: 13px;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  letter-spacing: 1px;
-}
-
-.view-map span {
-  font-size: 18px;
-}
-
-/* Mobile */
-@media (max-width: 768px) {
-  .office-card {
-    padding: 30px 20px;
   }
-}
-.faq-section {
-  background: radial-gradient(circle at top, #0f172a, #020617);
-  padding: 80px 0;
-}
 
-.faq-title {
-  text-align: center;
-  color: #ffffff;
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 40px;
-}
+  .form-toast.success {
+    background: #2e7d32;
+    /* green */
+  }
 
-/* Card */
-.faq-item {
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
-  margin-bottom: 16px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.08);
-}
 
-/* Question */
-.faq-question {
-  width: 100%;
-  background: none;
-  border: none;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: 600;
-  padding: 22px 26px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-}
+  .toast {
+    background-color: #333;
+    color: #fff;
+    padding: 12px 20px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    animation: fadein 0.5s, fadeout 0.5s 3s;
+  }
 
-.faq-question i {
-  transition: transform 0.3s ease;
-  color: #94a3b8;
-}
+  @keyframes fadein {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
 
-/* Answer */
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-}
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-.faq-answer p {
-  padding: 0 26px 22px;
-  margin: 0;
-  color: #cbd5f5;
-  font-size: 14px;
-  line-height: 1.7;
-}
+  @keyframes fadeout {
+    from {
+      opacity: 1;
+    }
 
-/* Active state */
-.faq-item.active .faq-answer {
-  max-height: 300px;
-}
+    to {
+      opacity: 0;
+    }
+  }
 
-.faq-item.active .faq-question i {
-  transform: rotate(180deg);
+  .sub-desc {
+    font-size: 2.7rem !important;
+  }
+
+  .office-location {
+    background: radial-gradient(circle at top, #0f172a, #020617);
+    padding: 80px 0;
+  }
+
+  .main-title {
+    color: #facc15;
+    font-weight: 700;
+  }
+
+  /* Card */
+  .office-card {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    color: #cbd5f5;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .office-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Icon */
+  .office-icon {
+    width: 56px;
+    height: 56px;
+    background: rgba(59, 130, 246, 0.15);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+  }
+
+  .office-icon span {
+    color: #3b82f6;
+    font-size: 28px;
+  }
+
+  /* Text */
+  .country-title {
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .phone {
+    display: inline-block;
+    color: #3b82f6;
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-decoration: none;
+  }
+
+  .address {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #94a3b8;
+  }
+
+  /* Divider */
+  .divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 22px 0;
+  }
+
+  /* View map */
+  .view-map {
+    color: #94a3b8;
+    font-size: 13px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 1px;
+  }
+
+  .view-map span {
+    font-size: 18px;
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .office-card {
+      padding: 30px 20px;
+    }
+  }
+
+  .faq-section {
+    background: radial-gradient(circle at top, #0f172a, #020617);
+    padding: 80px 0;
+  }
+
+  .faq-title {
+    text-align: center;
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 40px;
+  }
+
+  /* Card */
+  .faq-item {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 16px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* Question */
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 22px 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .faq-question i {
+    transition: transform 0.3s ease;
+    color: #94a3b8;
+  }
+
+  /* Answer */
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .faq-answer p {
+    padding: 0 26px 22px;
+    margin: 0;
+    color: #cbd5f5;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  /* Active state */
+  .faq-item.active .faq-answer {
+    max-height: 300px;
+  }
+
+  .faq-item.active .faq-question i {
+    transform: rotate(180deg);
+  }
+
+  .phone-wrapper {
+    display: flex;
+    align-items: center;
+    background: #3e4450;
+    border-radius: 30px;
+    padding: 6px 12px;
+  }
+
+  .country-code {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    width: 60px;
+    text-align: center;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .country-code option {
+    color: #000;
+  }
+
+  .phone-input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    flex: 1;
+    padding: 10px;
+    outline: none;
+  }
+
+  .phone-input::placeholder {
+    color: #cfcfcf;
+  }
+
+  /* align phone icon properly */
+  .input-icon {
+    position: relative;
+  }
+
+  .input-icon i {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #cfcfcf;
+    z-index: 2;
+  }
+
+  /* push input to right because of icon */
+  .phone-wrapper {
+    padding-left: 40px;
+  }
+
+  .toast-msg {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #28a745;
+    color: #fff;
+    padding: 14px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+    z-index: 9999;
+  }
+
+  .toast-msg.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+ 
+.toast-msg {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: #28a745;
+  color: #fff;
+  padding: 14px 22px;
+  border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  z-index: 9999;
+}
+.toast-msg.show {
+  opacity: 1;
+  visibility: visible;
 }
 
 </style>
+
 
 
 </style>
@@ -360,24 +473,24 @@
 
 
 <section class="banner-area">
-    <div id="particles-js"></div> <!-- particles background only -->
-    <div class="content-overlay">
-        <div class="all-banner-slide owl-carousel">
-            <div class="single-banner-slide text-center">
-                <h2 class="sub-desc color-white" style=" font-weight: 700;">CONTACT US</h2>
-              
+  <div id="particles-js"></div> <!-- particles background only -->
+  <div class="content-overlay">
+    <div class="all-banner-slide owl-carousel">
+      <div class="single-banner-slide text-center">
+        <h2 class="sub-desc color-white" style=" font-weight: 700;">CONTACT US</h2>
 
-                <!-- Breadcrumbs -->
-                <!-- <nav class="breadcrumbs">
+
+        <!-- Breadcrumbs -->
+        <!-- <nav class="breadcrumbs">
                     <ul class="d-flex justify-content-center">
                         <li class="sub-desc"><a href="index.php">Home</a></li>
                         <li class="sub-desc px-2">/</li>
                         <li class="sub-desc">Contact Us</li>
                     </ul>
                 </nav> -->
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- <section class="contact-team-section w-100">
@@ -437,92 +550,99 @@
 
 
 <section class="contact-home-section2 pt-3 pb-3">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-12">
-                <h2 class="main-title">Send us a message</h2>
-                <p class="main-desc">Let us know how we can help you. Just complete this form and we’ll be in <br> touch soon to modernize your sales process.</p>
-                <div class="row justify-content-center">
-                    <div class="col-lg-6 col-12">
-                
-                <!-- ✅ Registration Form -->
-                <form class="registration-form contact-form row g-3" action="{% url 'contact_us' %}" method="post">
-                    {% csrf_token %}
-                    <!-- Name -->
-                    <div class="col-12 col-md-12 mb-0 input-icon">
-                        <i class="fas fa-user"></i>
-                        <input type="text" id="name" name="name" class="form-control custom-input" placeholder="Name"
-                            autocomplete="name">
-                        <small id="error-name" class="text-danger"></small>
-                    </div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-12">
+        <h2 class="main-title">Send us a message</h2>
+        <p class="main-desc">Let us know how we can help you. Just complete this form and we’ll be in <br> touch soon to
+          modernize your sales process.</p>
+        <div class="row justify-content-center">
+          <div class="col-lg-6 col-12">
 
-                    <!-- Email -->
-                    <div class="col-12 col-md-12 mb-0 input-icon">
-                        <i class="fas fa-envelope"></i>
-                        <input type="email" id="email" name="email" class="form-control custom-input"
-                            placeholder="Email" autocomplete="email">
-                        <small id="error-email" class="text-danger"></small>
-                    </div>
+            <!-- ✅ Registration Form -->
+            <form class="registration-form contact-form row g-3" action="{% url 'contact_us' %}" method="post">
+              {% csrf_token %}
+              <!-- Name -->
+              <div class="col-12 col-md-12 mb-0 input-icon">
+                <i class="fas fa-user"></i>
+                <input type="text" id="name" name="name" class="form-control custom-input" placeholder="Name"
+                  autocomplete="name">
+                <small id="error-name" class="text-danger"></small>
+              </div>
 
-                    <!-- Phone -->
-                    <div class="col-12 col-md-12 mb-0 input-icon">
-                        <i class="fas fa-phone"></i>
-                        <input type="tel" id="phone" name="phone" class="form-control custom-input"
-                            placeholder="Phone Number" autocomplete="tel">
-                        <small id="error-phone" class="text-danger"></small>
-                    </div>
+              <!-- Email -->
+              <div class="col-12 col-md-12 mb-0 input-icon">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" name="email" class="form-control custom-input" placeholder="Email"
+                  autocomplete="email">
+                <small id="error-email" class="text-danger"></small>
+              </div>
 
-                    <!-- Service Dropdown -->
-                    <!-- <div class="col-12 col-md-12 mb-0 input-icon">
-                        <i class="fas fa-briefcase"></i>
-                        <select id="service" name="service" class="form-control custom-input">
-                            <option value="">Select Service</option>
-                            <option value="Web Design">Web Design</option>
-                            <option value="Web Development">Web Development</option>
-                            <option value="Digital Marketing">Digital Marketing</option>
-                            <option value="SEO Optimization">SEO Optimization</option>
-                            <option value="App Development">App Development</option>
-                        </select>
-                        <small id="error-service" class="text-danger"></small>
-                    </div> -->
+              <!-- Phone -->
+              <!-- Phone with Country Code -->
+              <!-- Country + Phone -->
+              <div class="col-12 col-md-12 mb-0 input-icon">
+                <i class="fas fa-phone"></i>
 
-                    <!-- Comment -->
-                    <div class="col-12 mb-0">
-                        <textarea id="comment" name="comment" class="form-control custom-input" rows="4"
-                            placeholder="Company" autocomplete="off"></textarea>
-                        <small id="error-comment" class="text-danger"></small>
-                    </div>
-                    <!-- Submit -->
-                    {% comment %} <div class="col-12 text-center">
-                        <button type="submit" class="btn-gradient mt-3 contact-submit">
-                            SUBMIT
-                        </button>
-                    </div> {% endcomment %}
-                    <div class="col-12 text-center">
-                        {% csrf_token %}
-                        <button type="submit" class="btn-gradient mt-3 contact-submit">
-                            SUMBIT
-                        </button>
-                        <p class="emailresult"></p>
-                    </div>
-                    <!-- ✅ Display success/error messages at bottom -->
-                    {% if messages %}
-                    <div class="col-12 text-center mt-2">
-                        {% for message in messages %}
-                        <p class="emailresult"
-                            style="color: {% if message.tags == 'success' %}green{% else %}red{% endif %};">
-                            {{ message }}
-                        </p>
-                        {% endfor %}
-                    </div>
-                    {% endif %}
-                </form>
+                <div class="phone-wrapper">
+                  <select id="countryCode" name="country_code" class="country-code">
+                    <option value="+91">+91</option>
+                    <option value="+1">+1</option>
+                    <option value="+44">+44</option>
+                    <option value="+971">+971</option>
+                    <option value="+968">+968</option>
+                  </select>
+
+                  <input type="tel" id="phone" name="phone" class="form-control phone-input"
+                    placeholder="Phone Number" />
                 </div>
-  </div>
 
-            </div>
+                <small id="error-phone" class="text-danger"></small>
+              </div>
+
+              <!-- ✅ Toast -->
+              <div id="toast" class="toast-msg"></div>
+
+
+
+
+
+              <!-- Comment -->
+              <div class="col-12 mb-0">
+                <textarea id="comment" name="comment" class="form-control custom-input" rows="4" placeholder="Company"
+                  autocomplete="off"></textarea>
+                <small id="error-comment" class="text-danger"></small>
+              </div>
+              <!-- Submit -->
+              {% comment %} <div class="col-12 text-center">
+                <button type="submit" class="btn-gradient mt-3 contact-submit">
+                  SUBMIT
+                </button>
+              </div> {% endcomment %}
+              <div class="col-12 text-center">
+                {% csrf_token %}
+                <button type="submit" class="btn-gradient mt-3 contact-submit">
+                  SUMBIT
+                </button>
+                <p class="emailresult"></p>
+              </div>
+              <!-- ✅ Display success/error messages at bottom -->
+              {% if messages %}
+              <div class="col-12 text-center mt-2">
+                {% for message in messages %}
+                <p class="emailresult" style="color: {% if message.tags == 'success' %}green{% else %}red{% endif %};">
+                  {{ message }}
+                </p>
+                {% endfor %}
+              </div>
+              {% endif %}
+            </form>
+          </div>
         </div>
+
+      </div>
     </div>
+  </div>
 </section>
 
 
@@ -538,9 +658,9 @@
       <!-- INDIA -->
       <div class="col-md-6 col-lg-5">
         <div class="office-card">
-         <div class="office-icon">
-  <i class="fa-solid fa-location-dot"></i>
-</div>
+          <div class="office-icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
 
           <h4 class="country-title">INDIA</h4>
           <a href="tel:+919566981217" class="phone">+91 95669 81217</a>
@@ -552,7 +672,7 @@
           </p>
 
           <div class="divider"></div>
-<!-- <a href="#" class="view-map">
+          <!-- <a href="#" class="view-map">
   <i class="fa-solid fa-map-location-dot"></i> VIEW MAP
 </a> -->
 
@@ -563,8 +683,8 @@
       <div class="col-md-6 col-lg-5">
         <div class="office-card">
           <div class="office-icon">
-  <i class="fa-solid fa-building"></i>
-</div>
+            <i class="fa-solid fa-building"></i>
+          </div>
 
 
           <h4 class="country-title">Oman</h4>
@@ -572,12 +692,12 @@
 
           <p class="address" style="padding-bottom: 26px;">
             19AI, Block No 240, Way No 4003, <br>
-Bowsher, Muscat
+            Bowsher, Muscat
           </p>
 
           <div class="divider"></div>
 
-       <!-- <a href="#" class="view-map">
+          <!-- <a href="#" class="view-map">
   <i class="fa-solid fa-map-location-dot"></i> VIEW MAP
 </a> -->
 
@@ -613,9 +733,10 @@ Bowsher, Muscat
       </button>
       <div class="faq-answer">
         <p>
-          
 
-Yes, ERPNext AI offers both cloud-hosted and on-premise solutions for organizations that require strict data sovereignty or have specific infrastructure needs.
+
+          Yes, ERPNext AI offers both cloud-hosted and on-premise solutions for organizations that require strict data
+          sovereignty or have specific infrastructure needs.
         </p>
       </div>
     </div>
@@ -627,10 +748,13 @@ Yes, ERPNext AI offers both cloud-hosted and on-premise solutions for organizati
       </button>
       <div class="faq-answer">
         <p>
-          Absolutely! You can schedule a personalized demo with our sales team by filling out the contact form above and selecting "Request Demo" in the message body, or by booking directly through our main website.
+          Absolutely! You can schedule a personalized demo with our sales team by filling out the contact form above and
+          selecting "Request Demo" in the message body, or by booking directly through our main website.
         </p>
       </div>
     </div>
+   <div id="toast" class="toast-msg"></div>
+
 
   </div>
 </section>
@@ -664,20 +788,272 @@ function showToast(message, type = 'error') {
 
 
 <script>
-document.querySelectorAll(".faq-question").forEach(button => {
-  button.addEventListener("click", () => {
-    const item = button.closest(".faq-item");
+  document.querySelectorAll(".faq-question").forEach(button => {
+    button.addEventListener("click", () => {
+      const item = button.closest(".faq-item");
 
-    document.querySelectorAll(".faq-item").forEach(faq => {
-      if (faq !== item) {
-        faq.classList.remove("active");
+      document.querySelectorAll(".faq-item").forEach(faq => {
+        if (faq !== item) {
+          faq.classList.remove("active");
+        }
+      });
+
+      item.classList.toggle("active");
+    });
+  });
+</script>
+<!-- <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector(".contact-form");
+    const submitBtn = form.querySelector(".contact-submit");
+
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const phoneInput = document.getElementById("phone");
+    const commentInput = document.getElementById("comment");
+
+    const nameError = document.getElementById("error-name");
+    const emailError = document.getElementById("error-email");
+    const phoneError = document.getElementById("error-phone");
+    const commentError = document.getElementById("error-comment");
+
+    function validateName() {
+      const name = nameInput.value.trim();
+      if (!name) {
+        nameError.textContent = " Name is required";
+        return false;
+      } else if (name.length < 3) {
+        nameError.textContent = " Name must be at least 3 characters";
+        return false;
+      }
+      nameError.textContent = "";
+      return true;
+    }
+
+    function validateEmail() {
+      const email = emailInput.value.trim();
+      if (!email) {
+        emailError.textContent = " Email is required";
+        return false;
+      } else if (!(email.includes("@") && email.includes("."))) {
+        emailError.textContent = " Enter a valid Email ID";
+        return false;
+      }
+      emailError.textContent = "";
+      return true;
+    }
+
+    function validatePhone() {
+      const phone = phoneInput.value.trim();
+      const phoneValid = /^[0-9]{10}$/.test(phone);
+      if (!phone) {
+        phoneError.textContent = " Phone Number is required";
+        return false;
+      } else if (!phoneValid) {
+        phoneError.textContent = "  Enter valid phone number ";
+        return false;
+      }
+      phoneError.textContent = "";
+      return true;
+    }
+
+    function validateComment() {
+      if (!commentInput.value.trim()) {
+        commentError.textContent = "Company is required";
+        return false;
+      }
+      commentError.textContent = "";
+      return true;
+    }
+
+    function validateForm() {
+      const valid =
+        validateName() &&
+        validateEmail() &&
+        validatePhone() &&
+        validateComment();
+
+      submitBtn.disabled = !valid;
+      submitBtn.style.opacity = valid ? "1" : "0.6";
+      submitBtn.style.cursor = valid ? "pointer" : "not-allowed";
+
+      return valid;
+    }
+
+    // Attach live validation
+    nameInput.addEventListener("input", () => {
+      validateName();
+      validateForm();
+    });
+
+    emailInput.addEventListener("input", () => {
+      validateEmail();
+      validateForm();
+    });
+
+    phoneInput.addEventListener("input", () => {
+      validatePhone();
+      validateForm();
+    });
+
+    commentInput.addEventListener("input", () => {
+      validateComment();
+      validateForm();
+    });
+
+    form.addEventListener("submit", function (e) {
+      if (!validateForm()) {
+        e.preventDefault();
+      } else {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = "Sending...";
+        submitBtn.style.opacity = "0.7";
       }
     });
 
-    item.classList.toggle("active");
+    window.addEventListener("pageshow", function () {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = "SUBMIT";
+      submitBtn.style.opacity = "1";
+    });
+  });
+</script> -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector(".contact-form");
+  const submitBtn = form.querySelector(".contact-submit");
+
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
+  const phoneInput = document.getElementById("phone");
+  const countryCodeInput = document.getElementById("countryCode");
+  const commentInput = document.getElementById("comment");
+
+  const nameError = document.getElementById("error-name");
+  const emailError = document.getElementById("error-email");
+  const phoneError = document.getElementById("error-phone");
+  const commentError = document.getElementById("error-comment");
+
+  const toast = document.getElementById("toast");
+
+  /* ---------- TOAST ---------- */
+  function showToast(message, success = true) {
+    toast.textContent = message;
+    toast.style.background = success ? "#28a745" : "#dc3545";
+    toast.classList.add("show");
+    setTimeout(() => toast.classList.remove("show"), 3000);
+  }
+
+  /* ---------- NAME ---------- */
+  function validateName() {
+    const name = nameInput.value.trim();
+    if (!name) {
+      nameError.textContent = "Name is required";
+      return false;
+    } else if (name.length < 3) {
+      nameError.textContent = "Name must be at least 3 characters";
+      return false;
+    }
+    nameError.textContent = "";
+    return true;
+  }
+
+  /* ---------- EMAIL ---------- */
+  function validateEmail() {
+    const email = emailInput.value.trim();
+    if (!email) {
+      emailError.textContent = "Email is required";
+      return false;
+    } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+      emailError.textContent = "Enter a valid Email ID";
+      return false;
+    }
+    emailError.textContent = "";
+    return true;
+  }
+
+  /* ---------- PHONE (COUNTRY BASED) ---------- */
+  function validatePhone() {
+    const phone = phoneInput.value.trim();
+    const dialCode = countryCodeInput.value.replace("+", "");
+
+    const rules = {
+      "91": 10,
+      "1": 10,
+      "44": 11,
+      "971": 9,
+      "968": 8
+    };
+
+    const requiredLength = rules[dialCode] || 10;
+
+    if (!phone) {
+      phoneError.textContent = "Phone Number is required";
+      return false;
+    }
+
+    if (!/^[0-9]+$/.test(phone)) {
+      phoneError.textContent = "Only digits allowed";
+      return false;
+    }
+
+    if (phone.length !== requiredLength) {
+      phoneError.textContent = `Phone must be ${requiredLength} digits only`;
+      return false;
+    }
+
+    phoneError.textContent = "";
+    return true;
+  }
+
+  /* ---------- COMPANY ---------- */
+  function validateComment() {
+    if (!commentInput.value.trim()) {
+      commentError.textContent = "Company is required";
+      return false;
+    }
+    commentError.textContent = "";
+    return true;
+  }
+
+  /* ---------- FORM ---------- */
+  function validateForm() {
+    const valid =
+      validateName() &&
+      validateEmail() &&
+      validatePhone() &&
+      validateComment();
+
+    submitBtn.disabled = !valid;
+    submitBtn.style.opacity = valid ? "1" : "0.6";
+    submitBtn.style.cursor = valid ? "pointer" : "not-allowed";
+
+    return valid;
+  }
+
+  /* ---------- LIVE VALIDATION ---------- */
+  emailInput.addEventListener("input", validateForm);
+  phoneInput.addEventListener("input", validateForm);
+  countryCodeInput.addEventListener("change", validateForm);
+  commentInput.addEventListener("input", validateForm);
+
+  /* ---------- SUBMIT ---------- */
+    form.addEventListener("submit", function (e) {
+      if (!validateForm()) {
+        e.preventDefault();
+      } else {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = "Sending...";
+        submitBtn.style.opacity = "0.7";
+      }
+    });
+  /* ---------- RESET ---------- */
+  window.addEventListener("pageshow", function () {
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = "SUBMIT";
+    submitBtn.style.opacity = "1";
   });
 });
 </script>
-
 
 {% include 'includes/footer.html' %}
