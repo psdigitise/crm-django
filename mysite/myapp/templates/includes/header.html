@@ -19,9 +19,9 @@
     <link href="{% static 'scss/main.css' %}" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
@@ -147,54 +147,101 @@
         }
 
         /* ===== Header base ===== */
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-}
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            transition: background 0.3s ease, box-shadow 0.3s ease;
+        }
 
-/* Transparent state */
-header.transparent {
-    background: transparent;
-}
+        /* Transparent state */
+        header.transparent {
+            background: transparent;
+        }
 
-/* Solid state after scroll */
-header.scrolled {
-    background: rgba(5, 10, 25, 0.95);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        /* Solid state after scroll */
+        header.scrolled {
+            background: rgba(5, 10, 25, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 
-}
+        }
 
-/* Header spacing */
+        /* Header spacing */
 
 
-/* Text visibility on transparent header */
-header a,
-header i {
-    color: #ffffff;
-}
+        /* Text visibility on transparent header */
+        header a,
+        header i {
+            color: #ffffff;
+        }
 
-/* Banner should start behind header */
-.banner-area {
-    position: relative;
-    padding-top: 110px; /* height of header */
-}
+        /* Banner should start behind header */
+        .banner-area {
+            position: relative;
+            padding-top: 110px;
+            /* height of header */
+        }
 
-.scrolled .header-top{
- display: none !important;
-}
+        .scrolled .header-top {
+            display: none !important;
+        }
 
-.header nav ul li a{
-    padding: 0px 1.5rem !important;
-    font-weight: 500 !important;
-}
+        .header nav ul li a {
+            padding: 0px 1.5rem !important;
+            font-weight: 500 !important;
+        }
 
-.logo img{
-    filter: none !important;
-}
+        .logo img {
+            filter: none !important;
+        }
+
+        .header-btn {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Login button */
+        .login-btn {
+            padding: 8px 20px;
+            border-radius: 6px;
+            border: 1px solid #ffd200;
+            color: #ffd200;
+            background: transparent;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background: #ffd200;
+            color: #000;
+            box-shadow: 0 0 10px rgba(255, 210, 0, 0.35);
+        }
+
+        /* Contact Us button (primary) */
+        .contact-sales {
+            padding: 8px 22px;
+            border-radius: 6px;
+            background: linear-gradient(135deg, #ffd200, #ffb700);
+            color: #000;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-sales:hover {
+            background: linear-gradient(135deg, #ffea70, #ffd200);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(255, 210, 0, 0.45);
+        }
+        .login{
+            font-size: larger;
+            font-weight: 400;
+        }
     </style>
 
 </head>
@@ -216,11 +263,16 @@ header i {
                         <div id='google_translate_element'></div>
 
                     </div>
+                  
 
 
 
                     <!-- <a href="#"> Support</a> -->
                     <a href="{% url 'about_us' %}">About Us</a>
+                       <a href="https://crm.erpnext.ai/app/"  target="_blank"
+                                rel="noopener noreferrer" style="font-size: 17px;">
+                                Login
+                            </a>
                 </div>
             </div>
         </div>
@@ -229,35 +281,39 @@ header i {
             <div class="container-fluid">
                 <div class="d-flex justify-content-start align-items-center" style="height: 70px !important;">
                     <div class="">
-    <div class="logo">
-       <img src="{% static '/img/crm/crm/crm1.png' %}"
-     alt="CRM Logo"
-     style="max-height:40px;">
+                        <div class="logo">
+                            <img src="{% static '/img/crm/crm/crm1.png' %}" alt="CRM Logo" style="max-height:40px;">
 
-    </div>
-</div>
+                        </div>
+                    </div>
 
                     <div class="px-5">
                         <ul id="navMenu">
                             <li class="sub-desc pb-0"><a href="{% url 'index' %}">Home</a></li>
                             <li><a href="{% url 'features' %}">Features</a></li>
-                           
+
                             <li><a href="{% url 'pricing' %}">Pricing</a></li>
                             <li><a href="{% url 'index' %}#our-integration">Integrations</a></li>
-                            <li class="menu-contact"><a href="{% url 'contact_us' %}">Contact Us</a></li>
+
+
+
+
                         </ul>
                     </div>
+                    <div class="hamburger">
+                        <i class="fas fa-bars hamburger-icon"></i>
+                    </div>
 
-                    <div class="hamburger"><i class="fas fa-bars hamburger-icon"></i></div>
                     <div class="d-flex ms-auto header-btn">
                         <div class="m-1">
-                            <a href="{% url 'contact_us' %}" class="contact-sales">Contact Us</a>
-
+                           
                         </div>
-                        <!-- <div class="m-1">
-                             <a href="{% url 'contact_us' %}" class="contact-sales">Try For Free</a>
-                        </div> -->
+
+                        <div class="m-1">
+                            <a href="{% url 'contact_us' %}" class="contact-sales">Contact Us</a>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </nav>
@@ -273,25 +329,25 @@ header i {
 
 
 
-<script>
-    const header = document.querySelector("header");
+    <script>
+        const header = document.querySelector("header");
 
-    // Initial state
-    header.classList.add("transparent");
+        // Initial state
+        header.classList.add("transparent");
 
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 80) {
-            header.classList.remove("transparent");
-            header.classList.add("scrolled");
-        } else {
-            header.classList.add("transparent");
-            header.classList.remove("scrolled");
-        }
-    });
-</script>
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 80) {
+                header.classList.remove("transparent");
+                header.classList.add("scrolled");
+            } else {
+                header.classList.add("transparent");
+                header.classList.remove("scrolled");
+            }
+        });
+    </script>
 
 
-    
+
 
     <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script>
