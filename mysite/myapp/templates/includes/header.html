@@ -8,8 +8,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>{{ page_title|default:"ERPNext AI CRM" }}</title>
-<meta name="description" content="{{ meta_description|default:"AI-powered ERPNext CRM for sales teams." }}">
+    <title>{{ page_title|default:"ERPNext AI CRM" }}</title>
+    <meta name="description" content="{{ meta_description|default:" AI-powered ERPNext CRM for sales teams." }}">
 
 
 
@@ -316,21 +316,41 @@
             font-weight: 600 !important;
         }
 
-     
-/* Hover + touch override */
-.btn-start:hover,
-.btn-start:active {
-  background-color: #f1b209 !important;
-  color: white !important;
 
+        /* Hover + touch override */
+        .btn-start:hover,
+        .btn-start:active {
+            background-color: #f1b209 !important;
+            color: white !important;
+
+        }
+
+        .btn-contact:hover,
+        .btn-contact:active {
+            color: #f1b209;
+            border-color: #f1b209;
+            box-shadow: 0 0 0 3px rgba(241, 178, 9, 0.25);
+        }
+
+        /* ==============================
+   HOVER / TOUCH EFFECTS (ALL)
+   ============================== */
+
+/* LOGIN */
+.btn-login:hover,
+.btn-login:active {
+  color: #f1b209 !important;
 }
 
+/* CONTACT SALES */
 .btn-contact:hover,
 .btn-contact:active {
-  color: #f1b209;
-  border-color: #f1b209;
-  box-shadow: 0 0 0 3px rgba(241, 178, 9, 0.25);
+  color: #f1b209 !important;
+  border-color: #f1b209 !important;
 }
+
+/* GET STARTED FOR FREE */
+
 
     </style>
 
@@ -390,22 +410,23 @@
                     <div class="hamburger">
                         <i class="fas fa-bars hamburger-icon"></i>
                     </div>
-                    <div class="header-btn"  style="margin-left: auto;">
-                        <a href="https://crm.erpnext.ai/app/" class="btn btn-login"
-                            style="color: white; font-size: 16px ; font-weight: 600 ;">Log in</a>
-                        <a href="{% url 'contact_us' %}" class="btn btn-contact" style="color: white; border: 1px solid white;     font-size: 14px;
-    font-weight: 600;">Contact sales</a>
+                    <div class="header-btn" style="margin-left: auto;">
+                        <a href="https://crm.erpnext.ai/app/" target="_blank" class="btn btn-login"
+                            style="color: white; font-size: 16px; font-weight: 600;"> Log in </a> <a
+                            href="{% url 'contact_us' %}" class="btn btn-contact"
+                            style="color: white; border: 1px solid white; font-size: 14px; font-weight: 600;"> Contact
+                            sales </a>
 
-    <a href="{% url 'pricing' %}" class="btn btn-primary btn-start" style="background: white; color:black ;    font-size: 14px;
+                        <a href="{% url 'pricing' %}" class="btn btn-primary btn-start" style="background: white; color:black ;    font-size: 14px;
     font-weight: 600;">
-  Get started for free
-</a>
+                            Get started for free
+                        </a>
+
+
+                    </div>
 
 
                 </div>
-
-
-            </div>
             </div>
         </nav>
     </header>
