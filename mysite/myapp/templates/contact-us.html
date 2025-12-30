@@ -1,718 +1,1046 @@
 {% load static %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
 {% include 'includes/header.html' %}
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    primary: "#FFD700", // Gold/Yellow
+                    secondary: "#3B82F6", // Blue
+                    "background-light": "#F3F4F6",
+                    "background-dark": "#020412", // Very dark blue/black
+                    "card-dark": "#0B101A", // Darker card bg
+                    "input-bg": "rgba(30, 41, 59, 0.5)", 
+                },
+                fontFamily: {
+                    sans: ["Inter", "sans-serif"],
+                },
+                backgroundImage: {
+                    'starry': "radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px), radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px), radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px)",
+                    'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                }
+            },
+        },
+    };
+</script>
 <style>
-  .sar {
-    padding-top: 60px !important;
-  }
-
-  .contact-team-section {
-    padding: 80px 0;
-
-    color: #fff;
-  }
-
-  .section-tag {
-    display: inline-block;
-    font-size: 13px;
-    letter-spacing: 2px;
-    color: #8ab4ff;
-    margin-bottom: 10px;
-  }
-
-  .section-title {
-    font-size: 42px;
-    font-weight: 700;
-    color: #f5c542;
-  }
-
-  .contact-card {
-    height: 100%;
-    background: linear-gradient(180deg, #111c2e, #0b1220);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 14px;
-    padding: 40px 30px;
-    text-align: center;
-    transition: all 0.35s ease;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  }
-
-  .contact-card img {
-    width: 48px;
-    margin-bottom: 20px;
-    filter: brightness(0) invert(1);
-  }
-
-  .contact-card h3 {
-    font-size: 22px;
-    font-weight: 600;
-    margin-bottom: 25px;
-    color: #fff;
-  }
-
-  .contact-card:hover {
-    transform: translateY(-6px);
-    border-color: rgba(138, 180, 255, 0.5);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-  }
-
-  .btn-primary {
-    display: inline-block;
-    padding: 12px 26px;
-    font-size: 14px;
-    font-weight: 600;
-    border-radius: 8px;
-    background: #ffffff;
-    color: #0b1c34;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .btn-primary:hover {
-    background: #f5c542;
-    color: #000;
-  }
-
-  .banner-area .all-banner-slide .single-banner-slide {
-    padding-top: 0px !important;
-  }
-
-  .office-location {
-    padding: 90px 0;
-
-    color: #fff;
-  }
-
-  .section-tag {
-    display: inline-block;
-    font-size: 13px;
-    letter-spacing: 2px;
-    color: #8ab4ff;
-    margin-bottom: 10px;
-  }
-
-  .main-title {
-    font-size: 42px;
-    font-weight: 700;
-    color: #f5c542;
-  }
-
-  .office-card {
-    height: 100%;
-    background: #ffffff;
-    color: #000;
-    border-radius: 12px;
-    padding: 40px 35px;
-    text-align: center;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
-    transition: all 0.35s ease;
-  }
-
-  .office-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.45);
-  }
-
-  .country-title {
-    font-size: 26px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
-  }
-
-  .phone {
-    display: inline-block;
-    font-size: 16px;
-    font-weight: 600;
-    color: #0b5ed7;
-    text-decoration: none;
-    margin-bottom: 18px;
-  }
-
-  .phone:hover {
-    text-decoration: underline;
-  }
-
-  .address {
-    font-size: 15px;
-    line-height: 1.7;
-    color: #333;
-  }
-
-
-  .form-toast {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: #e53935;
-    /* error red */
-    color: #fff;
-    padding: 14px 22px;
-    border-radius: 8px;
-    font-size: 14px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(20px);
-    transition: all 0.4s ease;
-    z-index: 9999;
-  }
-
-  .form-toast.show {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .form-toast.success {
-    background: #2e7d32;
-    /* green */
-  }
-
-
-  .toast {
-    background-color: #333;
-    color: #fff;
-    padding: 12px 20px;
-    margin-bottom: 10px;
-    border-radius: 6px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    animation: fadein 0.5s, fadeout 0.5s 3s;
-  }
-
-  @keyframes fadein {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
+    .stars {
+        background-size: 550px 550px, 350px 350px, 250px 250px;
+        background-position: 0 0, 40px 60px, 130px 270px;
     }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
+    body {
+        font-family: 'Inter', sans-serif;
+    }::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #020412; }
+    ::-webkit-scrollbar-thumb { background: #374151; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #4B5563; }
+    details > summary { list-style: none; }
+    details > summary::-webkit-details-marker { display: none; }input:-webkit-autofill,
+    input:-webkit-autofill:hover, 
+    input:-webkit-autofill:focus, 
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+        -webkit-text-fill-color: white;
+        -webkit-box-shadow: 0 0 0px 1000px #1e293b inset;
+        transition: background-color 5000s ease-in-out 0s;
     }
-  }
+</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us – ERPNext AI CRM</title>
 
-  @keyframes fadeout {
-    from {
-      opacity: 1;
-    }
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    to {
-      opacity: 0;
-    }
-  }
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
 
-  .sub-desc {
-    font-size: 2.7rem !important;
-  }
+  <link rel="stylesheet" href="style.css">
+</head>
+<style>
+/* ===============================
+   GLOBAL RESET & BASE
+   =============================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  .office-location {
-    background: radial-gradient(circle at top, #0f172a, #020617);
-    padding: 80px 0;
-  }
+body {
+  font-family: "Inter", sans-serif;
+  background: #020412;
+  color: #ffffff;
+  padding-top:180px ;
+}
 
-  .main-title {
-    color: #facc15;
-    font-weight: 700;
-  }
+/* ===============================
+   UTILITIES
+   =============================== */
+a {
+  color: #60a5fa;
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
 
-  /* Card */
-  .office-card {
-    background: rgba(255, 255, 255, 0.06);
-    border-radius: 20px;
-    padding: 40px 30px;
-    text-align: center;
-    color: #cbd5f5;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
+.muted { color: #9ca3af; }
 
-  .office-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  }
+.gradient-text {
+  background: linear-gradient(90deg, #60a5fa, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+}
 
-  /* Icon */
-  .office-icon {
-    width: 56px;
-    height: 56px;
-    background: rgba(59, 130, 246, 0.15);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 16px;
-  }
+/* ===============================
+   TOP BANNER
+   =============================== */
+.top-banner {
+  background: linear-gradient(90deg, #2563eb, #4f46e5);
+  text-align: center;
+  padding: 8px;
+  font-size: 13px;
+}
 
-  .office-icon span {
-    color: #3b82f6;
-    font-size: 28px;
-  }
+.badge {
+  background: rgba(255,255,255,0.2);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-size: 10px;
+  margin-right: 6px;
+}
 
-  /* Text */
-  .country-title {
-    color: #ffffff;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-  }
+/* ===============================
+   NAVBAR
+   =============================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 40px;
+  border-bottom: 1px solid #1f2937;
+  backdrop-filter: blur(10px);
+}
 
-  .phone {
-    display: inline-block;
-    color: #3b82f6;
-    font-weight: 600;
-    margin-bottom: 16px;
-    text-decoration: none;
-  }
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+}
 
-  .address {
-    font-size: 14px;
-    line-height: 1.7;
-    color: #94a3b8;
-  }
+.logo span { color: #3b82f6; }
 
-  /* Divider */
-  .divider {
-    height: 1px;
-    background: rgba(255, 255, 255, 0.1);
-    margin: 22px 0;
-  }
+.logo small {
+  font-size: 10px;
+  border: 1px solid #374151;
+  padding: 2px 6px;
+  margin-left: 6px;
+  border-radius: 4px;
+  color: #9ca3af;
+}
 
-  /* View map */
-  .view-map {
-    color: #94a3b8;
-    font-size: 13px;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    letter-spacing: 1px;
-  }
+.nav-links a {
+  margin: 0 14px;
+  color: #d1d5db;
+}
 
-  .view-map span {
-    font-size: 18px;
-  }
+.nav-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
 
-  /* Mobile */
-  @media (max-width: 768px) {
-    .office-card {
-      padding: 30px 20px;
-    }
-  }
+.btn-primary {
+  background: #ffffff;
+  color: #000000;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+}
 
-  .faq-section {
-    background: radial-gradient(circle at top, #0f172a, #020617);
-    padding: 80px 0;
-  }
+.gradient-text {
+  color: #ffba00; /* Solid golden color */
+}
 
-  .faq-title {
-    text-align: center;
-    color: #ffffff;
-    font-size: 32px;
-    font-weight: 700;
-    margin-bottom: 40px;
-  }
 
-  /* Card */
-  .faq-item {
-    background: rgba(255, 255, 255, 0.06);
-    border-radius: 16px;
-    margin-bottom: 16px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-  }
+/* ===============================
+   HERO SECTION
+   =============================== */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
 
-  /* Question */
-  .faq-question {
-    width: 100%;
-    background: none;
-    border: none;
-    color: #ffffff;
-    font-size: 16px;
-    font-weight: 600;
-    padding: 22px 26px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-  }
+.hero-left {
+  padding-top: 52px;
+}
 
-  .faq-question i {
-    transition: transform 0.3s ease;
-    color: #94a3b8;
-  }
+.hero h1 {
+  font-size: 48px;
+  margin: 16px 0;
+}
 
-  /* Answer */
-  .faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-  }
+.hero p {
+  max-width: 520px;
+  line-height: 1.7;
+}
 
-  .faq-answer p {
-    padding: 0 26px 22px;
-    margin: 0;
-    color: #cbd5f5;
-    font-size: 14px;
-    line-height: 1.7;
-  }
+.pill {
+  background: rgba(59,130,246,0.15);
+  color: #60a5fa;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+}
 
-  /* Active state */
-  .faq-item.active .faq-answer {
-    max-height: 300px;
-  }
+/* ===============================
+   INFO BOXES
+   =============================== */
+.info-box {
+  display: flex;
+  gap: 14px;
+  margin-top: 24px;
+}
 
-  .faq-item.active .faq-question i {
-    transform: rotate(180deg);
-  }
+.info-box span {
+  font-size: 26px;
+}
 
-  .phone-wrapper {
-    display: flex;
-    align-items: center;
-    background: #3e4450;
-    border-radius: 30px;
-    padding: 6px 12px;
-  }
+.blue { color: #60a5fa; }
+.purple { color: #a855f7; }
+.yellow { color: #facc15; }
 
-  .country-code {
-    background: transparent;
-    border: none;
-    color: #fff;
-    font-size: 16px;
-    width: 60px;
-    text-align: center;
-    outline: none;
-    cursor: pointer;
-  }
+/* ===============================
+   CARD / CONTACT CARD
+   =============================== */
+.card,
+.contact-card {
+  background: linear-gradient(180deg, rgba(11,16,26,0.95), rgba(11,16,26,0.85));
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 22px;
+  padding: 32px;
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.03),
+    0 20px 60px rgba(0,0,0,0.6);
+}
 
-  .country-code option {
-    color: #000;
-  }
+.card h2 {
+  margin-bottom: 6px;
+}
 
-  .phone-input {
-    background: transparent;
-    border: none;
-    color: #fff;
-    flex: 1;
-    padding: 10px;
-    outline: none;
-  }
+/* ===============================
+   CONTACT FORM
+   =============================== */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
 
-  .phone-input::placeholder {
-    color: #cfcfcf;
-  }
+.contact-form .grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
 
-  /* align phone icon properly */
-  .input-icon {
-    position: relative;
-  }
+.form-group {
+  position: relative;
+}
 
-  .input-icon i {
-    position: absolute;
-    left: 18px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #cfcfcf;
-    z-index: 2;
-  }
+/* Input Icons */
+.input-icon i,
+.input-icon .material-symbols-outlined {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  font-size: 18px;
+  pointer-events: none;
+}
 
-  /* push input to right because of icon */
-  .phone-wrapper {
-    padding-left: 40px;
-  }
+.input-icon.textarea i {
+  top: 14px;
+  transform: none;
+}
 
-  .toast-msg {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: #28a745;
-    color: #fff;
-    padding: 14px 22px;
-    border-radius: 8px;
-    font-size: 14px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    transition: all 0.4s ease;
-    z-index: 9999;
-  }
+/* Inputs */
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  width: 100%;
+  background: linear-gradient(180deg, #1a1f2c, #141824);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 14px 14px 14px 42px;
+  color: #e5e7eb;
+  font-size: 14px;
+  transition: all 0.25s ease;
+}
 
-  .toast-msg.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
+.contact-form textarea {
+  resize: none;
+  min-height: 110px;
+}
 
- 
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 1px rgba(59,130,246,0.35);
+}
+
+/* ===============================
+   PHONE FIELD
+   =============================== */
+.phone-wrapper {
+  display: flex;
+  background: linear-gradient(180deg, #1a1f2c, #141824);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+
+.phone-wrapper select {
+  width: 80px;
+  background: transparent;
+  border: none;
+  color: #e5e7eb;
+  padding: 14px 10px 14px 12px;
+  cursor: pointer;
+  pa
+}
+
+.phone-wrapper input {
+  border: none;
+  padding-left: 12px;
+  background: transparent;
+}
+
+/* ===============================
+   ERRORS
+   =============================== */
+.error-text,
+.text-danger {
+  font-size: 12px;
+  color: #ef4444;
+  margin-top: 4px;
+}
+
+/* ===============================
+   SUBMIT BUTTON
+   =============================== */
+.btn-submit,
+.contact-submit {
+  margin-top: 10px;
+  background: linear-gradient(90deg, #2563eb, #4f46e5);
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.contact-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px rgba(59,130,246,0.35);
+}
+
+.contact-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ===============================
+   TOAST MESSAGE
+   =============================== */
 .toast-msg {
   position: fixed;
-  bottom: 25px;
-  right: 25px;
-  background: #28a745;
-  color: #fff;
-  padding: 14px 22px;
-  border-radius: 8px;
+  bottom: 24px;
+  right: 24px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #ffffff;
   opacity: 0;
-  visibility: hidden;
-  transition: all 0.4s ease;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
   z-index: 9999;
 }
+
 .toast-msg.show {
   opacity: 1;
-  visibility: visible;
+  transform: translateY(0);
 }
 
+/* ===============================
+   PRIVACY & RESULT TEXT
+   =============================== */
+.privacy,
+.emailresult {
+  text-align: center;
+  font-size: 12px;
+  color: #9ca3af;
+  margin-top: 8px;
+}
+
+.privacy a {
+  color: #93c5fd;
+  text-decoration: underline;
+}
+
+/* ===============================
+   OFFICES
+   =============================== */
+.offices {
+  margin-top: 100px;
+  text-align: center;
+}
+
+.office-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.office-card {
+  background: #0b101a;
+  border: 1px solid #1f2937;
+  padding: 28px;
+  border-radius: 16px;
+  text-align: left;
+}
+
+/* ===============================
+   FAQ
+   =============================== */
+.faq {
+  max-width: 800px;
+  margin: 100px auto 0;
+}
+
+details {
+  background: #0b101a;
+  border: 1px solid #1f2937;
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .office-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  position: relative;
+  background: linear-gradient(180deg, #0b1220, #0a0f1a);
+  border-radius: 26px;
+  padding: 38px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04),
+    0 30px 80px rgba(0,0,0,0.65);
+}
+
+/* outer glow */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: radial-gradient(
+    circle at top,
+    rgba(59,130,246,0.18),
+    transparent 60%
+  );
+  z-index: -1;
+}
+  .contact-form input,
+.contact-form textarea,
+.contact-form select {
+  width: 100%;
+  background: linear-gradient(180deg, #1b2130, #141926);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 16px 16px 16px 46px;
+  color: #e5e7eb;
+  font-size: 14px;
+  transition: all 0.25s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #9ca3af;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59,130,246,0.35);
+}
+.input-icon .material-symbols-outlined {
+  position: absolute;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #9ca3af;
+  pointer-events: none;
+}
+.input-icon.textarea .material-symbols-outlined {
+  top: 18px;
+  transform: none;
+}
+.phone-wrapper {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(180deg, #1b2130, #141926);
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+.phone-wrapper select {
+  width: 80px;
+  background: transparent;
+  border: none;
+  color: #e5e7eb;
+  padding: 16px 10px;
+  font-size: 14px;
+  padding-left: 34px;
+}
+.phone-wrapper input {
+  border: none;
+  background: transparent;
+  padding: 5px;
+  color: #e5e7eb;
+}
+.contact-form {
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border-radius: 24px;
+  padding: 26px;
+  margin-top: 24px;
+}
+.contact-submit {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2f6fe4, #1e4fbf);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.contact-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(59,130,246,0.45);
+}
+
+/* ===============================
+   HERO BACKGROUND
+   =============================== */
+.contact-hero {
+  max-width: 560px;
+  padding: 25px 20px; 
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+}
+
+/* ===============================
+   PILL
+   =============================== */
+.support-pill {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: #60a5fa;
+  background: rgba(96,165,250,0.15);
+  margin-bottom: 22px;
+}
+
+/* ===============================
+   HEADINGS
+   =============================== */
+.contact-hero h1 {
+  font-size: 46px;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #60a5fa, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ===============================
+   DESCRIPTION
+   =============================== */
+.hero-desc {
+  font-size: 16px;
+  color: #cbd5f5;
+  line-height: 1.7;
+  margin-bottom: 42px;
+}
+
+/* ===============================
+   CONTACT LIST
+   =============================== */
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ===============================
+   CONTACT ITEM
+   =============================== */
+.contact-item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.contact-item h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.contact-item p {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-bottom: 6px;
+}
+
+.contact-item a {
+  font-size: 14px;
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+.contact-item a:hover {
+  text-decoration: underline;
+}
+
+.contact-item strong {
+  font-size: 14px;
+  color: #e5e7eb;
+}
+
+/* ===============================
+   ICON BOX
+   =============================== */
+.icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: inset 0 0 20px rgba(255,255,255,0.04);
+  flex-shrink: 0;
+}
+
+.icon-box span {
+  font-size: 22px;
+}
+
+/* ===============================
+   ICON COLORS
+   =============================== */
+.icon-box.mail span { color: #60a5fa; }
+.icon-box.location span { color: #a855f7; }
+.icon-box.call span { color: #facc15; }
+.faq-item {
+  cursor: pointer;
+}
+
+.faq-question i {
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  display: none;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+.faq-section {
+  padding: 80px 20px;
+  background-color: #0B101A;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.faq-item {
+  background-color: rgba(11, 16, 26, 0.9);
+  border: 1px solid #2c2f36;
+  border-radius: 20px;
+  margin-bottom: 24px;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+  border-color: #ffba00;
+  box-shadow: 0 0 20px rgba(255, 186, 0, 0.1);
+}
+
+.faq-question {
+  width: 100%;
+  padding: 24px 32px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+  color: #ffba00;
+}
+
+.faq-question i {
+  transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 32px 24px;
+  color: #cbd5e1;
+  font-size: 16px;
+  display: none;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+.contact-hero {
+  margin-left: 60px; /* increase value as needed */
+}
+/* Mobile phones */
+@media (max-width: 576px) {
+  .contact-hero {
+    margin-left: 0;
+  }
+}
+
+/* ===============================
+   MOBILE VIEW FIX (CENTER + PHONE)
+   =============================== */
+@media (max-width: 576px) {
+
+  /* Center the entire form card */
+  .contact-form {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 17px 16px;
+  }
+
+  /* If form is inside a card/container */
+  .card {
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Form group alignment */
+  .form-group {
+    width: 100%;
+  }
+
+  /* Inputs & textarea */
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form select {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* PHONE FIELD FIX */
+  .phone-wrapper {
+    display: flex;
+    flex-direction: row;   /* keep +91 and phone inline */
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .phone-wrapper select {
+    width: 30%;
+    min-width: 80px;
+  }
+
+  .phone-wrapper input {
+    width: 70%;
+  }
+
+  /* Icon positioning */
+  .input-icon .material-symbols-outlined {
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* Submit button centered */
+  .contact-submit {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
+
 </style>
 
+<body class="dark">
 
 
-</style>
-<div class="sar py-lg-5 py-3">
+<main class="container">
+
+  <!-- Hero Section -->
+   <div class="container-form">
+  <section class="hero">
+  <div class="contact-hero">
+  <span class="support-pill">CONTACT SUPPORT</span>
+
+  <h1>
+    Let's start a <br>
+    <span class="gradient-text">conversation.</span>
+  </h1>
+
+  <p class="hero-desc">
+    Have questions about our AI CRM? Need a custom demo?
+    Our team is ready to help you modernize your sales process.
+  </p>
+
+  <div class="contact-list">
+
+    <div class="contact-item">
+      <div class="icon-box mail">
+        <span class="material-symbols-outlined">mail</span>
+      </div>
+      <div>
+        <h4>contact with us</h4>
+        <p>Our friendly team is here to help.</p>
+        <a href="mailto:hello@erpnext.ai">hello@erpnext.ai</a>
+      </div>
+    </div>
+
+    <div class="contact-item">
+      <div class="icon-box location">
+        <span class="material-symbols-outlined">location_on</span>
+      </div>
+      <div>
+        <h4>Visit us</h4>
+        <p>Come say hello at our office HQ.</p>
+        <strong>Tamil Nadu,India</strong>
+      </div>
+    </div>
+
+    <div class="contact-item">
+      <div class="icon-box call">
+        <span class="material-symbols-outlined">call</span>
+      </div>
+      <div>
+        <h4>Call us</h4>
+        <p>Mon–Fri from 8am to 5pm.</p>
+        <a href="tel:+919566981217">+91 95669 81217</a>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 
-<section class="banner-area">
-  <div id="particles-js"></div> <!-- particles background only -->
-  <div class="content-overlay">
-    <div class="all-banner-slide owl-carousel">
-      <div class="single-banner-slide text-center">
-        <h2 class="sub-desc color-white" style=" font-weight: 700;">CONTACT US</h2>
+    <!-- Contact Form -->
+    <div class="card">
+      <h2 style="color: white;">Send us a message</h2>
+      <p class="muted">We'll get back to you within 24 hours.</p>
 
+     <form class="contact-form" action="{% url 'contact_us' %}" method="post" novalidate>
+  {% csrf_token %}
 
-        <!-- Breadcrumbs -->
-        <!-- <nav class="breadcrumbs">
-                    <ul class="d-flex justify-content-center">
-                        <li class="sub-desc"><a href="index.php">Home</a></li>
-                        <li class="sub-desc px-2">/</li>
-                        <li class="sub-desc">Contact Us</li>
-                    </ul>
-                </nav> -->
+  <!-- Name -->
+  <div class="form-group input-icon">
+    <span class="material-symbols-outlined">person</span>
+    <input type="text" id="name" name="name" placeholder="Name">
+    <small id="error-name" class="error-text"></small>
+  </div>
+
+  <!-- Email -->
+  <div class="form-group input-icon">
+    <span class="material-symbols-outlined">mail</span>
+    <input type="email" id="email" name="email" placeholder="Email">
+    <small id="error-email" class="error-text"></small>
+  </div>
+
+  <!-- Phone -->
+  <div class="form-group input-icon">
+    <span class="material-symbols-outlined">call</span>
+
+    <div class="phone-wrapper">
+      <select id="countryCode" name="country_code">
+        <option value="+91">+91</option>
+        <option value="+1">+1</option>
+        <option value="+44">+44</option>
+        <option value="+971">+971</option>
+        <option value="+968">+968</option>
+      </select>
+
+      <input type="tel" id="phone" name="phone" placeholder="Phone Number">
+    </div>
+
+    <small id="error-phone" class="error-text"></small>
+  </div>
+
+  <!-- Company -->
+  <div class="form-group input-icon textarea">
+    <span class="material-symbols-outlined">domain</span>
+    <textarea id="comment" name="comment" rows="4" placeholder="Company"></textarea>
+    <small id="error-comment" class="error-text"></small>
+  </div>
+
+  <!-- Submit -->
+  <button type="submit" class="btn-submit contact-submit">
+    SEND MESSAGE
+    <span class="material-symbols-outlined">send</span>
+  </button>
+
+  <!-- Toast -->
+  <div id="toast" class="toast-msg"></div>
+
+  <!-- Django Messages -->
+  {% if messages %}
+    <div class="emailresult">
+      {% for message in messages %}
+        <p style="color:{% if message.tags == 'success' %}#22c55e{% else %}#ef4444{% endif %}">
+          {{ message }}
+        </p>
+      {% endfor %}
+    </div>
+  {% endif %}
+</form>
+
+    </div>
+  </section>
+</div>
+
+</main>
+<div class="mt-24 mb-20">
+  <div class="text-center mb-16">
+    <h2 class="text-3xl font-bold text-white mb-4">Our Offices</h2>
+    <p class="text-gray-400 max-w-2xl mx-auto">We have a global presence to serve you better.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+    <!-- India -->
+    <div class="group relative bg-[#0B101A] rounded-2xl p-8 border border-gray-800 
+                hover:border-blue-500/50 transition-all duration-300 
+                hover:shadow-2xl hover:shadow-blue-900/10 overflow-hidden text-center">
+      <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
+        <span class="material-symbols-outlined text-6xl text-white">public</span>
       </div>
+      <h3 class="text-xl font-bold mb-1" style="color:#ffba00;">India</h3>
+    </div>
+
+    <!-- Oman -->
+    <div class="group relative bg-[#0B101A] rounded-2xl p-8 border border-gray-800 
+                hover:border-purple-500/50 transition-all duration-300 
+                hover:shadow-2xl hover:shadow-purple-900/10 overflow-hidden text-center">
+      <div class="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
+        <span class="material-symbols-outlined text-6xl text-white">apartment</span>
+      </div>
+      <h3 class="text-xl font-bold mb-1" style="color:#ffba00;">Oman</h3>
     </div>
   </div>
-</section>
-
-<!-- <section class="contact-team-section w-100">
-    <div class="container">
-        <div class="row gy-3">
-            <div class="col-md-6">
-                <div class="theme-twilight">
-                    <img width="50" height="50" src="https://www.mendix.com/wp-content/uploads/Icon-4.svg"
-                        class=" image icon-6 attachment-206914" alt="">
-                    <div class="wysiwyg">
-                        <h2 class="sub-title">Talk to our sales team</h2>
-                        <a href="" class="try-for-free">Contact Sales</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="theme-twilight">
-                    <img width="50" height="50" src="https://www.mendix.com/wp-content/uploads/Icon-6.svg"
-                        class=" image icon-7 attachment-206920" alt="" loading="lazy" decoding="async">
-                    <div class="wysiwyg">
-                        <h2 class="sub-title">Find technical support</h2>
-                        <a href="" class="try-for-free">Visit ERPNextAI Support</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> -->
-
-
-<!-- <section class="contact-team-section">
-  <div class="container-fluid">
-
-
-    <div class="row g-4">
-      <div class="col-md-6">
-        <div class="contact-card">
-          <img src="https://www.mendix.com/wp-content/uploads/Icon-4.svg" alt="">
-          <h3>Talk to our sales team</h3>
-          <a href="#" class="btn-primary">Contact Sales</a>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="contact-card">
-          <img src="https://www.mendix.com/wp-content/uploads/Icon-6.svg" alt="">
-          <h3>Find technical support</h3>
-          <a href="#" class="btn-primary">Visit ERPNextAI Support</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-
-<div id="toast-container"></div>
-
-
-
-<section class="contact-home-section2 pt-3 pb-3">
-  <div class="container">
-    <div class="row align-items-center">
-      <div class="col-md-12">
-        <h2 class="main-title">Send us a message</h2>
-        <p class="main-desc">Let us know how we can help you. Just complete this form and we’ll be in <br> touch soon to
-          modernize your sales process.</p>
-        <div class="row justify-content-center">
-          <div class="col-lg-6 col-12">
-
-            <!-- ✅ Registration Form -->
-            <form class="registration-form contact-form row g-3" action="{% url 'contact_us' %}" method="post">
-              {% csrf_token %}
-              <!-- Name -->
-              <div class="col-12 col-md-12 mb-0 input-icon">
-                <i class="fas fa-user"></i>
-                <input type="text" id="name" name="name" class="form-control custom-input" placeholder="Name"
-                  autocomplete="name">
-                <small id="error-name" class="text-danger"></small>
-              </div>
-
-              <!-- Email -->
-              <div class="col-12 col-md-12 mb-0 input-icon">
-                <i class="fas fa-envelope"></i>
-                <input type="email" id="email" name="email" class="form-control custom-input" placeholder="Email"
-                  autocomplete="email">
-                <small id="error-email" class="text-danger"></small>
-              </div>
-
-              <!-- Phone -->
-              <!-- Phone with Country Code -->
-              <!-- Country + Phone -->
-              <div class="col-12 col-md-12 mb-0 input-icon">
-                <i class="fas fa-phone"></i>
-
-                <div class="phone-wrapper">
-                  <select id="countryCode" name="country_code" class="country-code">
-                    <option value="+91">+91</option>
-                    <option value="+1">+1</option>
-                    <option value="+44">+44</option>
-                    <option value="+971">+971</option>
-                    <option value="+968">+968</option>
-                  </select>
-
-                  <input type="tel" id="phone" name="phone" class="form-control phone-input"
-                    placeholder="Phone Number" />
-                </div>
-
-                <small id="error-phone" class="text-danger"></small>
-              </div>
-
-              <!-- ✅ Toast -->
-              <div id="toast" class="toast-msg"></div>
-
-
-
-
-
-              <!-- Comment -->
-              <div class="col-12 mb-0">
-                <textarea id="comment" name="comment" class="form-control custom-input" rows="4" placeholder="Company"
-                  autocomplete="off"></textarea>
-                <small id="error-comment" class="text-danger"></small>
-              </div>
-              <!-- Submit -->
-              {% comment %} <div class="col-12 text-center">
-                <button type="submit" class="btn-gradient mt-3 contact-submit">
-                  SUBMIT
-                </button>
-              </div> {% endcomment %}
-              <div class="col-12 text-center">
-                {% csrf_token %}
-                <button type="submit" class="btn-gradient mt-3 contact-submit">
-                  SUMBIT
-                </button>
-                <p class="emailresult"></p>
-              </div>
-              <!-- ✅ Display success/error messages at bottom -->
-              {% if messages %}
-              <div class="col-12 text-center mt-2">
-                {% for message in messages %}
-                <p class="emailresult" style="color: {% if message.tags == 'success' %}green{% else %}red{% endif %};">
-                  {{ message }}
-                </p>
-                {% endfor %}
-              </div>
-              {% endif %}
-            </form>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-<section class="office-location">
-  <div class="container">
-    <div class="text-center mb-5">
-      <h2 class="main-title">Office Locations</h2>
-    </div>
-
-    <div class="row justify-content-center g-4">
-
-      <!-- INDIA -->
-      <div class="col-md-6 col-lg-5">
-        <div class="office-card">
-          <div class="office-icon">
-            <i class="fa-solid fa-location-dot"></i>
-          </div>
-
-          <h4 class="country-title">INDIA</h4>
-          <a href="tel:+919566981217" class="phone">+91 95669 81217</a>
-
-          <p class="address">
-            132, First Floor, Maniyan Chetti Street,<br>
-            Bazaar, Palakarai, Tiruchirappalli,<br>
-            Tamil Nadu 620001
-          </p>
-
-          <div class="divider"></div>
-          <!-- <a href="#" class="view-map">
-  <i class="fa-solid fa-map-location-dot"></i> VIEW MAP
-</a> -->
-
-        </div>
-      </div>
-
-      <!-- OMAN -->
-      <div class="col-md-6 col-lg-5">
-        <div class="office-card">
-          <div class="office-icon">
-            <i class="fa-solid fa-building"></i>
-          </div>
-
-
-          <h4 class="country-title">Oman</h4>
-          <a href="tel:+919566981217" class="phone">+968 94588778</a>
-
-          <p class="address" style="padding-bottom: 26px;">
-            19AI, Block No 240, Way No 4003, <br>
-            Bowsher, Muscat
-          </p>
-
-          <div class="divider"></div>
-
-          <!-- <a href="#" class="view-map">
-  <i class="fa-solid fa-map-location-dot"></i> VIEW MAP
-</a> -->
-
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
+</div>
+</main>
 
 <section class="faq-section">
-  <div class="container">
+  <div class="faq-container">
     <h2 class="faq-title">Frequently Asked Questions</h2>
 
-    <div class="faq-item active">
+    <div class="faq-item">
       <button class="faq-question">
         <span>What is the typical response time for support inquiries?</span>
         <i class="fa-solid fa-chevron-down"></i>
@@ -720,8 +1048,7 @@
       <div class="faq-answer">
         <p>
           Our team typically responds to all inquiries within 24 business hours.
-          For enterprise customers with SLAs, response times are expedited
-          according to your contract.
+          For enterprise customers with SLAs, response times are expedited according to your contract.
         </p>
       </div>
     </div>
@@ -733,10 +1060,7 @@
       </button>
       <div class="faq-answer">
         <p>
-
-
-          Yes, ERPNext AI offers both cloud-hosted and on-premise solutions for organizations that require strict data
-          sovereignty or have specific infrastructure needs.
+          Yes, ERPNext AI offers both cloud-hosted and on-premise solutions for organizations that require strict data sovereignty or have specific infrastructure needs.
         </p>
       </div>
     </div>
@@ -748,176 +1072,18 @@
       </button>
       <div class="faq-answer">
         <p>
-          Absolutely! You can schedule a personalized demo with our sales team by filling out the contact form above and
-          selecting "Request Demo" in the message body, or by booking directly through our main website.
+          Absolutely! You can schedule a personalized demo with our sales team by filling out the contact form above and selecting "Request Demo" in the message body, or by booking directly through our main website.
         </p>
       </div>
     </div>
-   <div id="toast" class="toast-msg"></div>
-
-
   </div>
 </section>
 
 
-<!-- 
-<script>
-document.querySelector('.contact-form').addEventListener('submit', function (e) {
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const comment = document.getElementById('comment').value.trim();
-
-    if (!name || !email || !phone || !comment) {
-        e.preventDefault();
-        showToast('Please fill all required fields');
-        return;
-    }
-});
-
-function showToast(message, type = 'error') {
-    const toast = document.getElementById('formToast');
-    toast.textContent = message;
-    toast.className = 'form-toast show ' + (type === 'success' ? 'success' : '');
-
-    setTimeout(() => {
-        toast.classList.remove('show');
-    }, 3000);
-}
-</script> -->
 
 
-<script>
-  document.querySelectorAll(".faq-question").forEach(button => {
-    button.addEventListener("click", () => {
-      const item = button.closest(".faq-item");
-
-      document.querySelectorAll(".faq-item").forEach(faq => {
-        if (faq !== item) {
-          faq.classList.remove("active");
-        }
-      });
-
-      item.classList.toggle("active");
-    });
-  });
-</script>
-<!-- <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector(".contact-form");
-    const submitBtn = form.querySelector(".contact-submit");
-
-    const nameInput = document.getElementById("name");
-    const emailInput = document.getElementById("email");
-    const phoneInput = document.getElementById("phone");
-    const commentInput = document.getElementById("comment");
-
-    const nameError = document.getElementById("error-name");
-    const emailError = document.getElementById("error-email");
-    const phoneError = document.getElementById("error-phone");
-    const commentError = document.getElementById("error-comment");
-
-    function validateName() {
-      const name = nameInput.value.trim();
-      if (!name) {
-        nameError.textContent = " Name is required";
-        return false;
-      } else if (name.length < 3) {
-        nameError.textContent = " Name must be at least 3 characters";
-        return false;
-      }
-      nameError.textContent = "";
-      return true;
-    }
-
-    function validateEmail() {
-      const email = emailInput.value.trim();
-      if (!email) {
-        emailError.textContent = " Email is required";
-        return false;
-      } else if (!(email.includes("@") && email.includes("."))) {
-        emailError.textContent = " Enter a valid Email ID";
-        return false;
-      }
-      emailError.textContent = "";
-      return true;
-    }
-
-    function validatePhone() {
-      const phone = phoneInput.value.trim();
-      const phoneValid = /^[0-9]{10}$/.test(phone);
-      if (!phone) {
-        phoneError.textContent = " Phone Number is required";
-        return false;
-      } else if (!phoneValid) {
-        phoneError.textContent = "  Enter valid phone number ";
-        return false;
-      }
-      phoneError.textContent = "";
-      return true;
-    }
-
-    function validateComment() {
-      if (!commentInput.value.trim()) {
-        commentError.textContent = "Company is required";
-        return false;
-      }
-      commentError.textContent = "";
-      return true;
-    }
-
-    function validateForm() {
-      const valid =
-        validateName() &&
-        validateEmail() &&
-        validatePhone() &&
-        validateComment();
-
-      submitBtn.disabled = !valid;
-      submitBtn.style.opacity = valid ? "1" : "0.6";
-      submitBtn.style.cursor = valid ? "pointer" : "not-allowed";
-
-      return valid;
-    }
-
-    // Attach live validation
-    nameInput.addEventListener("input", () => {
-      validateName();
-      validateForm();
-    });
-
-    emailInput.addEventListener("input", () => {
-      validateEmail();
-      validateForm();
-    });
-
-    phoneInput.addEventListener("input", () => {
-      validatePhone();
-      validateForm();
-    });
-
-    commentInput.addEventListener("input", () => {
-      validateComment();
-      validateForm();
-    });
-
-    form.addEventListener("submit", function (e) {
-      if (!validateForm()) {
-        e.preventDefault();
-      } else {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = "Sending...";
-        submitBtn.style.opacity = "0.7";
-      }
-    });
-
-    window.addEventListener("pageshow", function () {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = "SUBMIT";
-      submitBtn.style.opacity = "1";
-    });
-  });
-</script> -->
+</body>
+</html>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector(".contact-form");
@@ -1054,6 +1220,14 @@ document.addEventListener("DOMContentLoaded", function () {
     submitBtn.style.opacity = "1";
   });
 });
+</script>
+<script>
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      item.classList.toggle('active');
+    });
+  });
 </script>
 
 {% include 'includes/footer.html' %}
