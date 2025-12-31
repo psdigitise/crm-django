@@ -3,6 +3,17 @@
 <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.1/build/css/intlTelInput.css">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.1/build/js/intlTelInput.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.1/build/js/utils.js"></script>
+
 <script>
     tailwind.config = {
         darkMode: "class",
@@ -196,6 +207,10 @@ a:hover { text-decoration: underline; }
 .hero p {
   max-width: 520px;
   line-height: 1.7;
+  color: white !important;
+ 
+  font-size: 1rem;
+  font-weight: 300
 }
 
 .pill {
@@ -239,6 +254,10 @@ a:hover { text-decoration: underline; }
 
 .card h2 {
   margin-bottom: 6px;
+      text-align: center;
+    font-size: 2rem;
+    font-weight: 400;
+
 }
 
 /* ===============================
@@ -503,7 +522,7 @@ summary {
   background: linear-gradient(180deg, #1b2130, #141926);
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 14px;
-  padding: 16px 16px 16px 46px;
+  padding: 8px 16px 8px 46px;
   color: #e5e7eb;
   font-size: 14px;
   transition: all 0.25s ease;
@@ -876,6 +895,76 @@ summary {
     padding: 16px 0px;
     font-size: 14px;
     padding-left: 45px;}
+
+
+  .btn-submit {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .loader {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-top: 2px solid #fff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  .btn-submit.disabled {
+    opacity: 0.7;
+    pointer-events: none;
+  }
+.iti{
+width: 100% !important;
+color: white !important;
+  }
+
+  .iti__dropdown-content{
+    overflow-y: visible !important;
+  }
+
+  .iti__country{
+    width: 100px !important;
+  }
+.iti__tel-input {
+  color: white !important;
+}
+
+
+.input-icon {
+  position: relative;
+}
+
+.input-icon i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #94a3b8;
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.input-icon select {
+  padding-left: 38px;
+}
+
+.contact-form .input-icon i{
+      position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
+</style>
+
 </style>
 
 <body class="dark">
@@ -939,80 +1028,114 @@ summary {
 
 
     <!-- Contact Form -->
-    <div class="card">
-      <h2 style="color: white;">Send us a message</h2>
-      <p class="muted">We'll get back to you within 24 hours.</p>
+<div class="card p-4" style="background-color: #1e293b; color: white;">
+  <h2>Send us a message</h2>
+  <p class="text-muted text-center" style="padding-left:30px ;">We'll get back to you within 24 hours.</p>
 
-     <form class="contact-form" action="{% url 'contact_us' %}" method="post" novalidate>
-  {% csrf_token %}
+  <form class="contact-form" action="{% url 'contact_us' %}" method="post" novalidate>
+    {% csrf_token %}
+    <div class="row g-3">
+      <!-- Name -->
+      <div class="col-md-6">
+        <div class="form-group input-icon">
+          <span class="material-symbols-outlined">person</span>
+          <input type="text" id="name" name="name" class="form-control" placeholder="Name" style="color: white;">
+        </div>
+        <small id="error-name" class="error-text text-danger"></small>
+      </div>
 
-  <!-- Name -->
-   <div>
+      <!-- Email -->
+      <div class="col-md-6">
+        <div class="form-group input-icon">
+          <span class="material-symbols-outlined">mail</span>
+          <input type="email" id="email" name="email" class="form-control" placeholder="Email" style="color: white;">
+        </div>
+        <small id="error-email" class="error-text text-danger"></small>
+      </div>
+
+   <!-- Contact Type -->
+<div class="col-md-6">
   <div class="form-group input-icon">
-    <span class="material-symbols-outlined">person</span>
-    <input type="text" id="name" name="name" placeholder="Name">
+    <i class="fa-solid fa-clipboard-list"></i>
+    <select id="contactType" name="contact_type" class="form-select" required>
+      <option value="" disabled selected>Select Form</option>
+      <option value="contact">Contact Form</option>
+      <option value="support">Support Form</option>
+    </select>
   </div>
-  <small id="error-name" class="error-text"></small>
-  </div>
-
-  <!-- Email -->
-   <div>
-  <div class="form-group input-icon">
-    <span class="material-symbols-outlined">mail</span>
-    <input type="email" id="email" name="email" placeholder="Email">
-    </div>
-    <small id="error-email" class="error-text"></small>
-  </div>
-
-  <!-- Phone -->
-   <div>
-  <div class="form-group input-icon">
-    <span class="material-symbols-outlined">call</span>
-
-    <div class="phone-wrapper">
-      <select id="countryCode" name="country_code">
-        <option value="+91">+91</option>
-        <option value="+1">+1</option>
-        <option value="+44">+44</option>
-        <option value="+971">+971</option>
-        <option value="+968">+968</option>
-      </select>
-
-      <input type="tel" id="phone" name="phone" placeholder="Phone Number">
-    </div>
 </div>
-    <small id="error-phone" class="error-text"></small>
-  </div>
 
-  <!-- Company -->
-  <div class="form-group input-icon textarea">
-    <span class="material-symbols-outlined">domain</span>
-    <textarea id="comment" name="comment" rows="4" placeholder="Company"></textarea>
-    <small id="error-comment" class="error-text"></small>
-  </div>
 
-  <!-- Submit -->
-  <button type="submit" class="btn-submit contact-submit">
-    SEND MESSAGE
-    <span class="material-symbols-outlined">send</span>
-  </button>
+      <!-- Phone -->
+      <div class="col-md-6">
+        <div class="form-group input-icon">
+          <span class="material-symbols-outlined">call</span>
+          <input type="tel" id="phone" name="phone" class="form-control" placeholder="Phone number">
+          <input type="hidden" id="full_phone" name="full_phone">
+          <small id="error-phone" class="error-text text-danger"></small>
+        </div>
+      </div>
 
-  <!-- Toast -->
-  <div id="toast" class="toast-msg"></div>
+      <!-- Company -->
+      <div class="col-12">
+        <div class="form-group input-icon">
+          <span class="material-symbols-outlined">domain</span>
+          <input type="text" id="comment" name="comment" class="form-control" placeholder="Company" style="color: white;">
+        </div>
+        <small id="error-comment" class="error-text text-danger"></small>
+      </div>
 
-  <!-- Django Messages -->
-  {% if messages %}
-    <div class="emailresult">
-      {% for message in messages %}
-        <p style="color:{% if message.tags == 'success' %}#22c55e{% else %}#ef4444{% endif %}">
-          {{ message }}
-        </p>
-      {% endfor %}
+      <!-- Support Category -->
+       <div>
+      <div class="col-12" id="supportCategoryWrapper" style="display:none;">
+        <div class="form-group input-icon">
+       
+<i class="fa-solid fa-chart-simple"></i>
+
+        <select id="supportCategory" name="support_category" class="form-select">
+
+            <option  value="" disabled selected>Support Type</option>
+            <option value="leads">Leads</option>
+            <option value="deals">Deals</option>
+          </select>
+        </div>
+         <small id="error-support" class="error-text text-danger"></small>
+      </div></div>
+
+      <!-- Message -->
+      <div class="col-12">
+        <div class="form-group input-icon textarea">
+          <span class="material-symbols-outlined">chat</span>
+          <textarea id="message" name="message" rows="4" class="form-control" placeholder="Your message" style="color: white;"></textarea>
+        </div>
+      </div>
+
+      <!-- Submit -->
+       <div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary w-100 contact-submit">
+          <span class="btn-text">SEND MESSAGE</span>
+          <span class="loader" style="display:none;"></span>
+        </button>
+       
+</div>
+      </div>
+
+      <!-- Django messages -->
+      <div class="col-12 emailresult">
+        {% if messages %}
+          {% for message in messages %}
+            <p style="color:{% if message.tags == 'success' %}#22c55e{% else %}#ef4444{% endif %}">
+              {{ message }}
+            </p>
+          {% endfor %}
+        {% endif %}
+      </div>
     </div>
-  {% endif %}
-</form>
+  </form>
+</div>
 
-    </div>
+
   </section>
 </div>
 
@@ -1040,7 +1163,7 @@ summary {
               hover:border-purple-500/50 transition-all duration-300 
               hover:shadow-2xl hover:shadow-purple-900/10 overflow-hidden text-center mx-auto">
     <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-      <span class="material-symbols-outlined text-4xl text-white">apartment</span>
+      <!-- <span class="material-symbols-outlined text-4xl text-white">apartment</span> -->
     </div>
     <h3 class="text-lg font-bold mb-1" style="color:#ffba00;">Oman</h3>
   </div>
@@ -1097,9 +1220,12 @@ summary {
 
 </body>
 </html>
+
 <script>
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector(".contact-form");
+  if (!form) return;
+
   const submitBtn = form.querySelector(".contact-submit");
 
   const nameInput = document.getElementById("name");
@@ -1113,48 +1239,229 @@ document.addEventListener("DOMContentLoaded", function () {
   const phoneError = document.getElementById("error-phone");
   const commentError = document.getElementById("error-comment");
 
-  const toast = document.getElementById("toast");
-
-  /* ---------- TOAST ---------- */
-  function showToast(message, success = true) {
-    toast.textContent = message;
-    toast.style.background = success ? "#28a745" : "#dc3545";
-    toast.classList.add("show");
-    setTimeout(() => toast.classList.remove("show"), 3000);
-  }
-
-  /* ---------- NAME ---------- */
+  /* ---------- VALIDATION ---------- */
   function validateName() {
-    const name = nameInput.value.trim();
-    if (!name) {
-      nameError.textContent = "Name is required";
-      return false;
-    } else if (name.length < 3) {
-      nameError.textContent = "Name must be at least 3 characters";
-      return false;
-    }
+    const v = nameInput.value.trim();
+    if (!v) return nameError.textContent = "Name is required", false;
+    if (v.length < 3) return nameError.textContent = "Min 3 characters", false;
     nameError.textContent = "";
     return true;
   }
 
-  /* ---------- EMAIL ---------- */
   function validateEmail() {
-    const email = emailInput.value.trim();
-    if (!email) {
-      emailError.textContent = "Email is required";
-      return false;
-    } else if (!/^\S+@\S+\.\S+$/.test(email)) {
-      emailError.textContent = "Enter a valid Email ID";
-      return false;
-    }
+    const v = emailInput.value.trim();
+    if (!v) return emailError.textContent = "Email is required", false;
+    if (!/^\S+@\S+\.\S+$/.test(v))
+      return emailError.textContent = "Invalid email", false;
     emailError.textContent = "";
     return true;
   }
 
-  /* ---------- PHONE (COUNTRY BASED) ---------- */
   function validatePhone() {
     const phone = phoneInput.value.trim();
-    const dialCode = countryCodeInput.value.replace("+", "");
+    const dial = countryCodeInput.value.replace("+", "");
+    const rules = { "91":10, "1":10, "44":11, "971":9, "968":8 };
+    const len = rules[dial] || 10;
+
+    if (!phone) return phoneError.textContent = "Phone required", false;
+    if (!/^\d+$/.test(phone))
+      return phoneError.textContent = "Digits only", false;
+    if (phone.length !== len)
+      return phoneError.textContent = `Must be ${len} digits`, false;
+
+    phoneError.textContent = "";
+    return true;
+  }
+
+  function validateComment() {
+    if (!commentInput.value.trim())
+      return commentError.textContent = "Company required", false;
+    commentError.textContent = "";
+    return true;
+  }
+
+  function validateForm() {
+    return (
+      validateName() &
+      validateEmail() &
+      validatePhone() &
+      validateComment()
+    );
+  }
+
+  /* ---------- LIVE ---------- */
+  nameInput.addEventListener("input", validateForm);
+  emailInput.addEventListener("input", validateForm);
+  phoneInput.addEventListener("input", validateForm);
+  countryCodeInput.addEventListener("change", validateForm);
+  commentInput.addEventListener("input", validateForm);
+
+  /* ---------- SUBMIT ---------- */
+  form.addEventListener("submit", function (e) {
+    if (!validateForm()) {
+      e.preventDefault();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.querySelector(".btn-text").textContent = "Sending...";
+    submitBtn.querySelector(".loader").style.display = "inline-block";
+  });
+
+  /* ---------- RESET ---------- */
+  window.addEventListener("pageshow", function () {
+    submitBtn.disabled = false;
+    submitBtn.querySelector(".btn-text").textContent = "SEND MESSAGE";
+    submitBtn.querySelector(".loader").style.display = "none";
+  });
+});
+</script>
+
+
+
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      item.classList.toggle('active');
+    });
+  });
+</script>
+
+<script>
+  const contactType = document.getElementById("contactType");
+  const supportWrapper = document.getElementById("supportCategoryWrapper");
+
+  contactType.addEventListener("change", function () {
+    if (this.value === "support") {
+      supportWrapper.style.display = "block";
+    } else {
+      supportWrapper.style.display = "none";
+      document.getElementById("supportCategory").value = "";
+    }
+  });
+</script>
+<!-- <script>
+$(document).ready(function () {
+
+  const phoneInput = document.querySelector("#phone");
+
+  const iti = window.intlTelInput(phoneInput, {
+    initialCountry: "in",
+    separateDialCode: true,
+    onlyCountries: ["in", "us", "gb", "ae", "om"],
+    nationalMode: false,
+    utilsScript:
+      "https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.1/build/js/utils.js"
+  });
+
+  /* Hide country name and scrollbar but keep scroll functionality */
+  const css = document.createElement("style");
+  css.type = "text/css";
+  css.innerHTML = `
+    /* Hide country names */
+    .iti__country .iti__country-name {
+      display: none !important;
+    }
+
+    /* Hide scrollbar but keep scroll */
+    .iti__country-list {
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE 10+ */
+    }
+    .iti__country-list::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+  `;
+  document.head.appendChild(css);
+
+  /* ---------- VALIDATION ---------- */
+  function validatePhone() {
+    if (!phoneInput.value.trim()) {
+      $("#error-phone").text("Phone number is required");
+      return false;
+    }
+
+    if (!iti.isValidNumber()) {
+      $("#error-phone").text("Enter a valid phone number");
+      return false;
+    }
+
+    $("#error-phone").text("");
+    $("#full_phone").val(iti.getNumber());
+    return true;
+  }
+
+  /* ---------- LIVE VALIDATION ---------- */
+  $("#phone").on("blur keyup", validatePhone);
+
+  /* ---------- FORM SUBMIT ---------- */
+  $(".contact-form").on("submit", function (e) {
+    if (!validatePhone()) {
+      e.preventDefault();
+    }
+  });
+
+});
+</script> -->
+
+ <script>
+$(document).ready(function () {
+
+  /* ---------------- PHONE INIT ---------------- */
+  const phoneInput = document.querySelector("#phone");
+
+  const iti = window.intlTelInput(phoneInput, {
+    initialCountry: "in",
+    separateDialCode: true,
+    onlyCountries: ["in", "us", "gb", "ae", "om"],
+    nationalMode: false,
+    utilsScript:
+      "https://cdn.jsdelivr.net/npm/intl-tel-input@18.5.1/build/js/utils.js"
+  });
+
+  /* Hide country name + scrollbar (but keep scroll) */
+  const css = document.createElement("style");
+  css.innerHTML = `
+    .iti__country .iti__country-name { display: none !important; }
+    .iti__country-list {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .iti__country-list::-webkit-scrollbar { display: none; }
+  `;
+  document.head.appendChild(css);
+
+  /* ---------------- ELEMENTS ---------------- */
+  const form = $(".contact-form");
+  const submitBtn = $(".contact-submit");
+
+  const contactType = $("#contactType");
+  const supportWrapper = $("#supportCategoryWrapper");
+  const supportCategory = $("#supportCategory");
+
+  /* ---------------- VALIDATIONS ---------------- */
+  function validateName() {
+    const v = $("#name").val().trim();
+    if (!v) return $("#error-name").text("Name is required"), false;
+    if (v.length < 3) return $("#error-name").text("Min 3 characters"), false;
+    $("#error-name").text("");
+    return true;
+  }
+
+  function validateEmail() {
+    const v = $("#email").val().trim();
+    if (!v) return $("#error-email").text("Email is required"), false;
+    if (!/^\S+@\S+\.\S+$/.test(v))
+      return $("#error-email").text("Invalid email"), false;
+    $("#error-email").text("");
+    return true;
+  }
+
+  function validatePhone() {
+    const number = phoneInput.value.replace(/\D/g, "");
+    const dialCode = iti.getSelectedCountryData().dialCode;
 
     const rules = {
       "91": 10,
@@ -1164,83 +1471,86 @@ document.addEventListener("DOMContentLoaded", function () {
       "968": 8
     };
 
-    const requiredLength = rules[dialCode] || 10;
+    if (!number)
+      return $("#error-phone").text("Phone number is required"), false;
 
-    if (!phone) {
-      phoneError.textContent = "Phone Number is required";
-      return false;
-    }
+    if (!rules[dialCode])
+      return $("#error-phone").text("Invalid country code"), false;
 
-    if (!/^[0-9]+$/.test(phone)) {
-      phoneError.textContent = "Only digits allowed";
-      return false;
-    }
+    if (number.length !== rules[dialCode])
+      return $("#error-phone").text(
+        `Phone number must be ${rules[dialCode]} digits`
+      ), false;
 
-    if (phone.length !== requiredLength) {
-      phoneError.textContent = `Phone must be ${requiredLength} digits only`;
-      return false;
-    }
-
-    phoneError.textContent = "";
+    $("#error-phone").text("");
+    $("#full_phone").val("+" + dialCode + number);
     return true;
   }
 
-  /* ---------- COMPANY ---------- */
   function validateComment() {
-    if (!commentInput.value.trim()) {
-      commentError.textContent = "Company is required";
-      return false;
-    }
-    commentError.textContent = "";
+    if (!$("#comment").val().trim())
+      return $("#error-comment").text("Company required"), false;
+    $("#error-comment").text("");
     return true;
   }
 
-  /* ---------- FORM ---------- */
-  function validateForm() {
-    const valid =
-      validateName() &&
-      validateEmail() &&
-      validatePhone() &&
-      validateComment();
-
-    submitBtn.disabled = !valid;
-    submitBtn.style.opacity = valid ? "1" : "0.6";
-    submitBtn.style.cursor = valid ? "pointer" : "not-allowed";
-
-    return valid;
+  function validateSupportCategory() {
+    if (contactType.val() === "support" && !supportCategory.val()) {
+      $("#error-support").text("Please select a support type");
+      return false;
+    }
+    $("#error-support").text("");
+    return true;
   }
 
-  /* ---------- LIVE VALIDATION ---------- */
-  emailInput.addEventListener("input", validateForm);
-  phoneInput.addEventListener("input", validateForm);
-  countryCodeInput.addEventListener("change", validateForm);
-  commentInput.addEventListener("input", validateForm);
+  function validateForm() {
+    return (
+      validateName() &
+      validateEmail() &
+      validatePhone() &
+      validateComment() &
+      validateSupportCategory()
+    );
+  }
 
-  /* ---------- SUBMIT ---------- */
-    form.addEventListener("submit", function (e) {
-      if (!validateForm()) {
-        e.preventDefault();
-      } else {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = "Sending...";
-        submitBtn.style.opacity = "0.7";
-      }
-    });
-  /* ---------- RESET ---------- */
-  window.addEventListener("pageshow", function () {
-    submitBtn.disabled = false;
-    submitBtn.innerHTML = "SUBMIT";
-    submitBtn.style.opacity = "1";
+  /* ---------------- SHOW / HIDE SUPPORT ---------------- */
+  contactType.on("change", function () {
+    if (this.value === "support") {
+      supportWrapper.slideDown();
+    } else {
+      supportWrapper.slideUp();
+      supportCategory.val("");
+      $("#error-support").text("");
+    }
   });
+
+  /* ---------------- LIVE VALIDATION ---------------- */
+  $("#name, #email, #phone, #comment").on("input", validateForm);
+  supportCategory.on("change", validateSupportCategory);
+
+  /* ---------------- SUBMIT ---------------- */
+  form.on("submit", function (e) {
+    if (!validateForm()) {
+      e.preventDefault();
+      return;
+    }
+
+    submitBtn.prop("disabled", true);
+    submitBtn.find(".btn-text").text("Sending...");
+    submitBtn.find(".loader").show();
+  });
+
+  /* ---------------- RESET ---------------- */
+  window.addEventListener("pageshow", function () {
+    submitBtn.prop("disabled", false);
+    submitBtn.find(".btn-text").text("SEND MESSAGE");
+    submitBtn.find(".loader").hide();
+  });
+
 });
 </script>
-<script>
-  document.querySelectorAll('.faq-question').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.closest('.faq-item');
-      item.classList.toggle('active');
-    });
-  });
-</script>
+
+
+
 
 {% include 'includes/footer.html' %}

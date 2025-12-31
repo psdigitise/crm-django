@@ -79,7 +79,7 @@ def subscription_form(request):
                                     Our team will review your requirements and get in touch with you shortly.
                                 </p>
                                 <hr style="border:none; border-top:1px solid #eee; margin:20px 0;">
-                                <h3 style="color:#333;">Your Submitted Details:</h3>
+                                <h3 style="color:#333;">Submitted Details:</h3>
                                 <p style="color:#555; line-height:1.6;">
                                   <strong>Name:</strong> {name}<br>
                                   <strong>Email:</strong> <a href="mailto:{email}" style="color:#1a73e8;">{email}</a><br>
@@ -104,7 +104,7 @@ def subscription_form(request):
                 email_user = EmailMessage(
                     subject,
                     body,
-                    "info@psdigitise.com",
+                    "sales@erpnext.ai",
                     [email]
                 )
                 email_user.content_subtype = "html"
@@ -374,7 +374,7 @@ def index(request):
 
             email_team = EmailMessage(
                 subject_team, body_team,
-                'info@psdigitise.com', ['sales@psdigitise.com']
+                'sales@erpnext.ai', ['sales@psdigitise.com']
             )
             email_team.content_subtype = "html"
 
@@ -392,10 +392,11 @@ def index(request):
                    <strong>Message:</strong> {comment}</p>
             </body></html>
             """
+            
 
             email_user = EmailMessage(
                 subject_user, body_user,
-                'info@psdigitise.com', [email]
+                'sales@erpnext.ai', [email]
             )
             email_user.content_subtype = "html"
 
@@ -470,7 +471,16 @@ def index(request):
             print(traceback.format_exc())
             return JsonResponse({"status": "error", "message": f"❌ Failed: {str(e)}"})
 
-    return render(request, 'index.html')
+    context = {
+        "page_title": "ERPNext AI CRM | Lead, Contact & Sales Pipeline Management",
+        "meta_description": (
+            "Accelerate customer relationship management with AI-enabled ERPNext CRM — "
+            "lead capture, deal tracking, email integration, pipeline automation, and smart insights "
+            "for growing teams. Start free and close deals faster."
+        ),
+    }
+    return render(request, "index.html", context)
+
 
 
 # -------------------- CONTACT US PAGE FORM -------------------- #
@@ -479,40 +489,52 @@ def index(request):
 
 def contact_us(request):
     if request.method == 'POST':
+
         name = request.POST.get('name', '').strip()
         email = request.POST.get('email', '').strip()
         phone = request.POST.get('phone', '').strip()
-        comment = request.POST.get('comment', '').strip()
+        company = request.POST.get('comment', '').strip()
+        message = request.POST.get('message', '').strip()
 
-        if not all([name, email, phone, comment]):
-            messages.error(request, ' Please fill out all fields.')
+        contact_type = request.POST.get('contact_type', 'contact')
+        support_category = request.POST.get('support_category', '').strip()
+
+        if not all([name, email, phone, company]):
+            messages.error(request, 'Please fill out all fields.')
             return redirect('contact_us')
 
+     
+
         try:
-            # -----------------------------
-            # 1️⃣ Email to PS Digitise Team
-            # -----------------------------
-            subject_team = f'New Contact Form Submission'
+            # ==================================================
+            # 1️⃣ INTERNAL TEAM EMAIL
+            # ==================================================
+            if contact_type == "support":
+                subject_team = "New Support Request"
+                to_email = ['sales@erpnext.ai']
+            else:
+                subject_team = "New Contact Form Submission"
+                to_email = ['sales@erpnext.ai']
+
             body_team = f"""
             <html>
-              <body style="font-family: Arial, sans-serif; background-color: #f8f9fa; margin: 0; padding: 0;">
-                <table role="presentation" style="max-width: 600px; margin: 40px auto; background: #ffffff; border-radius: 8px; overflow: hidden; border: 1px solid #ddd;">
+              <body style="font-family: Arial, sans-serif;background:#f6f6f6;">
+                <table style="max-width:600px;margin:40px auto;background:#fff;border-radius:8px;border:1px solid #ddd;">
                   <tr>
-                    <td style="padding: 30px;">
-                      <h2 style="color: #333;">📩 New Contact Form Submission</h2>
-                      <p style="color: #555; font-size: 15px;">You have received a new inquiry through the contact form:</p>
-                      <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-                      <p style="color: #555; font-size: 15px; line-height: 1.6;">
-                        <strong>Name:</strong> {name}<br>
-                        <strong>Email:</strong> <a href="mailto:{email}" style="color: #1a73e8;">{email}</a><br>
-                        <strong>Phone:</strong> {phone}<br>
-                        <strong>Company:</strong> {comment}
+                    <td style="padding:30px;">
+                      <h2>{subject_team}</h2>
+                      <hr>
+                      <p><strong>Name:</strong> {name}</p>
+                      <p><strong>Email:</strong> {email}</p>
+                      <p><strong>Phone:</strong> {phone}</p>
+                      <p><strong>Company:</strong> {company}</p>
+                      <p><strong>Request Type:</strong> {contact_type.title()}</p>
+                      {f"<p><strong>Support Category:</strong> {support_category.title()}</p>" if contact_type == "support" else ""}
+                      <hr>
+                      <p><strong>Message:</strong></p>
+                      <p style="background:#f9f9f9;padding:12px;border-radius:6px;">
+                        {message}
                       </p>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="background: #f1f1f1; text-align: center; padding: 12px; font-size: 13px; color: #777;">
-                      © PS Digitise 2025 | Internal Notification
                     </td>
                   </tr>
                 </table>
@@ -523,39 +545,47 @@ def contact_us(request):
             email_team = EmailMessage(
                 subject_team,
                 body_team,
-                'info@psdigitise.com',
-                ['sales@psdigitise.com'],
-                    cc=[''] 
+                'sales@erpnext.ai   ',
+                to_email
             )
             email_team.content_subtype = "html"
             email_team.send()
 
-            # -----------------------------
-            # 2️⃣ Confirmation Email to User
-            # -----------------------------
-            subject_user = "ERPNext AI - Thank You for Contacting Us"
+            # ==================================================
+            # 2️⃣ USER CONFIRMATION EMAIL (IMAGE-2 STYLE)
+            # ==================================================
+            subject_user = "ERPNext AI – Thank You for Contacting Us"
+
             body_user = f"""
             <html>
-              <body style="font-family: Arial, sans-serif; background-color: #f6f6f6; margin: 0; padding: 0;">
-                <table role="presentation" style="max-width: 600px; margin: 40px auto; background: #ffffff; border-radius: 8px; overflow: hidden; border: 1px solid #ddd;">
+              <body style="font-family: Arial, sans-serif;background:#f6f6f6;">
+                <table style="max-width:600px;margin:40px auto;background:#fff;border-radius:10px;border:1px solid #ddd;">
                   <tr>
-                    <td style="padding: 30px;">
-                      <h2 style="color: #333333; margin-bottom: 10px;">Thank you for contacting us, {name}.</h2>
-                      <p style="color: #555555; font-size: 15px;">
-                        We have received your message and will get in touch with you shortly.
-                      </p>
-                      <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
-                      <h3 style="color: #333333; margin-bottom: 10px;">Your Submitted Details:</h3>
-                      <p style="color: #555555; line-height: 1.6; font-size: 15px;">
-                        <strong>Name:</strong> {name}<br>
-                        <strong>Email:</strong> <a href="mailto:{email}" style="color: #1a73e8; text-decoration: none;">{email}</a><br>
-                        <strong>Phone:</strong> {phone}<br>
-                        <strong>Comment:</strong> {comment}
+                    <td style="padding:30px;">
+                      <h2>Thank you, {name}</h2>
+                      <p>We have received your message and will get in touch with you shortly.</p>
+
+                      <hr>
+
+                      <h3>Your Submitted Details</h3>
+
+                      <p><strong>Name:</strong> {name}</p>
+                      <p><strong>Email:</strong> {email}</p>
+                      <p><strong>Phone:</strong> {phone}</p>
+                      <p><strong>Company:</strong> {company}</p>
+                      <p><strong>Request Type:</strong> {contact_type.title()}</p>
+                      {f"<p><strong>Support Category:</strong> {support_category.title()}</p>" if contact_type == "support" else ""}
+
+                      <hr>
+
+                      <p><strong>Message:</strong></p>
+                      <p style="background:#f9f9f9;padding:12px;border-radius:6px;">
+                        {message}
                       </p>
                     </td>
                   </tr>
                   <tr>
-                    <td style="background: #f9f4e8; text-align: center; padding: 12px; font-size: 13px; color: #777;">
+                    <td style="background:#f9f4e8;text-align:center;padding:12px;font-size:13px;">
                       © ERPNext AI 2025
                     </td>
                   </tr>
@@ -567,21 +597,22 @@ def contact_us(request):
             email_user = EmailMessage(
                 subject_user,
                 body_user,
-                'info@psdigitise.com',
+                'sales@erpnext.ai',
                 [email]
             )
             email_user.content_subtype = "html"
             email_user.send()
 
-            messages.success(request, '✅ Mail has been sent successfully!')
+            messages.success(request, ' Mail has been sent successfully!')
             return redirect('contact_us')
 
-        except Exception as e:
-            messages.error(request, f'❌ Failed to send mail: {str(e)}')
+        except Exception:
             print(traceback.format_exc())
+            messages.error(request, '    Failed to send mail. Please try again.')
             return redirect('contact_us')
 
     return render(request, 'contact-us.html')
+
 
 # -------------------- OTHER STATIC PAGES -------------------- #
 def about_us(request):
@@ -614,5 +645,4 @@ def features(request):
 
 def cookies(request):
     return render(request, "Cookies.html")
-
 
