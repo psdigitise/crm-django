@@ -1540,6 +1540,13 @@
   }
 }
 
+.menu-section img.mobile-img {
+  width: 100%;
+  margin: 12px 0;
+  border-radius: 8px;
+}
+
+
 </style>
 
 <div id="google_translate_element"></div>
@@ -1711,7 +1718,8 @@
 
         <!-- Right Image -->
         <div class="image-section">
-            <img src="{% static 'img/crm/crm/crm/Crm.gif' %}" id="img1" class="active">
+            <img src="{% static 'img/crm/crm/crm/New Gif.gif' %}" id="img1" class="active">
+            <!-- <video src="{% static 'img/crm/crm/crm/Crm.mp4' %}" id="img1" controls="false" loop autoplay class="active"> -->
 
 
             <img src="{% static 'img/crm/crm/l7.png' %}" id="img2">
@@ -1783,7 +1791,7 @@
 
                     <p class="price-text text-center mb-1">₹1,500<span>/month</span></p>
 
-<button class="plan-btn w-100 select-btn" data-plan="Standard CRM" data-amount="1500"
+<button class="plan-btn w-100 select-btn" data-plan="Standard CRM" data-amount="1"
     onclick="openFormModal(this)" 
     style="
         border: 1px solid #3B82F6;          /* Blue border */
@@ -3418,20 +3426,23 @@ function resetModalForm() {
         }
     });
 </script>
-
-<script>
+<!-- <script>
 const MOBILE_WIDTH = 768;
 
 /* ---------- HELPERS ---------- */
 function cleanupMobileClones() {
-  document.querySelectorAll(".crm-feature-section .menu-section img.mobile-img").forEach(img => img.remove());
+  document
+    .querySelectorAll(".crm-feature-section .menu-section img.mobile-img")
+    .forEach(img => img.remove());
 }
 
 function hideAllImages() {
-  document.querySelectorAll(".crm-feature-section .image-section img").forEach(img => {
-    img.style.display = "none";
-    img.classList.remove("active");
-  });
+  document
+    .querySelectorAll(".crm-feature-section .image-section img")
+    .forEach(img => {
+      img.style.display = "none";
+      img.classList.remove("active");
+    });
 }
 
 function activateFeature(item) {
@@ -3440,26 +3451,27 @@ function activateFeature(item) {
   const imgIndex = item.dataset.img;
   if (!imgIndex) return;
 
-  // Active state for menu items
-  document.querySelectorAll(".crm-feature-section .menu-section li").forEach(li => li.classList.remove("active"));
+  // menu active state
+  document
+    .querySelectorAll(".crm-feature-section .menu-section li")
+    .forEach(li => li.classList.remove("active"));
   item.classList.add("active");
 
   const originalImg = document.getElementById("img" + imgIndex);
   if (!originalImg) return;
 
-  /* DESKTOP / TABLET */
+  /* ---------- DESKTOP / TABLET ---------- */
   if (window.innerWidth > MOBILE_WIDTH) {
     cleanupMobileClones();
-    hideAllImages();
+    // hideAllImages();
 
     originalImg.style.display = "block";
     originalImg.classList.add("active");
     return;
   }
 
-  /* MOBILE */
+  /* ---------- MOBILE (CLICK ONLY) ---------- */
   cleanupMobileClones();
-  hideAllImages(); // Optional: hide original images in mobile if needed
 
   const mobileImg = originalImg.cloneNode(true);
   mobileImg.classList.add("mobile-img", "active");
@@ -3470,27 +3482,121 @@ function activateFeature(item) {
 }
 
 /* ---------- CLICK HANDLER ---------- */
-document.querySelectorAll(".crm-feature-section .menu-section li").forEach(item => {
-  item.addEventListener("click", function (e) {
-    e.preventDefault();
-    activateFeature(this);
+document
+  .querySelectorAll(".crm-feature-section .menu-section li")
+  .forEach(item => {
+    item.addEventListener("click", function (e) {
+      e.preventDefault();
+      activateFeature(this);
+    });
   });
-});
 
-/* ---------- DEFAULT LOAD ---------- */
+/* ---------- DEFAULT LOAD (DESKTOP ONLY) ---------- */
 document.addEventListener("DOMContentLoaded", () => {
   if (window.innerWidth > MOBILE_WIDTH) {
-    const activeItem = document.querySelector(".crm-feature-section .menu-section li.active") || document.querySelector(".crm-feature-section .menu-section li");
+    const activeItem =
+      document.querySelector(".crm-feature-section .menu-section li.active") ||
+      document.querySelector(".crm-feature-section .menu-section li");
+
     activateFeature(activeItem);
   }
 });
 
-/* ---------- RESIZE FIX ---------- */
+/* ---------- RESIZE FIX (ONLY WHEN ENTERING DESKTOP) ---------- */
+let wasMobile = window.innerWidth <= MOBILE_WIDTH;
+
 window.addEventListener("resize", () => {
-  if (window.innerWidth > MOBILE_WIDTH) {
+  const isMobile = window.innerWidth <= MOBILE_WIDTH;
+
+  // mobile → desktop
+  if (wasMobile && !isMobile) {
     cleanupMobileClones();
-    const activeItem = document.querySelector(".crm-feature-section .menu-section li.active") || document.querySelector(".crm-feature-section .menu-section li");
+    const activeItem =
+      document.querySelector(".crm-feature-section .menu-section li.active") ||
+      document.querySelector(".crm-feature-section .menu-section li");
     activateFeature(activeItem);
+  }
+
+  wasMobile = isMobile;
+});
+</script>
+ -->
+<script>
+const MOBILE_WIDTH = 768;
+
+/* ---------- HELPERS ---------- */
+function cleanupMobileClones() {
+  document
+    .querySelectorAll(".crm-feature-section .menu-section img.mobile-img")
+    .forEach(img => img.remove());
+}
+
+function activateFeature(item, isUserClick = false) {
+  if (!item) return;
+
+  const isMobile = window.innerWidth <= MOBILE_WIDTH;
+
+  // 🚫 MOBILE reacts only to real clicks or auto-load
+  if (isMobile && !isUserClick && !item.dataset.autoload) return;
+
+  const imgIndex = item.dataset.img;
+  if (!imgIndex) return;
+
+  // Set active class
+  document
+    .querySelectorAll(".crm-feature-section .menu-section li")
+    .forEach(li => li.classList.remove("active"));
+  item.classList.add("active");
+
+  const originalImg = document.getElementById("img" + imgIndex);
+  if (!originalImg) return;
+
+  /* ---------- DESKTOP ---------- */
+  if (!isMobile) {
+    cleanupMobileClones();
+    originalImg.style.display = "block";
+    originalImg.classList.add("active");
+    return;
+  }
+
+  /* ---------- MOBILE (CLICK OR AUTOLOAD) ---------- */
+  cleanupMobileClones();
+
+  const mobileImg = originalImg.cloneNode(true);
+  mobileImg.classList.add("mobile-img", "active");
+  mobileImg.style.display = "block";
+  mobileImg.removeAttribute("id");
+
+  item.insertAdjacentElement("afterend", mobileImg);
+}
+
+/* ---------- CLICK HANDLER ---------- */
+document
+  .querySelectorAll(".crm-feature-section .menu-section li")
+  .forEach(item => {
+    item.addEventListener("click", function (e) {
+      e.preventDefault();
+      activateFeature(this, true);
+    });
+  });
+
+/* ---------- DEFAULT LOAD ---------- */
+document.addEventListener("DOMContentLoaded", () => {
+  const firstItem = document.querySelector(".crm-feature-section .menu-section li");
+
+  if (!firstItem) return;
+
+  if (window.innerWidth <= MOBILE_WIDTH) {
+    // ✅ MOBILE: mark for autoload
+    firstItem.dataset.autoload = "true";
+    activateFeature(firstItem, false);
+    delete firstItem.dataset.autoload; // clean up
+  } else {
+    // ✅ DESKTOP: auto image load
+    activateFeature(
+      document.querySelector(".crm-feature-section .menu-section li.active") || firstItem,
+      false
+    );
   }
 });
 </script>
