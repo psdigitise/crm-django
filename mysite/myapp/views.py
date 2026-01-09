@@ -11,6 +11,7 @@ import requests
 import traceback
 from django.shortcuts import redirect
 from django.core.mail import EmailMessage
+# import time
 
 
 # from captcha.image import ImageCaptcha
@@ -337,10 +338,6 @@ from django.shortcuts import render, redirect
 from django.core.mail import EmailMessage
 from django.contrib import messages
 from django.views.decorators.csrf import csrf_protect
-
-
-
-
 from django.views.decorators.csrf import csrf_protect
 from django.http import JsonResponse
 from django.core.mail import EmailMessage
@@ -374,7 +371,7 @@ def index(request):
 
             email_team = EmailMessage(
                 subject_team, body_team,
-                'sales@erpnext.ai', ['sales@psdigitise.com']
+                'sales@erpnext.ai', ['sales@erpnext.ai']
             )
             email_team.content_subtype = "html"
 
@@ -545,7 +542,7 @@ def contact_us(request):
             email_team = EmailMessage(
                 subject_team,
                 body_team,
-                'sales@erpnext.ai   ',
+                'sales@erpnext.ai',
                 to_email
             )
             email_team.content_subtype = "html"
@@ -646,3 +643,8 @@ def features(request):
 def cookies(request):
     return render(request, "Cookies.html")
 
+# def my_view(request):
+#     context = {
+#         "timestamp": int(time.time())
+#     }
+#     return render(request, "my_template.html", context)
