@@ -1729,10 +1729,9 @@
 
         <!-- Right Image -->
         <div class="image-section">
-            <img src="{% static 'img/crm/crm/crm/New Gif.gif' %}" id="img1" class="active" loading="eager"
+           <img src="{% static 'img/crm/crm/crm/New Gif.gif' %}" id="img1" class="active" loading="eager"
                 fetchpriority="high" decoding="async" alt="CRM Animation" />
-
-            <!-- <video src="{% static 'img/crm/crm/crm/Crm.mp4' %}" id="img1" controls="false" loop autoplay class="active"> -->
+ 
             <img src="{% static 'img/crm/crm/l7.webp' %}" id="img2" loading="lazy" alt="CRM Feature">
             <img src="{% static 'img/crm/crm/deal7.webp' %}" id="img3" loading="lazy" alt="Deals">
             <img src="{% static 'img/crm/crm/Activity.webp' %}" id="img4" loading="lazy" alt="Activity">
@@ -2422,7 +2421,7 @@
 
                         <div class="crm-testimonial-card">
                             <div class="crm-testimonial-header">
-                                <img src="{% static 'img/crm/Untitled.webp'%}" alt="Richard Sanchez">
+                                <img src="{% static 'img/crm/Untitled.webp'%}"loading="lazy" alt="Richard Sanchez">
                                 <div>
                                     <div class="d-flex flex-wrap justify-content-between mb-3">
                                         <div>
@@ -2446,7 +2445,7 @@
 
                         <div class="crm-testimonial-card">
                             <div class="crm-testimonial-header">
-                                <img src="{% static 'img/crm/Untitled.webp'%}" alt="Rufus Stewart">
+                                <img src="{% static 'img/crm/Untitled.webp'%}" loading="lazy" alt="Rufus Stewart">
                                 <div>
                                     <div class="d-flex flex-wrap justify-content-between mb-3">
                                         <div>
@@ -2472,7 +2471,7 @@
 
                         <div class="crm-testimonial-card">
                             <div class="crm-testimonial-header">
-                                <img src="{% static 'img/crm/Untitled.webp'%}" alt="Lars Peeters">
+                                <img src="{% static 'img/crm/Untitled.webp'%}" loading="lazy" alt="Lars Peeters">
                                 <div>
                                     <div class="d-flex flex-wrap justify-content-between mb-3">
                                         <div>
@@ -2497,7 +2496,7 @@
 
                         <div class="crm-testimonial-card">
                             <div class="crm-testimonial-header">
-                                <img src="{% static 'img/crm/Untitled.webp'%}" alt="Arjun Kumar">
+                                <img src="{% static 'img/crm/Untitled.webp'%}"  loading="lazy"alt="Arjun Kumar">
                                 <div>
                                     <div class="d-flex flex-wrap justify-content-between mb-3">
                                         <div>
@@ -3431,102 +3430,6 @@
         }
     });
 </script>
-<!-- <script>
-const MOBILE_WIDTH = 768;
-
-/* ---------- HELPERS ---------- */
-function cleanupMobileClones() {
-  document
-    .querySelectorAll(".crm-feature-section .menu-section img.mobile-img")
-    .forEach(img => img.remove());
-}
-
-function hideAllImages() {
-  document
-    .querySelectorAll(".crm-feature-section .image-section img")
-    .forEach(img => {
-      img.style.display = "none";
-      img.classList.remove("active");
-    });
-}
-
-function activateFeature(item) {
-  if (!item) return;
-
-  const imgIndex = item.dataset.img;
-  if (!imgIndex) return;
-
-  // menu active state
-  document
-    .querySelectorAll(".crm-feature-section .menu-section li")
-    .forEach(li => li.classList.remove("active"));
-  item.classList.add("active");
-
-  const originalImg = document.getElementById("img" + imgIndex);
-  if (!originalImg) return;
-
-  /* ---------- DESKTOP / TABLET ---------- */
-  if (window.innerWidth > MOBILE_WIDTH) {
-    cleanupMobileClones();
-    // hideAllImages();
-
-    originalImg.style.display = "block";
-    originalImg.classList.add("active");
-    return;
-  }
-
-  /* ---------- MOBILE (CLICK ONLY) ---------- */
-  cleanupMobileClones();
-
-  const mobileImg = originalImg.cloneNode(true);
-  mobileImg.classList.add("mobile-img", "active");
-  mobileImg.style.display = "block";
-  mobileImg.removeAttribute("id");
-
-  item.insertAdjacentElement("afterend", mobileImg);
-}
-
-/* ---------- CLICK HANDLER ---------- */
-document
-  .querySelectorAll(".crm-feature-section .menu-section li")
-  .forEach(item => {
-    item.addEventListener("click", function (e) {
-      e.preventDefault();
-      activateFeature(this);
-    });
-  });
-
-/* ---------- DEFAULT LOAD (DESKTOP ONLY) ---------- */
-document.addEventListener("DOMContentLoaded", () => {
-  if (window.innerWidth > MOBILE_WIDTH) {
-    const activeItem =
-      document.querySelector(".crm-feature-section .menu-section li.active") ||
-      document.querySelector(".crm-feature-section .menu-section li");
-
-    activateFeature(activeItem);
-  }
-});
-
-/* ---------- RESIZE FIX (ONLY WHEN ENTERING DESKTOP) ---------- */
-let wasMobile = window.innerWidth <= MOBILE_WIDTH;
-
-window.addEventListener("resize", () => {
-  const isMobile = window.innerWidth <= MOBILE_WIDTH;
-
-  // mobile → desktop
-  if (wasMobile && !isMobile) {
-    cleanupMobileClones();
-    const activeItem =
-      document.querySelector(".crm-feature-section .menu-section li.active") ||
-      document.querySelector(".crm-feature-section .menu-section li");
-    activateFeature(activeItem);
-  }
-
-  wasMobile = isMobile;
-});
-</script>
- -->
-
 
 
 <script>
@@ -3639,4 +3542,4 @@ window.addEventListener("resize", () => {
         }
     });
 
-</script>
+</script> 

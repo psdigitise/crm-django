@@ -1326,7 +1326,7 @@ a {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("../img/home/bg-3.png");
+  background-image: url("../img/home/bg-3.webp");
   background-position: left bottom;
   background-repeat: no-repeat;
   background-size: 250px auto;
@@ -1340,7 +1340,7 @@ a {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("../img/home/bg-5.png");
+  background-image: url("../img/home/bg-5.webp");
   background-position: right top;
   background-repeat: no-repeat;
   background-size: 250px auto;
@@ -1864,7 +1864,7 @@ a {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("../img/home/bg-3.png");
+  background-image: url("../img/home/bg-3.webp");
   background-position: left bottom;
   background-repeat: no-repeat;
   background-size: 250px auto;
@@ -1878,7 +1878,7 @@ a {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("../img/home/bg-5.png");
+  background-image: url("../img/home/bg-5.webp");
   background-position: right top;
   background-repeat: no-repeat;
   background-size: 250px auto;
@@ -2271,7 +2271,7 @@ a {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("../img/line.png") center center/100% no-repeat;
+  background: url("../img/line.webp") center center/100% no-repeat;
   opacity: 0.2;
   z-index: -1;
 }

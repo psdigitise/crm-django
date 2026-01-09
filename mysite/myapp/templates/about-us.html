@@ -215,453 +215,497 @@
     .text-secondary {
       color: #ffb000 !important;
     }
+
     .team-section {
-  padding: 40px 20px;
+      padding: 40px 20px;
 
-  color: #fff;
-  text-align: center;
-}
-
-.team-title {
-  font-size: 2rem;
-  margin-bottom: 40px;
-}
-
-.team-title span {
-  color: #facc15; /* Tailwind yellow-400 */
-}
-
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  justify-items: center;
-}
-
-.team-card {
-  background-color: #0f1623;
-  border: 1px solid #fff;
-  border-radius: 12px;
-  padding: 24px;
-  width: 100%;
-  max-width: 260px;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.team-card:hover {
-  transform: translateY(-5px);
-}
-
-.team-name {
-  font-size: 1.2rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #fff;
-}
-
-.team-role {
-  font-size: 0.95rem;
-  color:darkgoldenrod;
-  margin-bottom: 12px;
-}
-
-.team-desc {
-  font-size: 0.85rem;
-  color: #ccc;
-}
-
-.footer p {
-  font-size: 13.5px !important;
-}
-
-
-@media (min-width: 1200px) {
-    .container, .container-lg, .container-md, .container-sm, .container-xl {
-        max-width: 1300px !important;
+      color: #fff;
+      text-align: center;
     }
-}
 
-.material-icons-outlined {
-  font-size: 40px !important;
-}
+    .team-title {
+      font-size: 2rem;
+      margin-bottom: 40px;
+    }
 
-/* SECTION */
-.team-section {
-  padding: 80px 20px;
-  background: linear-gradient(180deg, #0b1220, #020617);
-  text-align: center;
-  color: #fff;
-}
+    .team-title span {
+      color: #facc15;
+      /* Tailwind yellow-400 */
+    }
 
-/* TITLE */
-.team-title {
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 50px;
-}
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
 
-.team-title span {
-  color: #facc15; /* yellow */
-}
+    .team-card {
+      background-color: #0f1623;
+      border: 1px solid #fff;
+      border-radius: 12px;
+      padding: 24px;
+      width: 100%;
+      max-width: 260px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
 
-/* GRID */
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+    .team-card:hover {
+      transform: translateY(-5px);
+    }
 
-/* CARD */
-.team-card {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 14px;
-  padding: 28px 20px;
-  transition: all 0.3s ease;
-}
+    .team-name {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #fff;
+    }
 
-.team-card:hover {
-  transform: translateY(-6px);
-  border-color: #facc15;
-}
+    .team-role {
+      font-size: 0.95rem;
+      color: darkgoldenrod;
+      margin-bottom: 12px;
+    }
 
-/* NAME – SINGLE LINE */
-.team-name {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 10px;
-  white-space: nowrap;        /* 👈 prevents line break */
-  overflow: hidden;
-  text-overflow: ellipsis;    /* 👈 safety for small screens */
-}
+    .team-desc {
+      font-size: 0.85rem;
+      color: #ccc;
+    }
 
-/* ROLE – BELOW NAME */
-.team-role {
-  font-size: 14px;
-  font-weight: 500;
-  color: #facc15;
-  line-height: 1.4;
-}
+    .footer p {
+      font-size: 13.5px !important;
+    }
 
-/* OPTIONAL DESCRIPTION */
-.team-desc {
-  display: none; /* hide if not used */
-}
 
-/* MOBILE ADJUSTMENT */
-@media (max-width: 480px) {
-  .team-name {
-    font-size: 16px;
-  }
-}
+    @media (min-width: 1200px) {
 
-.team-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 👈 always 5 in one row */
-  gap: 24px;
-  max-width: 1400px;
-  margin: 0 auto;
-}
-.team-name {
-  white-space: nowrap;      /* no name wrap */
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+      .container,
+      .container-lg,
+      .container-md,
+      .container-sm,
+      .container-xl {
+        max-width: 1300px !important;
+      }
+    }
 
-.team-role {
-  line-height: 1.4;
-}
-@media (max-width: 1200px) {
-  .team-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+    .material-icons-outlined {
+      font-size: 40px !important;
+    }
 
-@media (max-width: 768px) {
-  .team-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+    /* SECTION */
+    .team-section {
+      padding: 80px 20px;
+      background: linear-gradient(180deg, #0b1220, #020617);
+      text-align: center;
+      color: #fff;
+    }
 
-@media (max-width: 480px) {
-  .team-grid {
-    grid-template-columns: 1fr;
-  }
-}
-/* SOCIAL ICON CONTAINER */
-.team-social {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 18px;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.3s ease;
-  pointer-events: none;
-}
+    /* TITLE */
+    .team-title {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 50px;
+    }
 
-/* SHOW ON HOVER */
-.team-card:hover .team-social {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
+    .team-title span {
+      color: #facc15;
+      /* yellow */
+    }
 
-/* ICON STYLE */
-.team-social a {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 1px solid #facc15;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #facc15;
-  font-size: 15px;
-  transition: all 0.3s ease;
-}
+    /* GRID */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
-/* ICON HOVER */
-.team-social a:hover {
-  background: #facc15;
-  color: #020617;
-}
-.team-card {
-  position: relative;
-  overflow: hidden;
-}
-.team-social {
-  position: absolute;
-  bottom: 18px;
-  left: 50%;
-  transform: translateX(-50%) translateY(10px);
-  display: flex;
-  gap: 16px;
+    /* CARD */
+    .team-card {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 14px;
+      padding: 28px 20px;
+      transition: all 0.3s ease;
+    }
 
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s ease;
-}
-.team-card:hover .team-social {
-  opacity: 1;
-  transform: translateX(-50%) translateY(0);
-  pointer-events: auto;
-}
-.team-social a {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 1px solid #facc15;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #facc15;
-  font-size: 15px;
-  background: rgba(2, 6, 23, 0.9);
-  transition: all 0.25s ease;
-}
+    .team-card:hover {
+      transform: translateY(-6px);
+      border-color: #facc15;
+    }
 
-.team-social a:hover {
-  background: #facc15;
-  color: #020617;
-}
+    /* NAME – SINGLE LINE */
+    .team-name {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      white-space: nowrap;
+      /* 👈 prevents line break */
+      overflow: hidden;
+      text-overflow: ellipsis;
+      /* 👈 safety for small screens */
+    }
 
-.team-card {
-  position: relative;
-  padding-bottom: 65px;  /* 👈 space for hover icons */
-}
-.team-card {
-  border: 1px solid rgba(255,255,255,0.8);
-  border-radius: 14px;
-  padding: 26px 20px;
-  background: transparent;
-  text-align: center;
+    /* ROLE – BELOW NAME */
+    .team-role {
+      font-size: 14px;
+      font-weight: 500;
+      color: #facc15;
+      line-height: 1.4;
+    }
 
-  transition: all 0.3s ease;
-}
-.team-name {
-  margin-bottom: 10px;
-}
+    /* OPTIONAL DESCRIPTION */
+    .team-desc {
+      display: none;
+      /* hide if not used */
+    }
 
-.team-role {
-  margin-bottom: 0;
-  color: #facc15;
-}
-.team-social {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
+    /* MOBILE ADJUSTMENT */
+    @media (max-width: 480px) {
+      .team-name {
+        font-size: 16px;
+      }
+    }
 
-  max-height: 0;            /* 👈 no space */
-  overflow: hidden;
-  opacity: 0;
-  margin-top: 0;
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      /* 👈 always 5 in one row */
+      gap: 24px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
 
-  transition: all 0.35s ease;
-}
-.team-card:hover .team-social {
-  max-height: 60px;         /* 👈 creates space */
-  margin-top: 18px;
-  opacity: 1;
-}
-.team-social a {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid #facc15;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #facc15;
-  font-size: 14px;
-  transition: all 0.25s ease;
-}
+    .team-name {
+      white-space: nowrap;
+      /* no name wrap */
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-.team-social a:hover {
-  background: #facc15;
-  color: #020617;
-}
-.team-card:hover {
-  transform: translateY(4px);
-}
-.team-card {
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 14px;
-  padding: 26px 20px;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-.team-name {
-  margin-bottom: 10px;
-}
+    .team-role {
+      line-height: 1.4;
+    }
 
-.team-role {
-  margin-bottom: 0;
-  color: #facc15;
-  transition: margin-bottom 0.3s ease;
-}
-.team-social {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
+    @media (max-width: 1200px) {
+      .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
 
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
+    @media (max-width: 768px) {
+      .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
 
-  transition: all 0.35s ease;
-}
-.team-card:hover .team-role {
-  margin-bottom: 18px; 
-  padding-bottom: 1.5rem;  /* 👈 creates space BELOW text */
-}
+    @media (max-width: 480px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
-.team-card:hover .team-social {
-  max-height: 60px;
-  opacity: 1;
-}
-.team-social a {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1px solid #facc15;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #facc15;
-  font-size: 14px;
-  transition: all 0.50s ease;
-}
+    /* SOCIAL ICON CONTAINER */
+    .team-social {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 18px;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
 
-.team-social a:hover {
-  background: #facc15;
-  color: #020617;
-}
-.team-card {
-  border: 1px solid rgba(255,255,255,0.7);
-  transition: border-color 0.3s ease, transform 0.3s ease;
-}
+    /* SHOW ON HOVER */
+    .team-card:hover .team-social {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
 
-.team-card:hover {
-  border-color: #facc15; /* 👈 only hovered card */
-}
-.team-card:hover .team-role {
-  margin-bottom: 18px;
-}
-.team-social {
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
+    /* ICON STYLE */
+    .team-social a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid #facc15;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #facc15;
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
 
-.team-card:hover .team-social {
-  max-height: 60px;
-  opacity: 1;
-}
-.team-card {
-  border: 1px solid rgba(255,255,255,0.7);
-  border-radius: 14px;
-  padding: 26px 20px;
-  text-align: center;
-  background: transparent;
+    /* ICON HOVER */
+    .team-social a:hover {
+      background: #facc15;
+      color: #020617;
+    }
 
-  transition: border-color 0.3s ease, transform 0.3s ease;
-}
-.team-card:hover {
-  border-color: #facc15; /* ✅ ONLY this card */
-}
-.team-social {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
+    .team-card {
+      position: relative;
+      overflow: hidden;
+    }
 
-  max-height: 0;
-  opacity: 0;
-  overflow: hidden;
+    .team-social {
+      position: absolute;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      display: flex;
+      gap: 16px;
 
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-}
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
 
-.team-card:hover .team-social {
-  max-height: 60px;
-  opacity: 1;
-}
-.team-role {
-  color: #facc15;
-  margin-bottom: 0;
-  transition: margin-bottom 0.3s ease;
-}
+    .team-card:hover .team-social {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+      pointer-events: auto;
+    }
 
-.team-card:hover .team-role {
-  margin-bottom: 18px;
-}
-  
-.team-card {
-  background: radial-gradient(circle at top, #0a1a33, #020812);
-  border: 1px solid rgba(255,255,255,0.3);
-  border-radius: 14px;
-  padding: 28px;
-  transition: all 0.35s ease;
-}
+    .team-social a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid #facc15;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #facc15;
+      font-size: 15px;
+      background: rgba(2, 6, 23, 0.9);
+      transition: all 0.25s ease;
+    }
 
-/* ✅ Only hovered card changes */
-.team-card:hover {
-  border-color: #ffd200;
-  box-shadow: 0 0 18px rgba(255,210,0,0.35);
-  transform: translateY(-6px);
-}
-.team-card:not(:hover) {
-  opacity: 1;
-}
+    .team-social a:hover {
+      background: #facc15;
+      color: #020617;
+    }
 
+    .team-card {
+      position: relative;
+      padding-bottom: 65px;
+      /* 👈 space for hover icons */
+    }
+
+    .team-card {
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 14px;
+      padding: 26px 20px;
+      background: transparent;
+      text-align: center;
+
+      transition: all 0.3s ease;
+    }
+
+    .team-name {
+      margin-bottom: 10px;
+    }
+
+    .team-role {
+      margin-bottom: 0;
+      color: #facc15;
+    }
+
+    .team-social {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+
+      max-height: 0;
+      /* 👈 no space */
+      overflow: hidden;
+      opacity: 0;
+      margin-top: 0;
+
+      transition: all 0.35s ease;
+    }
+
+    .team-card:hover .team-social {
+      max-height: 60px;
+      /* 👈 creates space */
+      margin-top: 18px;
+      opacity: 1;
+    }
+
+    .team-social a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid #facc15;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #facc15;
+      font-size: 14px;
+      transition: all 0.25s ease;
+    }
+
+    .team-social a:hover {
+      background: #facc15;
+      color: #020617;
+    }
+
+    .team-card:hover {
+      transform: translateY(4px);
+    }
+
+    .team-card {
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 14px;
+      padding: 26px 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .team-name {
+      margin-bottom: 10px;
+    }
+
+    .team-role {
+      margin-bottom: 0;
+      color: #facc15;
+      transition: margin-bottom 0.3s ease;
+    }
+
+    .team-social {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+
+      transition: all 0.35s ease;
+    }
+
+    .team-card:hover .team-role {
+      margin-bottom: 18px;
+      padding-bottom: 1.5rem;
+      /* 👈 creates space BELOW text */
+    }
+
+    .team-card:hover .team-social {
+      max-height: 60px;
+      opacity: 1;
+    }
+
+    .team-social a {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid #facc15;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #facc15;
+      font-size: 14px;
+      transition: all 0.50s ease;
+    }
+
+    .team-social a:hover {
+      background: #facc15;
+      color: #020617;
+    }
+
+    .team-card {
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .team-card:hover {
+      border-color: #facc15;
+      /* 👈 only hovered card */
+    }
+
+    .team-card:hover .team-role {
+      margin-bottom: 18px;
+    }
+
+    .team-social {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .team-card:hover .team-social {
+      max-height: 60px;
+      opacity: 1;
+    }
+
+    .team-card {
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 14px;
+      padding: 26px 20px;
+      text-align: center;
+      background: transparent;
+
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .team-card:hover {
+      border-color: #facc15;
+      /* ✅ ONLY this card */
+    }
+
+    .team-social {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
+
+    .team-card:hover .team-social {
+      max-height: 60px;
+      opacity: 1;
+    }
+
+    .team-role {
+      color: #facc15;
+      margin-bottom: 0;
+      transition: margin-bottom 0.3s ease;
+    }
+
+    .team-card:hover .team-role {
+      margin-bottom: 18px;
+    }
+
+    .team-card {
+      background: radial-gradient(circle at top, #0a1a33, #020812);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 14px;
+      padding: 28px;
+      transition: all 0.35s ease;
+    }
+
+    /* ✅ Only hovered card changes */
+    .team-card:hover {
+      border-color: #ffd200;
+      box-shadow: 0 0 18px rgba(255, 210, 0, 0.35);
+      transform: translateY(-6px);
+    }
+
+    .team-card:not(:hover) {
+      opacity: 1;
+    }
   </style>
 </head>
 
@@ -736,12 +780,13 @@
       </div>
     </div>
   </section>
- <section class="py-20 bg-background-light dark:bg-background-dark relative">
+  <section class="py-20 bg-background-light dark:bg-background-dark relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-16">
         <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Expertise</h2>
         <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-        We deliver powerful business solutions designed to simplify operations, improve efficiency, and help your organization scale with confidence.
+          We deliver powerful business solutions designed to simplify operations, improve efficiency, and help your
+          organization scale with confidence.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -749,53 +794,61 @@
           class="bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-800 p-8 rounded-xl hover:shadow-xl dark:hover:shadow-primary/10 transition-all duration-300 group">
           <div
             class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-primary transition-colors duration-300">
-          <span class="material-icons-outlined text-primary text-3xl transition-colors duration-300 group-hover:!text-white">
-  groups
-</span>
+            <span
+              class="material-icons-outlined text-primary text-3xl transition-colors duration-300 group-hover:!text-white">
+              groups
+            </span>
           </div>
           <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Manufacturing</h3>
           <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-      ERPNext Manufacturing streamlines production by managing workstations, job cards, bills of materials, and work orders, supporting planning, control, inventory tracking, and analytics to improve efficiency.
+            ERPNext Manufacturing streamlines production by managing workstations, job cards, bills of materials, and
+            work orders, supporting planning, control, inventory tracking, and analytics to improve efficiency.
           </p>
         </div>
         <div
           class="bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-800 p-8 rounded-xl hover:shadow-xl dark:hover:shadow-primary/10 transition-all duration-300 group">
           <div
             class="w-14 h-14 bg-secondary/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-secondary transition-colors duration-300">
-            <span class="material-icons-outlined text-secondary text-3xl transition-colors duration-300 group-hover:!text-white">
-  bar_chart
-</span>
+            <span
+              class="material-icons-outlined text-secondary text-3xl transition-colors duration-300 group-hover:!text-white">
+              bar_chart
+            </span>
           </div>
           <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">Books</h3>
           <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-            Smart and simple accounting with Frappe Books. Manage expenses, invoices, taxes, and financial reports with clarity and accuracy, giving you complete control over your business finances.
+            Smart and simple accounting with Frappe Books. Manage expenses, invoices, taxes, and financial reports with
+            clarity and accuracy, giving you complete control over your business finances.
           </p>
         </div>
         <div
           class="bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-800 p-8 rounded-xl hover:shadow-xl dark:hover:shadow-primary/10 transition-all duration-300 group">
           <div
             class="w-14 h-14 bg-purple-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-purple-600 transition-colors duration-300">
-           <span class="material-icons-outlined text-purple-600 text-3xl transition-colors duration-300 group-hover:text-white">
-  account_tree
-</span>
+            <span
+              class="material-icons-outlined text-purple-600 text-3xl transition-colors duration-300 group-hover:text-white">
+              account_tree
+            </span>
 
           </div>
           <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">ERP Solutions</h3>
           <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-            End-to-end enterprise management using ERPNext. From sales and inventory to finance and operations, we implement scalable ERP solutions that streamline workflows and improve decision-making.
+            End-to-end enterprise management using ERPNext. From sales and inventory to finance and operations, we
+            implement scalable ERP solutions that streamline workflows and improve decision-making.
         </div>
         <div
           class="bg-surface-light dark:bg-surface-dark border border-gray-200 dark:border-gray-800 p-8 rounded-xl hover:shadow-xl dark:hover:shadow-primary/10 transition-all duration-300 group">
           <div
             class="w-14 h-14 bg-green-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:bg-green-600 transition-colors duration-300">
-           <span class="material-icons-outlined text-green-600 text-3xl transition-colors duration-300 group-hover:text-white">
-  badge
-</span>
+            <span
+              class="material-icons-outlined text-green-600 text-3xl transition-colors duration-300 group-hover:text-white">
+              badge
+            </span>
 
           </div>
           <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">HRMS</h3>
           <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-            Modern HR management made easy. Handle employee records, attendance, payroll, leave management, and performance tracking with a robust HRMS that keeps your workforce organized and productive.
+            Modern HR management made easy. Handle employee records, attendance, payroll, leave management, and
+            performance tracking with a robust HRMS that keeps your workforce organized and productive.
           </p>
         </div>
       </div>
@@ -974,26 +1027,36 @@
       <div class="row">
         <div class="col-md-12">
           <div class="owl-carousel owl-theme our-integration-carousel">
+
             <div class="item box mx-auto">
-              <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/mail2.webp'%}">
-            </div>
-            <div class="item box mx-auto">
-              <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/meta1.webp'%}">
-            </div>
-            <div class="item box mx-auto">
-              <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/twilio.webp'%}">
-            </div>
-            <div class="item box mx-auto">
-              <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/app1.webp'%}"
-                style="width: 178px;">
+              <img alt="Mail Integration" class="client-img" src="{% static 'img/home/integrations/mail2.webp' %}"
+                loading="lazy" decoding="async">
             </div>
 
             <div class="item box mx-auto">
-              <img alt="client logo" class="client-img" src="{% static 'img/home/integrations/api.webp'%}">
+              <img alt="Meta Integration" class="client-img" src="{% static 'img/home/integrations/meta1.webp' %}"
+                loading="lazy" decoding="async">
             </div>
+
+            <div class="item box mx-auto">
+              <img alt="Twilio Integration" class="client-img" src="{% static 'img/home/integrations/twilio.webp' %}"
+                loading="lazy" decoding="async">
+            </div>
+
+            <div class="item box mx-auto">
+              <img alt="App Integration" class="client-img" src="{% static 'img/home/integrations/app1.webp' %}"
+                loading="lazy" decoding="async" style="width: 178px;">
+            </div>
+
+            <div class="item box mx-auto">
+              <img alt="API Integration" class="client-img" src="{% static 'img/home/integrations/api.webp' %}"
+                loading="lazy" decoding="async">
+            </div>
+
           </div>
         </div>
       </div>
+
     </div>
   </section>
 

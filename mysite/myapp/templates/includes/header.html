@@ -1,8 +1,6 @@
 {% load static %}
 
-
 <html lang="en">
-
 <head>
 
     <meta charset="UTF-8">
@@ -38,13 +36,10 @@
     <!-- AOS CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
-    {% comment %}
-    <!-- <link href="./assets/scss/main.css?v=3" rel="stylesheet"> {% endcomment %} -->
 
 
     <link href="{% static 'scss/main.css' %}?v=1.0.5" rel="stylesheet">
      
-<!-- <link href="{% static 'scss/main.css' %}?v={{ timestamp }}" rel="stylesheet"> -->
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css" />
@@ -359,7 +354,7 @@
                 <div class="d-flex justify-content-start align-items-center" style="height: 70px !important;">
                     <div class="">
                         <div class="logo">
-                            <img src="{% static '/img/crm/crm/crm1.webp' %}" alt="CRM Logo" style="max-height:40px;">
+                            <img src="{% static '/img/crm/crm/crm1.webp' %}" loading="lazy" alt="CRM Logo" style="max-height:40px;">
 
                         </div>
                     </div>
