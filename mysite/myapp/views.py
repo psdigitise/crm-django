@@ -371,7 +371,7 @@ def index(request):
 
             email_team = EmailMessage(
                 subject_team, body_team,
-                'sales@erpnext.ai', ['sales@erpnext.ai']
+                'sales@erpnext.ai', ['sales@psdigitise.com']
             )
             email_team.content_subtype = "html"
 
