@@ -110,10 +110,10 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'crmdjango',           # Default Schema / Database Name
-        'USER': 'crmdjango',           # MySQL Username
-        'PASSWORD': 'admin',           # MySQL Password
-        'HOST': '103.214.132.20',      # Remote Host
+        'NAME': 'landingpage',           # Default Schema / Database Name
+        'USER': 'landingpage',           # MySQL Username
+        'PASSWORD': 'adminhari@5511',           # MySQL Password
+        'HOST': '72.61.229.172',      # Remote Host
         'PORT': '3306',                # MySQL Port
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
